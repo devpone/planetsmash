@@ -2,41 +2,141 @@
 <html lang="de">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Planet Smashburger – Langenfeld</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Planet Smashburger Langenfeld | Smashburger Foodtruck am Kaufland</title>
+  <meta name="description" content="Planet Smashburger – Smashburger & Pommes am Kaufland Langenfeld (Rheindorfer Straße). Speisekarte, Sparmenüs, Beschreibungen und Standort.">
+  <link rel="preconnect" href="https://raw.githubusercontent.com" crossorigin>
+  <link rel="dns-prefetch" href="https://raw.githubusercontent.com">
+
+  <!-- Preload für schnelle Darstellung -->
+  <link rel="preload" as="video" href="https://github.com/devpone/planetsmash/raw/refs/heads/main/planet-smashburger-foodtruck-langenfeld-landingpage-540p.mp4" type="video/mp4">
+  <link rel="preload" as="image" href="https://raw.githubusercontent.com/devpone/planetsmash/refs/heads/main/planet-smashburger-speisekarte-sparmenues-langenfeld-800w.webp">
+  <link rel="preload" as="image" href="https://raw.githubusercontent.com/devpone/planetsmash/refs/heads/main/planet-smashburger-menue-beschreibung-burger-pommes-langenfeld-800w.webp">
+  <link rel="preload" as="image" href="https://raw.githubusercontent.com/devpone/planetsmash/refs/heads/main/planet-smashburger-standort.webp">
+
+  <!-- Open Graph (für Sharing) -->
+  <meta property="og:locale" content="de_DE">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Planet Smashburger Langenfeld">
+  <meta property="og:description" content="Smashburger & Pommes am Kaufland Langenfeld. Klicken für Video, Sparmenüs, Menüdetails und Standort.">
+  <meta property="og:image" content="https://raw.githubusercontent.com/devpone/planetsmash/refs/heads/main/planet-smashburger-speisekarte-sparmenues-langenfeld-800w.webp">
+
   <style>
-    html, body {
-      height: 100%;
-      margin: 0;
-      background: #0b0b16;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    img {
-      max-width: 100%;
-      max-height: 100%;
-      display: block;
-      margin: auto;
-      cursor: pointer;
-    }
+    :root { --bg:#0b0e1a; --fg:#fff; --hint:rgba(255,255,255,.8); }
+    html,body { height:100%; margin:0; background:var(--bg); color:var(--fg); font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial,sans-serif; }
+    .wrap { min-height:100%; display:grid; grid-template-rows:1fr auto; }
+    header { text-align:center; padding:10px 12px; font-weight:600; letter-spacing:.2px; }
+    #stage { position:relative; display:grid; place-items:center; width:100%; height:calc(100vh - 70px); overflow:hidden; }
+    #stage > * { width:100%; height:100%; object-fit:cover; display:block; cursor:pointer; }
+    .hint { position:absolute; right:10px; bottom:10px; padding:6px 10px; background:rgba(0,0,0,.45); border-radius:10px; font-size:14px; backdrop-filter:saturate(120%) blur(4px); }
+    footer { padding:10px 12px; text-align:center; font-size:12px; color:#cfd3ff; opacity:.9; }
+    .visually-hidden { position:absolute; clip:rect(1px,1px,1px,1px); padding:0; border:0; height:1px; width:1px; overflow:hidden; white-space:nowrap; }
   </style>
 </head>
 <body>
-  <img id="viewer" src="https://raw.githubusercontent.com/devpone/planetsmash/refs/heads/main/planet-smashburger-menu.webp" alt="Planet Smashburger Menü">
+  <div class="wrap">
+    <header>Planet Smashburger • Kaufland Langenfeld</header>
+
+    <main id="stage" aria-live="polite">
+      <!-- Inhalt wird per JS gesetzt -->
+      <div class="hint" id="hint">Klicken / Tippen für weiter →</div>
+    </main>
+
+    <footer>© Planet Smashburger – Rheindorfer Straße 48–56, 40764 Langenfeld • Mo–Sa 11–20 Uhr</footer>
+  </div>
 
   <script>
-    const images = [
-      "https://raw.githubusercontent.com/devpone/planetsmash/refs/heads/main/planet-smashburger-menu.webp",
-      "https://raw.githubusercontent.com/devpone/planetsmash/refs/heads/main/planet-smashburger-sparmenue.webp",
-      "https://raw.githubusercontent.com/devpone/planetsmash/refs/heads/main/planet-smashburger-standort.webp"
+    // Slides definieren (Reihenfolge wie gewünscht)
+    const slides = [
+      {
+        type: 'video',
+        src: 'https://github.com/devpone/planetsmash/raw/refs/heads/main/planet-smashburger-foodtruck-langenfeld-landingpage-540p.mp4',
+        alt: 'Landing-Video – Planet Smashburger Foodtruck in Langenfeld'
+      },
+      {
+        type: 'image',
+        src: 'https://raw.githubusercontent.com/devpone/planetsmash/refs/heads/main/planet-smashburger-speisekarte-sparmenues-langenfeld-800w.webp',
+        alt: 'Sparmenüs – Smashburger & Pommes in Langenfeld'
+      },
+      {
+        type: 'image',
+        src: 'https://raw.githubusercontent.com/devpone/planetsmash/refs/heads/main/planet-smashburger-menue-beschreibung-burger-pommes-langenfeld-800w.webp',
+        alt: 'Menübeschreibungen – Zutaten & Specials'
+      },
+      {
+        type: 'image',
+        src: 'https://raw.githubusercontent.com/devpone/planetsmash/refs/heads/main/planet-smashburger-standort.webp',
+        alt: 'Standort – Kaufland Langenfeld, Rheindorfer Straße 48–56'
+      }
     ];
+
+    const stage = document.getElementById('stage');
+    const hint  = document.getElementById('hint');
     let index = 0;
-    document.getElementById("viewer").addEventListener("click", () => {
-      index = (index + 1) % images.length;
-      document.getElementById("viewer").src = images[index];
-    });
+
+    function setInteractive(el){
+      el.tabIndex = 0; // Tastaturfokus
+      const goNext = (ev) => {
+        if (ev.type === 'keydown' && !(ev.key === ' ' || ev.key === 'Enter')) return;
+        ev.preventDefault?.();
+        next();
+      };
+      el.addEventListener('click', goNext);
+      el.addEventListener('keydown', goNext);
+    }
+
+    function show(i){
+      index = (i + slides.length) % slides.length;
+      const item = slides[index];
+      stage.innerHTML = ''; // clear
+
+      if (item.type === 'video'){
+        const v = document.createElement('video');
+        v.src = item.src;
+        v.autoplay = true;
+        v.muted = true;
+        v.loop = true;
+        v.playsInline = true;
+        v.preload = 'metadata';
+        v.setAttribute('aria-label', item.alt);
+        setInteractive(v);
+        stage.appendChild(v);
+      } else {
+        const img = new Image();
+        img.src = item.src;
+        img.alt = item.alt;
+        img.loading = 'eager';
+        img.decoding = 'async';
+        setInteractive(img);
+        stage.appendChild(img);
+      }
+
+      // dezenten Hinweis nur auf dem Startslide
+      hint.style.display = (index === 0) ? 'block' : 'block';
+    }
+
+    function next(){ show(index + 1); }
+
+    // Vorladen der nächsten Bilder für flüssiges Umschalten
+    function preloadAll(){
+      slides.forEach(s => {
+        if (s.type === 'image'){
+          const im = new Image(); im.src = s.src;
+        }
+      });
+    }
+
+    preloadAll();
+    show(0);
   </script>
+
+  <!-- Noscript-Fallback: zeigt alles untereinander -->
+  <noscript>
+    <p>JavaScript ist deaktiviert. Hier sind die Inhalte:</p>
+    <video src="https://github.com/devpone/planetsmash/raw/refs/heads/main/planet-smashburger-foodtruck-langenfeld-landingpage-540p.mp4" autoplay muted loop playsinline style="width:100%;height:auto"></video>
+    <img src="https://raw.githubusercontent.com/devpone/planetsmash/refs/heads/main/planet-smashburger-speisekarte-sparmenues-langenfeld-800w.webp" alt="Sparmenüs – Smashburger & Pommes in Langenfeld" style="width:100%;height:auto">
+    <img src="https://raw.githubusercontent.com/devpone/planetsmash/refs/heads/main/planet-smashburger-menue-beschreibung-burger-pommes-langenfeld-800w.webp" alt="Menübeschreibungen – Zutaten & Specials" style="width:100%;height:auto">
+    <img src="https://raw.githubusercontent.com/devpone/planetsmash/refs/heads/main/planet-smashburger-standort.webp" alt="Standort – Kaufland Langenfeld" style="width:100%;height:auto">
+  </noscript>
 </body>
 </html>
-
