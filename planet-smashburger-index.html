@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Planet Smashburger Solingen – Speisekarte & Öffnungszeiten</title>
+    <meta name="description" content="Speisekarte, Spezialitäten und Öffnungszeiten von Planet Smashburger in Solingen-Aufderhöhe.">
+
+    <style>
+        :root {
+            --orange: #ff7a00;
+            --red: #ef3340;
+            --yellow: #ffc400;
+            --cyan: #7ce8ff;
+            --dark: #080b14;
+            --card: rgba(14, 18, 31, 0.88);
+            --text: #f8f8fb;
+            --muted: #b9bfd0;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            min-height: 100vh;
+            margin: 0;
+            padding: 28px 16px;
+            overflow-x: hidden;
+            font-family: Arial, Helvetica, sans-serif;
+            text-align: center;
+            color: var(--text);
+            background:
+                radial-gradient(circle at 10% 15%, rgba(255, 122, 0, 0.28), transparent 24%),
+                radial-gradient(circle at 88% 12%, rgba(124, 232, 255, 0.20), transparent 23%),
+                radial-gradient(circle at 75% 85%, rgba(239, 51, 64, 0.20), transparent 26%),
+                linear-gradient(145deg, #060810 0%, #11182a 55%, #20111a 100%);
+        }
+
+        /* Dezente animierte Sterne */
+        body::before,
+        body::after {
+            content: "";
+            position: fixed;
+            inset: 0;
+            z-index: -2;
+            pointer-events: none;
+            background-image:
+                radial-gradient(circle, rgba(255,255,255,.9) 0 1px, transparent 1.8px),
+                radial-gradient(circle, rgba(255,196,0,.8) 0 1px, transparent 1.8px),
+                radial-gradient(circle, rgba(124,232,255,.7) 0 1px, transparent 1.8px);
+            background-size: 83px 83px, 127px 127px, 171px 171px;
+            background-position: 0 0, 30px 50px, 80px 10px;
+            opacity: .42;
+            animation: stars 24s linear infinite;
+        }
+
+        body::after {
+            z-index: -1;
+            transform: scale(1.25);
+            opacity: .22;
+            animation-duration: 38s;
+            animation-direction: reverse;
+        }
+
+        @keyframes stars {
+            from { background-position: 0 0, 30px 50px, 80px 10px; }
+            to { background-position: 0 300px, 30px 390px, 80px 450px; }
+        }
+
+        .container {
+            position: relative;
+            width: 100%;
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 32px;
+            overflow: hidden;
+            border: 1px solid rgba(255,255,255,.12);
+            border-radius: 28px;
+            background: var(--card);
+            box-shadow:
+                0 24px 70px rgba(0,0,0,.48),
+                inset 0 1px 0 rgba(255,255,255,.08);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+        }
+
+        .container::before {
+            content: "";
+            position: absolute;
+            top: -130px;
+            left: -130px;
+            width: 310px;
+            height: 310px;
+            border-radius: 50%;
+            background: radial-gradient(circle at 35% 35%, #ffd95c, #ff6a00 38%, #5a1710 70%);
+            opacity: .30;
+            filter: blur(.2px);
+            pointer-events: none;
+        }
+
+        .eyebrow {
+            margin: 0 0 8px;
+            color: var(--yellow);
+            font-weight: 900;
+            letter-spacing: .16em;
+            text-transform: uppercase;
+            font-size: .82rem;
+        }
+
+        h1 {
+            margin: 0;
+            font-size: clamp(2.35rem, 7vw, 4.6rem);
+            line-height: .98;
+            letter-spacing: -.045em;
+            background: linear-gradient(90deg, #fff 0%, #fff 20%, var(--yellow) 48%, var(--orange) 70%, #ff4d58 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 0 28px rgba(255,122,0,.18);
+        }
+
+        .slogan {
+            margin: 12px 0 22px;
+            color: var(--muted);
+            font-weight: 800;
+            letter-spacing: .08em;
+            text-transform: uppercase;
+        }
+
+        .top-info {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 24px;
+        }
+
+        .pill,
+        .route-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 46px;
+            padding: 11px 16px;
+            border: 1px solid rgba(255,255,255,.12);
+            border-radius: 999px;
+            background: rgba(255,255,255,.07);
+            color: var(--text);
+            font-weight: 800;
+            text-decoration: none;
+        }
+
+        .route-button {
+            border-color: rgba(255,122,0,.45);
+            background: linear-gradient(135deg, rgba(255,122,0,.26), rgba(239,51,64,.22));
+            transition: transform .2s ease, border-color .2s ease;
+        }
+
+        .route-button:hover {
+            transform: translateY(-2px);
+            border-color: var(--orange);
+        }
+
+        .status {
+            gap: 9px;
+        }
+
+        .status-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #999;
+            box-shadow: 0 0 12px currentColor;
+        }
+
+        .status.open .status-dot {
+            background: #35e06f;
+            color: #35e06f;
+        }
+
+        .status.closed .status-dot {
+            background: #ff5864;
+            color: #ff5864;
+        }
+
+        .gallery {
+            width: 100%;
+            max-width: 840px;
+            margin: 0 auto;
+        }
+
+        .image-shell {
+            position: relative;
+            padding: 8px;
+            border: 1px solid rgba(255,255,255,.14);
+            border-radius: 20px;
+            background: linear-gradient(135deg, rgba(255,196,0,.22), rgba(124,232,255,.10), rgba(239,51,64,.20));
+            box-shadow: 0 18px 50px rgba(0,0,0,.34);
+        }
+
+        #menuImage {
+            display: block;
+            width: 100%;
+            height: auto;
+            max-height: 78vh;
+            object-fit: contain;
+            border-radius: 14px;
+            background: #05070d;
+            transition: opacity .18s ease, transform .18s ease;
+        }
+
+        #menuImage.changing {
+            opacity: 0;
+            transform: scale(.992);
+        }
+
+        .arrow {
+            position: absolute;
+            top: 50%;
+            z-index: 2;
+            width: 52px;
+            height: 52px;
+            padding: 0;
+            border: 1px solid rgba(255,255,255,.22);
+            border-radius: 50%;
+            transform: translateY(-50%);
+            background: rgba(5, 7, 13, .82);
+            color: white;
+            font-size: 30px;
+            line-height: 1;
+            cursor: pointer;
+            box-shadow: 0 8px 25px rgba(0,0,0,.4);
+            transition: transform .18s ease, background .18s ease;
+        }
+
+        .arrow:hover {
+            background: linear-gradient(135deg, var(--orange), var(--red));
+        }
+
+        .arrow:active {
+            transform: translateY(-50%) scale(.93);
+        }
+
+        .arrow-left { left: 18px; }
+        .arrow-right { right: 18px; }
+
+        .gallery-bar {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            margin: 16px 0 0;
+        }
+
+        .image-counter {
+            color: var(--muted);
+            font-weight: 700;
+        }
+
+        .zoom-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 42px;
+            padding: 9px 15px;
+            border: 1px solid rgba(124,232,255,.34);
+            border-radius: 999px;
+            background: rgba(124,232,255,.09);
+            color: var(--cyan);
+            font-weight: 800;
+            text-decoration: none;
+        }
+
+        .zoom-link:hover {
+            border-color: var(--cyan);
+        }
+
+        .dots {
+            display: flex;
+            justify-content: center;
+            gap: 9px;
+            margin-top: 14px;
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            padding: 0;
+            border: 0;
+            border-radius: 50%;
+            background: rgba(255,255,255,.28);
+            cursor: pointer;
+            transition: width .2s ease, background .2s ease;
+        }
+
+        .dot.active {
+            width: 30px;
+            border-radius: 999px;
+            background: linear-gradient(90deg, var(--yellow), var(--orange), var(--red));
+        }
+
+        .footer-info {
+            margin-top: 28px;
+            padding: 22px;
+            border: 1px solid rgba(255,255,255,.10);
+            border-radius: 18px;
+            background: rgba(255,255,255,.055);
+        }
+
+        .footer-info h2 {
+            margin: 0 0 14px;
+            color: var(--yellow);
+            font-size: 1.25rem;
+        }
+
+        .hours {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 9px 18px;
+            max-width: 560px;
+            margin: 0 auto;
+            text-align: left;
+        }
+
+        .hours span:nth-child(even) {
+            color: var(--cyan);
+            font-weight: 800;
+            text-align: right;
+        }
+
+        .tiny-note {
+            margin: 18px 0 0;
+            color: #8990a3;
+            font-size: .83rem;
+        }
+
+        @media (max-width: 650px) {
+            body {
+                padding: 10px;
+            }
+
+            .container {
+                padding: 22px 13px;
+                border-radius: 20px;
+            }
+
+            .slogan {
+                font-size: .78rem;
+            }
+
+            .top-info {
+                align-items: stretch;
+                flex-direction: column;
+            }
+
+            .pill,
+            .route-button {
+                width: 100%;
+            }
+
+            .image-shell {
+                padding: 5px;
+                border-radius: 15px;
+            }
+
+            #menuImage {
+                border-radius: 10px;
+            }
+
+            .arrow {
+                width: 44px;
+                height: 44px;
+                font-size: 25px;
+            }
+
+            .arrow-left { left: 10px; }
+            .arrow-right { right: 10px; }
+
+            .hours {
+                grid-template-columns: 1fr;
+                gap: 2px;
+                text-align: center;
+            }
+
+            .hours span:nth-child(even) {
+                margin-bottom: 10px;
+                text-align: center;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                scroll-behavior: auto !important;
+                animation: none !important;
+                transition: none !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <main class="container">
+        <p class="eyebrow">Smashburger · Pommes · Saucen</p>
+        <h1>Planet Smashburger</h1>
+        <p class="slogan">Nice to meat you</p>
+
+        <div class="top-info">
+            <div class="pill">📍 Nußbaumstr. 1, 42699 Solingen</div>
+
+            <a
+                class="route-button"
+                href="https://www.google.com/maps/search/?api=1&query=Nu%C3%9Fbaumstr.%201%2C%2042699%20Solingen"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                🛸 Route planen
+            </a>
+
+            <div class="pill status" id="openStatus">
+                <span class="status-dot"></span>
+                <span id="statusText">Öffnungszeiten werden geprüft …</span>
+            </div>
+        </div>
+
+        <section class="gallery" aria-label="Speisekarten und Angebote">
+            <div class="image-shell">
+                <button
+                    class="arrow arrow-left"
+                    id="prevButton"
+                    type="button"
+                    aria-label="Vorheriges Bild anzeigen"
+                >
+                    &#10094;
+                </button>
+
+                <img
+                    id="menuImage"
+                    src="planet_smashburger_speisekarte_burger_pommes_saucen_getraenke.webp"
+                    alt="Planet Smashburger Speisekarte mit Burgern, Pommes, Saucen und Getränken"
+                    fetchpriority="high"
+                >
+
+                <button
+                    class="arrow arrow-right"
+                    id="nextButton"
+                    type="button"
+                    aria-label="Nächstes Bild anzeigen"
+                >
+                    &#10095;
+                </button>
+            </div>
+
+            <div class="gallery-bar">
+                <div class="image-counter">
+                    Bild <span id="currentImage">1</span> von
+                    <span id="totalImages">4</span>
+                </div>
+
+                <a
+                    class="zoom-link"
+                    id="zoomLink"
+                    href="planet_smashburger_speisekarte_burger_pommes_saucen_getraenke.webp"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    🔍 Bild groß öffnen
+                </a>
+            </div>
+
+            <div class="dots" id="dots" aria-label="Bild auswählen"></div>
+        </section>
+
+        <section class="footer-info" aria-labelledby="hoursHeading">
+            <h2 id="hoursHeading">Öffnungszeiten</h2>
+
+            <div class="hours">
+                <span>Montag – Donnerstag</span>
+                <span>16:00 – 22:00 Uhr</span>
+
+                <span>Freitag &amp; Samstag</span>
+                <span>16:00 – 00:00 Uhr</span>
+
+                <span>Sonntag</span>
+                <span>14:00 – 22:00 Uhr</span>
+            </div>
+        </section>
+
+        <p class="tiny-note">Planet Smashburger · Solingen-Aufderhöhe</p>
+    </main>
+
+    <script>
+        const images = [
+            {
+                src: "planet_smashburger_speisekarte_burger_pommes_saucen_getraenke.webp",
+                alt: "Planet Smashburger Speisekarte mit Burgern, Pommes, Saucen und Getränken"
+            },
+            {
+                src: "planet_smashburger_speisekarte.webp",
+                alt: "Planet Smashburger ausführliche Speisekarte mit Burgern und Spezialitäten"
+            },
+            {
+                src: "unsere_saucen_planet_smashburger.webp",
+                alt: "Planet Smashburger Saucenauswahl mit Area 51, BBQ, Planet Mac und Käsesauce"
+            },
+            {
+                src: "planet_smashburger_currywurst_pommes_mayo.webp",
+                alt: "Planet Smashburger Currywurst mit Pommes und Mayonnaise"
+            }
+        ];
+
+        let currentIndex = 0;
+
+        const menuImage = document.getElementById("menuImage");
+        const currentImage = document.getElementById("currentImage");
+        const totalImages = document.getElementById("totalImages");
+        const prevButton = document.getElementById("prevButton");
+        const nextButton = document.getElementById("nextButton");
+        const dotsContainer = document.getElementById("dots");
+        const zoomLink = document.getElementById("zoomLink");
+
+        totalImages.textContent = images.length;
+
+        function showImage(index) {
+            const newIndex = (index + images.length) % images.length;
+            menuImage.classList.add("changing");
+
+            window.setTimeout(() => {
+                currentIndex = newIndex;
+                menuImage.src = images[currentIndex].src;
+                menuImage.alt = images[currentIndex].alt;
+                zoomLink.href = images[currentIndex].src;
+                currentImage.textContent = currentIndex + 1;
+
+                document.querySelectorAll(".dot").forEach((dot, dotIndex) => {
+                    const isActive = dotIndex === currentIndex;
+                    dot.classList.toggle("active", isActive);
+                    dot.setAttribute("aria-current", isActive ? "true" : "false");
+                });
+
+                menuImage.classList.remove("changing");
+            }, 170);
+        }
+
+        images.forEach((image, index) => {
+            const dot = document.createElement("button");
+            dot.type = "button";
+            dot.className = "dot";
+            dot.setAttribute("aria-label", "Bild " + (index + 1) + " anzeigen");
+            dot.addEventListener("click", () => showImage(index));
+            dotsContainer.appendChild(dot);
+        });
+
+        prevButton.addEventListener("click", () => showImage(currentIndex - 1));
+        nextButton.addEventListener("click", () => showImage(currentIndex + 1));
+
+        /* Tastatursteuerung nur am Laptop/PC */
+        document.addEventListener("keydown", event => {
+            if (event.key === "ArrowLeft") showImage(currentIndex - 1);
+            if (event.key === "ArrowRight") showImage(currentIndex + 1);
+        });
+
+        /* Aktueller Öffnungsstatus anhand der angegebenen Zeiten */
+        function updateOpenStatus() {
+            const now = new Date();
+            const day = now.getDay();
+            const currentTime = now.getHours() + now.getMinutes() / 60;
+
+            const openingHours = {
+                0: { open: 14, close: 22 },
+                1: { open: 16, close: 22 },
+                2: { open: 16, close: 22 },
+                3: { open: 16, close: 22 },
+                4: { open: 16, close: 22 },
+                5: { open: 16, close: 24 },
+                6: { open: 16, close: 24 }
+            };
+
+            const today = openingHours[day];
+            const status = document.getElementById("openStatus");
+            const text = document.getElementById("statusText");
+
+            if (currentTime >= today.open && currentTime < today.close) {
+                status.classList.add("open");
+                status.classList.remove("closed");
+                text.textContent = "Jetzt geöffnet · bis " +
+                    (today.close === 24 ? "00:00" : today.close + ":00") +
+                    " Uhr";
+            } else {
+                status.classList.add("closed");
+                status.classList.remove("open");
+
+                if (currentTime < today.open) {
+                    text.textContent = "Heute geöffnet ab " + today.open + ":00 Uhr";
+                } else {
+                    const tomorrow = openingHours[(day + 1) % 7];
+                    text.textContent = "Jetzt geschlossen · morgen ab " +
+                        tomorrow.open + ":00 Uhr";
+                }
+            }
+        }
+
+        showImage(0);
+        updateOpenStatus();
+        window.setInterval(updateOpenStatus, 60000);
+    </script>
+</body>
+</html>
