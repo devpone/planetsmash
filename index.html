@@ -1,48 +1,163 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Planet Smashburger Aufderhöhe</title>
-    <style>
-        body { 
-            font-family: 'Arial', sans-serif; 
-            text-align: center; 
-            padding: 20px; 
-            background-color: #f9f9f9;
-            color: #333;
-        }
-        .container { max-width: 800px; margin: 0 auto; background: white; padding: 20px; border-radius: 15px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
-        h1 { color: #e63946; margin-bottom: 5px; }
-        .info-text { font-size: 1.2rem; margin: 10px 0; font-weight: bold; }
-        img { 
-            width: 100%; 
-            max-width: 600px; 
-            height: auto; 
-            border-radius: 10px; 
-            margin: 20px 0; 
-        }
-        .footer-info { font-size: 1.1rem; line-height: 1.6; background: #eee; padding: 15px; border-radius: 10px; }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Planet Smashburger Aufderhöhe</title>
+
+<style>
+body{
+    font-family:Arial,sans-serif;
+    background:#f9f9f9;
+    margin:0;
+    padding:20px;
+    text-align:center;
+    color:#333;
+}
+
+.container{
+    max-width:850px;
+    margin:auto;
+    background:#fff;
+    padding:20px;
+    border-radius:18px;
+    box-shadow:0 5px 15px rgba(0,0,0,.15);
+}
+
+h1{
+    color:#e63946;
+    margin-bottom:5px;
+}
+
+.info-text{
+    font-size:1.2rem;
+    font-weight:bold;
+    margin-bottom:20px;
+}
+
+.gallery img{
+    width:100%;
+    max-width:700px;
+    border-radius:15px;
+    cursor:pointer;
+    transition:.25s;
+}
+
+.gallery img:hover{
+    transform:scale(1.01);
+}
+
+.counter{
+    margin-top:10px;
+    color:#666;
+    font-size:15px;
+}
+
+.footer-info{
+    margin-top:30px;
+    background:#eee;
+    border-radius:12px;
+    padding:18px;
+    line-height:1.8;
+    font-size:1.1rem;
+}
+</style>
 </head>
+
 <body>
 
-    <div class="container">
-        <h1>Planet Smashburger</h1>
-        
-        <div class="info-text">
-            📍 Nußbaumstr. 1, 42699 Solingen
-        </div>
+<div class="container">
 
-        <img src="planet-smashburger-menu.webp" alt="Speisekarte Planet Smashburger">
+<h1>Planet Smashburger</h1>
 
-        <div class="footer-info">
-            <strong>Öffnungszeiten:</strong><br>
-            Montag – Donnerstag: 16:00 – 22:00 Uhr<br>
-            Freitag & Samstag: 16:00 – 00:00 Uhr<br>
-            Sonntag: 14:00 - 22:00 Uhr<br>
-        </div>
-    </div>
+<div class="info-text">
+📍 Nußbaumstr. 1, 42699 Solingen
+</div>
+
+<div class="gallery">
+
+<img id="menuImage"
+src="planet_smashburger_speisekarte_burger_pommes_saucen_getraenke.webp"
+alt="Planet Smashburger Speisekarte">
+
+<div class="counter">
+Bild <span id="current">1</span> von 4<br>
+👉 Zum nächsten Bild einfach auf das Bild tippen oder klicken.
+</div>
+
+</div>
+
+<div class="footer-info">
+<strong>Öffnungszeiten:</strong><br><br>
+
+Montag – Donnerstag:
+16:00 – 22:00 Uhr<br>
+
+Freitag & Samstag:
+16:00 – 00:00 Uhr<br>
+
+Sonntag:
+14:00 – 22:00 Uhr
+
+</div>
+
+</div>
+
+<script>
+
+const bilder=[
+"planet_smashburger_speisekarte_burger_pommes_saucen_getraenke.webp",
+"planet_smashburger_speisekarte.webp",
+"unsere_saucen_planet_smashburger.webp",
+"planet_smashburger_currywurst_pommes_mayo.webp"
+];
+
+let index=0;
+
+const bild=document.getElementById("menuImage");
+const current=document.getElementById("current");
+
+bild.onclick=function(){
+
+index++;
+
+if(index>=bilder.length){
+index=0;
+}
+
+bild.src=bilder[index];
+current.innerText=index+1;
+
+};
+
+// Wischen auf Handy
+
+let startX=0;
+
+bild.addEventListener("touchstart",e=>{
+startX=e.touches[0].clientX;
+});
+
+bild.addEventListener("touchend",e=>{
+
+let ende=e.changedTouches[0].clientX;
+
+if(Math.abs(startX-ende)>40){
+
+index++;
+
+if(index>=bilder.length)
+index=0;
+
+bild.src=bilder[index];
+current.innerText=index+1;
+
+}
+
+});
+
+</script>
 
 </body>
 </html>
