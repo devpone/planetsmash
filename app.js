@@ -543,16 +543,45 @@ document.addEventListener('keydown',event=>{if(event.key==='Escape') closeSecret
   function playWiiii(){
     if(!audioUnlocked||!audioCtx||audioCtx.state!=='running')return;
     try{
-      const now=audioCtx.currentTime,osc=audioCtx.createOscillator(),gain=audioCtx.createGain();
-      osc.type='triangle';
-      osc.frequency.setValueAtTime(430,now);
-      osc.frequency.exponentialRampToValueAtTime(930,now+.35);
-      osc.frequency.exponentialRampToValueAtTime(620,now+1.45);
-      gain.gain.setValueAtTime(.0001,now);
-      gain.gain.exponentialRampToValueAtTime(.09,now+.07);
-      gain.gain.setValueAtTime(.07,now+.9);
-      gain.gain.exponentialRampToValueAtTime(.0001,now+1.55);
-      osc.connect(gain);gain.connect(audioCtx.destination);osc.start(now);osc.stop(now+1.6);
+      const now=audioCtx.currentTime;
+      const master=audioCtx.createGain();
+      master.gain.setValueAtTime(.0001,now);
+      master.gain.exponentialRampToValueAtTime(.13,now+.04);
+      master.gain.setValueAtTime(.12,now+1.75);
+      master.gain.exponentialRampToValueAtTime(.0001,now+2.15);
+      master.connect(audioCtx.destination);
+
+      // Human-like long "weeeee": two voiced oscillators with gentle vibrato,
+      // rising slightly like someone swinging.
+      const voice1=audioCtx.createOscillator();
+      const voice2=audioCtx.createOscillator();
+      const vibrato=audioCtx.createOscillator();
+      const vibratoGain=audioCtx.createGain();
+      voice1.type='sawtooth';
+      voice2.type='triangle';
+      voice1.frequency.setValueAtTime(285,now);
+      voice1.frequency.linearRampToValueAtTime(365,now+.55);
+      voice1.frequency.linearRampToValueAtTime(330,now+1.65);
+      voice2.frequency.setValueAtTime(570,now);
+      voice2.frequency.linearRampToValueAtTime(730,now+.55);
+      voice2.frequency.linearRampToValueAtTime(660,now+1.65);
+      vibrato.type='sine';
+      vibrato.frequency.value=5.2;
+      vibratoGain.gain.value=7;
+      vibrato.connect(vibratoGain);
+      vibratoGain.connect(voice1.frequency);
+      vibratoGain.connect(voice2.frequency);
+
+      const tone=audioCtx.createBiquadFilter();
+      tone.type='lowpass';
+      tone.frequency.value=1450;
+      tone.Q.value=.7;
+      const mix1=audioCtx.createGain(),mix2=audioCtx.createGain();
+      mix1.gain.value=.7;mix2.gain.value=.22;
+      voice1.connect(mix1);voice2.connect(mix2);
+      mix1.connect(tone);mix2.connect(tone);tone.connect(master);
+      voice1.start(now);voice2.start(now);vibrato.start(now);
+      voice1.stop(now+2.2);voice2.stop(now+2.2);vibrato.stop(now+2.2);
     }catch(e){}
   }
 
