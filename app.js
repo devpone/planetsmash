@@ -360,7 +360,13 @@ if(station&&scanner&&scanText&&activateButton){
     controlContent.forEach(el=>el.removeAttribute('hidden'));
     activateButton.disabled=true;
     activationPanel?.classList.add('activated');
-    scanner.classList.add('scanning');
+
+    // Keep the scan show in view, especially on iPhone where the station grows
+    // as soon as the hidden control cards are revealed.
+    station.scrollIntoView({behavior:'smooth',block:'start'});
+    setTimeout(()=>{
+      scanner.classList.add('scanning');
+    },550);
     scanMessages.forEach((message,index)=>{
       setTimeout(()=>{scanText.textContent=message;},index*700);
     });
