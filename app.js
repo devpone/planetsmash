@@ -357,24 +357,24 @@ if(station&&scanner&&scanText&&activateButton){
   const runScan=()=>{
     if(station.dataset.scanned==='1') return;
     station.dataset.scanned='1';
-    controlContent.forEach(el=>el.removeAttribute('hidden'));
     activateButton.disabled=true;
     activationPanel?.classList.add('activated');
 
-    // Keep the scan show in view, especially on iPhone where the station grows
-    // as soon as the hidden control cards are revealed.
-    const targetY=station.getBoundingClientRect().top+window.pageYOffset;
-    window.scrollTo(0,Math.max(0,targetY));
+    // Keep the station compact while scanning so the whole show fits on phones.
+    station.classList.add('scan-active');
+    const targetY=station.getBoundingClientRect().top+window.pageYOffset-12;
+    window.scrollTo({top:Math.max(0,targetY),left:0,behavior:'auto'});
     setTimeout(()=>{
-      window.scrollTo(0,Math.max(0,station.getBoundingClientRect().top+window.pageYOffset));
       scanner.classList.add('scanning');
-    },180);
+    },120);
     scanMessages.forEach((message,index)=>{
       setTimeout(()=>{scanText.textContent=message;},index*700);
     });
     setTimeout(()=>{
       scanner.classList.remove('scanning');
+      station.classList.remove('scan-active');
       activationPanel?.setAttribute('hidden','');
+      controlContent.forEach(el=>el.removeAttribute('hidden'));
     },3300);
   };
 
