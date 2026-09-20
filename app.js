@@ -363,10 +363,12 @@ if(station&&scanner&&scanText&&activateButton){
 
     // Keep the scan show in view, especially on iPhone where the station grows
     // as soon as the hidden control cards are revealed.
-    station.scrollIntoView({behavior:'smooth',block:'start'});
+    const targetY=station.getBoundingClientRect().top+window.pageYOffset;
+    window.scrollTo(0,Math.max(0,targetY));
     setTimeout(()=>{
+      window.scrollTo(0,Math.max(0,station.getBoundingClientRect().top+window.pageYOffset));
       scanner.classList.add('scanning');
-    },550);
+    },180);
     scanMessages.forEach((message,index)=>{
       setTimeout(()=>{scanText.textContent=message;},index*700);
     });
@@ -526,26 +528,22 @@ document.addEventListener('keydown',event=>{if(event.key==='Escape') closeSecret
   flyer.innerHTML='<div class="ufo-trail"></div><img src="assets/logo.webp" alt=""><span class="ufo-uiii">Wiiiiiiii!</span>';
   document.body.appendChild(flyer);
 
-  let busy=false, flightCount=0, audioCtx=null, audioUnlocked=false;
+  let busy=false,flightCount=0,audioCtx=null,audioUnlocked=false;
 
   function unlockAudio(){
     try{
       const AudioCtx=window.AudioContext||window.webkitAudioContext;
-      if(!AudioCtx) return;
-      if(!audioCtx) audioCtx=new AudioCtx();
+      if(!AudioCtx)return;
+      if(!audioCtx)audioCtx=new AudioCtx();
       audioCtx.resume().then(()=>{audioUnlocked=audioCtx.state==='running';}).catch(()=>{});
     }catch(e){}
   }
-  ['touchstart','pointerdown','click'].forEach(type=>
-    document.addEventListener(type,unlockAudio,{once:true,passive:true})
-  );
+  ['touchstart','pointerdown','click'].forEach(type=>document.addEventListener(type,unlockAudio,{once:true,passive:true}));
 
   function playWiiii(){
-    if(!audioUnlocked||!audioCtx||audioCtx.state!=='running') return;
+    if(!audioUnlocked||!audioCtx||audioCtx.state!=='running')return;
     try{
-      const now=audioCtx.currentTime;
-      const osc=audioCtx.createOscillator();
-      const gain=audioCtx.createGain();
+      const now=audioCtx.currentTime,osc=audioCtx.createOscillator(),gain=audioCtx.createGain();
       osc.type='triangle';
       osc.frequency.setValueAtTime(430,now);
       osc.frequency.exponentialRampToValueAtTime(930,now+.35);
@@ -554,31 +552,42 @@ document.addEventListener('keydown',event=>{if(event.key==='Escape') closeSecret
       gain.gain.exponentialRampToValueAtTime(.09,now+.07);
       gain.gain.setValueAtTime(.07,now+.9);
       gain.gain.exponentialRampToValueAtTime(.0001,now+1.55);
-      osc.connect(gain); gain.connect(audioCtx.destination);
-      osc.start(now); osc.stop(now+1.6);
+      osc.connect(gain);gain.connect(audioCtx.destination);osc.start(now);osc.stop(now+1.6);
     }catch(e){}
   }
 
   function fly(){
-    if(busy||document.hidden) return;
-    busy=true; flightCount++;
+    if(busy||document.hidden)return;
+    busy=true;flightCount++;
     const fromLeft=Math.random()>.5;
     const peek=flightCount%3===0;
-    flyer.style.setProperty('--ufo-y',Math.round(12+Math.random()*55)+'vh');
+    const size=window.innerWidth<=800?100:130;
+    const y=Math.max(70,Math.min(window.innerHeight-size-100,Math.round(window.innerHeight*(.12+Math.random()*.55))));
+    flyer.style.top=y+'px';
+    flyer.style.left='0';
+    flyer.style.right='auto';
     flyer.classList.toggle('from-right',!fromLeft);
     flyer.classList.toggle('peek-flight',peek);
-    flyer.classList.remove('flying');
-    void flyer.offsetWidth;
-    flyer.classList.add('flying');
-    if(!peek) playWiiii();
-    setTimeout(()=>{
-      flyer.classList.remove('flying','peek-flight','from-right');
-      busy=false;
-    },peek?4200:6500);
+    flyer.style.opacity='1';
+
+    const vw=document.documentElement.clientWidth;
+    const startX=fromLeft?-size-35:vw+35;
+    const endX=fromLeft?vw+35:-size-35;
+    const peekX=fromLeft?-28:vw-size+28;
+    const frames=peek?[
+      {transform:'translate3d('+startX+'px,0,0) rotate('+(fromLeft?-8:8)+'deg)',opacity:0},
+      {transform:'translate3d('+peekX+'px,0,0) rotate('+(fromLeft?5:-5)+'deg)',opacity:1,offset:.22},
+      {transform:'translate3d('+peekX+'px,0,0) rotate('+(fromLeft?5:-5)+'deg)',opacity:1,offset:.72},
+      {transform:'translate3d('+startX+'px,0,0) rotate('+(fromLeft?-8:8)+'deg)',opacity:0}
+    ]:[
+      {transform:'translate3d('+startX+'px,18px,0) rotate('+(fromLeft?-10:10)+'deg)',opacity:0},
+      {transform:'translate3d('+(fromLeft?vw*.48:vw*.52-size)+'px,-22px,0) rotate('+(fromLeft?5:-5)+'deg)',opacity:1,offset:.48},
+      {transform:'translate3d('+endX+'px,14px,0) rotate('+(fromLeft?-4:4)+'deg)',opacity:0}
+    ];
+    if(!peek)playWiiii();
+    const anim=flyer.animate(frames,{duration:peek?4000:6000,easing:peek?'ease-in-out':'cubic-bezier(.2,.7,.2,1)',fill:'forwards'});
+    anim.onfinish=()=>{flyer.style.opacity='0';flyer.classList.remove('from-right','peek-flight');busy=false;};
   }
 
-  setTimeout(()=>{
-    fly();
-    setInterval(fly,90000);
-  },60000);
+  setTimeout(()=>{fly();setInterval(fly,90000);},60000);
 })();
