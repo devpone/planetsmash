@@ -592,10 +592,10 @@ document.addEventListener('keydown',event=>{if(event.key==='Escape') closeSecret
     }catch(e){}
   }
 
-  function fly(forcePeek=null){
+  function fly(forcePeek=null,forceFromLeft=null){
     if(busy||document.hidden)return;
     busy=true;flightCount++;
-    const fromLeft=Math.random()>.5;
+    const fromLeft=forceFromLeft===null?Math.random()>.5:forceFromLeft;
     const peek=forcePeek===null?flightCount%3===0:forcePeek;
     const size=window.innerWidth<=800?100:130;
     const y=Math.max(70,Math.min(window.innerHeight-size-100,Math.round(window.innerHeight*(.12+Math.random()*.55))));
@@ -625,14 +625,15 @@ document.addEventListener('keydown',event=>{if(event.key==='Escape') closeSecret
     anim.onfinish=()=>{flyer.style.opacity='0';flyer.classList.remove('from-right','peek-flight');busy=false;};
   }
 
-  // First minute: the alien peeks in several times so visitors notice it.
-  [7000,18000,30000,43000,53000].forEach(delay=>{
-    setTimeout(()=>fly(true),delay);
-  });
+  // Each 90-second cycle: peek exactly three times (left, right, left),
+  // then make one full fly-by with sound.
+  function scheduleUfoCycle(){
+    setTimeout(()=>fly(true,true),15000);
+    setTimeout(()=>fly(true,false),38000);
+    setTimeout(()=>fly(true,true),62000);
+    setTimeout(()=>fly(false),90000);
+  }
 
-  // After one minute it makes the first full fly-by, then every 90 seconds.
-  setTimeout(()=>{
-    fly(false);
-    setInterval(()=>fly(false),90000);
-  },60000);
+  scheduleUfoCycle();
+  setInterval(scheduleUfoCycle,90000);
 })();
