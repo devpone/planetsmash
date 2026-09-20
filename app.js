@@ -569,6 +569,8 @@ document.addEventListener('keydown',event=>{if(event.key==='Escape') closeSecret
     },peek?4200:6500);
   }
 
-  setTimeout(fly,12000+Math.random()*6000);
-  setInterval(fly,90000);
+  setTimeout(()=>{
+    fly();
+    setInterval(fly,90000);
+  },60000);
 })();
