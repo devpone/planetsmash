@@ -556,11 +556,11 @@ document.addEventListener('keydown',event=>{if(event.key==='Escape') closeSecret
     }catch(e){}
   }
 
-  function fly(){
+  function fly(forcePeek=null){
     if(busy||document.hidden)return;
     busy=true;flightCount++;
     const fromLeft=Math.random()>.5;
-    const peek=flightCount%3===0;
+    const peek=forcePeek===null?flightCount%3===0:forcePeek;
     const size=window.innerWidth<=800?100:130;
     const y=Math.max(70,Math.min(window.innerHeight-size-100,Math.round(window.innerHeight*(.12+Math.random()*.55))));
     flyer.style.top=y+'px';
@@ -589,5 +589,14 @@ document.addEventListener('keydown',event=>{if(event.key==='Escape') closeSecret
     anim.onfinish=()=>{flyer.style.opacity='0';flyer.classList.remove('from-right','peek-flight');busy=false;};
   }
 
-  setTimeout(()=>{fly();setInterval(fly,90000);},60000);
+  // First minute: the alien peeks in several times so visitors notice it.
+  [7000,18000,30000,43000,53000].forEach(delay=>{
+    setTimeout(()=>fly(true),delay);
+  });
+
+  // After one minute it makes the first full fly-by, then every 90 seconds.
+  setTimeout(()=>{
+    fly(false);
+    setInterval(()=>fly(false),90000);
+  },60000);
 })();
