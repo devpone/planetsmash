@@ -75,23 +75,23 @@
 
 
 /* Flying Planet Smashburger UFO */
-.flying-logo-ufo{--ufo-y:28vh;position:fixed;z-index:90;top:var(--ufo-y);left:0;width:clamp(92px,9vw,145px);height:clamp(92px,9vw,145px);pointer-events:none;opacity:0;transform:translate3d(-190px,0,0) rotate(-8deg);filter:drop-shadow(0 0 12px #b276ff88);will-change:transform,opacity}
+.flying-logo-ufo{--ufo-y:28vh;position:fixed;z-index:9999;top:var(--ufo-y);left:0;width:clamp(92px,9vw,145px);height:clamp(92px,9vw,145px);pointer-events:none;opacity:0;transform:translate3d(-190px,0,0) rotate(-8deg);filter:drop-shadow(0 0 12px #b276ff88);will-change:transform,opacity;-webkit-transform:translate3d(-190px,0,0)}
 .flying-logo-ufo img{position:relative;z-index:2;display:block;width:100%;height:100%;object-fit:contain}
 .ufo-trail{position:absolute;z-index:1;right:70%;top:45%;width:180px;height:18px;transform:translateY(-50%);background:linear-gradient(90deg,transparent,#7e42c755,#cda3ffcc);filter:blur(6px);border-radius:50%;opacity:.9}
 .ufo-uiii{position:absolute;z-index:3;left:78%;top:-2px;padding:5px 8px;border:1px solid #d5b4ff77;border-radius:12px;background:#10091be6;color:#f3e7ff;font-size:11px;font-weight:900;letter-spacing:.5px;white-space:nowrap;opacity:0;transform:rotate(5deg);box-shadow:0 0 15px #8f52cf55}
-.flying-logo-ufo.flying:not(.peek-flight){animation:ufoFlyAcross 6s cubic-bezier(.2,.7,.2,1) both}
+.flying-logo-ufo.flying:not(.peek-flight){animation:ufoFlyAcross 6s cubic-bezier(.2,.7,.2,1) both;-webkit-animation:ufoFlyAcross 6s cubic-bezier(.2,.7,.2,1) both}
 .flying-logo-ufo.flying:not(.peek-flight) .ufo-uiii{animation:ufoUiiiBubble 6s ease both}
-.flying-logo-ufo.from-right{left:auto;right:0;transform:translate3d(190px,0,0) rotate(8deg)}
+.flying-logo-ufo.from-right{left:auto;right:0;transform:translate3d(190px,0,0) rotate(8deg);-webkit-transform:translate3d(190px,0,0) rotate(8deg)}
 .flying-logo-ufo.from-right .ufo-trail{right:auto;left:70%;transform:translateY(-50%) scaleX(-1)}
 .flying-logo-ufo.from-right .ufo-uiii{left:auto;right:78%;transform:rotate(-5deg)}
-.flying-logo-ufo.from-right.flying:not(.peek-flight){animation-name:ufoFlyAcrossReverse}
-.flying-logo-ufo.peek-flight.flying{animation:ufoPeekLeft 4s ease-in-out both}
-.flying-logo-ufo.from-right.peek-flight.flying{animation-name:ufoPeekRight}
+.flying-logo-ufo.from-right.flying:not(.peek-flight){animation-name:ufoFlyAcrossReverse;-webkit-animation-name:ufoFlyAcrossReverse}
+.flying-logo-ufo.peek-flight.flying{animation:ufoPeekLeft 4s ease-in-out both;-webkit-animation:ufoPeekLeft 4s ease-in-out both}
+.flying-logo-ufo.from-right.peek-flight.flying{animation-name:ufoPeekRight;-webkit-animation-name:ufoPeekRight}
 .flying-logo-ufo.peek-flight .ufo-trail,.flying-logo-ufo.peek-flight .ufo-uiii{display:none}
 @keyframes ufoFlyAcross{0%{opacity:0;transform:translate3d(-190px,18px,0) rotate(-10deg)}8%{opacity:1}45%{transform:translate3d(48vw,-22px,0) rotate(5deg)}92%{opacity:1}100%{opacity:0;transform:translate3d(calc(100vw + 190px),14px,0) rotate(-4deg)}}
 @keyframes ufoFlyAcrossReverse{0%{opacity:0;transform:translate3d(190px,12px,0) rotate(9deg)}8%{opacity:1}45%{transform:translate3d(-48vw,-25px,0) rotate(-5deg)}92%{opacity:1}100%{opacity:0;transform:translate3d(calc(-100vw - 190px),16px,0) rotate(4deg)}}
-@keyframes ufoPeekLeft{0%,100%{opacity:0;transform:translate3d(-190px,0,0) rotate(-8deg)}18%,72%{opacity:1;transform:translate3d(-42px,0,0) rotate(5deg)}}
-@keyframes ufoPeekRight{0%,100%{opacity:0;transform:translate3d(190px,0,0) rotate(8deg)}18%,72%{opacity:1;transform:translate3d(42px,0,0) rotate(-5deg)}}
+@keyframes ufoPeekLeft{0%,100%{opacity:0;transform:translate3d(-190px,0,0) rotate(-8deg)}18%,72%{opacity:1;transform:translate3d(-30px,0,0) rotate(5deg)}}
+@keyframes ufoPeekRight{0%,100%{opacity:0;transform:translate3d(190px,0,0) rotate(8deg)}18%,72%{opacity:1;transform:translate3d(30px,0,0) rotate(-5deg)}}
 @keyframes ufoUiiiBubble{0%,12%,78%,100%{opacity:0;transform:translateY(5px) rotate(5deg)}20%,68%{opacity:1;transform:translateY(0) rotate(5deg)}}
-@media(max-width:800px){.flying-logo-ufo{width:88px;height:88px}.ufo-trail{width:110px;height:12px}.ufo-uiii{font-size:9px;padding:4px 6px}}
-@media(prefers-reduced-motion:reduce){.flying-logo-ufo{display:none!important}}
+@media(max-width:800px){.flying-logo-ufo{width:100px;height:100px}.ufo-trail{width:115px;height:12px}.ufo-uiii{font-size:10px;padding:4px 6px}}
+@media(prefers-reduced-motion:reduce){.flying-logo-ufo img{animation:none}}
