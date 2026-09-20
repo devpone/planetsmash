@@ -104,3 +104,5 @@
 @keyframes ufoUiiiBubble{0%,12%,78%,100%{opacity:0;transform:translateY(5px) rotate(5deg)}20%,68%{opacity:1;transform:translateY(0) rotate(5deg)}}
 @media(max-width:800px){.flying-logo-ufo{width:100px;height:100px}.ufo-trail{width:115px;height:12px}.ufo-uiii{font-size:10px;padding:4px 6px}}
 @media(prefers-reduced-motion:reduce){.flying-logo-ufo img{animation:none}}
+
+[data-control-content][hidden]{display:none!important}
