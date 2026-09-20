@@ -362,11 +362,18 @@ if(station&&scanner&&scanText&&activateButton){
 
     // Keep the station compact while scanning so the whole show fits on phones.
     station.classList.add('scan-active');
-    const targetY=station.getBoundingClientRect().top+window.pageYOffset-12;
-    window.scrollTo({top:Math.max(0,targetY),left:0,behavior:'auto'});
+    // On iPhone/Safari the scan is easiest to see with the page parked at the bottom.
+    // Do the jump twice because Safari can recalculate page height after the tap.
+    const jumpToBottom=()=>window.scrollTo(0,Math.max(
+      document.documentElement.scrollHeight,
+      document.body.scrollHeight
+    ));
+    jumpToBottom();
+    setTimeout(jumpToBottom,120);
     setTimeout(()=>{
+      jumpToBottom();
       scanner.classList.add('scanning');
-    },120);
+    },260);
     scanMessages.forEach((message,index)=>{
       setTimeout(()=>{scanText.textContent=message;},index*700);
     });
