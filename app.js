@@ -507,3 +507,66 @@ document.querySelector('[data-secret-next]')?.addEventListener('click',showSecre
 document.querySelector('[data-secret-close]')?.addEventListener('click',closeSecret);
 secret?.addEventListener('click',event=>{if(event.target===secret) closeSecret();});
 document.addEventListener('keydown',event=>{if(event.key==='Escape') closeSecret();});
+
+
+/* --- Flying Planet Smashburger UFO --- */
+(function initFlyingLogoUfo(){
+  if(window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  const flyer=document.createElement('div');
+  flyer.className='flying-logo-ufo';
+  flyer.setAttribute('aria-hidden','true');
+  flyer.innerHTML='<div class="ufo-trail"></div><img src="assets/logo.webp" alt=""><span class="ufo-uiii">Uiiiiiii!</span>';
+  document.body.appendChild(flyer);
+
+  let busy=false;
+  let flightCount=0;
+
+  function fly(){
+    if(busy || document.hidden) return;
+    busy=true;
+    flightCount++;
+
+    const fromLeft=Math.random()>.5;
+    const peek=flightCount%3===0;
+    const y=Math.round(12+Math.random()*58);
+    flyer.style.setProperty('--ufo-y',y+'vh');
+    flyer.classList.toggle('from-right',!fromLeft);
+    flyer.classList.toggle('peek-flight',peek);
+    flyer.classList.remove('flying');
+    void flyer.offsetWidth;
+    flyer.classList.add('flying');
+
+    // A tiny synthetic fly-by sound: "uiiiiiii" without loading an audio file.
+    if(!peek) playUiiii();
+
+    setTimeout(()=>{
+      flyer.classList.remove('flying','peek-flight','from-right');
+      busy=false;
+    },peek?4200:6500);
+  }
+
+  function playUiiii(){
+    try{
+      const AudioCtx=window.AudioContext||window.webkitAudioContext;
+      if(!AudioCtx) return;
+      const ctx=new AudioCtx();
+      const osc=ctx.createOscillator();
+      const gain=ctx.createGain();
+      osc.type='sine';
+      osc.frequency.setValueAtTime(520,ctx.currentTime);
+      osc.frequency.exponentialRampToValueAtTime(1050,ctx.currentTime+.45);
+      osc.frequency.exponentialRampToValueAtTime(680,ctx.currentTime+1.35);
+      gain.gain.setValueAtTime(.0001,ctx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(.055,ctx.currentTime+.08);
+      gain.gain.exponentialRampToValueAtTime(.0001,ctx.currentTime+1.45);
+      osc.connect(gain); gain.connect(ctx.destination);
+      osc.start(); osc.stop(ctx.currentTime+1.5);
+      osc.onended=()=>ctx.close();
+    }catch(e){}
+  }
+
+  // First sighting comes sooner; later sightings stay rare enough to feel like an Easter egg.
+  setTimeout(fly,22000+Math.random()*8000);
+  setInterval(fly,90000);
+})();
