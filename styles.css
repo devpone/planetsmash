@@ -13,9 +13,62 @@
 
 .legal{max-width:850px;padding:35px 0 70px}.legal h1{font-size:clamp(36px,7vw,64px);letter-spacing:-2px;margin:40px 0}.legal h2{font-size:24px;letter-spacing:-.5px;margin:30px 0 15px}.legal p{font-size:16px;line-height:1.7;color:#d5c9df}.legal nav{margin-top:40px}.legal-draft{border:1px solid #b276ff;padding:16px;border-radius:6px}footer nav{font-size:12px}
 
-.hero-metrics{display:flex;gap:12px;flex-wrap:wrap;margin-top:18px}
-.metric-card{min-width:210px;display:flex;flex-direction:column;justify-content:center;gap:7px;padding:13px 16px;border:1px solid #b276ff40;background:#160d22c9;border-radius:6px;backdrop-filter:blur(8px)}
-.metric-label{font-size:8px;letter-spacing:1.7px;font-weight:800;color:#bfa8d3}
-.metric-card strong{font-size:16px;letter-spacing:.2px;color:#fff}
-.visitor-metric img{display:block;width:auto;max-width:185px;height:20px;object-fit:contain;object-position:left center}
-@media(max-width:800px){.hero-metrics{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:14px}.metric-card{min-width:0;padding:11px 12px}.metric-label{font-size:7px;letter-spacing:1.2px}.metric-card strong{font-size:13px}.visitor-metric img{max-width:100%;height:20px}}
+
+
+/* Planet Control Station */
+.control-station{position:relative;overflow:hidden;border-top:1px solid #b276ff36;background:radial-gradient(circle at 75% 20%,#5c2d8a38 0,transparent 28%),radial-gradient(circle at 12% 80%,#7d3dc52a 0,transparent 24%),linear-gradient(180deg,#09060e,#12091b 55%,#08050c);padding:92px 0 100px;isolation:isolate}
+.control-station:before{content:"";position:absolute;inset:0;z-index:-1;opacity:.2;background-image:linear-gradient(#b276ff16 1px,transparent 1px),linear-gradient(90deg,#b276ff16 1px,transparent 1px);background-size:42px 42px;mask-image:linear-gradient(to bottom,transparent,#000 20%,#000 80%,transparent)}
+.control-heading{display:flex;align-items:end;justify-content:space-between;gap:40px;margin-bottom:38px}
+.control-heading>p{max-width:330px;color:var(--muted);font-size:13px;line-height:1.7}
+.control-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.control-card{position:relative;min-height:185px;padding:24px;border:1px solid #b276ff33;border-radius:9px;background:linear-gradient(145deg,#1a1025e8,#0e0915e8);box-shadow:inset 0 1px #ffffff0a;overflow:hidden}
+.control-card:after{content:"";position:absolute;right:-40px;top:-40px;width:130px;height:130px;border:1px solid #b276ff20;border-radius:50%;box-shadow:0 0 0 18px #b276ff08,0 0 0 38px #b276ff06}
+.control-label{position:relative;z-index:1;display:block;font-size:9px;letter-spacing:2px;font-weight:900;color:#bd91ef;margin-bottom:22px}
+.control-big{position:relative;z-index:1;display:block;font-size:clamp(25px,3vw,38px);letter-spacing:-1.2px;line-height:1.05}
+.earthling-number{font-variant-numeric:tabular-nums}
+.control-card p{position:relative;z-index:1;margin:12px 0 0;color:#baafc5;font-size:12px;line-height:1.6;max-width:92%}
+.earthling-card .control-big{color:#efe3ff}
+.mission-card .control-big{font-size:clamp(20px,2.3vw,30px);color:#c99dff}
+.smash-meter{position:relative;z-index:1;height:11px;border:1px solid #b276ff45;border-radius:20px;background:#08050d;margin:2px 0 18px;overflow:hidden}
+.smash-meter span{display:block;width:0;height:100%;border-radius:inherit;background:linear-gradient(90deg,#7d3fc1,#c891ff,#f4dcff);box-shadow:0 0 22px #b276ff;transition:width 1.5s cubic-bezier(.16,1,.3,1)}
+.transmission-card{grid-column:span 2;display:grid;grid-template-columns:180px 1fr auto;align-items:center;gap:24px;min-height:135px}
+.transmission-card .control-label{margin:0}
+.transmission-text{margin:0!important;color:#eee4f8!important;font-size:17px!important;line-height:1.5!important}
+.transmission-text.classified{color:#d8b6ff!important;text-shadow:0 0 12px #a563f077}
+.transmission-button,.secret-panel button{position:relative;z-index:2;border:1px solid #be89f16b;border-radius:6px;background:#a563f0;color:#fff;padding:14px 18px;font:800 12px Arial,Helvetica,sans-serif;cursor:pointer;white-space:nowrap}
+.transmission-button:hover,.secret-panel button:hover{background:#8240ca}
+.transmission-pop{animation:transmissionPop .35s ease}
+@keyframes transmissionPop{0%{opacity:.2;transform:translateY(4px);filter:blur(2px)}100%{opacity:1;transform:none;filter:none}}
+.control-footnote{margin:22px 0 0;color:#6f6379;font-size:9px;letter-spacing:1.2px;text-transform:uppercase}
+.ufo-scan{pointer-events:none;position:absolute;z-index:6;inset:0;opacity:0;visibility:hidden;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:18px;background:#07040be6;transition:opacity .25s}
+.ufo-scan.scanning{opacity:1;visibility:visible}
+.ufo-icon{font-size:58px;filter:drop-shadow(0 0 18px #c491ff);animation:ufoFloat .8s ease-in-out infinite alternate}
+.ufo-scan strong{font-size:clamp(14px,2vw,22px);letter-spacing:4px;color:#dcc1ff;text-align:center}
+.ufo-scan-beam{position:absolute;top:25%;left:15%;right:15%;height:2px;background:#d8b6ff;box-shadow:0 0 18px 4px #a563f0;animation:scanBeam .75s linear infinite alternate}
+@keyframes scanBeam{from{transform:translateY(-75px)}to{transform:translateY(230px)}}
+@keyframes ufoFloat{to{transform:translateY(-8px) rotate(2deg)}}
+.logo-pulse{filter:drop-shadow(0 0 18px #c38cff)}
+.secret-open{overflow:hidden}
+.secret-access{position:fixed;z-index:100;inset:0;display:grid;place-items:center;padding:20px;background:#050308ed;opacity:0;visibility:hidden;transition:opacity .25s}
+.secret-access.active{opacity:1;visibility:visible}
+.secret-panel{width:min(590px,100%);padding:38px;text-align:center;border:1px solid #c18bff77;border-radius:12px;background:radial-gradient(circle at 50% 0,#5d2b864f,transparent 35%),#100918;box-shadow:0 0 80px #8b4bc34d}
+.secret-panel>span{font-size:9px;letter-spacing:2.5px;color:#ba8ee8}
+.secret-ufo{font-size:64px;margin:22px 0 6px;animation:ufoFloat .8s ease-in-out infinite alternate}
+.secret-panel h3{font-size:36px;letter-spacing:-1px;color:#d6b0ff;margin:8px 0 14px}
+.secret-panel p{font-size:17px;line-height:1.65;color:#eee4f8;margin:0 auto 25px;max-width:470px}
+.secret-actions{display:flex;justify-content:center;gap:8px;flex-wrap:wrap}
+.secret-panel .secret-close{background:#1c112a}
+@media(max-width:800px){
+.control-station{padding:65px 0 80px}
+.control-heading{display:block}.control-heading>p{margin-top:20px}
+.control-grid{grid-template-columns:1fr}.control-card{min-height:155px;padding:20px}
+.transmission-card{grid-column:auto;display:block;min-height:210px}
+.transmission-card .control-label{margin-bottom:20px}
+.transmission-text{font-size:15px!important;min-height:70px}
+.transmission-button{width:100%;margin-top:18px}
+.control-big{font-size:27px}.mission-card .control-big{font-size:22px}
+.ufo-scan strong{font-size:12px;letter-spacing:2px;padding:0 20px}
+.secret-panel{padding:28px 20px}.secret-panel h3{font-size:30px}.secret-panel p{font-size:15px}
+.secret-actions{display:block}.secret-panel button{width:100%;margin:6px 0}
+}
+@media(prefers-reduced-motion:reduce){.ufo-icon,.secret-ufo,.ufo-scan-beam{animation:none!important}.smash-meter span{transition:none}}
