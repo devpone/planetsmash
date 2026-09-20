@@ -592,7 +592,25 @@ document.addEventListener('keydown',event=>{if(event.key==='Escape') closeSecret
     }catch(e){}
   }
 
-  function fly(forcePeek=null,forceFromLeft=null){
+  function playCuckoo(){
+    if(!audioUnlocked||!audioCtx||audioCtx.state!=='running')return;
+    try{
+      const now=audioCtx.currentTime;
+      [[0,660],[.22,520]].forEach(([delay,freq])=>{
+        const osc=audioCtx.createOscillator();
+        const gain=audioCtx.createGain();
+        osc.type='sine';
+        osc.frequency.setValueAtTime(freq,now+delay);
+        gain.gain.setValueAtTime(.0001,now+delay);
+        gain.gain.exponentialRampToValueAtTime(.13,now+delay+.025);
+        gain.gain.exponentialRampToValueAtTime(.0001,now+delay+.2);
+        osc.connect(gain);gain.connect(audioCtx.destination);
+        osc.start(now+delay);osc.stop(now+delay+.22);
+      });
+    }catch(e){}
+  }
+
+  function fly(forcePeek=null,forceFromLeft=null,cuckoo=false){
     if(busy||document.hidden)return;
     busy=true;flightCount++;
     const fromLeft=forceFromLeft===null?Math.random()>.5:forceFromLeft;
@@ -620,6 +638,7 @@ document.addEventListener('keydown',event=>{if(event.key==='Escape') closeSecret
       {transform:'translate3d('+(fromLeft?vw*.48:vw*.52-size)+'px,-22px,0) rotate('+(fromLeft?5:-5)+'deg)',opacity:1,offset:.48},
       {transform:'translate3d('+endX+'px,14px,0) rotate('+(fromLeft?-4:4)+'deg)',opacity:0}
     ];
+    if(cuckoo)playCuckoo();
     if(!peek)playWiiii();
     const anim=flyer.animate(frames,{duration:peek?4000:6000,easing:peek?'ease-in-out':'cubic-bezier(.2,.7,.2,1)',fill:'forwards'});
     anim.onfinish=()=>{flyer.style.opacity='0';flyer.classList.remove('from-right','peek-flight');busy=false;};
@@ -630,7 +649,7 @@ document.addEventListener('keydown',event=>{if(event.key==='Escape') closeSecret
   function scheduleUfoCycle(){
     setTimeout(()=>fly(true,true),15000);
     setTimeout(()=>fly(true,false),38000);
-    setTimeout(()=>fly(true,true),62000);
+    setTimeout(()=>fly(true,true,true),62000);
     setTimeout(()=>fly(false),90000);
   }
 
