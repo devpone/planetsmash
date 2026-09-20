@@ -339,11 +339,13 @@ if(transmissionButton&&transmissionText){
   });
 }
 
-// UFO scanner plays once when the control station enters the viewport.
+// UFO scanner starts only after the visitor deliberately activates the control station.
 const station=document.querySelector('[data-control-station]');
 const scanner=document.querySelector('[data-ufo-scan]');
 const scanText=document.querySelector('[data-scan-text]');
-if(station&&scanner&&scanText&&'IntersectionObserver' in window){
+const activateButton=document.querySelector('[data-control-activate]');
+const activationPanel=document.querySelector('[data-control-activation]');
+if(station&&scanner&&scanText&&activateButton){
   const scanMessages=[
     'UNBEKANNTES OBJEKT ERFASST',
     'LEBENSFORM ERKANNT',
@@ -354,20 +356,19 @@ if(station&&scanner&&scanText&&'IntersectionObserver' in window){
   const runScan=()=>{
     if(station.dataset.scanned==='1') return;
     station.dataset.scanned='1';
+    activateButton.disabled=true;
+    activationPanel?.classList.add('activated');
     scanner.classList.add('scanning');
     scanMessages.forEach((message,index)=>{
       setTimeout(()=>{scanText.textContent=message;},index*700);
     });
-    setTimeout(()=>scanner.classList.remove('scanning'),3300);
+    setTimeout(()=>{
+      scanner.classList.remove('scanning');
+      activationPanel?.setAttribute('hidden','');
+    },3300);
   };
 
-  const observer=new IntersectionObserver(entries=>{
-    if(entries.some(entry=>entry.isIntersecting)){
-      runScan();
-      observer.disconnect();
-    }
-  },{threshold:.25});
-  observer.observe(station);
+  activateButton.addEventListener('click',runScan);
 }
 
 const secretMessages=[
