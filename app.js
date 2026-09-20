@@ -345,6 +345,7 @@ const scanner=document.querySelector('[data-ufo-scan]');
 const scanText=document.querySelector('[data-scan-text]');
 const activateButton=document.querySelector('[data-control-activate]');
 const activationPanel=document.querySelector('[data-control-activation]');
+const controlContent=document.querySelectorAll('[data-control-content]');
 if(station&&scanner&&scanText&&activateButton){
   const scanMessages=[
     'UNBEKANNTES OBJEKT ERFASST',
@@ -356,6 +357,7 @@ if(station&&scanner&&scanText&&activateButton){
   const runScan=()=>{
     if(station.dataset.scanned==='1') return;
     station.dataset.scanned='1';
+    controlContent.forEach(el=>el.removeAttribute('hidden'));
     activateButton.disabled=true;
     activationPanel?.classList.add('activated');
     scanner.classList.add('scanning');
