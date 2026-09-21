@@ -609,9 +609,9 @@ document.addEventListener('keydown',event=>{if(event.key==='Escape') closeSecret
   // Each 90-second cycle: peek exactly three times (left, right, left),
   // then make one full fly-by with sound.
   function scheduleUfoCycle(){
-    setTimeout(()=>fly(true,true,.5),15000);
-    setTimeout(()=>fly(true,false,1),38000);
-    setTimeout(()=>fly(true,true,1.5),62000);
+    setTimeout(()=>fly(true,true),15000);
+    setTimeout(()=>fly(true,false),38000);
+    setTimeout(()=>fly(true,true),62000);
     setTimeout(()=>fly(false),90000);
   }
 
