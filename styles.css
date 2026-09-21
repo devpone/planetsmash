@@ -135,3 +135,28 @@ body.control-scan-open{overflow:hidden}
   .control-station.scan-active .ufo-scan-beam{left:5%;right:5%}
   @keyframes scanBeamViewport{from{transform:translateY(-29vh)}to{transform:translateY(29vh)}}
 }
+
+/* Activated control station glow */
+.control-station [data-control-content]:not([hidden]){
+  animation:controlRevealGold 1.1s ease-out both;
+}
+.control-station .control-grid:not([hidden]){
+  position:relative;
+  border-radius:14px;
+  box-shadow:0 0 0 1px rgba(222,181,88,.28),0 0 26px rgba(222,181,88,.18),0 0 70px rgba(222,181,88,.09);
+}
+.control-station .control-grid:not([hidden]) .control-card{
+  border-color:rgba(222,181,88,.30);
+  box-shadow:inset 0 0 22px rgba(222,181,88,.045),0 0 14px rgba(222,181,88,.06);
+}
+.control-station .control-grid:not([hidden]) .control-label{
+  color:#d7b66a;
+}
+@keyframes controlRevealGold{
+  0%{opacity:0;transform:translateY(14px);filter:brightness(.7)}
+  55%{opacity:1;filter:brightness(1.16) drop-shadow(0 0 18px rgba(222,181,88,.28))}
+  100%{opacity:1;transform:none;filter:none}
+}
+@media(prefers-reduced-motion:reduce){
+  .control-station [data-control-content]:not([hidden]){animation:none}
+}
