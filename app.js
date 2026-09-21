@@ -528,33 +528,9 @@ document.addEventListener('keydown',event=>{if(event.key==='Escape') closeSecret
   flyer.innerHTML='<div class="ufo-trail"></div><img src="assets/logo.webp" alt=""><span class="ufo-uiii"></span>';
   document.body.appendChild(flyer);
 
-  const sounds=[
-    new Audio('assets/audio/planet-1.mp3'),
-    new Audio('assets/audio/planet-2.mp3'),
-    new Audio('assets/audio/planet-smash-burger.mp3')
-  ];
-  sounds.forEach(sound=>{sound.preload='auto'; sound.playsInline=true;});
-
   let busy=false;
-  function playSound(index){
-    const sound=sounds[index];
-    if(!sound)return;
-    try{sound.currentTime=0; sound.play().catch(()=>{});}catch(e){}
-  }
 
-  // Prime HTML audio on the visitor's first interaction so iOS/Safari may play
-  // the later scheduled UFO voices.
-  function unlockUfoAudio(){
-    sounds.forEach(sound=>{
-      const oldVolume=sound.volume;
-      sound.volume=0;
-      const p=sound.play();
-      if(p&&p.then)p.then(()=>{sound.pause();sound.currentTime=0;sound.volume=oldVolume;}).catch(()=>{sound.volume=oldVolume;});
-    });
-  }
-  ['touchstart','pointerdown','click'].forEach(type=>document.addEventListener(type,unlockUfoAudio,{once:true,passive:true}));
-
-  function fly(peek,fromLeft,soundIndex,label){
+  function fly(peek,fromLeft,label){
     if(busy||document.hidden)return;
     busy=true;
     const size=window.innerWidth<=800?100:130;
@@ -586,13 +562,12 @@ document.addEventListener('keydown',event=>{if(event.key==='Escape') closeSecret
       {transform:'translate3d('+endX+'px,14px,0) rotate('+(fromLeft?-4:4)+'deg)',opacity:0}
     ];
 
-    playSound(soundIndex);
     const anim=flyer.animate(frames,{duration:peek?4000:6000,easing:peek?'ease-in-out':'cubic-bezier(.2,.7,.2,1)',fill:'forwards'});
     anim.onfinish=()=>{flyer.style.opacity='0';flyer.classList.remove('from-right','peek-flight');busy=false;};
   }
 
   // One appearance sequence per page load: Planet, Planet, then the full fly-by.
-  setTimeout(()=>fly(true,true,0,'PLANET'),15000);
-  setTimeout(()=>fly(true,false,1,'PLANET'),38000);
-  setTimeout(()=>fly(false,true,2,'PLANET SMASH BURGER'),62000);
+  setTimeout(()=>fly(true,true,'PLANET'),15000);
+  setTimeout(()=>fly(true,false,'PLANET'),38000);
+  setTimeout(()=>fly(false,true,'PLANET SMASH BURGER'),62000);
 })();
