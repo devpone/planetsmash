@@ -572,7 +572,7 @@ document.addEventListener('keydown',event=>{if(event.key==='Escape') closeSecret
     }catch(e){}
   }
 
-  function fly(forcePeek=null,forceFromLeft=null,peekSoundDuration=0){
+  function fly(forcePeek=null,forceFromLeft=null,peekSoundDuration=0,peekWord=''){
     if(busy||document.hidden)return;
     busy=true;flightCount++;
     const fromLeft=forceFromLeft===null?Math.random()>.5:forceFromLeft;
@@ -584,6 +584,11 @@ document.addEventListener('keydown',event=>{if(event.key==='Escape') closeSecret
     flyer.style.right='auto';
     flyer.classList.toggle('from-right',!fromLeft);
     flyer.classList.toggle('peek-flight',peek);
+    const bubble=flyer.querySelector('.ufo-uiii');
+    if(bubble){
+      bubble.textContent=peek&&peekWord?peekWord:'Wiiiiiiii!';
+      bubble.classList.toggle('peek-word',Boolean(peek&&peekWord));
+    }
     flyer.style.opacity='1';
 
     const vw=document.documentElement.clientWidth;
@@ -609,9 +614,9 @@ document.addEventListener('keydown',event=>{if(event.key==='Escape') closeSecret
   // Each 90-second cycle: peek exactly three times (left, right, left),
   // then make one full fly-by with sound.
   function scheduleUfoCycle(){
-    setTimeout(()=>fly(true,true),15000);
-    setTimeout(()=>fly(true,false),38000);
-    setTimeout(()=>fly(true,true),62000);
+    setTimeout(()=>fly(true,true,0,'KOMM'),15000);
+    setTimeout(()=>fly(true,false,0,'BURGER'),38000);
+    setTimeout(()=>fly(true,true,0,'ESSEN'),62000);
     setTimeout(()=>fly(false),90000);
   }
 
