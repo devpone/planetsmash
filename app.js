@@ -360,26 +360,18 @@ if(station&&scanner&&scanText&&activateButton){
     activateButton.disabled=true;
     activationPanel?.classList.add('activated');
 
-    // Keep the station compact while scanning so the whole show fits on phones.
+    // Turn the scan into a viewport overlay. No page jump is needed, so Safari
+    // cannot land at the wrong document position and the show stays large everywhere.
     station.classList.add('scan-active');
-    // On iPhone/Safari the scan is easiest to see with the page parked at the bottom.
-    // Do the jump twice because Safari can recalculate page height after the tap.
-    const jumpToBottom=()=>window.scrollTo(0,Math.max(
-      document.documentElement.scrollHeight,
-      document.body.scrollHeight
-    ));
-    jumpToBottom();
-    setTimeout(jumpToBottom,120);
-    setTimeout(()=>{
-      jumpToBottom();
-      scanner.classList.add('scanning');
-    },260);
+    document.body.classList.add('control-scan-open');
+    scanner.classList.add('scanning');
     scanMessages.forEach((message,index)=>{
       setTimeout(()=>{scanText.textContent=message;},index*700);
     });
     setTimeout(()=>{
       scanner.classList.remove('scanning');
       station.classList.remove('scan-active');
+      document.body.classList.remove('control-scan-open');
       activationPanel?.setAttribute('hidden','');
       controlContent.forEach(el=>el.removeAttribute('hidden'));
     },3300);
