@@ -615,8 +615,8 @@ document.addEventListener('keydown',event=>{if(event.key==='Escape') closeSecret
   // then make one full fly-by with sound.
   function scheduleUfoCycle(){
     setTimeout(()=>fly(true,true,0,'KOMM'),15000);
-    setTimeout(()=>fly(true,false,0,'BURGER'),38000);
-    setTimeout(()=>fly(true,true,0,'ESSEN'),62000);
+    setTimeout(()=>fly(true,false,0,'ZU'),38000);
+    setTimeout(()=>fly(true,true,0,'PLANET SMASH BURGER'),62000);
     setTimeout(()=>fly(false),90000);
   }
 
