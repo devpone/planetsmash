@@ -374,6 +374,7 @@ if(station&&scanner&&scanText&&activateButton){
       document.body.classList.remove('control-scan-open');
       activationPanel?.setAttribute('hidden','');
       controlContent.forEach(el=>el.removeAttribute('hidden'));
+      requestAnimationFrame(()=>requestAnimationFrame(()=>station.scrollIntoView({behavior:'smooth',block:'start'})));
     },3300);
   };
 
@@ -524,59 +525,38 @@ document.addEventListener('keydown',event=>{if(event.key==='Escape') closeSecret
   const flyer=document.createElement('div');
   flyer.className='flying-logo-ufo';
   flyer.setAttribute('aria-hidden','true');
-  flyer.innerHTML='<div class="ufo-trail"></div><img src="assets/logo.webp" alt=""><span class="ufo-uiii">Wiiiiiiii!</span>';
+  flyer.innerHTML='<div class="ufo-trail"></div><img src="assets/logo.webp" alt=""><span class="ufo-uiii"></span>';
   document.body.appendChild(flyer);
 
-  let busy=false,flightCount=0,audioCtx=null,audioUnlocked=false;
+  const sounds=[
+    new Audio('assets/audio/planet-1.mp3'),
+    new Audio('assets/audio/planet-2.mp3'),
+    new Audio('assets/audio/planet-smash-burger.mp3')
+  ];
+  sounds.forEach(sound=>{sound.preload='auto'; sound.playsInline=true;});
 
-  function unlockAudio(){
-    try{
-      const AudioCtx=window.AudioContext||window.webkitAudioContext;
-      if(!AudioCtx)return;
-      if(!audioCtx)audioCtx=new AudioCtx();
-      audioCtx.resume().then(()=>{audioUnlocked=audioCtx.state==='running';}).catch(()=>{});
-    }catch(e){}
-  }
-  ['touchstart','pointerdown','click'].forEach(type=>document.addEventListener(type,unlockAudio,{once:true,passive:true}));
-
-  function playWiiii(duration=2.15){
-    if(!audioUnlocked||!audioCtx||audioCtx.state!=='running')return;
-    try{
-      duration=Math.max(.25,Math.min(2.15,duration));
-      const now=audioCtx.currentTime;
-      const master=audioCtx.createGain();
-      master.gain.setValueAtTime(.0001,now);
-      master.gain.exponentialRampToValueAtTime(.13,now+.04);
-      master.gain.setValueAtTime(.12,now+Math.max(.08,duration-.18));
-      master.gain.exponentialRampToValueAtTime(.0001,now+duration);
-      master.connect(audioCtx.destination);
-
-      const voice1=audioCtx.createOscillator(),voice2=audioCtx.createOscillator();
-      const vibrato=audioCtx.createOscillator(),vibratoGain=audioCtx.createGain();
-      voice1.type='sawtooth'; voice2.type='triangle';
-      voice1.frequency.setValueAtTime(285,now);
-      voice1.frequency.linearRampToValueAtTime(365,now+Math.min(.55,duration*.45));
-      voice1.frequency.linearRampToValueAtTime(330,now+duration);
-      voice2.frequency.setValueAtTime(570,now);
-      voice2.frequency.linearRampToValueAtTime(730,now+Math.min(.55,duration*.45));
-      voice2.frequency.linearRampToValueAtTime(660,now+duration);
-      vibrato.type='sine'; vibrato.frequency.value=5.2; vibratoGain.gain.value=7;
-      vibrato.connect(vibratoGain); vibratoGain.connect(voice1.frequency); vibratoGain.connect(voice2.frequency);
-
-      const tone=audioCtx.createBiquadFilter(),mix1=audioCtx.createGain(),mix2=audioCtx.createGain();
-      tone.type='lowpass'; tone.frequency.value=1450; tone.Q.value=.7;
-      mix1.gain.value=.7; mix2.gain.value=.22;
-      voice1.connect(mix1); voice2.connect(mix2); mix1.connect(tone); mix2.connect(tone); tone.connect(master);
-      voice1.start(now); voice2.start(now); vibrato.start(now);
-      voice1.stop(now+duration+.03); voice2.stop(now+duration+.03); vibrato.stop(now+duration+.03);
-    }catch(e){}
+  let busy=false;
+  function playSound(index){
+    const sound=sounds[index];
+    if(!sound)return;
+    try{sound.currentTime=0; sound.play().catch(()=>{});}catch(e){}
   }
 
-  function fly(forcePeek=null,forceFromLeft=null,peekSoundDuration=0,peekWord=''){
+  // Prime HTML audio on the visitor's first interaction so iOS/Safari may play
+  // the later scheduled UFO voices.
+  function unlockUfoAudio(){
+    sounds.forEach(sound=>{
+      const oldVolume=sound.volume;
+      sound.volume=0;
+      const p=sound.play();
+      if(p&&p.then)p.then(()=>{sound.pause();sound.currentTime=0;sound.volume=oldVolume;}).catch(()=>{sound.volume=oldVolume;});
+    });
+  }
+  ['touchstart','pointerdown','click'].forEach(type=>document.addEventListener(type,unlockUfoAudio,{once:true,passive:true}));
+
+  function fly(peek,fromLeft,soundIndex,label){
     if(busy||document.hidden)return;
-    busy=true;flightCount++;
-    const fromLeft=forceFromLeft===null?Math.random()>.5:forceFromLeft;
-    const peek=forcePeek===null?flightCount%3===0:forcePeek;
+    busy=true;
     const size=window.innerWidth<=800?100:130;
     const y=Math.max(70,Math.min(window.innerHeight-size-100,Math.round(window.innerHeight*(.12+Math.random()*.55))));
     flyer.style.top=y+'px';
@@ -586,8 +566,8 @@ document.addEventListener('keydown',event=>{if(event.key==='Escape') closeSecret
     flyer.classList.toggle('peek-flight',peek);
     const bubble=flyer.querySelector('.ufo-uiii');
     if(bubble){
-      bubble.textContent=peek&&peekWord?peekWord:'Wiiiiiiii!';
-      bubble.classList.toggle('peek-word',Boolean(peek&&peekWord));
+      bubble.textContent=label||'';
+      bubble.classList.toggle('peek-word',Boolean(label));
     }
     flyer.style.opacity='1';
 
@@ -605,21 +585,14 @@ document.addEventListener('keydown',event=>{if(event.key==='Escape') closeSecret
       {transform:'translate3d('+(fromLeft?vw*.48:vw*.52-size)+'px,-22px,0) rotate('+(fromLeft?5:-5)+'deg)',opacity:1,offset:.48},
       {transform:'translate3d('+endX+'px,14px,0) rotate('+(fromLeft?-4:4)+'deg)',opacity:0}
     ];
-    if(peek&&peekSoundDuration>0)playWiiii(peekSoundDuration);
-    if(!peek)playWiiii();
+
+    playSound(soundIndex);
     const anim=flyer.animate(frames,{duration:peek?4000:6000,easing:peek?'ease-in-out':'cubic-bezier(.2,.7,.2,1)',fill:'forwards'});
     anim.onfinish=()=>{flyer.style.opacity='0';flyer.classList.remove('from-right','peek-flight');busy=false;};
   }
 
-  // Each 90-second cycle: peek exactly three times (left, right, left),
-  // then make one full fly-by with sound.
-  function scheduleUfoCycle(){
-    setTimeout(()=>fly(true,true,0,'KOMM'),15000);
-    setTimeout(()=>fly(true,false,0,'ZU'),38000);
-    setTimeout(()=>fly(true,true,0,'PLANET SMASH BURGER'),62000);
-    setTimeout(()=>fly(false),90000);
-  }
-
-  scheduleUfoCycle();
-  setInterval(scheduleUfoCycle,90000);
+  // One appearance sequence per page load: Planet, Planet, then the full fly-by.
+  setTimeout(()=>fly(true,true,0,'PLANET'),15000);
+  setTimeout(()=>fly(true,false,1,'PLANET'),38000);
+  setTimeout(()=>fly(false,true,2,'PLANET SMASH BURGER'),62000);
 })();
