@@ -547,70 +547,40 @@ document.addEventListener('keydown',event=>{if(event.key==='Escape') closeSecret
   }
   ['touchstart','pointerdown','click'].forEach(type=>document.addEventListener(type,unlockAudio,{once:true,passive:true}));
 
-  function playWiiii(){
+  function playWiiii(duration=2.15){
     if(!audioUnlocked||!audioCtx||audioCtx.state!=='running')return;
     try{
+      duration=Math.max(.25,Math.min(2.15,duration));
       const now=audioCtx.currentTime;
       const master=audioCtx.createGain();
       master.gain.setValueAtTime(.0001,now);
       master.gain.exponentialRampToValueAtTime(.13,now+.04);
-      master.gain.setValueAtTime(.12,now+1.75);
-      master.gain.exponentialRampToValueAtTime(.0001,now+2.15);
+      master.gain.setValueAtTime(.12,now+Math.max(.08,duration-.18));
+      master.gain.exponentialRampToValueAtTime(.0001,now+duration);
       master.connect(audioCtx.destination);
 
-      // Human-like long "weeeee": two voiced oscillators with gentle vibrato,
-      // rising slightly like someone swinging.
-      const voice1=audioCtx.createOscillator();
-      const voice2=audioCtx.createOscillator();
-      const vibrato=audioCtx.createOscillator();
-      const vibratoGain=audioCtx.createGain();
-      voice1.type='sawtooth';
-      voice2.type='triangle';
+      const voice1=audioCtx.createOscillator(),voice2=audioCtx.createOscillator();
+      const vibrato=audioCtx.createOscillator(),vibratoGain=audioCtx.createGain();
+      voice1.type='sawtooth'; voice2.type='triangle';
       voice1.frequency.setValueAtTime(285,now);
-      voice1.frequency.linearRampToValueAtTime(365,now+.55);
-      voice1.frequency.linearRampToValueAtTime(330,now+1.65);
+      voice1.frequency.linearRampToValueAtTime(365,now+Math.min(.55,duration*.45));
+      voice1.frequency.linearRampToValueAtTime(330,now+duration);
       voice2.frequency.setValueAtTime(570,now);
-      voice2.frequency.linearRampToValueAtTime(730,now+.55);
-      voice2.frequency.linearRampToValueAtTime(660,now+1.65);
-      vibrato.type='sine';
-      vibrato.frequency.value=5.2;
-      vibratoGain.gain.value=7;
-      vibrato.connect(vibratoGain);
-      vibratoGain.connect(voice1.frequency);
-      vibratoGain.connect(voice2.frequency);
+      voice2.frequency.linearRampToValueAtTime(730,now+Math.min(.55,duration*.45));
+      voice2.frequency.linearRampToValueAtTime(660,now+duration);
+      vibrato.type='sine'; vibrato.frequency.value=5.2; vibratoGain.gain.value=7;
+      vibrato.connect(vibratoGain); vibratoGain.connect(voice1.frequency); vibratoGain.connect(voice2.frequency);
 
-      const tone=audioCtx.createBiquadFilter();
-      tone.type='lowpass';
-      tone.frequency.value=1450;
-      tone.Q.value=.7;
-      const mix1=audioCtx.createGain(),mix2=audioCtx.createGain();
-      mix1.gain.value=.7;mix2.gain.value=.22;
-      voice1.connect(mix1);voice2.connect(mix2);
-      mix1.connect(tone);mix2.connect(tone);tone.connect(master);
-      voice1.start(now);voice2.start(now);vibrato.start(now);
-      voice1.stop(now+2.2);voice2.stop(now+2.2);vibrato.stop(now+2.2);
+      const tone=audioCtx.createBiquadFilter(),mix1=audioCtx.createGain(),mix2=audioCtx.createGain();
+      tone.type='lowpass'; tone.frequency.value=1450; tone.Q.value=.7;
+      mix1.gain.value=.7; mix2.gain.value=.22;
+      voice1.connect(mix1); voice2.connect(mix2); mix1.connect(tone); mix2.connect(tone); tone.connect(master);
+      voice1.start(now); voice2.start(now); vibrato.start(now);
+      voice1.stop(now+duration+.03); voice2.stop(now+duration+.03); vibrato.stop(now+duration+.03);
     }catch(e){}
   }
 
-  function playCuckoo(){
-    if(!audioUnlocked||!audioCtx||audioCtx.state!=='running')return;
-    try{
-      const now=audioCtx.currentTime;
-      [[0,660],[.22,520]].forEach(([delay,freq])=>{
-        const osc=audioCtx.createOscillator();
-        const gain=audioCtx.createGain();
-        osc.type='sine';
-        osc.frequency.setValueAtTime(freq,now+delay);
-        gain.gain.setValueAtTime(.0001,now+delay);
-        gain.gain.exponentialRampToValueAtTime(.13,now+delay+.025);
-        gain.gain.exponentialRampToValueAtTime(.0001,now+delay+.2);
-        osc.connect(gain);gain.connect(audioCtx.destination);
-        osc.start(now+delay);osc.stop(now+delay+.22);
-      });
-    }catch(e){}
-  }
-
-  function fly(forcePeek=null,forceFromLeft=null,cuckoo=false){
+  function fly(forcePeek=null,forceFromLeft=null,peekSoundDuration=0){
     if(busy||document.hidden)return;
     busy=true;flightCount++;
     const fromLeft=forceFromLeft===null?Math.random()>.5:forceFromLeft;
@@ -638,7 +608,7 @@ document.addEventListener('keydown',event=>{if(event.key==='Escape') closeSecret
       {transform:'translate3d('+(fromLeft?vw*.48:vw*.52-size)+'px,-22px,0) rotate('+(fromLeft?5:-5)+'deg)',opacity:1,offset:.48},
       {transform:'translate3d('+endX+'px,14px,0) rotate('+(fromLeft?-4:4)+'deg)',opacity:0}
     ];
-    if(cuckoo)playCuckoo();
+    if(peek&&peekSoundDuration>0)playWiiii(peekSoundDuration);
     if(!peek)playWiiii();
     const anim=flyer.animate(frames,{duration:peek?4000:6000,easing:peek?'ease-in-out':'cubic-bezier(.2,.7,.2,1)',fill:'forwards'});
     anim.onfinish=()=>{flyer.style.opacity='0';flyer.classList.remove('from-right','peek-flight');busy=false;};
@@ -647,9 +617,9 @@ document.addEventListener('keydown',event=>{if(event.key==='Escape') closeSecret
   // Each 90-second cycle: peek exactly three times (left, right, left),
   // then make one full fly-by with sound.
   function scheduleUfoCycle(){
-    setTimeout(()=>fly(true,true),15000);
-    setTimeout(()=>fly(true,false),38000);
-    setTimeout(()=>fly(true,true,true),62000);
+    setTimeout(()=>fly(true,true,.5),15000);
+    setTimeout(()=>fly(true,false,1),38000);
+    setTimeout(()=>fly(true,true,1.5),62000);
     setTimeout(()=>fly(false),90000);
   }
 
