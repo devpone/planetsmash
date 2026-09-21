@@ -160,3 +160,17 @@ body.control-scan-open{overflow:hidden}
 @media(prefers-reduced-motion:reduce){
   .control-station [data-control-content]:not([hidden]){animation:none}
 }
+
+/* UFO peek words: KOMM / BURGER / ESSEN */
+.flying-logo-ufo.peek-flight .ufo-uiii.peek-word{
+  opacity:1!important;
+  transform:rotate(0deg) scale(1)!important;
+  padding:7px 11px;
+  font-size:12px;
+  letter-spacing:1px;
+  box-shadow:0 0 18px #8f52cf88;
+}
+.flying-logo-ufo.from-right .ufo-uiii.peek-word{
+  left:auto;
+  right:78%;
+}
