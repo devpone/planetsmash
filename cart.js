@@ -204,13 +204,13 @@
     });
     const total = items.reduce((sum, item) => sum + item.price * item.quantity, 0);
     addText(dialog, 'p', 'Zwischensumme: ' + money(total), 'order-total');
-    addText(dialog, 'p', 'Alle Getränke sind Dosen. 0,25 € Pfand je Dose sind in der Zwischensumme enthalten. Preis und Verfügbarkeit bitte beim Anruf bestätigen lassen.', 'order-small');
+    addText(dialog, 'p', 'Softgetränke sind in Dosen. 0,25 € Pfand je Getränk sind in der Zwischensumme enthalten. Preis und Verfügbarkeit bitte beim Anruf bestätigen lassen.', 'order-small');
     addText(dialog, 'p', 'Wichtig: Eine WhatsApp-Nachricht ist noch keine angenommene Bestellung. Deine Bestellung gilt erst, wenn wir sie ausdrücklich bestätigen. Falls du keine Antwort bekommst, ruf bitte an.', 'order-warning');
     const actions = addText(dialog, 'div', '', 'order-actions');
     const whatsapp = addText(actions, 'a', 'Per WhatsApp anfragen ↗', 'order-whatsapp');
     whatsapp.href = 'https://wa.me/' + phone + '?text=' + encodeURIComponent(
       'Hallo Planet Smashburger, ich möchte Folgendes zur Abholung anfragen:\n\n' +
-      summary() + '\nZwischensumme: ' + money(total) + ' (inkl. 0,25 € Pfand je Dose)\n\nBitte bestätigt mir Bestellung, Endpreis und Abholzeit. Mir ist klar, dass die Anfrage ohne eure Antwort noch keine angenommene Bestellung ist.'
+      summary() + '\nZwischensumme: ' + money(total) + ' (inkl. 0,25 € Pfand je Getränk)\n\nBitte bestätigt mir Bestellung, Endpreis und Abholzeit. Mir ist klar, dass die Anfrage ohne eure Antwort noch keine angenommene Bestellung ist.'
     );
     whatsapp.target = '_blank';
     whatsapp.rel = 'noopener noreferrer';
