@@ -7,7 +7,7 @@
   const key = 'planet-smashburger-call-cart';
   const money = cents => new Intl.NumberFormat('de-DE', {style:'currency', currency:'EUR'}).format(cents / 100);
   const sauces = ['Area 51', 'Roswell BBQ', 'Planet Mac', 'Käsesauce', 'Käsesauce scharf', 'Joppiesauce', 'Mayonnaise', 'Ketchup', 'Trüffelmayonnaise'];
-  const drinks = ['Cola', 'Fanta', 'Sprite', 'Wasser mit Kohlensäure', 'Wasser ohne Kohlensäure'];
+  const drinks = ['Cola', 'Cola Zero', 'Fanta', 'Fanta Exotic', 'Sprite', 'Wasser mit Kohlensäure', 'Wasser ohne Kohlensäure'];
   let items = [];
   try {
     const saved = JSON.parse(localStorage.getItem(key) || '[]');
@@ -85,7 +85,7 @@
     const variantChoices = {
       'Pommes': ['Klein – 3,50 €', 'Groß – 5,50 €'],
       'Süßkartoffelpommes': ['Klein – 5,50 €', 'Groß – 10,00 €'],
-      'Cola, Fanta, Sprite': ['Cola', 'Fanta', 'Sprite'],
+      'Cola, Cola Zero, Fanta, Fanta Exotic, Sprite': ['Cola', 'Cola Zero', 'Fanta', 'Fanta Exotic', 'Sprite'],
       'Wasser mit / ohne': ['Mit Kohlensäure', 'Ohne Kohlensäure']
     };
     const variant = variantChoices[name] ? selectField(form, 'Auswahl', variantChoices[name]) : null;
@@ -126,7 +126,7 @@
     add.type = 'submit';
     form.addEventListener('submit', () => {
       if (variant) {
-        label = name === 'Cola, Fanta, Sprite' || name === 'Wasser mit / ohne'
+        label = name === 'Cola, Cola Zero, Fanta, Fanta Exotic, Sprite' || name === 'Wasser mit / ohne'
           ? variant.value
           : name + ' (' + variant.value.split(' – ')[0] + ')';
         if (name === 'Pommes' && variant.selectedIndex === 1) cents = 550;
