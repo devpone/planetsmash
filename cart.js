@@ -29,7 +29,12 @@
     });
   } catch (_) { /* Browsers with disabled storage can still use the cart. */ }
 
-  const category = row => row.closest('details')?.querySelector('summary')?.textContent?.trim() || '';
+  const tr = value => window.PSB_I18N?.t(value) || value;
+  const localDetail = value => value.split(' · ').map(part => {
+    if (part.startsWith('Menü mit Pommes, ')) return tr('Menü mit Pommes') + ', ' + part.slice(17).split(', ').map(tr).join(', ');
+    const extra = part.match(/^(\d+) extra (Veggie-Patty|Veggie-Patties|Patty)$/);
+    return extra ? extra[1] + ' ' + tr('extra ' + extra[2]) : tr(part);
+  }).join(' · ');
   const price = text => Math.round(Number(text.split('/')[0].replace(/[^\d,]/g, '').replace(',', '.')) * 100);
   const addText = (parent, tag, value, className) => {
     const node = document.createElement(tag);
@@ -81,9 +86,8 @@
   function openChooser(row) {
     chooser.replaceChildren();
     closeButton(chooser);
-    const name = row.querySelector('h3').textContent.trim();
-    const kind = category(row);
-    const isBurger = kind.startsWith('Smashburger');
+    const name = row.querySelector('h3').dataset.sourceName || row.querySelector('h3').textContent.trim();
+    const isBurger = row.closest('details') === menu.querySelector('details');
     const form = document.createElement('form');
     form.addEventListener('submit', event => event.preventDefault());
     addText(form, 'h2', name, 'order-title').id = 'choice-title';
@@ -169,8 +173,8 @@
     button.addEventListener('click', () => openChooser(row));
   });
 
-  const summary = () => items.map(item => item.quantity + '× ' + item.name +
-    (item.detail ? ' (' + item.detail + ')' : '') + ' – ' + money(item.price * item.quantity)).join('\n');
+  const summary = () => items.map(item => item.quantity + '× ' + tr(item.name) +
+    (item.detail ? ' (' + localDetail(item.detail) + ')' : '') + ' – ' + money(item.price * item.quantity)).join('\n');
 
   function openCart() {
     dialog.replaceChildren();
@@ -186,7 +190,7 @@
       const li = addText(list, 'li', '', 'order-line');
       const copy = addText(li, 'div', '', 'order-line-copy');
       addText(copy, 'strong', item.name);
-      if (item.detail) addText(copy, 'small', item.detail);
+      if (item.detail) addText(copy, 'small', localDetail(item.detail));
       addText(copy, 'span', money(item.price * item.quantity));
       const controls = addText(li, 'div', '', 'order-quantity');
       for (const [symbol, change, action] of [['−', -1, 'weniger'], ['+', 1, 'mehr']]) {
@@ -209,8 +213,9 @@
     const actions = addText(dialog, 'div', '', 'order-actions');
     const whatsapp = addText(actions, 'a', 'Per WhatsApp anfragen ↗', 'order-whatsapp');
     whatsapp.href = 'https://wa.me/' + phone + '?text=' + encodeURIComponent(
-      'Hallo Planet Smashburger, ich möchte Folgendes zur Abholung anfragen:\n\n' +
-      summary() + '\nZwischensumme: ' + money(total) + ' (inkl. 0,25 € Pfand je Getränk)\n\nBitte bestätigt mir Bestellung, Endpreis und Abholzeit. Mir ist klar, dass die Anfrage ohne eure Antwort noch keine angenommene Bestellung ist.'
+      tr('Hallo Planet Smashburger, ich möchte Folgendes zur Abholung anfragen:') + '\n\n' +
+      summary() + '\n' + tr('Zwischensumme:') + ' ' + money(total) + ' ' + tr('(inkl. 0,25 € Pfand je Getränk)') + '\n\n' +
+      tr('Bitte bestätigt mir Bestellung, Endpreis und Abholzeit. Mir ist klar, dass die Anfrage ohne eure Antwort noch keine angenommene Bestellung ist.')
     );
     whatsapp.target = '_blank';
     whatsapp.rel = 'noopener noreferrer';

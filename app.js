@@ -124,7 +124,8 @@ async function updateVisitorCount(){
       localStorage.setItem('psb-earthling-number',String(landingNumber));
     }
     if(copyEl){
-      copyEl.textContent='Schon '+new Intl.NumberFormat('de-DE').format(value)+' Erdlinge auf diesem Planeten gelandet. Du bist Erdling #'+new Intl.NumberFormat('de-DE').format(landingNumber)+'.';
+      copyEl.textContent=(window.PSB_I18N?.t('Schon {n} Erdlinge auf diesem Planeten gelandet. Du bist Erdling #{id}.') || 'Schon {n} Erdlinge auf diesem Planeten gelandet. Du bist Erdling #{id}.')
+        .replace('{n}',new Intl.NumberFormat('de-DE').format(value)).replace('{id}',new Intl.NumberFormat('de-DE').format(landingNumber));
     }
   }catch(error){
     countEl.textContent='SIGNAL GESTÖRT';
@@ -319,9 +320,10 @@ function shuffled(source){
   return bag;
 }
 
-let transmissionBag=shuffled(transmissions);
+const localizedTransmissions=window.PSB_I18N?.lang==='de' ? transmissions : transmissions.slice(0,8).map(window.PSB_I18N.t);
+let transmissionBag=shuffled(localizedTransmissions);
 function nextTransmission(){
-  if(!transmissionBag.length) transmissionBag=shuffled(transmissions);
+  if(!transmissionBag.length) transmissionBag=shuffled(localizedTransmissions);
   return transmissionBag.pop();
 }
 
@@ -469,9 +471,10 @@ const secretMessages=[
 'Geheimes Ende der Akte: Nice to meat you, Agent.'
 ];
 
-let secretBag=shuffled(secretMessages);
+const localizedSecrets=window.PSB_I18N?.lang==='de' ? secretMessages : secretMessages.slice(0,8).map(window.PSB_I18N.t);
+let secretBag=shuffled(localizedSecrets);
 function nextSecretMessage(){
-  if(!secretBag.length) secretBag=shuffled(secretMessages);
+  if(!secretBag.length) secretBag=shuffled(localizedSecrets);
   return secretBag.pop();
 }
 
