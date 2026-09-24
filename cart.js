@@ -14,9 +14,18 @@
     if (Array.isArray(saved)) items = saved.filter(item => typeof item.name === 'string' && Number.isInteger(item.price) && Number.isInteger(item.quantity) && item.quantity > 0).slice(0, 50).map(item => {
       // Correct carts saved before the Veggie surcharge was applied to extra patties.
       const extra = item.detail?.match(/(?:^| · )([1-5]) extra Patty(?= · |$)/);
-      if (!item.detail?.includes('Veggie-Patty') || !extra) return item;
-      return {...item, price: item.price + Number(extra[1]) * 100,
-        detail: item.detail.replace(extra[0], extra[0].replace('extra Patty', Number(extra[1]) === 1 ? 'extra Veggie-Patty' : 'extra Veggie-Patties'))};
+      let corrected = item;
+      if (item.detail?.includes('Veggie-Patty') && extra) {
+        corrected = {...item, price: item.price + Number(extra[1]) * 100,
+          detail: item.detail.replace(extra[0], extra[0].replace('extra Patty', Number(extra[1]) === 1 ? 'extra Veggie-Patty' : 'extra Veggie-Patties'))};
+      }
+      const hasCan = drinks.includes(corrected.name) || ['Mit Kohlensäure', 'Ohne Kohlensäure'].includes(corrected.name)
+        || corrected.detail?.includes('Menü mit Pommes, ');
+      if (hasCan && !corrected.depositIncluded) {
+        corrected = {...corrected, price: corrected.price + 25, depositIncluded: true,
+          detail: [corrected.detail, 'inkl. 0,25 € Pfand'].filter(Boolean).join(' · ')};
+      }
+      return corrected;
     });
   } catch (_) { /* Browsers with disabled storage can still use the cart. */ }
 
@@ -86,7 +95,7 @@
       'Pommes': ['Klein – 3,50 €', 'Groß – 5,50 €'],
       'Süßkartoffelpommes': ['Klein – 5,50 €', 'Groß – 10,00 €'],
       'Cola, Cola Zero, Fanta, Fanta Exotic, Sprite': ['Cola', 'Cola Zero', 'Fanta', 'Fanta Exotic', 'Sprite'],
-      'Wasser mit / ohne': ['Mit Kohlensäure', 'Ohne Kohlensäure']
+      'Wasser mit / ohne': ['Wasser mit Kohlensäure', 'Wasser ohne Kohlensäure']
     };
     const variant = variantChoices[name] ? selectField(form, 'Auswahl', variantChoices[name]) : null;
     let menuToggle, sauce, drink, veggie, patty;
@@ -94,7 +103,7 @@
       const menuLabel = addText(form, 'label', '', 'order-check');
       menuToggle = document.createElement('input');
       menuToggle.type = 'checkbox';
-      menuLabel.append(menuToggle, document.createTextNode(' Als Menü: Pommes + Sauce + Getränk (+ 6,00 €)'));
+      menuLabel.append(menuToggle, document.createTextNode(' Als Menü: Pommes + Sauce + Getränk (+ 6,25 € inkl. Pfand)'));
       const menuOptions = addText(form, 'div', '', 'order-menu-options');
       menuOptions.hidden = true;
       sauce = selectField(menuOptions, 'Sauce im Menü', sauces);
@@ -139,10 +148,12 @@
       if (veggie?.checked) { cents += (1 + patty.selectedIndex) * 100; details.push('Veggie-Patty'); }
       if (patty && patty.selectedIndex) { cents += patty.selectedIndex * 300; details.push(patty.selectedIndex + (veggie?.checked ? (patty.selectedIndex === 1 ? ' extra Veggie-Patty' : ' extra Veggie-Patties') : ' extra Patty')); }
       if (note.value.trim()) details.push(note.value.trim());
+      const hasCan = !!menuToggle?.checked || name === 'Cola, Cola Zero, Fanta, Fanta Exotic, Sprite' || name === 'Wasser mit / ohne';
+      if (hasCan) { cents += 25; details.push('inkl. 0,25 € Pfand'); }
       const detail = details.join(' · ');
       const match = items.find(item => item.name === label && item.detail === detail && item.price === cents);
       if (match) match.quantity += 1;
-      else items.push({name:label, detail, price:cents, quantity:1});
+      else items.push({name:label, detail, price:cents, quantity:1, depositIncluded:hasCan});
       persist();
       chooser.close();
       bar.querySelector('button').focus();
@@ -193,13 +204,13 @@
     });
     const total = items.reduce((sum, item) => sum + item.price * item.quantity, 0);
     addText(dialog, 'p', 'Zwischensumme: ' + money(total), 'order-total');
-    addText(dialog, 'p', 'Bei Getränken gegebenenfalls zuzüglich Pfand. Preis und Verfügbarkeit bitte beim Anruf bestätigen lassen.', 'order-small');
+    addText(dialog, 'p', 'Alle Getränke sind Dosen. 0,25 € Pfand je Dose sind in der Zwischensumme enthalten. Preis und Verfügbarkeit bitte beim Anruf bestätigen lassen.', 'order-small');
     addText(dialog, 'p', 'Wichtig: Eine WhatsApp-Nachricht ist noch keine angenommene Bestellung. Deine Bestellung gilt erst, wenn wir sie ausdrücklich bestätigen. Falls du keine Antwort bekommst, ruf bitte an.', 'order-warning');
     const actions = addText(dialog, 'div', '', 'order-actions');
     const whatsapp = addText(actions, 'a', 'Per WhatsApp anfragen ↗', 'order-whatsapp');
     whatsapp.href = 'https://wa.me/' + phone + '?text=' + encodeURIComponent(
       'Hallo Planet Smashburger, ich möchte Folgendes zur Abholung anfragen:\n\n' +
-      summary() + '\nZwischensumme: ' + money(total) + ' (ggf. zzgl. Pfand)\n\nBitte bestätigt mir Bestellung, Endpreis und Abholzeit. Mir ist klar, dass die Anfrage ohne eure Antwort noch keine angenommene Bestellung ist.'
+      summary() + '\nZwischensumme: ' + money(total) + ' (inkl. 0,25 € Pfand je Dose)\n\nBitte bestätigt mir Bestellung, Endpreis und Abholzeit. Mir ist klar, dass die Anfrage ohne eure Antwort noch keine angenommene Bestellung ist.'
     );
     whatsapp.target = '_blank';
     whatsapp.rel = 'noopener noreferrer';
