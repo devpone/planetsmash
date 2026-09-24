@@ -11,7 +11,13 @@
   let items = [];
   try {
     const saved = JSON.parse(localStorage.getItem(key) || '[]');
-    if (Array.isArray(saved)) items = saved.filter(item => typeof item.name === 'string' && Number.isInteger(item.price) && Number.isInteger(item.quantity) && item.quantity > 0).slice(0, 50);
+    if (Array.isArray(saved)) items = saved.filter(item => typeof item.name === 'string' && Number.isInteger(item.price) && Number.isInteger(item.quantity) && item.quantity > 0).slice(0, 50).map(item => {
+      // Correct carts saved before the Veggie surcharge was applied to extra patties.
+      const extra = item.detail?.match(/(?:^| · )([1-5]) extra Patty(?= · |$)/);
+      if (!item.detail?.includes('Veggie-Patty') || !extra) return item;
+      return {...item, price: item.price + Number(extra[1]) * 100,
+        detail: item.detail.replace(extra[0], extra[0].replace('extra Patty', Number(extra[1]) === 1 ? 'extra Veggie-Patty' : 'extra Veggie-Patties'))};
+    });
   } catch (_) { /* Browsers with disabled storage can still use the cart. */ }
 
   const category = row => row.closest('details')?.querySelector('summary')?.textContent?.trim() || '';
@@ -97,8 +103,18 @@
       const veggieLabel = addText(form, 'label', '', 'order-check');
       veggie = document.createElement('input');
       veggie.type = 'checkbox';
-      veggieLabel.append(veggie, document.createTextNode(' Veggie-Patty statt Rind (+ 1,00 €)'));
-      patty = selectField(form, 'Extra Patty', ['Keins', '1 extra (+ 3,00 €)', '2 extra (+ 6,00 €)']);
+      veggieLabel.append(veggie, document.createTextNode(' Veggie-Patty statt Rind (+ 1,00 € je Patty)'));
+      patty = selectField(form, 'Extra Patty', ['Keins', ...Array.from({length: 5}, (_, index) => {
+        const count = index + 1;
+        return count + ' extra (+ ' + money(count * 300) + ')';
+      })]);
+      veggie.addEventListener('change', () => {
+        for (let count = 1; count <= 5; count++) {
+          patty.options[count].textContent = veggie.checked
+            ? count + ' extra Veggie-' + (count === 1 ? 'Patty' : 'Patties') + ' (+ ' + money(count * 400) + ')'
+            : count + ' extra (+ ' + money(count * 300) + ')';
+        }
+      });
     }
     const noteLabel = addText(form, 'label', 'Wünsche für diesen Artikel (optional)', 'order-field');
     const note = document.createElement('input');
@@ -120,8 +136,8 @@
         cents += 600;
         details.push('Menü mit Pommes, ' + sauce.value + ', ' + drink.value);
       }
-      if (veggie?.checked) { cents += 100; details.push('Veggie-Patty'); }
-      if (patty && patty.selectedIndex) { cents += patty.selectedIndex * 300; details.push(patty.selectedIndex + ' extra Patty'); }
+      if (veggie?.checked) { cents += (1 + patty.selectedIndex) * 100; details.push('Veggie-Patty'); }
+      if (patty && patty.selectedIndex) { cents += patty.selectedIndex * 300; details.push(patty.selectedIndex + (veggie?.checked ? (patty.selectedIndex === 1 ? ' extra Veggie-Patty' : ' extra Veggie-Patties') : ' extra Patty')); }
       if (note.value.trim()) details.push(note.value.trim());
       const detail = details.join(' · ');
       const match = items.find(item => item.name === label && item.detail === detail && item.price === cents);
