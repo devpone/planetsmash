@@ -1,4 +1,4 @@
-<!doctype html><html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#10091b"><title>Planet Smashburger · Nice to meat you · Solingen</title><meta name="description" content="Dein Burger-Planet in Solingen-Aufderhöhe. Entdecke Smashburger, Pommes und Saucen, unsere Speisekarte, Öffnungszeiten und deinen Weg zu uns."><link rel="stylesheet" href="styles.css"><link rel="stylesheet" href="cart.css"><script src="translations.js" defer></script><script src="i18n.js" defer></script><script src="app.js" defer></script><script src="cart.js?v=20260924-6" defer></script></head><body>
+<!doctype html><html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#10091b"><title>Planet Smashburger · Nice to meat you · Solingen</title><meta name="description" content="Dein Burger-Planet in Solingen-Aufderhöhe. Entdecke Smashburger, Pommes und Saucen, unsere Speisekarte, Öffnungszeiten und deinen Weg zu uns."><link rel="stylesheet" href="styles.css"><link rel="stylesheet" href="cart.css"><link rel="stylesheet" href="funksprueche.css"><script src="translations.js" defer></script><script src="i18n.js" defer></script><script src="app.js" defer></script><script src="cart.js?v=20260924-6" defer></script><script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script><script src="funksprueche.js?v=20260927-1" defer></script></head><body>
 <a class="skip" href="#main">Zum Inhalt</a><header class="header wrap"><a class="brand" href="#" aria-label="Planet Smashburger Startseite"><img class="original-logo" src="assets/logo.webp" width="1024" height="1024" alt="Planet Smash Burger – Original-Logo mit Alien im UFO"></a><nav aria-label="Hauptnavigation"><a href="#speisekarte">Speisekarte</a><a href="#besuch">Öffnungszeiten & Standort</a><a href="ueber-uns.html">Über uns</a></nav><span class="header-call" data-call><span class="call-closed">Anrufe während der Öffnungszeiten</span></span><a class="button small" href="https://www.google.com/maps/dir/?api=1&destination=Nu%C3%9Fbaumstr.%201%2C%2042699%20Solingen" target="_blank" rel="noopener noreferrer">Route planen ↗</a></header>
 <main id="main"><section class="hero"><div class="hero-art"><img src="assets/hero.webp" width="1672" height="941" alt="Smashburger vor einem violett leuchtenden Planeten" fetchpriority="high"></div><div class="hero-copy wrap"><p class="eyebrow">SOLINGEN-AUFDERHÖHE <span> / </span> PLANET SMASHBURGER</p><h1>NICE TO<br><em>MEAT YOU.</em></h1><p class="intro">Dein nächster Lieblingsburger?<br>Auf diesem Planeten.</p><div class="hero-buttons"><span data-call><span class="call-closed">Anrufe während der Öffnungszeiten</span></span><a class="button secondary" href="#speisekarte">Speisekarte <span>↓</span></a></div><a class="hero-status" href="#besuch"><i aria-hidden="true"></i><span data-status>Di–Sa 16–22 Uhr · So 14–22 Uhr</span></a></div><div class="hero-bottom wrap"><span>SMASHBURGER. POMMES. SAUCEN.</span><span>51° N · SOLINGEN ↗</span></div></section>
 <div class="ticker" style="display:flex;justify-content:center;align-items:center;gap:10px;word-spacing:normal;white-space:nowrap">NICE TO <strong style="display:inline-block;background:#160d22;color:#f7edff;padding:5px 10px;border-radius:4px;font-size:1.2em;letter-spacing:2px">MEAT</strong> YOU</div>
@@ -22,6 +22,77 @@
   </div>
 </section>
 
+
+<section class="radio-wall" id="funksprueche" data-radio-wall>
+  <div class="radio-orbit radio-orbit-one" aria-hidden="true"></div>
+  <div class="radio-orbit radio-orbit-two" aria-hidden="true"></div>
+  <div class="wrap radio-wrap">
+    <div class="radio-heading">
+      <div>
+        <p class="eyebrow">05 / OFFENER FUNKKANAL</p>
+        <h2>Funksprüche<br><em>von der Erde.</em></h2>
+      </div>
+      <div class="radio-intro">
+        <span class="radio-live"><i></i> KANAL OFFEN</span>
+        <p>Keine Anmeldung. Kein Account. Schick uns einfach einen kurzen Funkspruch – und lies, was andere Erdlinge hinterlassen haben.</p>
+      </div>
+    </div>
+
+    <div class="radio-layout">
+      <form class="radio-compose" data-radio-form>
+        <div class="radio-console-top">
+          <span>PSB // TRANSMITTER 51</span>
+          <span class="radio-signal" aria-hidden="true"><b></b><b></b><b></b><b></b></span>
+        </div>
+
+        <label class="radio-field">
+          <span>DEIN FUNKNAME <small>max. 30 Zeichen</small></span>
+          <input type="text" name="name" maxlength="30" autocomplete="nickname" placeholder="z. B. BurgerCommander" required>
+        </label>
+
+        <label class="radio-field">
+          <span>DEIN FUNKSPRUCH <small><strong data-radio-count>0</strong>/280</small></span>
+          <textarea name="message" maxlength="280" rows="5" placeholder="Was willst du auf diesem Planeten hinterlassen?" required></textarea>
+        </label>
+
+        <div class="radio-prompts" aria-label="Ideen für deinen Funkspruch">
+          <button type="button" data-radio-prompt="Mein nächster Wunschburger wäre: ">🍔 Wunschburger</button>
+          <button type="button" data-radio-prompt="Mein Planet-Smashburger-Favorit ist: ">🛸 Mein Favorit</button>
+          <button type="button" data-radio-prompt="Grüße an Planet Smashburger: ">👽 Grüße senden</button>
+        </div>
+
+        <div class="radio-human-check">
+          <div class="cf-turnstile" data-sitekey="0x4AAAAAAFEu8lMGqJbL6fA_" data-theme="dark"></div>
+        </div>
+
+        <div class="radio-submit-row">
+          <button class="radio-send" type="submit" data-radio-submit>
+            <span>FUNKSpruch SENDEN</span><b>↗</b>
+          </button>
+          <p class="radio-form-status" data-radio-status role="status" aria-live="polite"></p>
+        </div>
+        <p class="radio-note">Öffentlich sichtbar. Bitte keine persönlichen Daten posten. Missbrauch kann gemeldet und entfernt werden.</p>
+      </form>
+
+      <div class="radio-feed-panel">
+        <div class="radio-feed-head">
+          <div>
+            <span>LIVE // EINGEHENDE SIGNALE</span>
+            <strong data-radio-total>–</strong>
+          </div>
+          <button type="button" data-radio-refresh aria-label="Funksprüche neu laden">↻ Aktualisieren</button>
+        </div>
+
+        <div class="radio-feed" data-radio-feed>
+          <div class="radio-loading"><span></span><p>Suche Signale im Orbit …</p></div>
+        </div>
+
+        <button class="radio-more" type="button" data-radio-more hidden>Ältere Funksprüche empfangen ↓</button>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="control-station" id="kontrollstation" data-control-station>
   <div class="ufo-scan" data-ufo-scan aria-hidden="true">
     <div class="ufo-scan-beam"></div>
@@ -29,7 +100,7 @@
     <strong data-scan-text>SYSTEM BEREIT</strong>
   </div>
   <div class="wrap control-wrap">
-    <p class="eyebrow">05 / PLANET CONTROL STATION</p>
+    <p class="eyebrow">06 / PLANET CONTROL STATION</p>
     <div class="control-heading">
       <h2>Kontrollzentrum<br><em>Planet Smashburger.</em></h2>
       <p>Interplanetare Systemdaten. Für Erdlinge freigegeben.</p>
