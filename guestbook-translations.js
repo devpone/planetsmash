@@ -1,4 +1,7 @@
 const guestbookRows = `
+Mein nächster Burger-Wunsch: |My next burger wish: |Bir sonraki burger dileğim: |أمنيتي للبرغر القادم: |Mi deseo para la próxima hamburguesa: |Xwesteka min a burgera din: 
+Mein Besuch bei Planet Smashburger: |My visit to Planet Smashburger: |Planet Smashburger ziyaretim: |زيارتي إلى بلانيت سماشبرغر: |Mi visita a Planet Smashburger: |Serdana min a Planet Smashburger: 
+Ich wünsche mir: |I wish for: |Dileğim: |أتمنى: |Me gustaría: |Ez dixwazim: 
 Funksprüche|Radio messages|Telsiz mesajları|رسائل الراديو|Mensajes de radio|Peyamên radyoyê
 05 / DIREKTFUNK ZUR ERDE|05 / DIRECT LINE TO EARTH|05 / DÜNYA'YA DİREKT HAT|05 / اتصال مباشر بالأرض|05 / LÍNEA DIRECTA CON LA TIERRA|05 / TÊKILIYA RASTERAST BI ERDÊ RE
 Deine Nachricht.|Your message.|Senin mesajın.|رسالتك.|Tu mensaje.|Peyama te.

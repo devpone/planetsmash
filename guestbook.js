@@ -71,7 +71,7 @@
   }
   message.addEventListener('input', () => { count.textContent = `${message.value.length} / 280`; });
   section.querySelectorAll('[data-prompt]').forEach(button => button.addEventListener('click', () => {
-    message.value = button.dataset.prompt;
+    message.value = t(button.dataset.prompt);
     message.dispatchEvent(new Event('input'));
     message.focus();
   }));
