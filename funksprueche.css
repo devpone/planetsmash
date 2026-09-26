@@ -1,0 +1,76 @@
+
+/* Planet Smashburger – öffentliche Funkspruchwand */
+.radio-wall{position:relative;overflow:hidden;padding:100px 0 110px;border-top:1px solid #b276ff2d;background:
+radial-gradient(circle at 15% 12%,#7d3fc12f 0,transparent 27%),
+radial-gradient(circle at 88% 76%,#a563f01f 0,transparent 30%),
+linear-gradient(180deg,#0d0712 0%,#140a1d 50%,#09060e 100%);isolation:isolate}
+.radio-wall:before{content:"";position:absolute;inset:0;z-index:-2;opacity:.18;background-image:
+linear-gradient(#b276ff12 1px,transparent 1px),linear-gradient(90deg,#b276ff12 1px,transparent 1px);
+background-size:54px 54px;mask-image:linear-gradient(to bottom,transparent,#000 16%,#000 84%,transparent)}
+.radio-orbit{position:absolute;z-index:-1;border:1px solid #b276ff1d;border-radius:50%;pointer-events:none}
+.radio-orbit:before,.radio-orbit:after{content:"";position:absolute;border-radius:50%;background:#b276ff;box-shadow:0 0 18px #b276ff}
+.radio-orbit-one{width:650px;height:650px;right:-360px;top:-180px}
+.radio-orbit-one:before{width:7px;height:7px;left:83px;top:92px}
+.radio-orbit-two{width:420px;height:420px;left:-285px;bottom:-160px}
+.radio-orbit-two:after{width:5px;height:5px;right:47px;top:87px}
+.radio-heading{display:grid;grid-template-columns:1.05fr .95fr;gap:65px;align-items:end;margin-bottom:42px}
+.radio-heading h2{margin-bottom:0}
+.radio-intro{max-width:520px;justify-self:end}
+.radio-intro p{margin:13px 0 0;color:#c8bdd0;font-size:14px;line-height:1.8}
+.radio-live{display:inline-flex;align-items:center;gap:9px;color:#dfc5ff;font-size:9px;font-weight:900;letter-spacing:2px}
+.radio-live i{width:8px;height:8px;border-radius:50%;background:#b774ff;box-shadow:0 0 0 5px #b774ff16,0 0 18px #b774ff;animation:radioPulse 1.6s ease-in-out infinite}
+@keyframes radioPulse{50%{opacity:.35;box-shadow:0 0 0 9px #b774ff08,0 0 28px #b774ff}}
+.radio-layout{display:grid;grid-template-columns:minmax(0,.88fr) minmax(0,1.12fr);gap:18px;align-items:start}
+.radio-compose,.radio-feed-panel{border:1px solid #b276ff38;border-radius:12px;background:linear-gradient(145deg,#1a1025ee,#0e0915ee);box-shadow:0 24px 70px #0006,inset 0 1px #ffffff09}
+.radio-compose{padding:24px;position:sticky;top:18px}
+.radio-console-top{display:flex;justify-content:space-between;align-items:center;padding-bottom:18px;margin-bottom:20px;border-bottom:1px solid #b276ff25;color:#b98ae8;font-size:8px;font-weight:900;letter-spacing:2px}
+.radio-signal{display:flex;align-items:end;height:14px;gap:2px}
+.radio-signal b{display:block;width:3px;background:#be8bff;border-radius:3px;box-shadow:0 0 8px #ae6cff}
+.radio-signal b:nth-child(1){height:4px}.radio-signal b:nth-child(2){height:7px}.radio-signal b:nth-child(3){height:10px}.radio-signal b:nth-child(4){height:14px}
+.radio-field{display:block;margin:0 0 16px}
+.radio-field>span{display:flex;justify-content:space-between;gap:10px;margin:0 0 8px;color:#d8c4e7;font-size:9px;font-weight:900;letter-spacing:1.25px}
+.radio-field small{color:#786b84;font-size:8px;font-weight:700;letter-spacing:.5px}
+.radio-field input,.radio-field textarea{box-sizing:border-box;width:100%;border:1px solid #b276ff34;border-radius:7px;background:#09060ee3;color:#fff;padding:14px 15px;font:600 15px/1.5 Arial,Helvetica,sans-serif;outline:none;transition:border-color .2s,box-shadow .2s,background .2s}
+.radio-field textarea{resize:vertical;min-height:128px}
+.radio-field input:focus,.radio-field textarea:focus{border-color:#bd83ff;background:#0d0713;box-shadow:0 0 0 3px #a563f018,0 0 22px #a563f015}
+.radio-field input::placeholder,.radio-field textarea::placeholder{color:#74677f}
+.radio-prompts{display:flex;gap:7px;flex-wrap:wrap;margin:-2px 0 18px}
+.radio-prompts button{border:1px solid #b276ff2c;border-radius:30px;background:#271536;color:#cdbbdd;padding:8px 10px;font:700 10px Arial,Helvetica,sans-serif;cursor:pointer}
+.radio-prompts button:hover{border-color:#b276ff72;background:#321b45;color:#fff}
+.radio-human-check{min-height:68px;margin:6px 0 13px;display:flex;align-items:center;overflow:hidden}
+.radio-submit-row{display:flex;align-items:center;gap:14px}
+.radio-send{min-height:52px;display:flex;flex:0 0 auto;align-items:center;justify-content:space-between;gap:22px;border:1px solid #cf9cff78;border-radius:7px;background:linear-gradient(135deg,#a563f0,#7e3fc2);color:#fff;padding:0 18px;font:900 12px Arial,Helvetica,sans-serif;letter-spacing:.4px;cursor:pointer;box-shadow:0 8px 26px #8d4cc339;transition:transform .2s,filter .2s}
+.radio-send:hover{transform:translateY(-2px);filter:brightness(1.09)}
+.radio-send:disabled{cursor:wait;opacity:.55;transform:none}
+.radio-send b{font-size:17px}
+.radio-form-status{margin:0;color:#c7b7d2;font-size:11px;line-height:1.45}
+.radio-form-status.ok{color:#d9bbff}.radio-form-status.error{color:#ff9fb3}
+.radio-note{margin:15px 0 0;color:#6e6376;font-size:9px;line-height:1.55}
+.radio-feed-panel{padding:0;overflow:hidden}
+.radio-feed-head{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:20px 22px;border-bottom:1px solid #b276ff24;background:#130b1ccc}
+.radio-feed-head>div{display:flex;align-items:center;gap:12px}
+.radio-feed-head span{color:#a983d0;font-size:8px;font-weight:900;letter-spacing:1.8px}
+.radio-feed-head strong{display:inline-flex;min-width:28px;height:24px;align-items:center;justify-content:center;border:1px solid #b276ff38;border-radius:20px;background:#251334;color:#e4ccff;font-size:10px}
+.radio-feed-head button{border:0;background:transparent;color:#9f8eaa;font:700 10px Arial,Helvetica,sans-serif;cursor:pointer}
+.radio-feed-head button:hover{color:#fff}
+.radio-feed{padding:14px;display:grid;gap:10px;min-height:235px}
+.radio-message{position:relative;padding:18px 18px 16px;border:1px solid #b276ff22;border-radius:9px;background:linear-gradient(135deg,#140b1ddd,#100817dd);overflow:hidden;animation:signalIn .35s ease both}
+.radio-message:before{content:"";position:absolute;left:0;top:0;bottom:0;width:2px;background:linear-gradient(180deg,#c18cff,transparent);box-shadow:0 0 13px #b276ff}
+@keyframes signalIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.radio-message-head{display:flex;align-items:center;justify-content:space-between;gap:18px;margin-bottom:8px}
+.radio-message-name{display:flex;align-items:center;gap:8px;color:#e7d5f6;font-size:12px;font-weight:900}
+.radio-message-name:before{content:"";width:6px;height:6px;border-radius:50%;background:#a763ee;box-shadow:0 0 10px #a763ee}
+.radio-message time{color:#6f6478;font-size:9px;white-space:nowrap}
+.radio-message p{margin:0;color:#d4cadb;font-size:14px;line-height:1.65;overflow-wrap:anywhere}
+.radio-message-actions{display:flex;justify-content:flex-end;margin-top:9px}
+.radio-message-actions button{border:0;background:transparent;color:#665c6e;padding:2px 0;font:700 9px Arial,Helvetica,sans-serif;cursor:pointer}
+.radio-message-actions button:hover{color:#bf95e7}
+.radio-loading,.radio-empty{min-height:200px;display:grid;place-items:center;align-content:center;gap:13px;text-align:center;color:#776b80;font-size:11px}
+.radio-loading span{width:24px;height:24px;border:2px solid #b276ff2d;border-top-color:#b276ff;border-radius:50%;animation:radioSpin .8s linear infinite}
+@keyframes radioSpin{to{transform:rotate(360deg)}}
+.radio-error{margin:20px;padding:18px;border:1px solid #ff78912e;border-radius:8px;background:#35131b54;color:#f0b3bf;font-size:12px;line-height:1.5}
+.radio-more{display:block;width:calc(100% - 28px);margin:0 14px 14px;min-height:42px;border:1px solid #b276ff31;border-radius:7px;background:#21112e;color:#cdbadd;font:800 10px Arial,Helvetica,sans-serif;letter-spacing:.4px;cursor:pointer}
+.radio-more:hover{background:#2c173c;color:#fff}
+@media(max-width:900px){.radio-heading{grid-template-columns:1fr;gap:25px}.radio-intro{justify-self:start}.radio-layout{grid-template-columns:1fr}.radio-compose{position:relative;top:0}}
+@media(max-width:600px){.radio-wall{padding:68px 0 80px}.radio-compose{padding:17px}.radio-feed-head{padding:16px}.radio-feed{padding:9px}.radio-message{padding:15px}.radio-submit-row{display:block}.radio-send{width:100%;justify-content:center;margin-bottom:10px}.radio-human-check{transform-origin:left top}.radio-prompts{gap:5px}.radio-prompts button{font-size:9px}.radio-message-head{align-items:flex-start}.radio-message p{font-size:13px}}
+@media(prefers-reduced-motion:reduce){.radio-live i,.radio-loading span,.radio-message{animation:none!important}}
