@@ -50,6 +50,18 @@ export default {
     const url = new URL(request.url);
     const wrap = response => { for (const [key,value] of Object.entries(headers)) response.headers.set(key,value); return response; };
     try {
+      if (url.pathname === '/visitors' && request.method === 'GET') {
+        const row = await env.DB.prepare("SELECT value FROM counters WHERE key='visitors'").first();
+        return wrap(json({value:Number(row?.value || 0)}));
+      }
+      if (url.pathname === '/visitors/land' && request.method === 'POST') {
+        if (!validOrigin(request,env)) return wrap(error('forbidden',403));
+        if (!await rateLimit(env,request,'visitor',20,3600)) return wrap(error('rate_limit',429));
+        await env.DB.prepare("INSERT OR IGNORE INTO counters (key,value) VALUES ('visitors',0)").run();
+        await env.DB.prepare("UPDATE counters SET value=value+1 WHERE key='visitors'").run();
+        const row = await env.DB.prepare("SELECT value FROM counters WHERE key='visitors'").first();
+        return wrap(json({value:Number(row?.value || 0)}));
+      }
       if (url.pathname === '/messages' && request.method === 'GET') {
         const before = url.searchParams.get('before');
         if (before && (!/^\d{4}-\d\d-\d\dT[\d:.]+Z$/.test(before) || before.length > 35)) return wrap(error('bad_cursor'));
