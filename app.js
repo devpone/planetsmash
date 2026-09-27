@@ -100,36 +100,50 @@ function updateControlStation(){
 updateControlStation();
 setInterval(updateControlStation,1000);
 
-// CounterAPI: public, no account/key required. The value is unique visitors,
-// while the personal landing number is remembered locally in the browser.
+// Echtes globales Besucherregister über den eigenen Cloudflare Worker + D1.
+// Pro Browser wird genau einmal eine Landung gezählt; danach wird nur noch der Gesamtstand gelesen.
 async function updateVisitorCount(){
   const countEl=document.querySelector('[data-visitor-count]');
   const copyEl=document.querySelector('[data-earthling-copy]');
   if(!countEl) return;
 
+  const api='https://planet-funksprueche.devpone.workers.dev';
+  const landedKey='psb-visitor-landed-v2';
+  const numberKey='psb-earthling-number-v2';
+
   try{
-    const response=await fetch('https://counterapi.com/api/planetsmashburger.de/landing/homepage?unique=true',{
+    const alreadyLanded=localStorage.getItem(landedKey)==='1';
+    const endpoint=alreadyLanded ? '/visitors' : '/visitors/land';
+    const response=await fetch(api+endpoint,{
+      method:alreadyLanded ? 'GET' : 'POST',
       cache:'no-store'
     });
-    if(!response.ok) throw new Error('Counter '+response.status);
+    if(!response.ok) throw new Error('Visitor counter '+response.status);
+
     const data=await response.json();
     const value=Number(data.value);
-    if(!Number.isFinite(value)) throw new Error('Ungültiger Zählerwert');
+    if(!Number.isFinite(value)||value<0) throw new Error('Ungültiger Zählerwert');
+
+    if(!alreadyLanded){
+      localStorage.setItem(landedKey,'1');
+      localStorage.setItem(numberKey,String(value));
+    }
 
     countEl.textContent=new Intl.NumberFormat('de-DE').format(value);
 
-    let landingNumber=Number(localStorage.getItem('psb-earthling-number'));
-    if(!Number.isFinite(landingNumber)||landingNumber<1){
-      landingNumber=value;
-      localStorage.setItem('psb-earthling-number',String(landingNumber));
-    }
+    const landingNumber=Number(localStorage.getItem(numberKey));
     if(copyEl){
-      copyEl.textContent=(window.PSB_I18N?.t('Schon {n} Erdlinge auf diesem Planeten gelandet. Du bist Erdling #{id}.') || 'Schon {n} Erdlinge auf diesem Planeten gelandet. Du bist Erdling #{id}.')
-        .replace('{n}',new Intl.NumberFormat('de-DE').format(value)).replace('{id}',new Intl.NumberFormat('de-DE').format(landingNumber));
+      if(Number.isFinite(landingNumber)&&landingNumber>0){
+        copyEl.textContent=(window.PSB_I18N?.t('Schon {n} Erdlinge auf diesem Planeten gelandet. Du bist Erdling #{id}.') || 'Schon {n} Erdlinge auf diesem Planeten gelandet. Du bist Erdling #{id}.')
+          .replace('{n}',new Intl.NumberFormat('de-DE').format(value))
+          .replace('{id}',new Intl.NumberFormat('de-DE').format(landingNumber));
+      }else{
+        copyEl.textContent='Echter Besucherstand aus der Planet-Datenbank.';
+      }
     }
   }catch(error){
     countEl.textContent='SIGNAL GESTÖRT';
-    if(copyEl) copyEl.textContent='Die Bodenstation antwortet gerade nicht. Versuch es beim nächsten Vorbeiflug nochmal.';
+    if(copyEl) copyEl.textContent='Der echte Besucherzähler ist gerade nicht erreichbar. Es wird keine Ersatz- oder Fantasiezahl angezeigt.';
     console.warn('Besucherzähler:',error);
   }
 }
