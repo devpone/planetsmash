@@ -15,6 +15,7 @@
   const countEl = wall.querySelector('[data-radio-count]');
   let nextCursor = null;
   let loading = false;
+  const loadedMessageIds = new Set();
 
   const escDate = value => {
     const d = new Date(value);
@@ -81,27 +82,42 @@
     }
 
     try {
+      const requestedCursor = append ? nextCursor : null;
       const url = new URL(API + '/messages');
-      if (append && nextCursor) url.searchParams.set('before', nextCursor);
+      if (append && requestedCursor) url.searchParams.set('before', requestedCursor);
       const res = await fetch(url, {cache:'no-store'});
       if (!res.ok) throw new Error('load_failed');
       const data = await res.json();
       const messages = Array.isArray(data.messages) ? data.messages : [];
 
-      if (!append) feed.replaceChildren();
-      if (!append && messages.length === 0) {
+      if (!append) {
+        feed.replaceChildren();
+        loadedMessageIds.clear();
+      }
+
+      const freshMessages = messages.filter(item => {
+        const id = item && item.id != null ? String(item.id) : '';
+        if (!id) return true;
+        if (loadedMessageIds.has(id)) return false;
+        loadedMessageIds.add(id);
+        return true;
+      });
+
+      if (!append && freshMessages.length === 0) {
         const empty = document.createElement('div');
         empty.className = 'radio-empty';
         empty.innerHTML = '<strong>NOCH STILLE IM ORBIT.</strong><span>Sei der erste Funkspruch auf diesem Planeten.</span>';
         feed.append(empty);
       } else {
-        messages.forEach(item => feed.append(makeMessage(item)));
+        freshMessages.forEach(item => feed.append(makeMessage(item)));
       }
 
       if (Number.isFinite(Number(data.total))) totalEl.textContent = Number(data.total).toLocaleString('de-DE');
-      else totalEl.textContent = messages.length ? 'LIVE' : '0';
+      else totalEl.textContent = freshMessages.length ? 'LIVE' : '0';
 
-      nextCursor = data.next || null;
+      const candidateNext = data.next || null;
+      const cursorAdvanced = candidateNext && candidateNext !== requestedCursor;
+      nextCursor = (append && freshMessages.length === 0) ? null : (cursorAdvanced ? candidateNext : null);
       moreBtn.hidden = !nextCursor;
     } catch {
       if (!append) feed.innerHTML = '<div class="radio-error">Die Bodenstation antwortet gerade nicht. Versuch es gleich noch einmal.</div>';
