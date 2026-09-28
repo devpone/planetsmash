@@ -19,6 +19,9 @@
   const leftBtn = root.querySelector('[data-game-left]');
   const rightBtn = root.querySelector('[data-game-right]');
   const fireBtn = root.querySelector('[data-game-fire]');
+  const bombBtn = root.querySelector('[data-game-bomb]');
+  const bombCountEl = root.querySelector('[data-game-bomb-count]');
+  const stage = root.querySelector('.arcade-stage');
 
   const API = 'https://planet-funksprueche.devpone.workers.dev';
   const LOCAL_KEY = 'psb-arcade-highscores-v1';
@@ -42,6 +45,7 @@
   let keys = {left:false,right:false,fire:false};
   let lastShotAt = 0;
   let nextId = 1;
+  let bombUsed = false;
 
   const player = {x:WIDTH/2,y:HEIGHT-96,w:92,h:92,speed:470};
 
@@ -57,6 +61,9 @@
     player.x = WIDTH / 2;
     spawnTimer = 250;
     lastShotAt = 0;
+    bombUsed = false;
+    bombBtn.disabled = false;
+    bombCountEl.textContent = '×1';
     scoreEl.textContent = '0';
     livesEl.textContent = '♥';
     statusEl.textContent = 'MISSION LÄUFT';
@@ -93,6 +100,29 @@
     if (t - lastShotAt < 235) return;
     lastShotAt = t;
     shots.push({x:player.x,y:player.y-44,vy:-720,size:31});
+  }
+
+  function useBomb(){
+    if (state !== 'running' || bombUsed) return;
+    const targets = enemies.filter(enemy => !enemy.dead);
+    if (!targets.length) return;
+
+    bombUsed = true;
+    bombBtn.disabled = true;
+    bombCountEl.textContent = 'VERBRAUCHT';
+    stage.classList.remove('bomb-flash');
+    void stage.offsetWidth;
+    stage.classList.add('bomb-flash');
+
+    targets.forEach(enemy => {
+      enemy.dead = true;
+      burst(enemy.x, enemy.y);
+      score += 100;
+    });
+    enemies = enemies.filter(enemy => !enemy.dead);
+    scoreEl.textContent = score.toLocaleString('de-DE');
+
+    window.setTimeout(() => stage.classList.remove('bomb-flash'), 520);
   }
 
   function spawnEnemy(){
@@ -371,6 +401,14 @@
   setHeld(leftBtn,'left');
   setHeld(rightBtn,'right');
   setHeld(fireBtn,'fire');
+  bombBtn.addEventListener('click',useBomb);
+  canvas.addEventListener('pointerdown',e=>{
+    if(e.pointerType==='mouse' && e.button===0){
+      e.preventDefault();
+      shoot();
+      root.focus({preventScroll:true});
+    }
+  });
   startBtn.addEventListener('click',()=>{
     if(state==='paused'){
       state='running';
