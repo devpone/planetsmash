@@ -1,0 +1,31 @@
+<!doctype html><html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#10091b"><title>Funksprüche · Planet Smashburger</title><meta name="description" content="Dein Funkspruch an Planet Smashburger: Nachrichten von Gästen und Burger-Ideen."><link rel="stylesheet" href="styles.css"><link rel="stylesheet" href="guestbook.css"><script src="translations.js" defer></script><script src="guestbook-translations.js" defer></script><script src="i18n.js" defer></script><script src="guestbook-config.js" defer></script><script src="guestbook.js" defer></script></head><body><a class="skip" href="#main">Zum Inhalt</a><header class="header wrap"><a class="brand" href="index.html" aria-label="Planet Smashburger Startseite"><img class="original-logo" src="assets/logo.webp" width="1024" height="1024" alt="Planet Smash Burger"></a><nav aria-label="Hauptnavigation"><a href="index.html#speisekarte">Speisekarte</a><a href="index.html#besuch">Öffnungszeiten & Standort</a><a href="index.html">Startseite</a></nav></header><main id="main"><section class="guestbook" id="funksprueche" aria-labelledby="guestbook-title">
+  <div class="wrap guestbook-layout">
+    <div class="guestbook-intro">
+      <p class="eyebrow">05 / DIREKTFUNK ZUR ERDE</p>
+      <h2 id="guestbook-title">Deine Nachricht.<br><em>Unser Universum.</em></h2>
+      <p>Was geht dir durch den Kopf? Schick einen Funkspruch an Planet Smashburger. Alle Erdlinge können mitlesen.</p>
+      <div class="guestbook-prompts" aria-label="Ideen für deinen Funkspruch">
+        <button type="button" data-prompt="Mein nächster Burger-Wunsch: ">🍔 Burger-Idee</button>
+        <button type="button" data-prompt="Mein Besuch bei Planet Smashburger: ">🛸 Mein Besuch</button>
+        <button type="button" data-prompt="Ich wünsche mir: ">✨ Ein Wunsch</button>
+      </div>
+      <form class="guestbook-form" data-guestbook-form>
+        <label for="guestbook-name">Dein Name oder Spitzname</label>
+        <input id="guestbook-name" name="name" maxlength="30" required autocomplete="nickname" placeholder="Zum Beispiel: Burger-Astronaut">
+        <label for="guestbook-message">Dein Funkspruch</label>
+        <textarea id="guestbook-message" name="message" maxlength="280" minlength="3" required rows="4" placeholder="Was möchtest du auf diesem Planeten hinterlassen?"></textarea>
+        <div class="guestbook-form-bottom"><span data-guestbook-count>0 / 280</span><span>Öffentlich sichtbar · bitte keine persönlichen Daten posten.</span></div>
+        <div class="guestbook-challenge" data-guestbook-challenge></div>
+        <button class="button guestbook-submit" type="submit" disabled>FUNKSPRUCH SENDEN <span aria-hidden="true">↗</span></button>
+        <p class="guestbook-feedback" data-guestbook-feedback role="status" aria-live="polite">Verbindung zur Bodenstation wird geprüft…</p>
+      </form>
+    </div>
+    <div class="guestbook-feed" aria-label="Öffentliche Funksprüche">
+      <div class="guestbook-feed-head"><span><i aria-hidden="true"></i> LIVE AUS DEM UNIVERSUM</span><strong data-guestbook-total>FUNKSIGNALE</strong></div>
+      <div class="guestbook-messages" data-guestbook-messages aria-live="polite"><div class="guestbook-empty">Funksprüche werden empfangen…</div></div>
+      <button class="guestbook-more" type="button" data-guestbook-more hidden>Weitere Funksprüche laden ↓</button>
+    </div>
+  </div>
+</section>
+
+</main><footer class="wrap"><a href="index.html">← Zur Startseite</a><nav aria-label="Weitere Informationen"><a href="impressum.html">Impressum</a> · <a href="datenschutz.html">Datenschutz</a></nav></footer></body></html>
