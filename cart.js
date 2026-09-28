@@ -145,10 +145,11 @@
     if (isFries) {
       const friesExtrasBox = addText(form, 'div', 'Extras für deine Pommes', 'order-field');
       const extras = [
-        ['Jalapeños', 100],
+        ['Jalapeños', 150],
         ['Extra Bacon', 150],
         ['Geschmorte Zwiebeln', 150],
         ['Röstzwiebeln', 150],
+        ['Spiegelei', 150],
         ['Käsesauce', 150],
         ['Käsesauce scharf', 150]
       ];
