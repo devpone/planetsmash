@@ -1160,6 +1160,38 @@ Pommes groß|Patatine grandi
 PLANET SMASHBURGER // DIREKT VOM GRILL|PLANET SMASHBURGER // DIRETTAMENTE DALLA GRIGLIA
 `;
 
+
+
+translationRows += `
+08 / NACHRICHTEN AUS DEM ORBIT|08 / NEWS FROM ORBIT|08 / YÖRÜNGEDEN HABERLER|08 / أخبار من المدار|08 / NOTICIAS DESDE LA ÓRBITA|08 / NÛÇEYÊN JI ORBÎTÊ
+The Smashington Post.|The Smashington Post.|The Smashington Post.|The Smashington Post.|The Smashington Post.|The Smashington Post.
+Neuigkeiten, Aktionen und besondere Missionen von Planet Smashburger direkt ins Postfach.|News, offers and special Planet Smashburger missions straight to your inbox.|Planet Smashburger'dan haberler, kampanyalar ve özel görevler doğrudan e-posta kutuna gelsin.|أخبار وعروض ومهام خاصة من Planet Smashburger مباشرة إلى بريدك الإلكتروني.|Noticias, promociones y misiones especiales de Planet Smashburger directamente en tu correo.|Nûçe, kampanya û mîsyonên taybet ên Planet Smashburger rasterast di e-nameya te de.
+E-MAIL-ADRESSE|EMAIL ADDRESS|E-POSTA ADRESİ|عنوان البريد الإلكتروني|CORREO ELECTRÓNICO|NAVNÎŞANA E-NAMEYÊ
+deine@email.de|your@email.com|senin@email.com|you@example.com|tu@email.com|e-nameya@te.com
+Ich möchte The Smashington Post per E-Mail erhalten. Ich kann meine Einwilligung jederzeit über den Abmeldelink im Newsletter widerrufen. Mehr dazu im|I would like to receive The Smashington Post by email. I can withdraw my consent at any time using the unsubscribe link in the newsletter. More in the|The Smashington Post'u e-posta ile almak istiyorum. Onayımı bültendeki abonelikten çıkma bağlantısıyla istediğim zaman geri çekebilirim. Daha fazla bilgi:|أرغب في تلقي The Smashington Post عبر البريد الإلكتروني. يمكنني سحب موافقتي في أي وقت عبر رابط إلغاء الاشتراك في الرسالة. المزيد في|Quiero recibir The Smashington Post por correo electrónico. Puedo retirar mi consentimiento en cualquier momento mediante el enlace de baja del boletín. Más información en|Ez dixwazim The Smashington Post bi e-nameyê bistînim. Ez dikarim razîbûna xwe her dem bi girêdana betal-kirinê ya di newsletterê de paş vegerînim. Zêdetir di
+THE SMASHINGTON POST ABONNIEREN ↗|SUBSCRIBE TO THE SMASHINGTON POST ↗|THE SMASHINGTON POST'A ABONE OL ↗|اشترك في THE SMASHINGTON POST ↗|SUSCRIBIRME A THE SMASHINGTON POST ↗|ABONEYA THE SMASHINGTON POST BIBE ↗
+Nach der Anmeldung schicken wir dir eine Bestätigungs-Mail. Erst nach deinem Klick darauf bist du eingetragen.|After signing up, we will send you a confirmation email. You are subscribed only after clicking the confirmation link.|Kayıttan sonra sana bir doğrulama e-postası göndeririz. Ancak doğrulama bağlantısına tıkladıktan sonra abone olursun.|بعد التسجيل سنرسل لك رسالة تأكيد. لن يتم اشتراكك إلا بعد الضغط على رابط التأكيد.|Tras registrarte te enviaremos un correo de confirmación. Solo quedarás suscrito después de pulsar el enlace.|Piştî qeydê em e-nameyek piştrastkirinê dişînin. Tenê piştî ku tu li girêdanê bikî tu tê qeydkirin.
+Bitte gib deine E-Mail-Adresse ein.|Please enter your email address.|Lütfen e-posta adresini gir.|يرجى إدخال بريدك الإلكتروني.|Introduce tu correo electrónico.|Ji kerema xwe navnîşana e-nameyê binivîse.
+Bitte bestätige die Newsletter-Einwilligung.|Please confirm your newsletter consent.|Lütfen bülten onayını kabul et.|يرجى تأكيد موافقتك على النشرة.|Confirma tu consentimiento para el boletín.|Ji kerema xwe razîbûna newsletterê piştrast bike.
+Fast geschafft: Bitte öffne jetzt die Bestätigungs-Mail und klicke auf den Link.|Almost done: please open the confirmation email and click the link.|Neredeyse tamam: doğrulama e-postasını açıp bağlantıya tıkla.|أوشكت على الانتهاء: افتح رسالة التأكيد واضغط على الرابط.|Casi listo: abre el correo de confirmación y pulsa el enlace.|Hema qediya: e-nameya piştrastkirinê veke û li girêdanê bike.
+Die Anmeldung konnte gerade nicht gesendet werden. Bitte versuche es später noch einmal.|The signup could not be sent right now. Please try again later.|Kayıt şu anda gönderilemedi. Lütfen daha sonra tekrar dene.|تعذر إرسال التسجيل الآن. حاول مرة أخرى لاحقًا.|No se ha podido enviar el registro. Inténtalo de nuevo más tarde.|Qeyd niha nehat şandin. Ji kerema xwe paşê dîsa biceribîne.
+`;
+
+italianRows += `
+08 / NACHRICHTEN AUS DEM ORBIT|08 / NOTIZIE DALL'ORBITA
+The Smashington Post.|The Smashington Post.
+Neuigkeiten, Aktionen und besondere Missionen von Planet Smashburger direkt ins Postfach.|Novità, promozioni e missioni speciali di Planet Smashburger direttamente nella tua casella email.
+E-MAIL-ADRESSE|INDIRIZZO EMAIL
+deine@email.de|tua@email.it
+Ich möchte The Smashington Post per E-Mail erhalten. Ich kann meine Einwilligung jederzeit über den Abmeldelink im Newsletter widerrufen. Mehr dazu im|Desidero ricevere The Smashington Post via email. Posso revocare il consenso in qualsiasi momento tramite il link di disiscrizione nella newsletter. Maggiori informazioni nella
+THE SMASHINGTON POST ABONNIEREN ↗|ISCRIVITI A THE SMASHINGTON POST ↗
+Nach der Anmeldung schicken wir dir eine Bestätigungs-Mail. Erst nach deinem Klick darauf bist du eingetragen.|Dopo l'iscrizione ti invieremo un'email di conferma. Sarai iscritto solo dopo aver cliccato sul link.
+Bitte gib deine E-Mail-Adresse ein.|Inserisci il tuo indirizzo email.
+Bitte bestätige die Newsletter-Einwilligung.|Conferma il consenso alla newsletter.
+Fast geschafft: Bitte öffne jetzt die Bestätigungs-Mail und klicke auf den Link.|Ci siamo quasi: apri l'email di conferma e clicca sul link.
+Die Anmeldung konnte gerade nicht gesendet werden. Bitte versuche es später noch einmal.|Non è stato possibile inviare l'iscrizione. Riprova più tardi.
+`;
+
 const baseTranslations = Object.fromEntries(['en','tr','ar','es','ku'].map((lang, i) => [lang, Object.fromEntries(translationRows.trim().split('\n').filter(Boolean).map(row => { const parts = row.split('|'); return [parts[0], parts[i + 1]]; }))]));
 baseTranslations.it = Object.fromEntries(italianRows.trim().split('\n').filter(Boolean).map(row => { const parts = row.split('|'); return [parts[0], parts[1]]; }));
 window.PSB_TRANSLATIONS = baseTranslations;
