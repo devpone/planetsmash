@@ -52,6 +52,7 @@
   let touchPointerId = null;
   let touchDriving = false;
   let lastBombPointerAt = 0;
+  let mouseDriving = false;
 
   const player = {x:WIDTH/2,y:HEIGHT-96,w:92,h:92,speed:470};
 
@@ -71,6 +72,7 @@
     invulnerableUntil = 0;
     touchPointerId = null;
     touchDriving = false;
+    mouseDriving = false;
     keys.fire = false;
     bombBtn.disabled = false;
     bombCountEl.textContent = '×1';
@@ -94,6 +96,7 @@
   function endGame(){
     touchPointerId = null;
     touchDriving = false;
+    mouseDriving = false;
     keys.fire = false;
     state = 'gameover';
     statusEl.textContent = 'MISSION BEENDET';
@@ -190,7 +193,7 @@
   function update(dt){
     const dir=(keys.left?-1:0)+(keys.right?1:0);
     player.x=clamp(player.x+dir*player.speed*dt,player.w/2+8,WIDTH-player.w/2-8);
-    if(keys.fire) shoot();
+    if(keys.fire || mouseDriving) shoot();
 
     shots.forEach(s=>s.y+=s.vy*dt);
     shots=shots.filter(s=>s.y>-50);
@@ -529,6 +532,11 @@
     player.x = clamp(point.x, player.w/2 + 8, WIDTH - player.w/2 - 8);
   }
 
+  function movePlayerToMouse(event){
+    const point = canvasPoint(event);
+    player.x = clamp(point.x, player.w/2 + 8, WIDTH - player.w/2 - 8);
+  }
+
   function setHeld(button,key){
     const down=e=>{e.preventDefault();keys[key]=true;if(key==='fire')shoot();};
     const up=e=>{e.preventDefault();keys[key]=false;};
@@ -540,8 +548,8 @@
 
   root.addEventListener('keydown',e=>{
     if(e.target.matches('input,textarea,button')) return;
-    if(e.code==='ArrowLeft'||e.code==='KeyA'){keys.left=true;e.preventDefault();}
-    if(e.code==='ArrowRight'||e.code==='KeyD'){keys.right=true;e.preventDefault();}
+    if(e.code==='ArrowLeft'||e.code==='KeyA'){mouseDriving=false;keys.left=true;e.preventDefault();}
+    if(e.code==='ArrowRight'||e.code==='KeyD'){mouseDriving=false;keys.right=true;e.preventDefault();}
     if(e.code==='Space'){keys.fire=true;shoot();e.preventDefault();}
   });
   root.addEventListener('keyup',e=>{
@@ -564,7 +572,10 @@
   });
   canvas.addEventListener('pointerdown',e=>{
     if(e.pointerType==='mouse' && e.button===0){
+      if(state!=='running') return;
       e.preventDefault();
+      mouseDriving = true;
+      movePlayerToMouse(e);
       shoot();
       root.focus({preventScroll:true});
       return;
@@ -586,6 +597,13 @@
   });
 
   canvas.addEventListener('pointermove',e=>{
+    if(e.pointerType==='mouse'){
+      if(mouseDriving && state==='running'){
+        movePlayerToMouse(e);
+      }
+      return;
+    }
+
     if(!touchDriving || e.pointerId!==touchPointerId) return;
     e.preventDefault();
     movePlayerToTouch(e);
@@ -627,6 +645,7 @@
   document.addEventListener('visibilitychange',()=>{
     if(document.hidden && state==='running'){
       state='paused';
+      mouseDriving=false;
       cancelAnimationFrame(raf);
       overlayKicker.textContent='MISSION PAUSIERT';
       overlayTitle.textContent='KURZE FUNKSTILLE';
