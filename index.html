@@ -1,4 +1,4 @@
-<!doctype html><html lang="de"><head><link rel="icon" type="image/webp" sizes="1024x1024" href="assets/logo.webp?v=20260928"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#10091b"><title>Planet Smashburger · Nice to meat you · Solingen</title><meta name="description" content="Dein Burger-Planet in Solingen-Aufderhöhe. Entdecke Smashburger, Pommes und Saucen, unsere Speisekarte, Öffnungszeiten und deinen Weg zu uns."><link rel="stylesheet" href="styles.css"><link rel="stylesheet" href="cart.css"><link rel="stylesheet" href="funksprueche.css"><link rel="stylesheet" href="game.css?v=20260928-2"><script src="translations.js" defer></script><script src="i18n.js" defer></script><script src="app.js?v=20260927-2" defer></script><script src="cart.js?v=20260924-6" defer></script><script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script><script src="funksprueche.js?v=20260927-2" defer></script><script src="game.js?v=20260928-4" defer></script></head><body>
+<!doctype html><html lang="de"><head><link rel="icon" type="image/webp" sizes="1024x1024" href="assets/logo.webp?v=20260928"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#10091b"><title>Planet Smashburger · Nice to meat you · Solingen</title><meta name="description" content="Dein Burger-Planet in Solingen-Aufderhöhe. Entdecke Smashburger, Pommes und Saucen, unsere Speisekarte, Öffnungszeiten und deinen Weg zu uns."><link rel="stylesheet" href="styles.css"><link rel="stylesheet" href="cart.css"><link rel="stylesheet" href="funksprueche.css"><link rel="stylesheet" href="game.css?v=20260928-2"><link rel="stylesheet" href="survey.css?v=20260928"><script src="translations.js" defer></script><script src="i18n.js" defer></script><script src="app.js?v=20260927-2" defer></script><script src="cart.js?v=20260924-6" defer></script><script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script><script src="funksprueche.js?v=20260927-2" defer></script><script src="game.js?v=20260928-4" defer></script><script src="survey.js?v=20260928" defer></script></head><body>
 <a class="skip" href="#main">Zum Inhalt</a><header class="header wrap"><a class="brand" href="#" aria-label="Planet Smashburger Startseite"><img class="original-logo" src="assets/logo.webp" width="1024" height="1024" alt="Planet Smash Burger – Original-Logo mit Alien im UFO"></a><nav aria-label="Hauptnavigation"><a href="#speisekarte">Speisekarte</a><a href="#besuch">Öffnungszeiten & Standort</a><a href="ueber-uns.html">Über uns</a></nav><span class="header-call" data-call><span class="call-closed">Anrufe während der Öffnungszeiten</span></span><a class="button small" href="https://www.google.com/maps/dir/?api=1&destination=Nu%C3%9Fbaumstr.%201%2C%2042699%20Solingen" target="_blank" rel="noopener noreferrer">Route planen ↗</a></header>
 <main id="main"><section class="hero"><div class="hero-art"><img src="assets/hero.webp" width="1672" height="941" alt="Smashburger vor einem violett leuchtenden Planeten" fetchpriority="high"></div><div class="hero-copy wrap"><p class="eyebrow">SOLINGEN-AUFDERHÖHE <span> / </span> PLANET SMASHBURGER</p><h1>NICE TO<br><em>MEAT YOU.</em></h1><p class="intro">Auf diesem Planeten bist du willkommen.</p><div class="hero-buttons"><span data-call><span class="call-closed">Anrufe während der Öffnungszeiten</span></span><a class="button secondary" href="#speisekarte">Speisekarte <span>↓</span></a></div></div><div class="hero-bottom wrap"><span>SMASHBURGER. POMMES. SAUCEN.</span><span>51° N · SOLINGEN ↗</span></div></section>
 <div class="ticker" style="display:flex;justify-content:center;align-items:center;gap:10px;word-spacing:normal;white-space:nowrap">NICE TO <strong style="display:inline-block;background:#160d22;color:#f7edff;padding:5px 10px;border-radius:4px;font-size:1.2em;letter-spacing:2px">MEAT</strong> YOU</div>
@@ -225,4 +225,37 @@
     </div>
   </div>
 </section>
-</main><footer class="wrap"><a class="brand" href="#"><img class="original-logo" src="assets/logo.webp" width="1024" height="1024" alt="Planet Smash Burger – Original-Logo mit Alien im UFO"></a><p>Nice to meat you.<br>Solingen-Aufderhöhe</p><nav aria-label="Weitere Informationen"><a href="ueber-uns.html">Über uns</a> · <a href="impressum.html">Impressum</a> · <a href="datenschutz.html">Datenschutz</a></nav><a href="#main">Zurück nach oben ↑</a></footer><nav class="mobile-actions" aria-label="Schnellzugriff"><span data-call><span class="call-closed">Anrufe während der Öffnungszeiten</span></span><a href="https://www.google.com/maps/dir/?api=1&destination=Nu%C3%9Fbaumstr.%201%2C%2042699%20Solingen" target="_blank" rel="noopener noreferrer">Route planen ↗</a></nav></body></html>
+</main>
+
+<aside class="menu-survey" data-menu-survey hidden role="dialog" aria-label="Kurze Frage zur Speisekarte">
+  <div class="menu-survey-inner">
+    <button class="menu-survey-close" type="button" data-survey-close aria-label="Umfrage schließen">×</button>
+
+    <div data-survey-question>
+      <p class="menu-survey-kicker">🛸 KURZE FRAGE AUS DEM KONTROLLZENTRUM</p>
+      <h3>Fehlt dir noch etwas auf unserer Karte?</h3>
+      <p>Nur ein kurzer Klick. Wenn dir etwas fehlt, kannst du uns direkt sagen, was.</p>
+
+      <div class="menu-survey-actions">
+        <button class="menu-survey-choice primary" type="button" data-survey-yes aria-pressed="false">JA, MIR FEHLT WAS</button>
+        <button class="menu-survey-choice" type="button" data-survey-no>NEIN, PASST SO</button>
+      </div>
+    </div>
+
+    <div class="menu-survey-detail" data-survey-detail hidden>
+      <label for="menu-survey-answer">Was würdest du gern bei Planet Smashburger sehen?</label>
+      <textarea id="menu-survey-answer" data-survey-answer maxlength="240" placeholder="Zum Beispiel ein bestimmter Burger, eine Beilage, ein Dessert oder etwas ganz anderes."></textarea>
+      <p class="menu-survey-meta"><span>Bitte keine persönlichen Daten.</span><span><b data-survey-count>0</b>/240</span></p>
+      <button class="menu-survey-submit" type="button" data-survey-submit>IDEE ABSENDEN ↗</button>
+      <p class="menu-survey-status" data-survey-status role="status" aria-live="polite"></p>
+    </div>
+
+    <div class="menu-survey-thanks" data-survey-thanks hidden>
+      <p class="menu-survey-kicker">SIGNAL EMPFANGEN</p>
+      <strong>Danke für dein Feedback.</strong>
+      <p>Deine Antwort ist im Kontrollzentrum gelandet.</p>
+    </div>
+  </div>
+</aside>
+
+<footer class="wrap"><a class="brand" href="#"><img class="original-logo" src="assets/logo.webp" width="1024" height="1024" alt="Planet Smash Burger – Original-Logo mit Alien im UFO"></a><p>Nice to meat you.<br>Solingen-Aufderhöhe</p><nav aria-label="Weitere Informationen"><a href="ueber-uns.html">Über uns</a> · <a href="impressum.html">Impressum</a> · <a href="datenschutz.html">Datenschutz</a></nav><a href="#main">Zurück nach oben ↑</a></footer><nav class="mobile-actions" aria-label="Schnellzugriff"><span data-call><span class="call-closed">Anrufe während der Öffnungszeiten</span></span><a href="https://www.google.com/maps/dir/?api=1&destination=Nu%C3%9Fbaumstr.%201%2C%2042699%20Solingen" target="_blank" rel="noopener noreferrer">Route planen ↗</a></nav></body></html>
