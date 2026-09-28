@@ -93,6 +93,18 @@
     closeButton(chooser);
     const name = row.querySelector('h3').dataset.sourceName || row.querySelector('h3').textContent.trim();
     const isBurger = row.closest('details') === menu.querySelector('details');
+    const removalsByItem = {
+      'Classic Cheese': ['Käsesauce','Tomate','Salat','Essiggurken','Geschmorte Zwiebeln','Area 51'],
+      'Chili Cheese': ['Milde Chilischoten','Geschmorte Zwiebeln','Salat','Tomate','Käsesauce scharf','Area 51'],
+      'Bacon BBQ': ['Bacon','Käsesauce','Tomate','Salat','Essiggurken','Geschmorte Zwiebeln','Roswell BBQ'],
+      'Galactic Potato': ['Crunchy Kartoffeln','Käsesauce','Bacon','Salat','Essiggurken','Planet Mac'],
+      'Con Carne': ['Chili con Carne','Essiggurken','Tomate','Röstzwiebeln','Käsesauce','Area 51'],
+      'Planet Mac': ['Käsesauce','Tomate','Salat','Essiggurken','Geschmorte Zwiebeln','Planet Mac'],
+      'Bacon & Egg': ['Bacon','Käsesauce','Tomate','Essiggurken','Spiegelei','Roswell BBQ'],
+      'Chili con Carne Pommes': ['Chili con Carne','Käsesauce','Geschmorte Zwiebeln'],
+      'Smashpommes': ['Hackfleisch','Geschmorte Zwiebeln','Käsesauce'],
+      'Pommes Currywurst Mayo': ['Currywurst','Mayonnaise']
+    };
     const burgerExtrasByItem = {
       'Classic Cheese': [['Jalapeños',100],['Extra Bacon',150],['Spiegelei',150],['Geschmorte Zwiebeln gegen Röstzwiebeln tauschen',0]],
       'Chili Cheese': [['Jalapeños',100],['Extra Bacon',150],['Spiegelei',150],['Geschmorte Zwiebeln gegen Röstzwiebeln tauschen',0]],
@@ -111,6 +123,7 @@
       'Currywurst': [['Jalapeños',150],['Geschmorte Zwiebeln',150],['Röstzwiebeln',150],['Käsesauce',150],['Käsesauce scharf',150]],
       'Chili Cheese Nuggetz': [['Käsesauce',150],['Käsesauce scharf',150]]
     };
+    const removalChoices = removalsByItem[name] || [];
     const burgerExtraChoices = burgerExtrasByItem[name] || [];
     const foodExtraChoices = foodExtrasByItem[name] || [];
     const form = document.createElement('form');
@@ -131,6 +144,7 @@
     let menuToggle, menuFries, sauce, drink, veggie, patty;
     const burgerExtras = [];
     const friesExtras = [];
+    const removals = [];
     if (isBurger) {
       const menuLabel = addText(form, 'label', '', 'order-check');
       menuToggle = document.createElement('input');
@@ -157,6 +171,16 @@
             : count + ' extra (+ ' + money(count * 300) + ')';
         }
       });
+      if (removalChoices.length) {
+        const removeBox = addText(form, 'div', 'Weglassen', 'order-field');
+        for (const ingredient of removalChoices) {
+          const removeLabel = addText(removeBox, 'label', '', 'order-check');
+          const removeInput = document.createElement('input');
+          removeInput.type = 'checkbox';
+          removeLabel.append(removeInput, document.createTextNode(' Ohne ' + ingredient));
+          removals.push({name: ingredient, input: removeInput});
+        }
+      }
       if (burgerExtraChoices.length) {
         const extrasBox = addText(form, 'div', 'Extras für deinen Burger', 'order-field');
         for (const [extraName, extraPrice] of burgerExtraChoices) {
@@ -168,6 +192,16 @@
         }
       }
     }
+    if (!isBurger && removalChoices.length) {
+      const removeBox = addText(form, 'div', 'Weglassen', 'order-field');
+      for (const ingredient of removalChoices) {
+        const removeLabel = addText(removeBox, 'label', '', 'order-check');
+        const removeInput = document.createElement('input');
+        removeInput.type = 'checkbox';
+        removeLabel.append(removeInput, document.createTextNode(' Ohne ' + ingredient));
+        removals.push({name: ingredient, input: removeInput});
+      }
+    }
     if (foodExtraChoices.length) {
       const extrasBox = addText(form, 'div', name.includes('Pommes') ? 'Extras für deine Pommes' : 'Passende Extras', 'order-field');
       for (const [extraName, extraPrice] of foodExtraChoices) {
@@ -177,6 +211,20 @@
         extraLabel.append(extraInput, document.createTextNode(' ' + extraName + ' (+ ' + money(extraPrice) + ')'));
         friesExtras.push({name: extraName, price: extraPrice, input: extraInput});
       }
+    }
+    const ingredientKey = value => String(value)
+      .replace(/^Extra /, '')
+      .replace(/^Geschmorte Zwiebeln gegen Röstzwiebeln tauschen$/, 'Geschmorte Zwiebeln')
+      .toLowerCase();
+    const allExtras = [...burgerExtras, ...friesExtras];
+    for (const removal of removals) {
+      const conflicts = allExtras.filter(extra => ingredientKey(extra.name) === ingredientKey(removal.name));
+      removal.input.addEventListener('change', () => {
+        if (removal.input.checked) conflicts.forEach(extra => { extra.input.checked = false; });
+      });
+      conflicts.forEach(extra => extra.input.addEventListener('change', () => {
+        if (extra.input.checked) removal.input.checked = false;
+      }));
     }
     const noteLabel = addText(form, 'label', 'Wünsche für diesen Artikel (optional)', 'order-field');
     const note = document.createElement('input');
@@ -202,6 +250,9 @@
       }
       if (veggie?.checked) { cents += (1 + patty.selectedIndex) * 100; details.push('Veggie-Patty'); }
       if (patty && patty.selectedIndex) { cents += patty.selectedIndex * 300; details.push(patty.selectedIndex + (veggie?.checked ? (patty.selectedIndex === 1 ? ' extra Veggie-Patty' : ' extra Veggie-Patties') : ' extra Patty')); }
+      for (const removal of removals) {
+        if (removal.input.checked) details.push('Ohne ' + removal.name);
+      }
       for (const extra of burgerExtras) {
         if (extra.input.checked) { cents += extra.price; details.push(extra.name); }
       }
