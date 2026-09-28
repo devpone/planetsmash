@@ -818,4 +818,107 @@ Softgetränke sind in Dosen. 0,25 € Pfand je Getränk sind in der Zwischensumm
 Wichtig: Eine WhatsApp-Nachricht ist noch keine angenommene Bestellung. Deine Bestellung gilt erst, wenn wir sie ausdrücklich bestätigen. Falls du keine Antwort bekommst, ruf bitte an.|Importante: un messaggio WhatsApp non è ancora un ordine accettato. L'ordine è valido solo dopo una nostra conferma esplicita. Se non ricevi risposta, chiama.
 `;
 
+
+italianRows += `
+Per WhatsApp anfragen ↗|Richiedi via WhatsApp ↗
+Jetzt anrufen ↗|Chiama ora ↗
+Liste kopieren|Copia lista
+Liste kopiert ✓|Lista copiata ✓
+Kopieren nicht möglich|Impossibile copiare
+Beim Anrufen öffnet dein Handy die Telefon-App. Die Liste bleibt hier erhalten.|Quando chiami, il telefono apre l'app Telefono. La lista rimane qui.
+inkl. 0,25 € Pfand|incl. 0,25 € di cauzione
+Veggie-Patty|Patty vegetariano
+extra Patty|patty extra
+extra Veggie-Patty|patty vegetariano extra
+extra Veggie-Patties|patty vegetariani extra
+Menü mit Pommes|Menu con patatine
+Hallo Planet Smashburger, ich möchte Folgendes zur Abholung anfragen:|Ciao Planet Smashburger, vorrei richiedere quanto segue per il ritiro:
+(inkl. 0,25 € Pfand je Getränk)|(incl. 0,25 € di cauzione per bevanda)
+Bitte bestätigt mir Bestellung, Endpreis und Abholzeit. Mir ist klar, dass die Anfrage ohne eure Antwort noch keine angenommene Bestellung ist.|Per favore confermatemi ordine, prezzo finale e orario di ritiro. So che la richiesta non è ancora un ordine accettato senza una vostra risposta.
+weniger|meno
+mehr|più
+Heute ab {h} Uhr geöffnet|Aperto oggi dalle {h}
+Jetzt geöffnet · bis {h} Uhr|Aperto ora · fino alle {h}
+Heute Ruhetag · {day} ab {h} Uhr|Oggi chiuso · {day} dalle {h}
+Jetzt geschlossen · {day} ab {h} Uhr|Chiuso ora · {day} dalle {h}
+morgen|domani
+Dienstag|Martedì
+Mittwoch|Mercoledì
+Donnerstag|Giovedì
+Freitag|Venerdì
+Samstag|Sabato
+Öffnet in|Apre tra
+Schließt in|Chiude tra
+BASE OPEN // LANDUNG FREI|BASE APERTA // ATTERRAGGIO LIBERO
+BASE OFFLINE // CREW RECHARGING|BASE OFFLINE // EQUIPAGGIO IN RICARICA
+BASE CLOSED // NEXT LAUNCH PENDING|BASE CHIUSA // PROSSIMO LANCIO IN ATTESA
+UNBEKANNTES OBJEKT ERFASST|OGGETTO SCONOSCIUTO RILEVATO
+LEBENSFORM ERKANNT|FORMA DI VITA RILEVATA
+HUNGERLEVEL: KRITISCH|LIVELLO FAME: CRITICO
+LANDERLAUBNIS ERTEILT|AUTORIZZAZIONE ALL'ATTERRAGGIO CONCESSA
+Nächste Nachricht ↗|Messaggio successivo ↗
+SIGNAL GESTÖRT|SEGNALE DISTURBATO
+Die Bodenstation antwortet gerade nicht. Versuch es beim nächsten Vorbeiflug nochmal.|La stazione di terra non risponde al momento. Riprova al prossimo passaggio.
+KRITISCH: Bacon hat die Erdanziehung verlassen.|CRITICO: il bacon ha lasciato la gravità terrestre.
+Extrem starke Burger-Gravitation erkannt.|Rilevata una gravità burger estremamente forte.
+Smash-Feld stabil. Pommes werden angezogen.|Campo smash stabile. Le patatine vengono attirate.
+Hohe Anziehungskraft. Widerstand zwecklos.|Forte attrazione. Resistere è inutile.
+Die Wahrheit ist da draußen. Der Bacon ist hier.|La verità è là fuori. Il bacon è qui.
+Keine intelligenten Lebensformen gefunden. Aber gute Burger.|Nessuna forma di vita intelligente trovata. Ma ottimi burger.
+Mission aktualisiert: Pommes bestellen.|Missione aggiornata: ordinare patatine.
+Roswell meldet: Käsesauce kritisch niedrig.|Roswell segnala: salsa al formaggio a livello critico.
+Area 51 bestätigt: Extra Bacon ist kein Zufall.|Area 51 conferma: il bacon extra non è una coincidenza.
+Unbekanntes Flugobjekt gesichtet. Es riecht verdächtig nach BBQ.|Avvistato oggetto volante non identificato. Sa sospettosamente di BBQ.
+Die Aliens kommen in Frieden. Und wegen der Pommes.|Gli alieni vengono in pace. E per le patatine.
+Geheime Satellitendaten zeigen: Hunger nimmt exponentiell zu.|Dati satellitari segreti mostrano: la fame aumenta esponenzialmente.
+Du hast Clearance Level 51 erreicht. Offiziell ist das nie passiert.|Hai raggiunto il livello di autorizzazione 51. Ufficialmente non è mai successo.
+Geheime Akte geöffnet: Der Bacon-Vorrat ist größer als öffentlich bekannt.|Dossier segreto aperto: le scorte di bacon sono maggiori di quanto dichiarato pubblicamente.
+Das Alien im Logo grüßt dich. Es behauptet, du wärst bereit.|L'alieno nel logo ti saluta. Dice che sei pronto.
+Projekt NICE TO MEAT YOU: Testperson reagiert erwartungsgemäß mit Hunger.|Progetto NICE TO MEAT YOU: il soggetto reagisce come previsto con fame.
+Sicherheitsprotokoll umgangen. Belohnung: imaginärer Extra-Bacon.|Protocollo di sicurezza aggirato. Ricompensa: bacon extra immaginario.
+Du kennst jetzt zu viel. Bestell einen Burger und wir vergessen die Sache.|Ora sai troppo. Ordina un burger e dimenticheremo tutto.
+AREA 51 INTERN: Die Käsesauce wurde nicht auf diesem Planeten entwickelt.|AREA 51 INTERNO: la salsa al formaggio non è stata sviluppata su questo pianeta.
+Zugriff gewährt. Die Wahrheit: Niemand braucht wirklich nur eine Sauce.|Accesso concesso. La verità: nessuno ha davvero bisogno di una sola salsa.
+Dein Burger-Planet in Solingen-Aufderhöhe. Entdecke Smashburger, Pommes und Saucen, unsere Speisekarte, Öffnungszeiten und deinen Weg zu uns.|Il tuo pianeta dei burger a Solingen-Aufderhöhe. Scopri smashburger, patatine e salse, il nostro menu, gli orari e come raggiungerci.
+Planet Smash Burger – Original-Logo mit Alien im UFO|Planet Smash Burger – logo originale con alieno nell'UFO
+Smashburger vor einem violett leuchtenden Planeten|Smashburger davanti a un pianeta viola luminoso
+Smashburger mit heller Sauce, Käse und Tomate vor einem violetten Planeten|Smashburger con salsa chiara, formaggio e pomodoro davanti a un pianeta viola
+Pommes mit Chili-con-Carne- und Käsetopping|Patatine con chili con carne e topping al formaggio
+Planet-Smashburger-Foodtruck mit Sitzplätzen am Abend in Solingen|Foodtruck Planet Smashburger con posti a sedere la sera a Solingen
+SMASHBURGER. POMMES. SAUCEN.|SMASHBURGER. PATATINE. SALSE.
+01 / SMASHBURGER|01 / SMASHBURGER
+02 / LOADED POMMES|02 / LOADED FRIES
+Schnellzugriff|Accesso rapido
+05 / PLANET CONTROL STATION|05 / PLANET CONTROL STATION
+Planet Smashburger.|Planet Smashburger.
+PLANET CONTROL STATION // STANDBY|PLANET CONTROL STATION // STANDBY
+🛸 SEKTOR 51 // AKTIV|🛸 SETTORE 51 // ATTIVO
+AREA 51 TRANSMISSION|TRASMISSIONE AREA 51
+ACCESS GRANTED|ACCESSO CONSENTITO
+PLANET SMASHBURGER // SOLINGEN-AUFDERHÖHE|PLANET SMASHBURGER // SOLINGEN-AUFDERHÖHE
+Schon {n} Erdlinge auf diesem Planeten gelandet. Du bist Erdling #{id}.|Sono già atterrati {n} terrestri su questo pianeta. Tu sei il terrestre #{id}.
+Kurze Frage zur Speisekarte|Domanda veloce sul menu
+Umfrage schließen|Chiudi sondaggio
+🛸 KURZE FRAGE AUS DEM KONTROLLZENTRUM|🛸 DOMANDA VELOCE DAL CENTRO DI CONTROLLO
+Fehlt dir noch etwas auf unserer Karte?|Ti manca ancora qualcosa nel nostro menu?
+Nur ein kurzer Klick. Wenn dir etwas fehlt, kannst du uns direkt sagen, was.|Solo un clic. Se ti manca qualcosa, puoi dircelo direttamente.
+JA, MIR FEHLT WAS|SÌ, MI MANCA QUALCOSA
+NEIN, PASST SO|NO, VA BENE COSÌ
+Was würdest du gern bei Planet Smashburger sehen?|Cosa vorresti vedere da Planet Smashburger?
+Zum Beispiel ein bestimmter Burger, eine Beilage, ein Dessert oder etwas ganz anderes.|Per esempio un burger specifico, un contorno, un dessert o qualcosa di completamente diverso.
+Bitte keine persönlichen Daten.|Non inserire dati personali.
+IDEE ABSENDEN ↗|INVIA IDEA ↗
+Antwort wird gesendet …|Invio della risposta…
+Die Übermittlung ist gerade nicht erreichbar. Die Umfrage wird für heute ausgeblendet.|L'invio non è disponibile al momento. Il sondaggio verrà nascosto per oggi.
+Schreib kurz rein, was dir auf der Karte fehlt.|Scrivi brevemente cosa ti manca nel menu.
+Signal wird gesendet …|Invio del segnale…
+Die Übermittlung ist gerade nicht erreichbar. Versuch es bitte später noch einmal.|L'invio non è disponibile al momento. Riprova più tardi.
+SIGNAL EMPFANGEN|SEGNALE RICEVUTO
+Danke für dein Feedback.|Grazie per il tuo feedback.
+Deine Antwort ist im Kontrollzentrum gelandet.|La tua risposta è arrivata al centro di controllo.
+HANDY: Finger auf das Logo legen und nach links/rechts ziehen · solange du es festhältst, feuert es automatisch · die Bombe kann gleichzeitig mit einem zweiten Finger ausgelöst werden|SMARTPHONE: tieni il dito sul logo e trascina a sinistra/destra · finché lo tieni premuto spara automaticamente · la bomba può essere attivata contemporaneamente con un secondo dito
+PC: Linke Maustaste gedrückt halten = Maussteuerung + Dauerfeuer · loslassen = Feuer aus · rechte Maustaste = Bombe · alternativ ← → oder A / D|PC: tieni premuto il tasto sinistro = controllo con mouse + fuoco continuo · rilascia = stop al fuoco · tasto destro = bomba · in alternativa ← → o A / D
+ZURÜCK ZUR SPEISEKARTE ↓|TORNA AL MENU ↓
+`;
+
 window.PSB_TRANSLATIONS = Object.fromEntries(['en','tr','ar','es','ku'].map((lang, i) => [lang, Object.fromEntries(translationRows.trim().split('\n').filter(Boolean).map(row => { const parts = row.split('|'); return [parts[0], parts[i + 1]]; }))]));
