@@ -303,4 +303,27 @@ translationRows += `
 Schon {n} Erdlinge auf diesem Planeten gelandet. Du bist Erdling #{id}.|{n} Earthlings have landed here. You are Earthling #{id}.|Bu gezegene {n} dünyalı indi. Sen #{id} numaralı dünyalısın.|هبط على هذا الكوكب {n} من أهل الأرض. أنت الزائر رقم {id}.|Ya han aterrizado {n} terrícolas. Tú eres el terrícola n.º {id}.|{n} erdî li vir hatine. Tu erdî #{id} yî.
 `;
 
+
+translationRows += `
+Kurze Frage zur Speisekarte|Quick menu question|Menü hakkında kısa soru|سؤال قصير عن القائمة|Pregunta rápida sobre la carta|Pirsek kurt li ser lîsteyê
+Umfrage schließen|Close survey|Anketi kapat|إغلاق الاستبيان|Cerrar encuesta|Anketê bigire
+🛸 KURZE FRAGE AUS DEM KONTROLLZENTRUM|🛸 QUICK QUESTION FROM CONTROL|🛸 KONTROL MERKEZİNDEN KISA SORU|🛸 سؤال سريع من مركز التحكم|🛸 PREGUNTA RÁPIDA DESDE CONTROL|🛸 PIRSEK KURT JI NAVENDA KONTROLÊ
+Fehlt dir noch etwas auf unserer Karte?|Is anything missing from our menu?|Menümüzde eksik olan bir şey var mı?|هل ينقصك شيء في قائمتنا؟|¿Te falta algo en nuestra carta?|Ma tiştek di lîsteya me de kêm e?
+Nur ein kurzer Klick. Wenn dir etwas fehlt, kannst du uns direkt sagen, was.|Just one quick click. If something is missing, tell us what you would like to see.|Sadece kısa bir tıklama. Eksik bulduğun bir şey varsa bize doğrudan söyle.|نقرة سريعة فقط. إذا كان هناك شيء ينقصك، أخبرنا مباشرة بما ترغب فيه.|Solo un clic rápido. Si echas algo en falta, dinos directamente qué te gustaría ver.|Tenê klîkek kurt. Heke tiştek kêm e, rasterast ji me re bibêje tu çi dixwazî.
+JA, MIR FEHLT WAS|YES, I'M MISSING SOMETHING|EVET, BİR ŞEY EKSİK|نعم، ينقصني شيء|SÍ, ME FALTA ALGO|ERÊ, TIŞTEK KÊM E
+NEIN, PASST SO|NO, IT'S GOOD AS IT IS|HAYIR, BÖYLE İYİ|لا، هكذا مناسب|NO, ASÍ ESTÁ BIEN|NA, WISA BAŞ E
+Was würdest du gern bei Planet Smashburger sehen?|What would you like to see at Planet Smashburger?|Planet Smashburger'da ne görmek isterdin?|ماذا تود أن ترى لدى بلانيت سماشبرغر؟|¿Qué te gustaría ver en Planet Smashburger?|Tu dixwazî li Planet Smashburger çi bibînî?
+Zum Beispiel ein bestimmter Burger, eine Beilage, ein Dessert oder etwas ganz anderes.|For example a certain burger, a side, a dessert or something completely different.|Örneğin belirli bir burger, bir yan ürün, bir tatlı ya da bambaşka bir şey.|مثل برغر معين أو طبق جانبي أو حلوى أو شيء مختلف تمامًا.|Por ejemplo, una hamburguesa concreta, un acompañamiento, un postre o algo totalmente distinto.|Mînak burgerê taybet, xwarinek alî, şîranî an tiştekî din.
+Bitte keine persönlichen Daten.|Please do not enter personal information.|Lütfen kişisel bilgi yazmayın.|يرجى عدم إدخال بيانات شخصية.|No introduzcas datos personales.|Ji kerema xwe agahiyên kesane nenivîse.
+IDEE ABSENDEN ↗|SEND IDEA ↗|FİKRİ GÖNDER ↗|أرسل الفكرة ↗|ENVIAR IDEA ↗|RAMANÊ BIŞÎNE ↗
+Antwort wird gesendet …|Sending response …|Yanıt gönderiliyor …|جارٍ إرسال الإجابة…|Enviando respuesta…|Bersiv tê şandin …
+Die Übermittlung ist gerade nicht erreichbar. Die Umfrage wird für heute ausgeblendet.|Sending is currently unavailable. The survey will be hidden for today.|Gönderim şu anda kullanılamıyor. Anket bugün için gizlenecek.|الإرسال غير متاح حاليًا. سيتم إخفاء الاستبيان اليوم.|El envío no está disponible ahora. La encuesta se ocultará por hoy.|Şandin niha nekar e. Anket ji bo îro tê veşartin.
+Schreib kurz rein, was dir auf der Karte fehlt.|Tell us briefly what is missing from the menu.|Menüde neyin eksik olduğunu kısaca yaz.|اكتب باختصار ما الذي ينقصك في القائمة.|Cuéntanos brevemente qué echas en falta en la carta.|Bi kurtî binivîse di lîsteyê de çi kêm e.
+Signal wird gesendet …|Sending signal …|Sinyal gönderiliyor …|جارٍ إرسال الإشارة…|Enviando señal…|Sînyal tê şandin …
+Die Übermittlung ist gerade nicht erreichbar. Versuch es bitte später noch einmal.|Sending is currently unavailable. Please try again later.|Gönderim şu anda kullanılamıyor. Lütfen daha sonra tekrar dene.|الإرسال غير متاح حاليًا. حاول مرة أخرى لاحقًا.|El envío no está disponible ahora. Inténtalo de nuevo más tarde.|Şandin niha nekar e. Ji kerema xwe paşê dîsa biceribîne.
+SIGNAL EMPFANGEN|SIGNAL RECEIVED|SİNYAL ALINDI|تم استلام الإشارة|SEÑAL RECIBIDA|SÎNYAL HAT WERGIRTIN
+Danke für dein Feedback.|Thanks for your feedback.|Geri bildirimin için teşekkürler.|شكرًا على ملاحظتك.|Gracias por tu opinión.|Spas ji bo bersiva te.
+Deine Antwort ist im Kontrollzentrum gelandet.|Your response has reached control.|Yanıtın kontrol merkezine ulaştı.|وصلت إجابتك إلى مركز التحكم.|Tu respuesta ha llegado al centro de control.|Bersiva te gihîşt navenda kontrolê.
+`;
+
 window.PSB_TRANSLATIONS = Object.fromEntries(['en','tr','ar','es','ku'].map((lang, i) => [lang, Object.fromEntries(translationRows.trim().split('\n').filter(Boolean).map(row => { const parts = row.split('|'); return [parts[0], parts[i + 1]]; }))]));
