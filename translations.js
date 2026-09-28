@@ -463,4 +463,27 @@ Röstzwiebeln|Crispy onions|Çıtır soğan|بصل مقرمش|Cebolla crujiente|
 Geschmorte Zwiebeln gegen Röstzwiebeln tauschen|Swap caramelised onions for crispy onions|Kavrulmuş soğanı çıtır soğanla değiştir|استبدال البصل المطهو بالبصل المقرمش|Cambiar cebolla pochada por cebolla crujiente|Pîvazê sor bi pîvazê qijik biguherîne
 `;
 
+
+translationRows += `
+Weglassen|Remove ingredients|Çıkar|إزالة مكونات|Quitar ingredientes|Jê bibe
+Ohne Käsesauce|No cheese sauce|Peynir sosu olmasın|بدون صلصة جبن|Sin salsa de queso|Bê sosa penîr
+Ohne Tomate|No tomato|Domates olmasın|بدون طماطم|Sin tomate|Bê firengî
+Ohne Salat|No lettuce|Marul olmasın|بدون خس|Sin lechuga|Bê xas
+Ohne Essiggurken|No pickles|Turşu olmasın|بدون مخلل|Sin pepinillos|Bê turşî
+Ohne Geschmorte Zwiebeln|No caramelised onions|Kavrulmuş soğan olmasın|بدون بصل مطهو|Sin cebolla pochada|Bê pîvazê sor
+Ohne Area 51|No Area 51|Area 51 olmasın|بدون Area 51|Sin Area 51|Bê Area 51
+Ohne Milde Chilischoten|No mild chillies|Hafif acı biber olmasın|بدون فلفل حار خفيف|Sin chiles suaves|Bê bîberên tûj ên nerm
+Ohne Käsesauce scharf|No spicy cheese sauce|Acılı peynir sosu olmasın|بدون صلصة جبن حارة|Sin salsa de queso picante|Bê sosa penîr a tûj
+Ohne Bacon|No bacon|Bacon olmasın|بدون بيكون|Sin beicon|Bê bacon
+Ohne Roswell BBQ|No Roswell BBQ|Roswell BBQ olmasın|بدون Roswell BBQ|Sin Roswell BBQ|Bê Roswell BBQ
+Ohne Crunchy Kartoffeln|No crunchy potatoes|Çıtır patates olmasın|بدون بطاطس مقرمشة|Sin patatas crujientes|Bê kartolên qijik
+Ohne Planet Mac|No Planet Mac sauce|Planet Mac sosu olmasın|بدون صلصة Planet Mac|Sin salsa Planet Mac|Bê sosa Planet Mac
+Ohne Chili con Carne|No chili con carne|Chili con carne olmasın|بدون تشيلي كون كارني|Sin chili con carne|Bê chili con carne
+Ohne Röstzwiebeln|No crispy onions|Çıtır soğan olmasın|بدون بصل مقرمش|Sin cebolla crujiente|Bê pîvazê qijik
+Ohne Spiegelei|No fried egg|Sahanda yumurta olmasın|بدون بيضة مقلية|Sin huevo frito|Bê hêka sor
+Ohne Hackfleisch|No minced beef|Kıyma olmasın|بدون لحم مفروم|Sin carne picada|Bê goştê hûrkirî
+Ohne Currywurst|No currywurst|Currywurst olmasın|بدون كاري فورست|Sin currywurst|Bê currywurst
+Ohne Mayonnaise|No mayonnaise|Mayonez olmasın|بدون مايونيز|Sin mayonesa|Bê mayonez
+`;
+
 window.PSB_TRANSLATIONS = Object.fromEntries(['en','tr','ar','es','ku'].map((lang, i) => [lang, Object.fromEntries(translationRows.trim().split('\n').filter(Boolean).map(row => { const parts = row.split('|'); return [parts[0], parts[i + 1]]; }))]));
