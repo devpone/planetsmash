@@ -118,7 +118,7 @@
       'Süßkartoffelpommes': [['Jalapeños',150],['Extra Bacon',150],['Geschmorte Zwiebeln',150],['Röstzwiebeln',150],['Spiegelei',150],['Käsesauce',150],['Käsesauce scharf',150]],
       'Chili con Carne Pommes': [['Jalapeños',150],['Extra Bacon',150],['Röstzwiebeln',150],['Spiegelei',150],['Käsesauce',150],['Käsesauce scharf',150]],
       'Smashpommes': [['Jalapeños',150],['Extra Bacon',150],['Röstzwiebeln',150],['Spiegelei',150],['Käsesauce',150],['Käsesauce scharf',150]],
-      'Currywurst': [['Pommes',300],['Mayonnaise',100],['Ketchup',100]],
+      'Currywurst': [['Zweite Currywurst',390],['Pommes',300],['Doppelte Pommes',500],['Mayonnaise',100],['Ketchup',100]],
       'Chili Cheese Nuggetz': [['Käsesauce',150],['Käsesauce scharf',150]]
     };
     const removalChoices = removalsByItem[name] || [];
@@ -215,6 +215,14 @@
       .replace(/^Geschmorte Zwiebeln gegen Röstzwiebeln tauschen$/, 'Geschmorte Zwiebeln')
       .toLowerCase();
     const allExtras = [...burgerExtras, ...friesExtras];
+    if (name === 'Currywurst') {
+      const fries = friesExtras.find(extra => extra.name === 'Pommes');
+      const doubleFries = friesExtras.find(extra => extra.name === 'Doppelte Pommes');
+      if (fries && doubleFries) {
+        fries.input.addEventListener('change', () => { if (fries.input.checked) doubleFries.input.checked = false; });
+        doubleFries.input.addEventListener('change', () => { if (doubleFries.input.checked) fries.input.checked = false; });
+      }
+    }
     for (const removal of removals) {
       const conflicts = allExtras.filter(extra => ingredientKey(extra.name) === ingredientKey(removal.name));
       removal.input.addEventListener('change', () => {
