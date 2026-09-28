@@ -354,4 +354,24 @@ translationRows += `
 Globale Bestenliste · gespeichert werden maximal die Top 25.|Global leaderboard · only the top 25 are stored.|Global sıralama · yalnızca ilk 25 kaydedilir.|الترتيب العالمي · يتم حفظ أفضل 25 فقط.|Clasificación global · solo se guardan los 25 mejores.|Rêzbendiya global · tenê 25 yên herî baş tên tomarkirin.
 `;
 
+translationRows += `
+GOOGLE-BEWERTUNG|GOOGLE RATING|GOOGLE PUANI|تقييم GOOGLE|VALORACIÓN DE GOOGLE|NIRXANDINA GOOGLE
+`;
+
+translationRows += `
+STIMMEN VON DER ERDE|VOICES FROM EARTH|DÜNYADAN SESLER|أصوات من الأرض|VOCES DE LA TIERRA|DENGÊN JI ERDÊ
+`;
+
+translationRows += `
+Was Erdlinge über den Planeten sagen.|What Earthlings say about the planet.|Dünyalılar gezegen hakkında ne diyor.|ماذا يقول أهل الأرض عن الكوكب.|Lo que dicen los terrícolas del planeta.|Erdî li ser gerstêrkê çi dibêjin.
+`;
+
+translationRows += `
+Google-Bewertungen ansehen ↗|View Google reviews ↗|Google yorumlarını gör ↗|عرض تقييمات Google ↗|Ver reseñas de Google ↗|Nirxandinên Google bibîne ↗
+`;
+
+translationRows += `
+Google-Bewertung|Google review|Google yorumu|مراجعة Google|Reseña de Google|Nirxandina Google
+`;
+
 window.PSB_TRANSLATIONS = Object.fromEntries(['en','tr','ar','es','ku'].map((lang, i) => [lang, Object.fromEntries(translationRows.trim().split('\n').filter(Boolean).map(row => { const parts = row.split('|'); return [parts[0], parts[i + 1]]; }))]));
