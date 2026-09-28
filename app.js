@@ -96,6 +96,8 @@ function updateHeroOpeningCountdown(now = new Date()) {
   const box=document.querySelector('[data-hero-countdown]');
   if(!box) return;
 
+  const container=box.closest('.hero-opening');
+  if(container) container.hidden=countdown.open;
   box.hidden=countdown.open;
   if(countdown.open) return;
 
