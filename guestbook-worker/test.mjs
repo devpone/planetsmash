@@ -8,6 +8,7 @@ const db = new DatabaseSync(':memory:');
 db.exec(readFileSync(new URL('./migrations/0001_init.sql',import.meta.url),'utf8'));
 db.exec(readFileSync(new URL('./migrations/0002_visitors.sql',import.meta.url),'utf8'));
 db.exec(readFileSync(new URL('./migrations/0003_menu_feedback.sql',import.meta.url),'utf8'));
+db.exec(readFileSync(new URL('./migrations/0004_game_highscores.sql',import.meta.url),'utf8'));
 const env = {
   ALLOWED_ORIGIN:'https://planetsmashburger.de', SITE_HOSTNAME:'planetsmashburger.de',
   RATE_SECRET:'test-only-long-random-secret', ADMIN_TOKEN:'admin-test', TURNSTILE_SECRET:'test',
@@ -75,6 +76,35 @@ test('menu feedback survey availability, submissions, and admin readback',async 
   assert.equal(data.summary.missing_yes,1);
   assert.equal(data.summary.missing_no,1);
   assert.equal(data.responses[0].missing,0);
+});
+
+test('global game highscores store, deduplicate, and rank scores',async () => {
+  let response=await worker.fetch(request('/game/highscores'),env);
+  assert.equal(response.status,200);
+  assert.deepEqual((await response.json()).scores,[]);
+
+  response=await worker.fetch(request('/game/highscores','POST',{name:'Daniel',score:1200}),env);
+  assert.equal(response.status,201);
+  assert.equal((await response.json()).ok,true);
+
+  const legacyTime=new Date(Date.now()-60_000).toISOString();
+  response=await worker.fetch(request('/game/highscores','POST',{name:'Chip',score:1800,created_at:legacyTime}),env);
+  assert.equal(response.status,201);
+
+  response=await worker.fetch(request('/game/highscores','POST',{name:'Chip',score:1800,created_at:legacyTime}),env);
+  assert.equal(response.status,200);
+  assert.equal((await response.json()).duplicate,true);
+
+  response=await worker.fetch(request('/game/highscores'),env);
+  const data=await response.json();
+  assert.equal(data.scores.length,2);
+  assert.equal(data.scores[0].name,'Chip');
+  assert.equal(data.scores[0].score,1800);
+  assert.equal(data.scores[1].name,'Daniel');
+
+  assert.equal((await worker.fetch(request('/game/highscores','POST',{name:'Bad',score:125}),env)).status,400);
+  assert.equal((await worker.fetch(request('/game/highscores','POST',{name:'https://spam.example',score:100}),env)).status,400);
+  assert.equal((await worker.fetch(request('/game/highscores','POST',{name:'Wrong Origin',score:100},{Origin:'https://wrong.example'}),env)).status,403);
 });
 
 globalThis.fetch=originalFetch;
