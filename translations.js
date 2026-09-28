@@ -921,4 +921,99 @@ PC: Linke Maustaste gedrückt halten = Maussteuerung + Dauerfeuer · loslassen =
 ZURÜCK ZUR SPEISEKARTE ↓|TORNA AL MENU ↓
 `;
 
+
+italianRows += `
+TOP 25 ERDLINGE|TOP 25 TERRESTRI
+TOP 25 ANZEIGEN ↓|MOSTRA TOP 25 ↓
+TOP 10 ANZEIGEN ↑|MOSTRA TOP 10 ↑
+Globale Bestenliste · gespeichert werden maximal die Top 25.|Classifica globale · vengono salvati al massimo i migliori 25.
+GOOGLE-BEWERTUNG|RECENSIONE GOOGLE
+STIMMEN VON DER ERDE|VOCI DALLA TERRA
+Was Erdlinge über den Planeten sagen.|Cosa dicono i terrestri del pianeta.
+Google-Bewertungen ansehen ↗|Vedi recensioni Google ↗
+Google-Bewertung|Recensione Google
+WIEDER GEÖFFNET IN|RIAPRE TRA
+STUNDEN|ORE
+MINUTEN|MINUTI
+SEKUNDEN|SECONDI
+Countdown bis zur nächsten Öffnung|Conto alla rovescia fino alla prossima apertura
+Öffnungsstatus wird geladen …|Caricamento stato di apertura…
+Unsere Soßen|Le nostre salse
+Zur Speisekarte ↗|Vai al menu ↗
+Unsere Soßen · Planet Smashburger|Le nostre salse · Planet Smashburger
+PLANET SAUCE LAB // SOLINGEN|PLANET SAUCE LAB // SOLINGEN
+NICHT EINFACH|NON UNA
+IRGENDEINE SOẞE.|SALSA QUALSIASI.
+Ein Smashburger steht und fällt mit dem, was zwischen Bun, Patty und Topping passiert. Deshalb bekommen die Soßen bei Planet Smashburger ihren eigenen Platz: cremig, rauchig, würzig, käsig oder mit ordentlich Schub aus dem Orbit.|Uno smashburger vive di ciò che succede tra bun, patty e topping. Per questo le salse di Planet Smashburger hanno uno spazio tutto loro: cremose, affumicate, speziate, formaggiose o con una bella spinta dall'orbita.
+Die Geschmacksprofile verraten wir gern. Die exakten Rezepturen bleiben in der Area 51.|I profili di gusto li raccontiamo volentieri. Le ricette esatte restano nell'Area 51.
+Würzig. Pikant. Ein bisschen geheim.|Speziata. Piccante. Un po' segreta.
+Area 51 verbindet eine tomatig-senfige Basis mit warmer Würze, feiner Säure und einer herzhaften Tiefe, die sich nicht einfach in „scharf“ oder „süß“ einsortieren lässt. Genau deshalb funktioniert sie so gut auf einem Smashburger: Sie schiebt Geschmack nach vorne, ohne das Fleisch zu überdecken.|Area 51 unisce una base di pomodoro e senape a spezie calde, una fine acidità e una profondità saporita che non si lascia definire semplicemente come “piccante” o “dolce”. Proprio per questo funziona così bene su uno smashburger: spinge il gusto in avanti senza coprire la carne.
+tomatig|al pomodoro
+senfig|alla senape
+würzig|speziata
+leicht pikant|leggermente piccante
+Auf der Karte:|Nel menu:
+Classic Cheese, Chili Cheese und Con Carne.|Classic Cheese, Chili Cheese e Con Carne.
+Rauchig, dunkel und gemacht für Bacon.|Affumicata, scura e fatta per il bacon.
+Roswell BBQ geht klar in Richtung Smoke: tief, leicht süßlich, würzig und mit einer dunklen BBQ-Note, die lange nachzieht. Die Kombination aus Rauch, feiner Süße und herzhafter Würze macht sie zum Gegenpol für salzigen Bacon und kräftig gesmashtes Rind.|Roswell BBQ punta chiaramente sull'affumicato: profonda, leggermente dolce, speziata e con una nota BBQ scura che resta a lungo. Fumo, dolcezza delicata e sapidità la rendono il contrappunto ideale al bacon salato e al manzo ben smashato.
+smokey|affumicata
+leicht süßlich|leggermente dolce
+kräftig|intensa
+Bacon BBQ und Bacon & Egg.|Bacon BBQ e Bacon & Egg.
+Cremig, gurkig, würzig – und ziemlich gefährlich löffelbar.|Cremosa, con cetriolino, speziata – e pericolosamente buona anche al cucchiaio.
+Planet Mac ist die cremigste der kalten Haussoßen: vollmundig, leicht säuerlich und mit einer deutlichen Gurkennote. Dazu kommen Senf, Zwiebel- und Knoblaucharomen. Das Ergebnis ist frisch genug für Salat und Gurke, aber kräftig genug, um neben Patty, Käse und Crunch nicht unterzugehen.|Planet Mac è la più cremosa delle salse fredde della casa: piena, leggermente acidula e con una chiara nota di cetriolino. Senape, cipolla e aglio completano il profilo. Abbastanza fresca per lattuga e cetriolini, ma abbastanza intensa da reggere accanto a patty, formaggio e croccantezza.
+cremig|cremosa
+gurkig|al cetriolino
+leicht säuerlich|leggermente acidula
+Planet Mac und Galactic Potato.|Planet Mac e Galactic Potato.
+Warm. Samtig. Cheddar ohne Zurückhaltung.|Calda. Vellutata. Cheddar senza freni.
+Die Käsesauce ist auf Schmelz und Cremigkeit gebaut: voller Cheddar-Geschmack, weich, warm und so glatt, dass sie sich um Patty, Pommes und Toppings legt statt einfach nur oben draufzuliegen. Sie bringt Fett, Salz und Käsepower genau dahin, wo ein Smashburger sie braucht.|La salsa al formaggio è costruita per essere fondente e cremosa: pieno gusto di cheddar, morbida, calda e così liscia da avvolgere patty, patatine e topping invece di restare semplicemente sopra. Porta ricchezza, sale e potenza di formaggio esattamente dove uno smashburger ne ha bisogno.
+cheddar|cheddar
+warm|calda
+vollmundig|corposa
+auf mehreren Burgern und als Extra zu Pommes.|su diversi burger e come extra per le patatine.
+Käsig zuerst. Schärfe kurz danach.|Prima il formaggio. Subito dopo il piccante.
+UFO Hot ist die scharfe Schwester der Käsesauce. Die cremige Käsebasis bleibt im Vordergrund, bekommt aber einen deutlich heißeren Einschlag. Kein dünner Hot-Sauce-Film, sondern warme, sämige Käsesauce mit Schärfe – gebaut für Chili Cheese und für alle, denen normaler Orbit nicht reicht.|UFO Hot è la sorella piccante della salsa al formaggio. La base cremosa di formaggio resta protagonista, ma riceve una spinta decisamente più calda. Non un sottile strato di hot sauce, ma una salsa al formaggio calda e vellutata con piccantezza, fatta per Chili Cheese e per chi trova l'orbita normale troppo tranquilla.
+käsig|formaggiosa
+scharf|piccante
+Chili Cheese und als scharfe Käsesauce zu Pommes.|Chili Cheese e come salsa al formaggio piccante per le patatine.
+WÄHLE DEINE MISSION|SCEGLI LA TUA MISSIONE
+Welche Soße landet|Quale salsa atterra
+auf deinem Planeten?|sul tuo pianeta?
+Alle aktuellen Soßen findest du direkt in der Speisekarte – zum Dippen, auf Burgern oder als Extra zu deinen Pommes.|Trovi tutte le salse attuali direttamente nel menu: da intingere, sui burger o come extra per le patatine.
+Tomatig-senfig · würzig · leicht pikant|Pomodoro e senape · speziata · leggermente piccante
+Rauchig · kräftig · leicht süßlich|Affumicata · intensa · leggermente dolce
+Cremig · gurkig · würzig · leicht säuerlich|Cremosa · cetriolino · speziata · leggermente acidula
+Warm · cremig · vollmundiger Cheddar|Calda · cremosa · cheddar corposo
+UFO Hot · cremig · käsig · scharf|UFO Hot · cremosa · formaggiosa · piccante
+Mehr zur Soße ↗|Scopri di più sulla salsa ↗
+Unsere Haussoßen entdecken ↗|Scopri le nostre salse della casa ↗
+Extras für deinen Burger|Extra per il tuo burger
+Extras für deine Pommes|Extra per le tue patatine
+Passende Extras|Extra consigliati
+Jalapeños|Jalapeños
+Extra Bacon|Bacon extra
+Röstzwiebeln|Cipolle croccanti
+Geschmorte Zwiebeln gegen Röstzwiebeln tauschen|Sostituisci le cipolle stufate con cipolle croccanti
+Weglassen|Togli
+Ohne Käsesauce|Senza salsa al formaggio
+Ohne Tomate|Senza pomodoro
+Ohne Salat|Senza lattuga
+Ohne Essiggurken|Senza cetriolini
+Ohne Geschmorte Zwiebeln|Senza cipolle stufate
+Ohne Area 51|Senza Area 51
+Ohne Milde Chilischoten|Senza peperoncini delicati
+Ohne Käsesauce scharf|Senza salsa al formaggio piccante
+Ohne Bacon|Senza bacon
+Ohne Roswell BBQ|Senza Roswell BBQ
+Ohne Crunchy Kartoffeln|Senza patate croccanti
+Ohne Planet Mac|Senza Planet Mac
+Ohne Chili con Carne|Senza chili con carne
+Ohne Röstzwiebeln|Senza cipolle croccanti
+Ohne Spiegelei|Senza uovo al tegamino
+Ohne Hackfleisch|Senza carne macinata
+Ohne Currywurst|Senza currywurst
+Ohne Mayonnaise|Senza maionese
+`;
+
 window.PSB_TRANSLATIONS = Object.fromEntries(['en','tr','ar','es','ku'].map((lang, i) => [lang, Object.fromEntries(translationRows.trim().split('\n').filter(Boolean).map(row => { const parts = row.split('|'); return [parts[0], parts[i + 1]]; }))]));
