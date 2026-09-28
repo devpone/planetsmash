@@ -85,6 +85,71 @@ export default {
         const summary = await env.DB.prepare('SELECT COUNT(*) AS total, SUM(CASE WHEN missing=1 THEN 1 ELSE 0 END) AS missing_yes, SUM(CASE WHEN missing=0 THEN 1 ELSE 0 END) AS missing_no FROM menu_feedback').first();
         return wrap(json({responses:rows.results,summary:{total:Number(summary?.total || 0),missing_yes:Number(summary?.missing_yes || 0),missing_no:Number(summary?.missing_no || 0)}}));
       }
+      if (url.pathname === '/game/highscores' && request.method === 'GET') {
+        const rows = await env.DB.prepare(
+          'SELECT name,score,created_at FROM game_highscores ORDER BY score DESC, created_at ASC LIMIT 10'
+        ).all();
+        return wrap(json({scores:rows.results}));
+      }
+      if (url.pathname === '/game/highscores' && request.method === 'POST') {
+        if (!validOrigin(request,env)) return wrap(error('forbidden',403));
+        if (Number(request.headers.get('Content-Length')) > 2048) return wrap(error('too_large',413));
+
+        const body = await request.json();
+        const name = String(body.name || '').trim().replace(/\s+/g,' ');
+        const score = Number(body.score);
+        const suppliedCreatedAt = String(body.created_at || '').trim();
+
+        if (
+          name.length < 1 ||
+          name.length > 24 ||
+          /[<>]/.test(name) ||
+          /https?:\/\/|www\.|\b[a-z0-9.-]+\.(?:com|de|net|org)\b/i.test(name)
+        ) return wrap(error('invalid_name'));
+
+        if (
+          !Number.isInteger(score) ||
+          score < 0 ||
+          score > 10000000 ||
+          score % 100 !== 0
+        ) return wrap(error('invalid_score'));
+
+        let createdAt = new Date().toISOString();
+        if (suppliedCreatedAt) {
+          const parsed = Date.parse(suppliedCreatedAt);
+          const nowMs = Date.now();
+          if (
+            suppliedCreatedAt.length > 35 ||
+            !Number.isFinite(parsed) ||
+            parsed > nowMs + 5 * 60 * 1000 ||
+            parsed < nowMs - 366 * 24 * 60 * 60 * 1000
+          ) return wrap(error('invalid_created_at'));
+          createdAt = new Date(parsed).toISOString();
+        }
+
+        if (!await rateLimit(env,request,'game-score',30,3600)) return wrap(error('rate_limit',429));
+
+        const item = {
+          id:crypto.randomUUID(),
+          name,
+          score,
+          created_at:createdAt
+        };
+
+        const result = await env.DB.prepare(
+          'INSERT OR IGNORE INTO game_highscores (id,name,score,created_at) VALUES (?,?,?,?)'
+        ).bind(item.id,item.name,item.score,item.created_at).run();
+
+        await env.DB.prepare(
+          'DELETE FROM game_highscores WHERE id NOT IN (SELECT id FROM game_highscores ORDER BY score DESC, created_at ASC LIMIT 100)'
+        ).run();
+
+        return wrap(json({
+          ok:true,
+          duplicate:result.meta.changes === 0,
+          score:{name:item.name,score:item.score,created_at:item.created_at}
+        }, result.meta.changes === 0 ? 200 : 201));
+      }
       if (url.pathname === '/messages' && request.method === 'GET') {
         const before = url.searchParams.get('before');
         if (before && (!/^\d{4}-\d\d-\d\dT[\d:.]+Z$/.test(before) || before.length > 35)) return wrap(error('bad_cursor'));
