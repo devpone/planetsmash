@@ -1,6 +1,6 @@
 # Planet Smashburger – Worker
 
-Der Worker bedient öffentliche Funksprüche, den globalen Besucherzähler und die Speisekarten-Umfrage über Cloudflare D1.
+Der Worker bedient öffentliche Funksprüche, den globalen Besucherzähler, die Speisekarten-Umfrage und die globale Smash-Invaders-Highscoreliste über Cloudflare D1.
 
 ## Vor dem Deployment
 
@@ -22,3 +22,15 @@ Der Worker bedient öffentliche Funksprüche, den globalen Besucherzähler und d
 - D1-Schema: `migrations/0003_menu_feedback.sql`.
 
 Die Website zeigt die Umfrage nur an, wenn der GET-Endpunkt mit `{"ok":true}` antwortet.
+
+
+## Smash Invaders – globale Highscores
+
+- `GET /game/highscores` – öffentliche globale Top 10.
+- `POST /game/highscores` – Score speichern; nur von der erlaubten Website-Origin.
+- Name: 1–24 Zeichen; Score muss eine nichtnegative ganze Hunderterzahl sein.
+- Serverseitiges Rate-Limit: 30 Einsendungen pro Stunde/IP-Bucket.
+- D1 behält die besten 100 Einträge; ausgeliefert werden die Top 10.
+- `created_at` darf optional für die einmalige Übernahme bereits vorhandener lokaler Scores mitgeschickt werden.
+- D1-Schema: `migrations/0004_game_highscores.sql`.
+- Das Frontend versucht bestehende lokale Scores nach Aktivierung des globalen Backends automatisch zu übernehmen. Nach erfolgreicher Übernahme wird der lokale Fallback geleert.
