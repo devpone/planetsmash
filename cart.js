@@ -88,6 +88,7 @@
     closeButton(chooser);
     const name = row.querySelector('h3').dataset.sourceName || row.querySelector('h3').textContent.trim();
     const isBurger = row.closest('details') === menu.querySelector('details');
+    const isFries = name.toLowerCase().includes('pommes');
     const form = document.createElement('form');
     form.addEventListener('submit', event => event.preventDefault());
     addText(form, 'h2', name, 'order-title').id = 'choice-title';
@@ -104,6 +105,7 @@
     const variant = variantChoices[name] ? selectField(form, 'Auswahl', variantChoices[name]) : null;
     let menuToggle, sauce, drink, veggie, patty;
     const burgerExtras = [];
+    const friesExtras = [];
     if (isBurger) {
       const menuLabel = addText(form, 'label', '', 'order-check');
       menuToggle = document.createElement('input');
@@ -140,6 +142,23 @@
         burgerExtras.push({name: extraName, price: extraPrice, input: extraInput});
       }
     }
+    if (isFries) {
+      const friesExtrasBox = addText(form, 'div', 'Extras für deine Pommes', 'order-field');
+      const extras = [
+        ['Jalapeños', 100],
+        ['Extra Bacon', 150],
+        ['Geschmorte Zwiebeln', 150],
+        ['Käsesauce', 150],
+        ['Käsesauce scharf', 150]
+      ];
+      for (const [extraName, extraPrice] of extras) {
+        const extraLabel = addText(friesExtrasBox, 'label', '', 'order-check');
+        const extraInput = document.createElement('input');
+        extraInput.type = 'checkbox';
+        extraLabel.append(extraInput, document.createTextNode(' ' + extraName + ' (+ ' + money(extraPrice) + ')'));
+        friesExtras.push({name: extraName, price: extraPrice, input: extraInput});
+      }
+    }
     const noteLabel = addText(form, 'label', 'Wünsche für diesen Artikel (optional)', 'order-field');
     const note = document.createElement('input');
     note.type = 'text';
@@ -163,6 +182,9 @@
       if (veggie?.checked) { cents += (1 + patty.selectedIndex) * 100; details.push('Veggie-Patty'); }
       if (patty && patty.selectedIndex) { cents += patty.selectedIndex * 300; details.push(patty.selectedIndex + (veggie?.checked ? (patty.selectedIndex === 1 ? ' extra Veggie-Patty' : ' extra Veggie-Patties') : ' extra Patty')); }
       for (const extra of burgerExtras) {
+        if (extra.input.checked) { cents += extra.price; details.push(extra.name); }
+      }
+      for (const extra of friesExtras) {
         if (extra.input.checked) { cents += extra.price; details.push(extra.name); }
       }
       if (note.value.trim()) details.push(note.value.trim());
