@@ -49,6 +49,8 @@
   let nextId = 1;
   let bombUsed = false;
   let invulnerableUntil = 0;
+  let touchPointerId = null;
+  let touchDriving = false;
 
   const player = {x:WIDTH/2,y:HEIGHT-96,w:92,h:92,speed:470};
 
@@ -66,6 +68,9 @@
     lastShotAt = 0;
     bombUsed = false;
     invulnerableUntil = 0;
+    touchPointerId = null;
+    touchDriving = false;
+    keys.fire = false;
     bombBtn.disabled = false;
     bombCountEl.textContent = '×1';
     scoreEl.textContent = '0';
@@ -86,6 +91,9 @@
   }
 
   function endGame(){
+    touchPointerId = null;
+    touchDriving = false;
+    keys.fire = false;
     state = 'gameover';
     statusEl.textContent = 'MISSION BEENDET';
     overlayKicker.textContent = 'MISSION BEENDET';
@@ -398,6 +406,26 @@
     form.hidden=true;
   }
 
+  function canvasPoint(event){
+    const rect = canvas.getBoundingClientRect();
+    return {
+      x: (event.clientX - rect.left) * (WIDTH / rect.width),
+      y: (event.clientY - rect.top) * (HEIGHT / rect.height)
+    };
+  }
+
+  function touchCanGrabPlayer(point){
+    const grabWidth = Math.max(130, player.w * 1.7);
+    const grabHeight = Math.max(130, player.h * 1.7);
+    return Math.abs(point.x - player.x) <= grabWidth / 2 &&
+      Math.abs(point.y - player.y) <= grabHeight / 2;
+  }
+
+  function movePlayerToTouch(event){
+    const point = canvasPoint(event);
+    player.x = clamp(point.x, player.w/2 + 8, WIDTH - player.w/2 - 8);
+  }
+
   function setHeld(button,key){
     const down=e=>{e.preventDefault();keys[key]=true;if(key==='fire')shoot();};
     const up=e=>{e.preventDefault();keys[key]=false;};
@@ -428,7 +456,48 @@
       e.preventDefault();
       shoot();
       root.focus({preventScroll:true});
+      return;
     }
+
+    if(e.pointerType==='touch' || e.pointerType==='pen'){
+      if(state!=='running' || touchPointerId!==null) return;
+      const point = canvasPoint(e);
+      if(!touchCanGrabPlayer(point)) return;
+
+      e.preventDefault();
+      touchPointerId = e.pointerId;
+      touchDriving = true;
+      movePlayerToTouch(e);
+      keys.fire = true;
+      shoot();
+      try{ canvas.setPointerCapture(e.pointerId); }catch{}
+    }
+  });
+
+  canvas.addEventListener('pointermove',e=>{
+    if(!touchDriving || e.pointerId!==touchPointerId) return;
+    e.preventDefault();
+    movePlayerToTouch(e);
+  });
+
+  const releaseTouchDrive = e=>{
+    if(e.pointerId!==touchPointerId) return;
+    e.preventDefault();
+    touchDriving = false;
+    touchPointerId = null;
+    keys.fire = false;
+    try{
+      if(canvas.hasPointerCapture(e.pointerId)) canvas.releasePointerCapture(e.pointerId);
+    }catch{}
+  };
+
+  canvas.addEventListener('pointerup',releaseTouchDrive);
+  canvas.addEventListener('pointercancel',releaseTouchDrive);
+  canvas.addEventListener('lostpointercapture',e=>{
+    if(e.pointerId!==touchPointerId) return;
+    touchDriving = false;
+    touchPointerId = null;
+    keys.fire = false;
   });
   startBtn.addEventListener('click',()=>{
     if(state==='paused'){
