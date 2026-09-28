@@ -51,6 +51,7 @@
   let invulnerableUntil = 0;
   let touchPointerId = null;
   let touchDriving = false;
+  let lastBombPointerAt = 0;
 
   const player = {x:WIDTH/2,y:HEIGHT-96,w:92,h:92,speed:470};
 
@@ -261,6 +262,73 @@
     ctx.fillRect(0,0,WIDTH,HEIGHT);
   }
 
+  function drawEnemy(enemy){
+    const w = enemy.w;
+    const h = enemy.h;
+    const pulse = .72 + Math.sin(now()/180 + enemy.phase) * .18;
+
+    ctx.save();
+    ctx.translate(enemy.x, enemy.y);
+
+    ctx.shadowColor = 'rgba(158,92,255,.42)';
+    ctx.shadowBlur = Math.max(5, w * .12);
+
+    const dome = ctx.createLinearGradient(0,-h*.48,0,h*.05);
+    dome.addColorStop(0,'#d9fbff');
+    dome.addColorStop(.45,'#7fe5f2');
+    dome.addColorStop(1,'#7041b8');
+    ctx.fillStyle = dome;
+    ctx.beginPath();
+    ctx.ellipse(0,-h*.12,w*.27,h*.31,0,Math.PI,Math.PI*2);
+    ctx.closePath();
+    ctx.fill();
+
+    ctx.shadowBlur = 0;
+    ctx.fillStyle = 'rgba(255,255,255,.38)';
+    ctx.beginPath();
+    ctx.ellipse(-w*.07,-h*.23,w*.07,h*.085,-.4,0,Math.PI*2);
+    ctx.fill();
+
+    const hull = ctx.createLinearGradient(0,-h*.08,0,h*.34);
+    hull.addColorStop(0,'#eef2f7');
+    hull.addColorStop(.38,'#9fa9b8');
+    hull.addColorStop(.72,'#596170');
+    hull.addColorStop(1,'#2a2238');
+    ctx.fillStyle = hull;
+    ctx.strokeStyle = '#e5d5ff';
+    ctx.lineWidth = Math.max(1.5,w*.025);
+    ctx.beginPath();
+    ctx.ellipse(0,h*.05,w*.47,h*.22,0,0,Math.PI*2);
+    ctx.fill();
+    ctx.stroke();
+
+    ctx.fillStyle = '#24192f';
+    ctx.beginPath();
+    ctx.ellipse(0,h*.18,w*.31,h*.12,0,0,Math.PI*2);
+    ctx.fill();
+
+    const lightY = h*.17;
+    const lights = [
+      [-.25,'#ffcf5a'],
+      [-.09,'#78f5ff'],
+      [.09,'#c88bff'],
+      [.25,'#72ff9f']
+    ];
+    lights.forEach(([offset,color])=>{
+      ctx.save();
+      ctx.globalAlpha = pulse;
+      ctx.fillStyle = color;
+      ctx.shadowColor = color;
+      ctx.shadowBlur = Math.max(4,w*.08);
+      ctx.beginPath();
+      ctx.arc(w*offset,lightY,Math.max(2,w*.035),0,Math.PI*2);
+      ctx.fill();
+      ctx.restore();
+    });
+
+    ctx.restore();
+  }
+
   function drawPlayer(){
     ctx.save();
     ctx.translate(player.x,player.y);
@@ -294,14 +362,7 @@
       ctx.restore();
     });
 
-    enemies.forEach(e=>{
-      ctx.save();
-      ctx.shadowColor='rgba(187,130,255,.7)';
-      ctx.shadowBlur=15;
-      ctx.font=Math.round(e.w)+'px system-ui, Apple Color Emoji, Segoe UI Emoji';
-      ctx.fillText('🛸',e.x,e.y);
-      ctx.restore();
-    });
+    enemies.forEach(drawEnemy);
 
     particles.forEach(p=>{
       ctx.globalAlpha=Math.max(0,p.life);
@@ -492,7 +553,15 @@
   setHeld(leftBtn,'left');
   setHeld(rightBtn,'right');
   setHeld(fireBtn,'fire');
-  bombBtn.addEventListener('click',useBomb);
+  bombBtn.addEventListener('pointerdown',e=>{
+    e.preventDefault();
+    e.stopPropagation();
+    lastBombPointerAt = now();
+    useBomb();
+  });
+  bombBtn.addEventListener('click',e=>{
+    if(e.detail === 0 || now() - lastBombPointerAt > 500) useBomb();
+  });
   canvas.addEventListener('pointerdown',e=>{
     if(e.pointerType==='mouse' && e.button===0){
       e.preventDefault();
