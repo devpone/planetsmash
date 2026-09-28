@@ -259,8 +259,7 @@ html[dir="rtl"] .order-dialog,html[dir="rtl"] .order-bar{text-align:right}
   .google-review-card blockquote{font-size:15px}
 }
 
-.hero-opening{margin:24px 0 22px;max-width:560px}
-.hero-opening-status{margin:0 0 10px;color:#e5d9ed;font-size:12px;font-weight:800;letter-spacing:.6px}
+.hero-opening{margin:14px 0 22px;max-width:560px}
 .hero-countdown{display:inline-block;padding:13px 16px 12px;border:1px solid #b276ff3d;border-radius:9px;background:#09050ec7;backdrop-filter:blur(8px);box-shadow:0 12px 34px #0004}
 .hero-countdown[hidden]{display:none}
 .hero-countdown-kicker{display:block;margin-bottom:6px;color:#b991df;font-size:8px;font-weight:900;letter-spacing:1.8px}
@@ -270,8 +269,7 @@ html[dir="rtl"] .order-dialog,html[dir="rtl"] .order-bar{text-align:right}
 .hero-countdown-clock small{font-size:7px;font-weight:900;letter-spacing:1.25px;color:#9f90aa}
 .hero-countdown-clock>b{padding-top:2px;color:#b276ff;font-size:clamp(30px,4vw,54px);line-height:.92;font-weight:700}
 @media(max-width:800px){
-  .hero-opening{margin:20px 0 18px}
-  .hero-opening-status{font-size:11px}
+  .hero-opening{margin:12px 0 18px}
   .hero-countdown{display:block;width:max-content;max-width:100%;padding:12px 12px 10px}
   .hero-countdown-clock{gap:6px}
   .hero-countdown-clock>div{min-width:58px}
@@ -280,4 +278,3 @@ html[dir="rtl"] .order-dialog,html[dir="rtl"] .order-bar{text-align:right}
   .hero-countdown-clock small{font-size:6px;letter-spacing:.9px}
 }
 
-.hero-buttons [data-call] .call-closed{display:none}
