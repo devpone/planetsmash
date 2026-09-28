@@ -18,6 +18,8 @@
     if (match) return t(match[1]) + ': ' + t(match[2]);
     match = value.match(/^Warenkorb ansehen (\(\d+\))$/);
     if (match) return t('Warenkorb ansehen') + ' ' + match[1];
+    match = value.match(/^(.+) \(\+ ([\d.,]+\s?€)\)$/);
+    if (match) return t(match[1]) + ' (+ ' + match[2] + ')';
     match = value.match(/^Heute ab (\d+) Uhr geöffnet$/);
     if (match) return t('Heute ab {h} Uhr geöffnet').replace('{h}', match[1]);
     match = value.match(/^Jetzt geöffnet · bis (\d+) Uhr$/);
