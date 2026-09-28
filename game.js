@@ -71,7 +71,7 @@
     lastTime = now();
     cancelAnimationFrame(raf);
     raf = requestAnimationFrame(loop);
-    canvas.focus({preventScroll:true});
+    root.focus({preventScroll:true});
   }
 
   function endGame(){
@@ -371,7 +371,18 @@
   setHeld(leftBtn,'left');
   setHeld(rightBtn,'right');
   setHeld(fireBtn,'fire');
-  startBtn.addEventListener('click',startGame);
+  startBtn.addEventListener('click',()=>{
+    if(state==='paused'){
+      state='running';
+      overlay.hidden=true;
+      lastTime=now();
+      startBtn.textContent='MISSION STARTEN ↗';
+      root.focus({preventScroll:true});
+      raf=requestAnimationFrame(loop);
+      return;
+    }
+    startGame();
+  });
   form.addEventListener('submit',submitScore);
 
   document.addEventListener('visibilitychange',()=>{
@@ -387,15 +398,6 @@
     }
   });
 
-  startBtn.addEventListener('click',()=>{
-    if(state==='paused'){
-      state='running';
-      overlay.hidden=true;
-      lastTime=now();
-      startBtn.textContent='MISSION STARTEN ↗';
-      raf=requestAnimationFrame(loop);
-    }
-  });
 
   draw();
   loadScores();
