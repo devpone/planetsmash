@@ -610,4 +610,117 @@ Individuelle Absprache · Abholung in Solingen · kein Vor-Ort-Catering|Individu
 Burger-Party in Solingen selbst machen: Burger-Balls, vorbereitete Smash-Patties, Zutaten und passendes Leih-Equipment nach Absprache. Kein Vor-Ort-Catering.|Make your own Burger Party in Solingen: burger balls, prepared smash patties, ingredients and suitable loan equipment by arrangement. No on-site catering.|Solingen'de kendi Burger Partini yap: burger topları, hazırlanmış smash köfteleri, malzemeler ve anlaşmaya göre uygun kiralık ekipman. Yerinde catering yok.|أقم حفلة البرغر بنفسك في زولينغن: كرات برغر وقطع سماش مجهزة ومكونات ومعدات إعارة مناسبة حسب الاتفاق. لا توجد خدمة تقديم في الموقع.|Monta tu propia Fiesta Burger en Solingen: bolas de burger, patties smash preparados, ingredientes y equipo de préstamo adecuado según acuerdo. Sin catering en el lugar.|Partiya Burgerê ya xwe li Solingenê çêke: topên burgerê, pattyên smash ên amadekirî, pêkhate û alavên deynkirinê bi lihevhatinê. Catering li cihê tune.
 `;
 
+
+let italianRows = `
+Sprache wählen|Scegli lingua
+Zum Inhalt|Vai al contenuto
+Planet Smashburger Startseite|Homepage di Planet Smashburger
+Hauptnavigation|Navigazione principale
+Weitere Informationen|Ulteriori informazioni
+Speisekarte|Menu
+Speisekarte.|menu.
+Öffnungszeiten & Standort|Orari e posizione
+Über uns|Chi siamo
+Impressum|Note legali
+Datenschutz|Privacy
+Anrufe während der Öffnungszeiten|Chiamate durante gli orari di apertura
+Route planen ↗|Indicazioni stradali ↗
+Route planen|Indicazioni stradali
+Di–Sa 16–22 Uhr · So 14–22 Uhr|Mar–Sab 16–22 · Dom 14–22
+Dein nächster Lieblingsburger?|Il tuo prossimo burger preferito?
+Auf diesem Planeten.|Su questo pianeta.
+01 / GESCHMACK MIT ANZIEHUNGSKRAFT|01 / GUSTO CHE ATTRAE
+Houston, wir|Houston, abbiamo
+haben|abbiamo
+Hunger.|fame.
+Burger im Mittelpunkt.|Burger al centro della missione.
+Pommes an deiner Seite.|Patatine al tuo fianco.
+Willkommen auf Planet Smashburger.|Benvenuto su Planet Smashburger.
+Liebe auf den ersten Biss.|Amore al primo morso.
+Mehr als eine Beilage.|Più di un semplice contorno.
+02 / WÄHLE DEINE MISSION|02 / SCEGLI LA TUA MISSIONE
+Die|Il
+Originalkarte öffnen ↗|Apri il menu originale ↗
+Alle Burger im toasted Bun. Preise und Extras aktualisiert im September 2026.|Tutti i burger sono serviti in un bun tostato. Prezzi ed extra aggiornati a settembre 2026.
+07 BURGER|07 BURGER
+Extra Patty|Patty extra
+Mach deinen Burger veggie|Rendi il tuo burger vegetariano
+DAS KOMPLETTE PAKET|IL PACCHETTO COMPLETO
+Mach es zum Menü.|Trasformalo in menu.
+Pommes + Sauce + Getränk|Patatine + salsa + bevanda
+zzgl. 0,25 € Pfand|più 0,25 € di cauzione
+Pommes & Specialz|Patatine & Specialità
+Saucen zum Dippen|Salse da intingere
+Extras für Burger & Pommes|Extra per burger e patatine
+Wähle dein Extra zu deinem Burger oder deinen Pommes.|Scegli un extra per il tuo burger o le tue patatine.
+Getränke|Bevande
+Wasser mit / ohne|Acqua frizzante / naturale
+Softgetränke sind in Dosen. Zzgl. 0,25 € Pfand je Getränk.|Le bibite sono in lattina. Aggiungi 0,25 € di cauzione per bevanda.
+Fragen zu Allergenen oder Zutaten? Sprich uns vor Ort an.|Domande su allergeni o ingredienti? Chiedici sul posto.
+Ausführliche Originalkarte ↗|Menu originale completo ↗
+DEIN LANDEPLATZ IN SOLINGEN.|IL TUO PUNTO DI ATTERRAGGIO A SOLINGEN.
+03 / WIR SEHEN UNS AUF DEM PLANETEN|03 / CI VEDIAMO SUL PIANETA
+Hunger?|Hai fame?
+Komm vorbei.|Passa a trovarci.
+Vorbestellen per Telefon oder WhatsApp.|Ordina in anticipo per telefono o WhatsApp.
+Ruf vorher an oder stell dir deine Bestellung in der Speisekarte zusammen und schick sie per WhatsApp. Nach unserer Bestätigung wird sie zur vereinbarten Abholzeit vorbereitet.|Chiama prima oppure componi il tuo ordine dal menu e invialo via WhatsApp. Dopo la nostra conferma verrà preparato per l'orario di ritiro concordato.
+Montag|Lunedì
+Ruhetag|Chiuso
+Dienstag – Samstag|Martedì – Sabato
+Sonntag|Domenica
+04 / HINTER DEM PLANETEN|04 / DIETRO IL PIANETA
+Einer am Grill.|Uno alla griglia.
+Ein ganzer Planet dahinter.|Un intero pianeta alle spalle.
+Unsere Geschichte|La nostra storia
+Zurück nach oben ↑|Torna su ↑
+Zur Startseite ↑|Torna alla homepage ↑
+← Zur Startseite|← Torna alla homepage
+Zum Planeten ↗|Vai al pianeta ↗
+Komm vorbei|Passa a trovarci
+Rindfleischpatty, warme Käsesauce, Tomate, Salat, Essiggurken, geschmorte Zwiebeln und Area 51 Sauce.|Patty di manzo, salsa al formaggio calda, pomodoro, lattuga, cetriolini, cipolle stufate e salsa Area 51.
+Rindfleischpatty, milde Chilischoten, geschmorte Zwiebeln, Salat, Tomate, scharfe Käsesauce und Area 51 Sauce.|Patty di manzo, peperoncini delicati, cipolle stufate, lattuga, pomodoro, salsa al formaggio piccante e salsa Area 51.
+Rindfleischpatty, Bacon, warme Käsesauce, Tomate, Salat, Essiggurken, geschmorte Zwiebeln und Roswell BBQ Sauce.|Patty di manzo, bacon, salsa al formaggio calda, pomodoro, lattuga, cetriolini, cipolle stufate e salsa Roswell BBQ.
+Rindfleischpatty, Crunchy Kartoffeln, warme Käsesauce, Bacon, Salat, Essiggurken und Planet Mac Sauce.|Patty di manzo, patate croccanti, salsa al formaggio calda, bacon, lattuga, cetriolini e salsa Planet Mac.
+Rindfleischpatty, hausgemachtes Chili con Carne ohne Mais und ohne Kidneybohnen, Essiggurken, Tomate, Röstzwiebeln, warme Käsesauce und Area 51 Sauce.|Patty di manzo, chili con carne fatto in casa senza mais né fagioli kidney, cetriolini, pomodoro, cipolle croccanti, salsa al formaggio calda e salsa Area 51.
+Rindfleischpatty, warme Käsesauce, mehr Tomate, mehr Salat, mehr Essiggurken, mehr geschmorte Zwiebeln und Planet Mac Sauce.|Patty di manzo, salsa al formaggio calda, più pomodoro, più lattuga, più cetriolini, più cipolle stufate e salsa Planet Mac.
+Rindfleischpatty, Bacon, warme Käsesauce, Tomate, Essiggurken, Spiegelei und Roswell BBQ Sauce.|Patty di manzo, bacon, salsa al formaggio calda, pomodoro, cetriolini, uovo al tegamino e salsa Roswell BBQ.
+Crunchy Pommes (big), hausgemachtes Chili con Carne aus Rind, ohne Mais und ohne Kidneybohnen, warme Käsesauce und geschmorte Zwiebeln.|Patatine croccanti grandi, chili con carne di manzo fatto in casa senza mais né fagioli kidney, salsa al formaggio calda e cipolle stufate.
+Crunchy Pommes (big), knuspriges Hackfleisch, geschmorte Zwiebeln und warme Käsesauce.|Patatine croccanti grandi, manzo macinato croccante, cipolle stufate e salsa al formaggio calda.
+Pommes mit Currywurst und Mayonnaise.|Patatine con currywurst e maionese.
+Pommes|Patatine
+Süßkartoffelpommes|Patatine di patata dolce
+Käsesauce|Salsa al formaggio
+Käsesauce scharf|Salsa al formaggio piccante
+Mayonnaise|Maionese
+Trüffelmayonnaise|Maionese al tartufo
+Geschmorte Zwiebeln|Cipolle stufate
+Spiegelei|Uovo al tegamino
+Red & spicy|Rossa e piccante
+Red & smokey|Rossa e affumicata
+White & rich|Bianca e ricca
+Warm & cheesy|Calda e formaggiosa
+Hinter Planet Smashburger steckt Daniel – mit einer ziemlich einfachen Idee: Burger zu machen, auf die man selbst richtig Bock hat.|Dietro Planet Smashburger c'è Daniel, con un'idea molto semplice: fare burger che avrebbe davvero voglia di mangiare lui stesso.
+Vom Grill über die hausgemachten Soßen bis zum Weltraum-Look entsteht hier vieles aus einer Hand. Kein Franchise. Keine Kette. Sondern ein eigener kleiner Burger-Planet in Solingen.|Dalla griglia alle salse fatte in casa fino al look spaziale, qui molte cose nascono dalla stessa mano. Nessun franchising. Nessuna catena. Solo un piccolo pianeta dei burger a Solingen.
+SYSTEM BEREIT|SISTEMA PRONTO
+Kontrollzentrum|Centro di controllo
+Interplanetare Systemdaten. Für Erdlinge freigegeben.|Dati di sistema interplanetari. Autorizzati per i terrestri.
+KONTROLLZENTRUM AKTIVIEREN ↗|ATTIVA CENTRO DI CONTROLLO ↗
+ERDLINGE GELANDET|TERRESTRI ATTERRATI
+Signal wird gesucht…|Ricerca del segnale…
+Verbindung zur Bodenstation wird hergestellt.|Connessione alla stazione di terra in corso.
+MISSIONSSTATUS|STATO MISSIONE
+BASE WIRD GEPRÜFT|CONTROLLO BASE
+Berechne nächsten Start…|Calcolo del prossimo lancio…
+BURGER-ANZIEHUNGSKRAFT|ATTRAZIONE BURGER
+Gravitation auf Smash-Niveau.|Gravità a livello smash.
+UFO-AKTIVITÄT|ATTIVITÀ UFO
+SIGNAL ERKANNT|SEGNALE RILEVATO
+Unbekanntes Objekt kreist über Planet Smashburger.|Un oggetto sconosciuto orbita sopra Planet Smashburger.
+Verschlüsselte Nachricht empfangsbereit.|Messaggio cifrato pronto per la ricezione.
+Nachricht empfangen ↗|Ricevi messaggio ↗
+Hinweis aus dem Kontrollraum: Manche Systeme reagieren auf wiederholten Kontakt.|Nota dalla sala di controllo: alcuni sistemi reagiscono al contatto ripetuto.
+Geheime Area-51-Nachricht|Messaggio segreto Area 51
+Du hast etwas gefunden, das offiziell nicht existiert.|Hai trovato qualcosa che ufficialmente non esiste.
+`;
+
 window.PSB_TRANSLATIONS = Object.fromEntries(['en','tr','ar','es','ku'].map((lang, i) => [lang, Object.fromEntries(translationRows.trim().split('\n').filter(Boolean).map(row => { const parts = row.split('|'); return [parts[0], parts[i + 1]]; }))]));
