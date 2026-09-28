@@ -130,7 +130,9 @@
         }
       });
       const extrasBox = addText(form, 'div', 'Extras für deinen Burger', 'order-field');
-      for (const [extraName, extraPrice] of [['Jalapeños',100],['Extra Bacon',150],['Geschmorte Zwiebeln',150],['Spiegelei',150],['Geschmorte Zwiebeln gegen Röstzwiebeln tauschen',0]]) {
+      const extras = [['Jalapeños',100],['Extra Bacon',150],['Geschmorte Zwiebeln',150],['Spiegelei',150]];
+      if (row.querySelector('p')?.textContent.includes('geschmorte Zwiebeln')) extras.push(['Geschmorte Zwiebeln gegen Röstzwiebeln tauschen',0]);
+      for (const [extraName, extraPrice] of extras) {
         const extraLabel = addText(extrasBox, 'label', '', 'order-check');
         const extraInput = document.createElement('input');
         extraInput.type = 'checkbox';
