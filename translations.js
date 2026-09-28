@@ -1016,4 +1016,130 @@ Ohne Currywurst|Senza currywurst
 Ohne Mayonnaise|Senza maionese
 `;
 
-window.PSB_TRANSLATIONS = Object.fromEntries(['en','tr','ar','es','ku'].map((lang, i) => [lang, Object.fromEntries(translationRows.trim().split('\n').filter(Boolean).map(row => { const parts = row.split('|'); return [parts[0], parts[i + 1]]; }))]));
+
+italianRows += `
+Auf diesem Planeten bist du willkommen.|Su questo pianeta sei il benvenuto.
+Was Erdlinge|Cosa dicono i terrestri
+über den Planeten sagen.|del pianeta.
+Süßkartoffelpommes statt Pommes + 2,00 €|Patatine di patata dolce al posto delle patatine + 2,00 €
+03 / SEE YOU ON THE PLANET.|03 / CI VEDIAMO SUL PIANETA.
+Ein Mann. Ein Grill.|Un uomo. Una griglia.
+Zu viele Ideen.|Troppe idee.
+05 / OFFENER FUNKKANAL|05 / CANALE RADIO APERTO
+Funksprüche|Messaggi radio
+von der Erde.|dalla Terra.
+KANAL OFFEN|CANALE APERTO
+Keine Anmeldung. Kein Account. Schick uns einfach einen kurzen Funkspruch – und lies, was andere Erdlinge hinterlassen haben.|Nessuna registrazione. Nessun account. Inviaci semplicemente un breve messaggio radio e leggi cosa hanno lasciato gli altri terrestri.
+DEIN FUNKNAME|IL TUO NOME RADIO
+max. 30 Zeichen|max. 30 caratteri
+DEIN FUNKSPRUCH|IL TUO MESSAGGIO RADIO
+🍔 Wunschburger|🍔 Burger dei desideri
+🛸 Mein Favorit|🛸 Il mio preferito
+👽 Grüße senden|👽 Invia saluti
+FUNKSpruch SENDEN|INVIA MESSAGGIO
+Öffentlich sichtbar. Bitte keine persönlichen Daten posten. Missbrauch kann gemeldet und entfernt werden.|Visibile pubblicamente. Non pubblicare dati personali. Gli abusi possono essere segnalati e rimossi.
+LIVE // EINGEHENDE SIGNALE|LIVE // SEGNALI IN ARRIVO
+↻ Aktualisieren|↻ Aggiorna
+Suche Signale im Orbit …|Ricerca di segnali in orbita…
+Ältere Funksprüche empfangen ↓|Ricevi messaggi precedenti ↓
+06 / PLANET ARCADE|06 / PLANET ARCADE
+Verteidige den|Difendi il
+Burger-Planeten.|pianeta dei burger.
+Steuere das Planet-Smashburger-Logo, feuere Burger in den Orbit und halte die UFOs auf Abstand.|Controlla il logo di Planet Smashburger, lancia burger in orbita e tieni lontani gli UFO.
+MISSION BEREIT|MISSIONE PRONTA
+LEBEN|VITE
+BOMBE|BOMBA
+Das Logo ist dein Raumschiff. Schieß Burger auf die UFOs und lass keinen Gegner bis zur Basis durch.|Il logo è la tua astronave. Spara burger agli UFO e non lasciare che nessun nemico raggiunga la base.
+MISSION STARTEN ↗|AVVIA MISSIONE ↗
+HIGHSCORE SPEICHERN|SALVA RECORD
+← LINKS|← SINISTRA
+🍔 BURGER FEUERN|🍔 SPARA BURGER
+RECHTS →|DESTRA →
+GALAKTISCHE RANGLISTE|CLASSIFICA GALATTICA
+Highscores werden empfangen …|Ricezione dei record…
+Verbindung zur Planet-Datenbank wird geprüft.|Controllo della connessione al database del pianeta.
+Google-Bewertungen von Planet Smashburger ansehen|Visualizza le recensioni Google di Planet Smashburger
+Ausgewählte Google-Bewertungen|Recensioni Google selezionate
+5 von 5 Sternen|5 stelle su 5
+z. B. BurgerCommander|ad es. BurgerCommander
+Was willst du auf diesem Planeten hinterlassen?|Cosa vuoi lasciare su questo pianeta?
+Ideen für deinen Funkspruch|Idee per il tuo messaggio radio
+Funksprüche neu laden|Ricarica i messaggi radio
+Planet Smashburger Arcade|Arcade di Planet Smashburger
+Arcade-Spielfeld|Campo di gioco arcade
+Bildschirm-Bombe einsetzen|Usa la bomba a schermo
+Dein Funkname|Il tuo nome radio
+Spielsteuerung|Comandi di gioco
+Nach links|Verso sinistra
+Nach rechts|Verso destra
+Highscore-Liste|Classifica record
+Zur Speisekarte|Vai al menu
+Die hausgemachten Soßen von Planet Smashburger: Area 51, Roswell BBQ, Planet Mac Sauce, Käsesauce und UFO Hot.|Le salse fatte in casa di Planet Smashburger: Area 51, Roswell BBQ, Planet Mac Sauce, salsa al formaggio e UFO Hot.
+Daniel im Planet-Smashburger-Foodtruck|Daniel nel foodtruck di Planet Smashburger
+Burger-Party|Festa Burger
+Burger-Party · Planet Smashburger|Festa Burger · Planet Smashburger
+Party anfragen ↗|Richiedi una festa ↗
+PLANET PARTY SUPPLY // SOLINGEN|PLANET PARTY SUPPLY // SOLINGEN
+DEINE BURGER-PARTY.|LA TUA FESTA BURGER.
+DEIN GRILL. MEINE VORBEREITUNG.|LA TUA GRIGLIA. LA MIA PREPARAZIONE.
+Du willst für Freunde, Familie oder eine größere Runde Smashburger machen, aber nicht alles selbst vorbereiten? Ich stelle dir die passende Burger-Mission zusammen – von Burger-Balls bis zum kompletten Selbstbau-Set.|Vuoi preparare smashburger per amici, famiglia o un gruppo più grande senza dover preparare tutto da solo? Ti preparo la missione burger giusta, dalle burger balls fino al set completo fai-da-te.
+Optionen ansehen|Vedi opzioni
+Unverbindlich anfragen|Richiedi senza impegno
+WICHTIG // KEIN CATERING VOR ORT|IMPORTANTE // NESSUN CATERING SUL POSTO
+Die Party machst du.|La festa la fai tu.
+Ich fahre nicht mit dem Foodtruck zu Veranstaltungen und komme auch nicht vor Ort zum Braten. Du holst die vorbereiteten Sachen und das vereinbarte Equipment bei Planet Smashburger ab.|Non porto il foodtruck agli eventi e non vengo sul posto a cucinare. Ritiri da Planet Smashburger le cose preparate e l'attrezzatura concordata.
+01 / SO FUNKTIONIERT'S|01 / COME FUNZIONA
+Von ganz einfach|Dalla soluzione più semplice
+bis komplett ausgestattet.|fino al set completo.
+Keine starre Catering-Liste. Du sagst mir, wie viele Leute kommen und wie viel du selbst machen willst. Danach wird das Paket passend zusammengestellt.|Nessuna lista catering rigida. Mi dici quante persone verranno e quanto vuoi fare da solo. Poi il pacchetto viene composto di conseguenza.
+Nur die Burger-Balls.|Solo le burger balls.
+Du willst selbst smashen und brauchst nur das Fleisch vorbereitet? Du bekommst portionierte Burger-Balls in der vereinbarten Menge zur gekühlten Abholung.|Vuoi smashare tu e ti serve solo la carne già preparata? Ricevi burger balls porzionate nella quantità concordata, pronte per il ritiro refrigerato.
+passende Stückzahl nach Personenzahl|quantità adatta al numero di persone
+portioniert und vorbereitet|porzionato e preparato
+ideal, wenn Grill und restliche Zutaten schon da sind|ideale se hai già griglia e gli altri ingredienti
+Vorgebraten. Bereit für deine Party.|Precotto. Pronto per la tua festa.
+Wenn du auf der Feier möglichst wenig am Grill stehen willst, kann das Fleisch nach Absprache bereits gesmasht und vorgebraten vorbereitet werden. Dazu lässt sich eine passende Warmhalte-Lösung abstimmen.|Se durante la festa vuoi passare meno tempo possibile alla griglia, la carne può essere preparata in anticipo, già smashata e precotta, previo accordo. Si può anche concordare una soluzione adatta per mantenerla calda.
+gesmashte bzw. vorgebratene Patties nach Absprache|patty smashati o precotti previo accordo
+Warmhalte-Lösung passend zum geplanten Ablauf|soluzione per mantenere caldo adatta al programma
+weniger Arbeit während der Party|meno lavoro durante la festa
+Das komplette Selbstbau-Set.|Il set completo fai-da-te.
+Du willst die Burger-Station aufbauen, aber nicht jedes Teil einzeln organisieren? Dann können Zutaten und benötigtes Equipment als Gesamtpaket zusammengestellt werden.|Vuoi allestire una stazione burger senza organizzare ogni singolo elemento? Ingredienti e attrezzatura necessaria possono essere riuniti in un unico pacchetto.
+Burger-Fleisch in der passenden Variante|carne per burger nella variante adatta
+Buns, Soßen und ausgewählte Toppings nach Absprache|bun, salse e topping selezionati previo accordo
+Leih-Equipment wie Grill-, Warmhalte- oder GN-Ausstattung, soweit vereinbart|attrezzatura in prestito come griglia, mantenimento caldo o attrezzatura GN, se concordato
+Mengenplanung passend zur Gästezahl|pianificazione delle quantità in base al numero di ospiti
+02 / BEISPIELMISSION|02 / MISSIONE ESEMPIO
+für 25 Personen?|per 25 persone?
+Dann klären wir zuerst, wie viele Burger du ungefähr brauchst und wie viel du selbst machen möchtest. Nur Burger-Balls? Vorgebratene Patties? Oder ein Set mit Buns, Soßen, Toppings und Equipment?|Per prima cosa definiamo quanti burger ti servono circa e quanto vuoi fare da solo. Solo burger balls? Patty precotti? Oppure un set con bun, salse, topping e attrezzatura?
+Danach bekommst du eine Zusammenstellung, die zu deiner Feier passt. Keine unnötigen Dinge und kein Paket, das an deiner Gästezahl vorbeigeplant ist.|Poi ricevi una combinazione adatta alla tua festa. Niente cose inutili e nessun pacchetto fuori misura rispetto al numero di ospiti.
+Gästezahl|numero di ospiti
+Variante|variante
+Menge|quantità
+Equipment|attrezzatura
+Abholung|ritiro
+03 / KURZ GEKLÄRT|03 / CHIARIAMO IN BREVE
+Damit die Mission|Perché la missione
+nicht falsch verstanden wird.|non venga fraintesa.
+Kommst du mit dem Foodtruck zu meiner Feier?|Vieni con il foodtruck alla mia festa?
+Nein. Der Foodtruck bleibt am Standort. Das Burger-Party-Angebot ist für Abholung und Selbstzubereitung bzw. Selbstaufbau gedacht.|No. Il foodtruck resta nella sua posizione. L'offerta Festa Burger è pensata per il ritiro e la preparazione o l'allestimento in autonomia.
+Kommst du vor Ort und brätst die Burger?|Vieni sul posto a cucinare i burger?
+Nein. Es gibt keinen Koch- oder Personalservice vor Ort. Ich bereite nach Absprache vor; die Feier und Ausgabe übernimmst du selbst.|No. Non c'è servizio di cucina o personale sul posto. Io preparo quanto concordato; della festa e del servizio ti occupi tu.
+Kann ich wirklich nur Burger-Balls bestellen?|Posso davvero ordinare solo burger balls?
+Ja. Wenn du den Rest selbst organisierst, kann die Anfrage auch nur die benötigte Menge Burger-Balls umfassen.|Sì. Se organizzi il resto da solo, la richiesta può riguardare anche soltanto la quantità necessaria di burger balls.
+Kann ich auch Soßen, Buns und Toppings dazunehmen?|Posso aggiungere anche salse, bun e topping?
+Ja, je nach gewünschtem Party-Set. Was genau sinnvoll ist, wird bei der Anfrage festgelegt.|Sì, a seconda del set festa desiderato. Cosa abbia senso viene definito durante la richiesta.
+Gibt es feste Paketpreise?|Ci sono prezzi fissi per i pacchetti?
+Noch nicht als starre Liste. Gästezahl, Vorbereitung und Equipment können sehr unterschiedlich sein. Deshalb bekommst du nach der Anfrage ein passendes Angebot.|Non ancora come lista fissa. Numero di ospiti, preparazione e attrezzatura possono variare molto. Per questo dopo la richiesta ricevi un'offerta adatta.
+BURGER-PARTY ANFRAGEN|RICHIEDI UNA FESTA BURGER
+Wie viele Erdlinge|Quanti terrestri
+sollen satt werden?|devono essere sfamati?
+Schick mir am besten Gästezahl, Datum und kurz dazu, ob du nur Burger-Balls, vorbereitete Patties oder ein komplettes Party-Set suchst. Dann kann ich dir sagen, was sinnvoll machbar ist.|Mandami il numero di ospiti, la data e dimmi brevemente se cerchi solo burger balls, patty preparati o un set completo per la festa. Così posso dirti cosa è realisticamente fattibile.
+Per WhatsApp anfragen|Richiedi via WhatsApp
+Anrufen|Chiama
+Individuelle Absprache · Abholung in Solingen · kein Vor-Ort-Catering|Accordo individuale · ritiro a Solingen · nessun catering sul posto
+Burger-Party in Solingen selbst machen: Burger-Balls, vorbereitete Smash-Patties, Zutaten und passendes Leih-Equipment nach Absprache. Kein Vor-Ort-Catering.|Organizza da solo la tua Festa Burger a Solingen: burger balls, smash patty preparati, ingredienti e attrezzatura in prestito adatta previo accordo. Nessun catering sul posto.
+`;
+
+const baseTranslations = Object.fromEntries(['en','tr','ar','es','ku'].map((lang, i) => [lang, Object.fromEntries(translationRows.trim().split('\n').filter(Boolean).map(row => { const parts = row.split('|'); return [parts[0], parts[i + 1]]; }))]));
+baseTranslations.it = Object.fromEntries(italianRows.trim().split('\n').filter(Boolean).map(row => { const parts = row.split('|'); return [parts[0], parts[1]]; }));
+window.PSB_TRANSLATIONS = baseTranslations;
