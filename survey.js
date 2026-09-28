@@ -8,6 +8,7 @@
   const ANSWERED_KEY = 'psb-menu-survey-answered-v1';
   const SUPPRESS_MS = 14 * 24 * 60 * 60 * 1000;
   const SHOW_DELAY_MS = 18000;
+  const STATUS_ENDPOINT = API + '/survey/menu-feedback';
 
   const closeBtn = box.querySelector('[data-survey-close]');
   const yesBtn = box.querySelector('[data-survey-yes]');
@@ -121,6 +122,17 @@
     }
   });
 
+  async function backendReady(){
+    try{
+      const res = await fetch(STATUS_ENDPOINT, {method:'GET', cache:'no-store'});
+      if(!res.ok) return false;
+      const data = await res.json().catch(()=>({}));
+      return data && data.ok === true;
+    }catch{
+      return false;
+    }
+  }
+
   const observer = new IntersectionObserver((entries) => {
     if(suppressed()) {
       observer.disconnect();
@@ -132,7 +144,9 @@
     }
   }, {threshold:[.2,.35]});
 
-  observer.observe(menu);
+  backendReady().then(ready => {
+    if(ready) observer.observe(menu);
+  });
 
   window.addEventListener('beforeunload', () => {
     if(timer) window.clearTimeout(timer);
