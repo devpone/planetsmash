@@ -1,0 +1,28 @@
+/* Menu feedback survey */
+.menu-survey{position:fixed;z-index:1200;right:22px;bottom:22px;width:min(390px,calc(100vw - 28px));border:1px solid #b276ff66;border-radius:16px;background:linear-gradient(145deg,#170d22f5,#0b0710f7);color:#f7edff;box-shadow:0 24px 70px #0009,0 0 36px #7d3fc52e;backdrop-filter:blur(14px);opacity:0;transform:translateY(22px) scale(.985);pointer-events:none;transition:opacity .28s ease,transform .28s ease}
+.menu-survey.is-visible{opacity:1;transform:translateY(0) scale(1);pointer-events:auto}
+.menu-survey[hidden]{display:none}
+.menu-survey-inner{position:relative;padding:22px}
+.menu-survey-close{position:absolute;top:10px;right:10px;width:36px;height:36px;border:0;border-radius:50%;background:#ffffff0d;color:#bca9c9;font:700 22px/1 Arial,sans-serif;cursor:pointer}
+.menu-survey-close:hover{background:#ffffff18;color:#fff}
+.menu-survey-kicker{display:flex;align-items:center;gap:7px;margin:0 42px 10px 0;color:#c69dff;font-size:9px;font-weight:900;letter-spacing:1.8px;text-transform:uppercase}
+.menu-survey h3{margin:0 0 10px;font-size:24px;line-height:1.08;letter-spacing:-.6px}
+.menu-survey p{margin:0;color:#c8b9d3;font-size:12px;line-height:1.6}
+.menu-survey-actions{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:18px}
+.menu-survey button{font-family:Arial,Helvetica,sans-serif}
+.menu-survey-choice,.menu-survey-submit{min-height:48px;border-radius:8px;border:1px solid #b276ff55;background:#21132e;color:#f8efff;font-weight:900;font-size:11px;letter-spacing:.35px;cursor:pointer}
+.menu-survey-choice.primary,.menu-survey-submit{background:#8a4ad0;border-color:#c38cff}
+.menu-survey-choice:hover,.menu-survey-submit:hover{filter:brightness(1.12)}
+.menu-survey-detail{margin-top:17px;padding-top:16px;border-top:1px solid #ffffff12}
+.menu-survey-detail[hidden],.menu-survey-thanks[hidden]{display:none}
+.menu-survey-detail label{display:block;margin-bottom:8px;color:#e7d9f1;font-size:11px;font-weight:800}
+.menu-survey-detail textarea{display:block;width:100%;min-height:105px;resize:vertical;border:1px solid #b276ff55;border-radius:9px;background:#08050d;color:#fff;padding:12px 13px;font:14px/1.45 Arial,Helvetica,sans-serif;outline:none}
+.menu-survey-detail textarea:focus{border-color:#d0a4ff;box-shadow:0 0 0 3px #b276ff1c}
+.menu-survey-meta{display:flex;justify-content:space-between;gap:12px;margin-top:7px;color:#8f809b!important;font-size:9px!important}
+.menu-survey-submit{width:100%;margin-top:12px}
+.menu-survey-submit:disabled{opacity:.55;cursor:wait}
+.menu-survey-status{min-height:18px;margin-top:9px!important;font-size:10px!important;color:#bca9c9!important}
+.menu-survey-thanks{padding:8px 0 2px}
+.menu-survey-thanks strong{display:block;margin-bottom:8px;font-size:21px}
+@media(max-width:700px){.menu-survey{right:12px;bottom:86px;width:calc(100vw - 24px)}.menu-survey-inner{padding:20px}.menu-survey h3{font-size:22px}}
+@media(prefers-reduced-motion:reduce){.menu-survey{transition:none}}
