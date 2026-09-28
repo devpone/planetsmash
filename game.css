@@ -28,7 +28,7 @@
 .arcade-panel small{display:block;margin-bottom:12px;color:#b68ddd;font-size:9px;font-weight:900;letter-spacing:2.2px}
 .arcade-panel h3{margin:0 0 12px;font-size:clamp(28px,5vw,46px);letter-spacing:-1.5px}
 .arcade-panel p{margin:0 auto 20px;max-width:390px;color:#cfc4d8;font-size:13px;line-height:1.65}
-.arcade-start,.arcade-save{min-height:52px;border:1px solid #c794ff;border-radius:7px;background:#a563f0;color:#fff;padding:14px 20px;font:900 12px Arial,Helvetica,sans-serif;letter-spacing:.5px;cursor:pointer}
+.arcade-overlay-actions{display:flex;gap:9px;justify-content:center;flex-wrap:wrap}.arcade-start,.arcade-save,.arcade-exit{min-height:52px;border:1px solid #c794ff;border-radius:7px;background:#a563f0;color:#fff;padding:14px 20px;font:900 12px Arial,Helvetica,sans-serif;letter-spacing:.5px;cursor:pointer}.arcade-exit{background:#17101f;border-color:#8e6aa8}.arcade-exit:hover{background:#24162f}.arcade-exit[hidden]{display:none}
 .arcade-start:hover,.arcade-save:hover{background:#8240ca}
 .arcade-score-form{display:grid;grid-template-columns:1fr auto;gap:8px;margin-top:18px}
 .arcade-score-form[hidden]{display:none}
@@ -63,3 +63,7 @@
   .arcade-touch-help{display:block}
   .arcade-stage canvas{cursor:default}
 }
+
+.arcade-stage.arcade-ended{touch-action:pan-y}
+.arcade-stage.arcade-ended canvas{touch-action:pan-y}
+@media(max-width:600px){.arcade-overlay-actions{display:grid;grid-template-columns:1fr}.arcade-exit{width:100%}}
