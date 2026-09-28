@@ -349,3 +349,58 @@ html[dir="rtl"] .order-dialog,html[dir="rtl"] .order-bar{text-align:right}
   .sauce-bubble{display:block;max-width:none;margin-bottom:8px}
   .sauce-more-link{width:max-content}
 }
+
+
+/* Burger Party page */
+.party-page{overflow:hidden}
+.party-hero{position:relative;padding:110px 0 95px;border-top:1px solid var(--line);background:radial-gradient(circle at 78% 18%,#7b3eb240 0,transparent 28%),radial-gradient(circle at 14% 82%,#54266f2e 0,transparent 24%),#09060e}
+.party-hero:after{content:"";position:absolute;inset:0;pointer-events:none;opacity:.14;background-image:linear-gradient(#b276ff18 1px,transparent 1px),linear-gradient(90deg,#b276ff18 1px,transparent 1px);background-size:46px 46px}
+.party-hero-grid{position:relative;z-index:1;display:grid;grid-template-columns:1.35fr .65fr;gap:70px;align-items:end}
+.party-hero h1{max-width:980px;font-size:clamp(58px,7vw,102px)}
+.party-lead{max-width:760px;margin:30px 0 0;color:#d4c9dd;font-size:20px;line-height:1.7}
+.party-hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}
+.party-no-catering{padding:26px;border:1px solid #b276ff4a;border-radius:12px;background:linear-gradient(145deg,#1b1025,#100a16);box-shadow:0 20px 50px #0004}
+.party-no-catering>span{display:block;margin-bottom:14px;color:#c69cff;font-size:9px;font-weight:900;letter-spacing:1.6px}
+.party-no-catering>strong{display:block;margin-bottom:12px;color:#fff;font-size:25px}
+.party-no-catering p{margin:0;color:#c8bbd0;font-size:14px;line-height:1.75}
+.party-intro{padding:78px 0 40px}
+.party-options{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;padding-bottom:95px}
+.party-card{position:relative;padding:32px 28px;border:1px solid #ffffff18;border-radius:14px;background:radial-gradient(circle at 100% 0,#6f38ac1d 0,transparent 32%),linear-gradient(145deg,#17101f,#0d0912);overflow:hidden}
+.party-card:after{content:"";position:absolute;right:-55px;bottom:-80px;width:185px;height:185px;border:1px solid #b276ff1d;border-radius:50%;box-shadow:0 0 0 22px #b276ff08,0 0 0 44px #b276ff04}
+.party-card>*{position:relative;z-index:1}
+.party-card-no{display:block;margin-bottom:28px;color:#b784ea;font-size:42px;font-weight:900;letter-spacing:-2px}
+.party-card h2{margin:5px 0 16px;font-size:clamp(30px,3vw,43px)}
+.party-card>p:not(.eyebrow){color:#cbbfd3;font-size:15px;line-height:1.75}
+.party-card ul{margin:24px 0 0;padding-left:18px;color:#a99caf;font-size:13px;line-height:1.8}
+.party-card-featured{border-color:#b276ff55;box-shadow:0 20px 50px #5f2f8b1c}
+.party-example{padding:85px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:radial-gradient(circle at 80% 20%,#6331922d 0,transparent 30%),#0c0812}
+.party-example-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:70px;align-items:start}
+.party-example-copy p{margin:0 0 18px;color:#cfc4d8;font-size:16px;line-height:1.8}
+.party-flow{display:flex;flex-wrap:wrap;align-items:center;gap:9px;margin-top:28px}
+.party-flow span{padding:8px 10px;border:1px solid #b276ff35;border-radius:999px;background:#140c1d;color:#d8c6e7;font-size:10px;font-weight:900;letter-spacing:.7px;text-transform:uppercase}
+.party-flow b{color:#b276ff}
+.party-faq{padding:90px 0 100px}
+.party-faq-grid{display:grid;gap:10px;max-width:960px}
+.party-faq details{border:1px solid #ffffff18;border-radius:10px;background:#110b17}
+.party-faq summary{display:flex;justify-content:space-between;gap:20px;padding:20px 22px;cursor:pointer;color:#fff;font-weight:800}
+.party-faq details p{margin:0;padding:0 22px 22px;color:#bfb3c7;font-size:14px;line-height:1.75}
+.party-cta{padding:90px 0 105px;border-top:1px solid var(--line);background:radial-gradient(circle at 75% 25%,#6331922f 0,transparent 30%),#0b0710}
+.party-cta-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:70px;align-items:center}
+.party-cta h2{max-width:790px}
+.party-cta p:not(.eyebrow){max-width:650px;margin:24px 0 0;color:#c9bdcf;font-size:16px;line-height:1.8}
+.party-contact{display:grid;gap:12px}
+.party-contact .button{justify-content:center}
+.party-contact small{display:block;color:#8f8298;font-size:10px;line-height:1.6;text-align:center}
+@media(max-width:900px){
+  .party-hero-grid,.party-example-grid,.party-cta-grid{grid-template-columns:1fr}
+  .party-options{grid-template-columns:1fr}
+  .party-hero{padding:72px 0 68px}
+  .party-hero h1{font-size:clamp(48px,14vw,72px);letter-spacing:-3px}
+  .party-lead{font-size:17px}
+  .party-intro{padding-top:58px}
+  .party-options{padding-bottom:70px}
+  .party-card{padding:25px 22px}
+  .party-example{padding:62px 0}
+  .party-faq{padding:65px 0 75px}
+  .party-cta{padding:65px 0 78px}
+}
