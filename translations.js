@@ -326,4 +326,8 @@ Danke für dein Feedback.|Thanks for your feedback.|Geri bildirimin için teşek
 Deine Antwort ist im Kontrollzentrum gelandet.|Your response has reached control.|Yanıtın kontrol merkezine ulaştı.|وصلت إجابتك إلى مركز التحكم.|Tu respuesta ha llegado al centro de control.|Bersiva te gihîşt navenda kontrolê.
 `;
 
+
+translationRows += `
+HANDY: Finger auf das Logo legen und nach links/rechts ziehen · solange du es festhältst, feuert es automatisch · Bombe rechts: 1× pro Runde|MOBILE: Put your finger on the logo and drag left/right · it fires automatically while you hold it · bomb on the right: 1× per round|TELEFON: Parmağını logonun üzerine koy ve sola/sağa sürükle · tuttuğun sürece otomatik ateş eder · sağdaki bomba: tur başına 1×|الهاتف: ضع إصبعك على الشعار واسحبه يمينًا ويسارًا · يطلق تلقائيًا ما دمت ضاغطًا · القنبلة على اليمين: مرة واحدة في الجولة|MÓVIL: Pon el dedo sobre el logo y arrastra a izquierda/derecha · dispara automáticamente mientras lo mantienes · bomba a la derecha: 1× por ronda|MOBÎL: Tiliya xwe li ser logoyê deyne û çep/rast bikişîne · heta ku tu digirî bi xweberî dişewitîne · bomb li rastê: 1× di her dorê de
+`;
 window.PSB_TRANSLATIONS = Object.fromEntries(['en','tr','ar','es','ku'].map((lang, i) => [lang, Object.fromEntries(translationRows.trim().split('\n').filter(Boolean).map(row => { const parts = row.split('|'); return [parts[0], parts[i + 1]]; }))]));
