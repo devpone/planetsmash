@@ -364,12 +364,59 @@
     if(note) note.textContent=remote?'Globale Bestenliste aus der Planet-Datenbank.':'Aktuell lokaler Highscore auf diesem Gerät.';
   }
 
+  async function fetchRemoteScores(){
+    const res=await fetch(API+'/game/highscores',{cache:'no-store'});
+    if(!res.ok) throw new Error('remote_unavailable');
+    const data=await res.json();
+    return Array.isArray(data.scores)
+      ? data.scores
+      : (Array.isArray(data.highscores) ? data.highscores : []);
+  }
+
+  async function postRemoteScore(name,value,createdAt=''){
+    const payload={name,score:value};
+    if(createdAt) payload.created_at=createdAt;
+
+    const res=await fetch(API+'/game/highscores',{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify(payload)
+    });
+    if(!res.ok) throw new Error('save_failed');
+    return res.json();
+  }
+
+  async function syncLocalScores(){
+    const local=getLocalScores()
+      .map(item=>({
+        name:String(item.name||'').trim().replace(/\s+/g,' ').slice(0,24),
+        score:Number(item.score),
+        created_at:String(item.created_at||'')
+      }))
+      .filter(item=>item.name && Number.isInteger(item.score) && item.score>=0 && item.score%100===0)
+      .slice(0,10);
+
+    if(!local.length) return false;
+
+    for(const item of local){
+      await postRemoteScore(item.name,item.score,item.created_at);
+    }
+
+    try{ localStorage.removeItem(LOCAL_KEY); }catch{}
+    return true;
+  }
+
   async function loadScores(){
     try{
-      const res=await fetch(API+'/game/highscores',{cache:'no-store'});
-      if(!res.ok) throw new Error('remote_unavailable');
-      const data=await res.json();
-      const scores=Array.isArray(data.scores)?data.scores:(Array.isArray(data.highscores)?data.highscores:[]);
+      let scores=await fetchRemoteScores();
+
+      try{
+        const synced=await syncLocalScores();
+        if(synced) scores=await fetchRemoteScores();
+      }catch{
+        // Lokale Scores bleiben erhalten und werden beim nächsten Besuch erneut versucht.
+      }
+
       renderScores(scores,true);
       return true;
     }catch{
@@ -389,19 +436,14 @@
 
     let remoteSaved=false;
     try{
-      const res=await fetch(API+'/game/highscores',{
-        method:'POST',
-        headers:{'Content-Type':'application/json'},
-        body:JSON.stringify({name,score:value})
-      });
-      if(!res.ok) throw new Error('save_failed');
+      await postRemoteScore(name,value);
       remoteSaved=true;
     }catch{
       saveLocalScore(name,value);
     }
 
     await loadScores();
-    formStatus.textContent=remoteSaved?'Highscore gespeichert. Willkommen in der Galaxis.':'Highscore auf diesem Gerät gespeichert. Die globale Verbindung ist noch nicht aktiv.';
+    formStatus.textContent=remoteSaved?'Highscore global gespeichert. Willkommen in der Galaxis.':'Highscore auf diesem Gerät gespeichert. Die globale Verbindung ist gerade nicht erreichbar.';
     submit.disabled=false;
     form.hidden=true;
   }
