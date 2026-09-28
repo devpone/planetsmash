@@ -334,4 +334,8 @@ translationRows += `
 PC: Linke Maustaste gedrückt halten = Maussteuerung + Dauerfeuer · loslassen = Feuer aus · rechte Maustaste = Bombe · alternativ ← → oder A / D|PC: Hold the left mouse button = mouse steering + autofire · release = stop firing · right mouse button = bomb · alternatively use ← → or A / D|PC: Sol fare tuşunu basılı tut = fare kontrolü + otomatik ateş · bırak = ateş durur · sağ fare tuşu = bomba · alternatif olarak ← → veya A / D|الكمبيوتر: اضغط مطولًا على زر الفأرة الأيسر = تحكم بالماوس + إطلاق تلقائي · اتركه = يتوقف الإطلاق · زر الفأرة الأيمن = قنبلة · أو استخدم ← → أو A / D|PC: Mantén pulsado el botón izquierdo = control con ratón + disparo automático · suelta = deja de disparar · botón derecho = bomba · alternativamente ← → o A / D|PC: Bişkoja çepê ya mişkê bigire = kontrola mişkê + şewitandina xweber · berdê = şewitandin raweste · bişkoja rastê = bomb · an jî ← → an A / D
 `;
 
+translationRows += `
+ZURÜCK ZUR SPEISEKARTE ↓|BACK TO MENU ↓|MENÜYE DÖN ↓|العودة إلى القائمة ↓|VOLVER A LA CARTA ↓|VEGERE LÎSTEYÊ ↓
+`;
+
 window.PSB_TRANSLATIONS = Object.fromEntries(['en','tr','ar','es','ku'].map((lang, i) => [lang, Object.fromEntries(translationRows.trim().split('\n').filter(Boolean).map(row => { const parts = row.split('|'); return [parts[0], parts[i + 1]]; }))]));
