@@ -35,7 +35,7 @@
   let spawnTimer = 0;
   let state = 'idle';
   let score = 0;
-  let lives = 3;
+  let lives = 1;
   let shots = [];
   let enemies = [];
   let particles = [];
@@ -50,7 +50,7 @@
 
   function resetGame(){
     score = 0;
-    lives = 3;
+    lives = 1;
     shots = [];
     enemies = [];
     particles = [];
@@ -58,7 +58,7 @@
     spawnTimer = 250;
     lastShotAt = 0;
     scoreEl.textContent = '0';
-    livesEl.textContent = '♥ ♥ ♥';
+    livesEl.textContent = '♥';
     statusEl.textContent = 'MISSION LÄUFT';
   }
 
@@ -123,7 +123,7 @@
 
   function loseLife(){
     lives -= 1;
-    livesEl.textContent = Array.from({length:3},(_,i)=>i<lives?'♥':'♡').join(' ');
+    livesEl.textContent = lives > 0 ? '♥' : '♡';
     if (lives <= 0) endGame();
   }
 
