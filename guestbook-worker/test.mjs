@@ -6,6 +6,8 @@ import worker from './src.js';
 
 const db = new DatabaseSync(':memory:');
 db.exec(readFileSync(new URL('./migrations/0001_init.sql',import.meta.url),'utf8'));
+db.exec(readFileSync(new URL('./migrations/0002_visitors.sql',import.meta.url),'utf8'));
+db.exec(readFileSync(new URL('./migrations/0003_menu_feedback.sql',import.meta.url),'utf8'));
 const env = {
   ALLOWED_ORIGIN:'https://planetsmashburger.de', SITE_HOSTNAME:'planetsmashburger.de',
   RATE_SECRET:'test-only-long-random-secret', ADMIN_TOKEN:'admin-test', TURNSTILE_SECRET:'test',
@@ -41,4 +43,38 @@ test('public writes, pagination, reporting, moderation, and abuse limits',async 
   assert.equal((await response.json()).total,3);
   assert.equal((await worker.fetch(request('/admin/messages'),env)).status,401);
   globalThis.fetch=originalFetch;
+});
+
+
+test('menu feedback survey availability, submissions, and admin readback',async () => {
+  let response=await worker.fetch(request('/survey/menu-feedback'),env);
+  assert.equal(response.status,200);
+  assert.equal((await response.json()).ok,true);
+
+  response=await worker.fetch(request('/survey/menu-feedback','POST',{missing:true,answer:'Dessert und Onion Rings'}),env);
+  assert.equal(response.status,201);
+  assert.equal((await response.json()).ok,true);
+
+  response=await worker.fetch(request('/survey/menu-feedback','POST',{missing:false,answer:''}),env);
+  assert.equal(response.status,201);
+
+  response=await worker.fetch(request('/survey/menu-feedback','POST',{missing:true,answer:''}),env);
+  assert.equal(response.status,400);
+
+  response=await worker.fetch(request('/survey/menu-feedback','POST',{missing:true,answer:'https://spam.example'}),env);
+  assert.equal(response.status,400);
+
+  response=await worker.fetch(request('/survey/menu-feedback','POST',{missing:false,answer:''},{Origin:'https://wrong.example'}),env);
+  assert.equal(response.status,403);
+
+  response=await worker.fetch(request('/admin/survey/menu-feedback'),env);
+  assert.equal(response.status,401);
+
+  response=await worker.fetch(request('/admin/survey/menu-feedback','GET',undefined,{Authorization:'Bearer admin-test'}),env);
+  assert.equal(response.status,200);
+  const data=await response.json();
+  assert.equal(data.summary.total,2);
+  assert.equal(data.summary.missing_yes,1);
+  assert.equal(data.summary.missing_no,1);
+  assert.equal(data.responses[0].missing,0);
 });
