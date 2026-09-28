@@ -374,4 +374,28 @@ translationRows += `
 Google-Bewertung|Google review|Google yorumu|مراجعة Google|Reseña de Google|Nirxandina Google
 `;
 
+translationRows += `
+WIEDER GEÖFFNET IN|OPEN AGAIN IN|YENİDEN AÇILIŞA|يفتح مجددًا خلال|VOLVEMOS A ABRIR EN|DÎSA VEDIBE DI
+`;
+
+translationRows += `
+STUNDEN|HOURS|SAAT|ساعة|HORAS|SAET
+`;
+
+translationRows += `
+MINUTEN|MINUTES|DAKİKA|دقيقة|MINUTOS|DEQÎQE
+`;
+
+translationRows += `
+SEKUNDEN|SECONDS|SANİYE|ثانية|SEGUNDOS|ÇIRKE
+`;
+
+translationRows += `
+Countdown bis zur nächsten Öffnung|Countdown until next opening|Bir sonraki açılışa geri sayım|العد التنازلي حتى الافتتاح التالي|Cuenta atrás hasta la próxima apertura|Jimartina paşverû heta vekirina din
+`;
+
+translationRows += `
+Öffnungsstatus wird geladen …|Loading opening status …|Açılış durumu yükleniyor …|جارٍ تحميل حالة الفتح…|Cargando estado de apertura…|Rewşa vekirinê tê barkirin …
+`;
+
 window.PSB_TRANSLATIONS = Object.fromEntries(['en','tr','ar','es','ku'].map((lang, i) => [lang, Object.fromEntries(translationRows.trim().split('\n').filter(Boolean).map(row => { const parts = row.split('|'); return [parts[0], parts[i + 1]]; }))]));
