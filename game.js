@@ -17,6 +17,7 @@
   const nameInput = root.querySelector('[data-game-name]');
   const formStatus = root.querySelector('[data-game-form-status]');
   const board = root.querySelector('[data-game-board]');
+  const boardMoreBtn = root.querySelector('[data-game-board-more]');
   const leftBtn = root.querySelector('[data-game-left]');
   const rightBtn = root.querySelector('[data-game-right]');
   const fireBtn = root.querySelector('[data-game-fire]');
@@ -54,6 +55,8 @@
   let touchDriving = false;
   let lastBombPointerAt = 0;
   let mouseDriving = false;
+  let currentScores = [];
+  let boardExpanded = false;
 
   const player = {x:WIDTH/2,y:HEIGHT-96,w:92,h:92,speed:470};
 
@@ -407,19 +410,23 @@
 
   function renderScores(scores,remote){
     board.replaceChildren();
-    const clean=(Array.isArray(scores)?scores:[])
+    currentScores=(Array.isArray(scores)?scores:[])
       .map(s=>({name:String(s.name||'Erdling').slice(0,24),score:Number(s.score)||0}))
       .filter(s=>s.score>=0)
       .sort((a,b)=>b.score-a.score)
-      .slice(0,10);
+      .slice(0,25);
+
+    const clean=boardExpanded ? currentScores : currentScores.slice(0,10);
 
     if(!clean.length){
       const li=document.createElement('li');
       li.className='arcade-board-empty';
       li.textContent='Noch kein Highscore. Hol dir Platz 1.';
       board.append(li);
+      boardMoreBtn.hidden=true;
       return;
     }
+
     clean.forEach(item=>{
       const li=document.createElement('li');
       const name=document.createElement('strong');
@@ -429,8 +436,15 @@
       li.append(document.createTextNode(''),name,points);
       board.append(li);
     });
+
+    boardMoreBtn.hidden=currentScores.length<=10;
+    if(!boardMoreBtn.hidden){
+      boardMoreBtn.textContent=boardExpanded?'TOP 10 ANZEIGEN ↑':'TOP 25 ANZEIGEN ↓';
+      boardMoreBtn.setAttribute('aria-expanded',String(boardExpanded));
+    }
+
     const note=root.querySelector('[data-game-board-note]');
-    if(note) note.textContent=remote?'Globale Bestenliste aus der Planet-Datenbank.':'Aktuell lokaler Highscore auf diesem Gerät.';
+    if(note) note.textContent=remote?'Globale Bestenliste · gespeichert werden maximal die Top 25.':'Aktuell lokaler Highscore auf diesem Gerät.';
   }
 
   async function fetchRemoteScores(){
@@ -504,15 +518,23 @@
     formStatus.textContent='Highscore wird gespeichert …';
 
     let remoteSaved=false;
+    let qualified=true;
+    let cutoff=0;
     try{
-      await postRemoteScore(name,value);
-      remoteSaved=true;
+      const result=await postRemoteScore(name,value);
+      qualified=result.qualified!==false;
+      cutoff=Number(result.cutoff||0);
+      remoteSaved=qualified;
     }catch{
       saveLocalScore(name,value);
     }
 
     await loadScores();
-    formStatus.textContent=remoteSaved?'Highscore global gespeichert. Willkommen in der Galaxis.':'Highscore auf diesem Gerät gespeichert. Die globale Verbindung ist gerade nicht erreichbar.';
+    if(!qualified){
+      formStatus.textContent='Knapp vorbei: Für die Top 25 brauchst du mehr als '+cutoff.toLocaleString('de-DE')+' Punkte.';
+    }else{
+      formStatus.textContent=remoteSaved?'Highscore global gespeichert. Willkommen in der Galaxis.':'Highscore auf diesem Gerät gespeichert. Die globale Verbindung ist gerade nicht erreichbar.';
+    }
     submit.disabled=false;
     form.hidden=true;
   }
@@ -675,6 +697,10 @@
       return;
     }
     startGame();
+  });
+  boardMoreBtn.addEventListener('click',()=>{
+    boardExpanded=!boardExpanded;
+    renderScores(currentScores,true);
   });
   form.addEventListener('submit',submitScore);
 
