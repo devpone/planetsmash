@@ -103,6 +103,7 @@
     };
     const variant = variantChoices[name] ? selectField(form, 'Auswahl', variantChoices[name]) : null;
     let menuToggle, sauce, drink, veggie, patty;
+    const burgerExtras = [];
     if (isBurger) {
       const menuLabel = addText(form, 'label', '', 'order-check');
       menuToggle = document.createElement('input');
@@ -128,6 +129,14 @@
             : count + ' extra (+ ' + money(count * 300) + ')';
         }
       });
+      const extrasBox = addText(form, 'div', 'Extras für deinen Burger', 'order-field');
+      for (const [extraName, extraPrice] of [['Jalapeños',100],['Extra Bacon',150],['Geschmorte Zwiebeln',150],['Spiegelei',150]]) {
+        const extraLabel = addText(extrasBox, 'label', '', 'order-check');
+        const extraInput = document.createElement('input');
+        extraInput.type = 'checkbox';
+        extraLabel.append(extraInput, document.createTextNode(' ' + extraName + ' (+ ' + money(extraPrice) + ')'));
+        burgerExtras.push({name: extraName, price: extraPrice, input: extraInput});
+      }
     }
     const noteLabel = addText(form, 'label', 'Wünsche für diesen Artikel (optional)', 'order-field');
     const note = document.createElement('input');
@@ -151,6 +160,9 @@
       }
       if (veggie?.checked) { cents += (1 + patty.selectedIndex) * 100; details.push('Veggie-Patty'); }
       if (patty && patty.selectedIndex) { cents += patty.selectedIndex * 300; details.push(patty.selectedIndex + (veggie?.checked ? (patty.selectedIndex === 1 ? ' extra Veggie-Patty' : ' extra Veggie-Patties') : ' extra Patty')); }
+      for (const extra of burgerExtras) {
+        if (extra.input.checked) { cents += extra.price; details.push(extra.name); }
+      }
       if (note.value.trim()) details.push(note.value.trim());
       const hasCan = !!menuToggle?.checked || name === 'Cola, Cola Zero, Fanta, Fanta Exotic, Sprite' || name === 'Wasser mit / ohne';
       if (hasCan) { cents += 25; details.push('inkl. 0,25 € Pfand'); }
