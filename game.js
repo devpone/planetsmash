@@ -12,6 +12,7 @@
   const overlayTitle = root.querySelector('[data-game-title]');
   const overlayCopy = root.querySelector('[data-game-copy]');
   const startBtn = root.querySelector('[data-game-start]');
+  const exitBtn = root.querySelector('[data-game-exit]');
   const form = root.querySelector('[data-game-form]');
   const nameInput = root.querySelector('[data-game-name]');
   const formStatus = root.querySelector('[data-game-form-status]');
@@ -85,6 +86,8 @@
     resetGame();
     state = 'running';
     overlay.hidden = true;
+    exitBtn.hidden = true;
+    stage.classList.remove('arcade-ended');
     form.hidden = true;
     formStatus.textContent = '';
     lastTime = now();
@@ -106,6 +109,8 @@
     startBtn.textContent = 'NOCHMAL SPIELEN ↗';
     form.hidden = score <= 0;
     overlay.hidden = false;
+    exitBtn.hidden = false;
+    stage.classList.add('arcade-ended');
     cancelAnimationFrame(raf);
     if (score > 0) setTimeout(() => nameInput.focus(), 80);
   }
@@ -648,6 +653,17 @@
     touchPointerId = null;
     keys.fire = false;
   });
+  exitBtn.addEventListener('click',()=>{
+    mouseDriving=false;
+    touchDriving=false;
+    touchPointerId=null;
+    keys.fire=false;
+    stage.classList.add('arcade-ended');
+    const menu=document.querySelector('#speisekarte');
+    if(menu) menu.scrollIntoView({behavior:'smooth',block:'start'});
+    else window.location.hash='speisekarte';
+  });
+
   startBtn.addEventListener('click',()=>{
     if(state==='paused'){
       state='running';
@@ -668,6 +684,8 @@
       mouseDriving=false;
       cancelAnimationFrame(raf);
       overlayKicker.textContent='MISSION PAUSIERT';
+      exitBtn.hidden=true;
+      stage.classList.remove('arcade-ended');
       overlayTitle.textContent='KURZE FUNKSTILLE';
       overlayCopy.textContent='Zurück zur Mission?';
       form.hidden=true;
