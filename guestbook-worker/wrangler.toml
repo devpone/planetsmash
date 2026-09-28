@@ -9,4 +9,4 @@ SITE_HOSTNAME = "planetsmashburger.de"
 [[d1_databases]]
 binding = "DB"
 database_name = "planet-funksprueche"
-database_id = "REPLACE_WITH_D1_DATABASE_ID"
+database_id = "655926ba-176b-440a-9287-abd840cb78a5"
