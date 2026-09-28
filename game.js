@@ -571,15 +571,7 @@
     if(e.detail === 0 || now() - lastBombPointerAt > 500) useBomb();
   });
   canvas.addEventListener('pointerdown',e=>{
-    if(e.pointerType==='mouse' && e.button===0){
-      if(state!=='running') return;
-      e.preventDefault();
-      mouseDriving = true;
-      movePlayerToMouse(e);
-      shoot();
-      root.focus({preventScroll:true});
-      return;
-    }
+    if(e.pointerType==='mouse') return;
 
     if(e.pointerType==='touch' || e.pointerType==='pen'){
       if(state!=='running' || touchPointerId!==null) return;
@@ -597,12 +589,7 @@
   });
 
   canvas.addEventListener('pointermove',e=>{
-    if(e.pointerType==='mouse'){
-      if(mouseDriving && state==='running'){
-        movePlayerToMouse(e);
-      }
-      return;
-    }
+    if(e.pointerType==='mouse') return;
 
     if(!touchDriving || e.pointerId!==touchPointerId) return;
     e.preventDefault();
@@ -619,6 +606,39 @@
       if(canvas.hasPointerCapture(e.pointerId)) canvas.releasePointerCapture(e.pointerId);
     }catch{}
   };
+
+  canvas.addEventListener('mousedown',e=>{
+    if(state!=='running') return;
+
+    if(e.button===0){
+      e.preventDefault();
+      mouseDriving=true;
+      movePlayerToMouse(e);
+      shoot();
+      root.focus({preventScroll:true});
+      return;
+    }
+
+    if(e.button===2){
+      e.preventDefault();
+      useBomb();
+    }
+  });
+
+  canvas.addEventListener('mousemove',e=>{
+    if(!mouseDriving || state!=='running') return;
+    movePlayerToMouse(e);
+  });
+
+  window.addEventListener('mouseup',e=>{
+    if(e.button===0){
+      mouseDriving=false;
+    }
+  });
+
+  canvas.addEventListener('contextmenu',e=>{
+    e.preventDefault();
+  });
 
   canvas.addEventListener('pointerup',releaseTouchDrive);
   canvas.addEventListener('pointercancel',releaseTouchDrive);
