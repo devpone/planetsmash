@@ -27,6 +27,8 @@
   const LOCAL_KEY = 'psb-arcade-highscores-v1';
   const WIDTH = 900;
   const HEIGHT = 600;
+  const MAX_LIVES = 3;
+  const HIT_GRACE_MS = 850;
   const logo = new Image();
   logo.src = 'assets/logo.webp?v=20260928';
 
@@ -38,7 +40,7 @@
   let spawnTimer = 0;
   let state = 'idle';
   let score = 0;
-  let lives = 1;
+  let lives = MAX_LIVES;
   let shots = [];
   let enemies = [];
   let particles = [];
@@ -46,6 +48,7 @@
   let lastShotAt = 0;
   let nextId = 1;
   let bombUsed = false;
+  let invulnerableUntil = 0;
 
   const player = {x:WIDTH/2,y:HEIGHT-96,w:92,h:92,speed:470};
 
@@ -54,7 +57,7 @@
 
   function resetGame(){
     score = 0;
-    lives = 1;
+    lives = MAX_LIVES;
     shots = [];
     enemies = [];
     particles = [];
@@ -62,10 +65,11 @@
     spawnTimer = 250;
     lastShotAt = 0;
     bombUsed = false;
+    invulnerableUntil = 0;
     bombBtn.disabled = false;
     bombCountEl.textContent = '×1';
     scoreEl.textContent = '0';
-    livesEl.textContent = '♥';
+    livesEl.textContent = '♥ ♥ ♥';
     statusEl.textContent = 'MISSION LÄUFT';
   }
 
@@ -151,10 +155,27 @@
     }
   }
 
+  function renderLives(){
+    livesEl.textContent = Array.from({length:MAX_LIVES},(_,i)=>i<lives?'♥':'♡').join(' ');
+  }
+
   function loseLife(){
-    lives -= 1;
-    livesEl.textContent = lives > 0 ? '♥' : '♡';
-    if (lives <= 0) endGame();
+    const t = now();
+    if (t < invulnerableUntil || state !== 'running') return false;
+
+    lives = Math.max(0, lives - 1);
+    invulnerableUntil = t + HIT_GRACE_MS;
+    renderLives();
+
+    if (lives <= 0){
+      endGame();
+    } else {
+      statusEl.textContent = 'TREFFER · ' + lives + (lives === 1 ? ' LEBEN' : ' LEBEN');
+      window.setTimeout(()=>{
+        if(state === 'running') statusEl.textContent = 'MISSION LÄUFT';
+      }, HIT_GRACE_MS);
+    }
+    return true;
   }
 
   function update(dt){
