@@ -35,7 +35,12 @@
     const extra = part.match(/^(\d+) extra (Veggie-Patty|Veggie-Patties|Patty)$/);
     return extra ? extra[1] + ' ' + tr('extra ' + extra[2]) : tr(part);
   }).join(' · ');
-  const price = text => Math.round(Number(text.split('/')[0].replace(/[^\d,]/g, '').replace(',', '.')) * 100);
+  const price = text => {
+    const match = String(text || '').match(/\d+(?:[.,]\d{1,2})?/);
+    if (!match) return null;
+    const cents = Math.round(Number(match[0].replace(',', '.')) * 100);
+    return Number.isFinite(cents) ? cents : null;
+  };
   const addText = (parent, tag, value, className) => {
     const node = document.createElement(tag);
     node.textContent = value;
@@ -88,12 +93,32 @@
     closeButton(chooser);
     const name = row.querySelector('h3').dataset.sourceName || row.querySelector('h3').textContent.trim();
     const isBurger = row.closest('details') === menu.querySelector('details');
-    const isFries = name.toLowerCase().includes('pommes');
+    const burgerExtrasByItem = {
+      'Classic Cheese': [['Jalapeños',100],['Extra Bacon',150],['Spiegelei',150],['Geschmorte Zwiebeln gegen Röstzwiebeln tauschen',0]],
+      'Chili Cheese': [['Jalapeños',100],['Extra Bacon',150],['Spiegelei',150],['Geschmorte Zwiebeln gegen Röstzwiebeln tauschen',0]],
+      'Bacon BBQ': [['Jalapeños',100],['Extra Bacon',150],['Spiegelei',150],['Geschmorte Zwiebeln gegen Röstzwiebeln tauschen',0]],
+      'Galactic Potato': [['Jalapeños',100],['Extra Bacon',150],['Geschmorte Zwiebeln',100],['Spiegelei',150]],
+      'Con Carne': [['Jalapeños',100],['Extra Bacon',150],['Geschmorte Zwiebeln',100],['Spiegelei',150]],
+      'Planet Mac': [['Jalapeños',100],['Extra Bacon',150],['Spiegelei',150],['Geschmorte Zwiebeln gegen Röstzwiebeln tauschen',0]],
+      'Bacon & Egg': [['Jalapeños',100],['Extra Bacon',150],['Geschmorte Zwiebeln',100]]
+    };
+    const foodExtrasByItem = {
+      'Pommes': [['Jalapeños',150],['Extra Bacon',150],['Geschmorte Zwiebeln',150],['Röstzwiebeln',150],['Spiegelei',150],['Käsesauce',150],['Käsesauce scharf',150]],
+      'Süßkartoffelpommes': [['Jalapeños',150],['Extra Bacon',150],['Geschmorte Zwiebeln',150],['Röstzwiebeln',150],['Spiegelei',150],['Käsesauce',150],['Käsesauce scharf',150]],
+      'Chili con Carne Pommes': [['Jalapeños',150],['Extra Bacon',150],['Röstzwiebeln',150],['Spiegelei',150],['Käsesauce',150],['Käsesauce scharf',150]],
+      'Smashpommes': [['Jalapeños',150],['Extra Bacon',150],['Röstzwiebeln',150],['Spiegelei',150],['Käsesauce',150],['Käsesauce scharf',150]],
+      'Pommes Currywurst Mayo': [['Jalapeños',150],['Geschmorte Zwiebeln',150],['Röstzwiebeln',150],['Käsesauce',150],['Käsesauce scharf',150]],
+      'Currywurst': [['Jalapeños',150],['Geschmorte Zwiebeln',150],['Röstzwiebeln',150],['Käsesauce',150],['Käsesauce scharf',150]],
+      'Chili Cheese Nuggetz': [['Käsesauce',150],['Käsesauce scharf',150]]
+    };
+    const burgerExtraChoices = burgerExtrasByItem[name] || [];
+    const foodExtraChoices = foodExtrasByItem[name] || [];
     const form = document.createElement('form');
     form.addEventListener('submit', event => event.preventDefault());
     addText(form, 'h2', name, 'order-title').id = 'choice-title';
     const text = row.querySelector('strong').textContent.trim();
     let cents = price(text);
+    if (!Number.isInteger(cents)) return;
     let label = name;
     const details = [];
     const variantChoices = {
@@ -132,30 +157,21 @@
             : count + ' extra (+ ' + money(count * 300) + ')';
         }
       });
-      const extrasBox = addText(form, 'div', 'Extras für deinen Burger', 'order-field');
-      const extras = [['Jalapeños',100],['Extra Bacon',150],['Geschmorte Zwiebeln',100],['Spiegelei',150]];
-      if (row.querySelector('p')?.textContent.includes('geschmorte Zwiebeln')) extras.push(['Geschmorte Zwiebeln gegen Röstzwiebeln tauschen',0]);
-      for (const [extraName, extraPrice] of extras) {
-        const extraLabel = addText(extrasBox, 'label', '', 'order-check');
-        const extraInput = document.createElement('input');
-        extraInput.type = 'checkbox';
-        extraLabel.append(extraInput, document.createTextNode(' ' + extraName + ' (+ ' + money(extraPrice) + ')'));
-        burgerExtras.push({name: extraName, price: extraPrice, input: extraInput});
+      if (burgerExtraChoices.length) {
+        const extrasBox = addText(form, 'div', 'Extras für deinen Burger', 'order-field');
+        for (const [extraName, extraPrice] of burgerExtraChoices) {
+          const extraLabel = addText(extrasBox, 'label', '', 'order-check');
+          const extraInput = document.createElement('input');
+          extraInput.type = 'checkbox';
+          extraLabel.append(extraInput, document.createTextNode(' ' + extraName + ' (+ ' + money(extraPrice) + ')'));
+          burgerExtras.push({name: extraName, price: extraPrice, input: extraInput});
+        }
       }
     }
-    if (isFries) {
-      const friesExtrasBox = addText(form, 'div', 'Extras für deine Pommes', 'order-field');
-      const extras = [
-        ['Jalapeños', 150],
-        ['Extra Bacon', 150],
-        ['Geschmorte Zwiebeln', 150],
-        ['Röstzwiebeln', 150],
-        ['Spiegelei', 150],
-        ['Käsesauce', 150],
-        ['Käsesauce scharf', 150]
-      ];
-      for (const [extraName, extraPrice] of extras) {
-        const extraLabel = addText(friesExtrasBox, 'label', '', 'order-check');
+    if (foodExtraChoices.length) {
+      const extrasBox = addText(form, 'div', name.includes('Pommes') ? 'Extras für deine Pommes' : 'Passende Extras', 'order-field');
+      for (const [extraName, extraPrice] of foodExtraChoices) {
+        const extraLabel = addText(extrasBox, 'label', '', 'order-check');
         const extraInput = document.createElement('input');
         extraInput.type = 'checkbox';
         extraLabel.append(extraInput, document.createTextNode(' ' + extraName + ' (+ ' + money(extraPrice) + ')'));
@@ -208,9 +224,12 @@
   }
 
   menu.querySelectorAll('.menu-item').forEach(row => {
+    const heading = row.querySelector('h3');
+    const priceNode = row.querySelector('strong');
+    if (!heading || !priceNode || !Number.isInteger(price(priceNode.textContent))) return;
     const button = addText(row, 'button', '+ Hinzufügen', 'order-add');
     button.type = 'button';
-    button.setAttribute('aria-label', row.querySelector('h3').textContent.trim() + ' zum Warenkorb hinzufügen');
+    button.setAttribute('aria-label', heading.textContent.trim() + ' zum Warenkorb hinzufügen');
     button.addEventListener('click', () => openChooser(row));
   });
 
