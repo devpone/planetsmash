@@ -1140,6 +1140,26 @@ Individuelle Absprache · Abholung in Solingen · kein Vor-Ort-Catering|Accordo 
 Burger-Party in Solingen selbst machen: Burger-Balls, vorbereitete Smash-Patties, Zutaten und passendes Leih-Equipment nach Absprache. Kein Vor-Ort-Catering.|Organizza da solo la tua Festa Burger a Solingen: burger balls, smash patty preparati, ingredienti e attrezzatura in prestito adatta previo accordo. Nessun catering sul posto.
 `;
 
+
+translationRows += `
+Soße kommt im Becher.|Sauce comes in a cup.|Sos kapta gelir.|تأتي الصلصة في علبة.|La salsa viene en un vasito.|Sos di qedehekê de tê.
+Pommes im Menü|Fries in the meal|Menüde patates|البطاطس في الوجبة|Patatas del menú|Pommes di menûyê de
+Zweite Currywurst|Second currywurst|İkinci currywurst|قطعة كاري فورست ثانية|Segunda currywurst|Currywursta duyem
+Pommes normal|Regular fries|Normal patates|بطاطس عادية|Patatas normales|Pommes normal
+Pommes groß|Large fries|Büyük patates|بطاطس كبيرة|Patatas grandes|Pommes mezin
+PLANET SMASHBURGER // DIREKT VOM GRILL|PLANET SMASHBURGER // STRAIGHT FROM THE GRILL|PLANET SMASHBURGER // DOĞRUDAN IZGARADAN|PLANET SMASHBURGER // مباشرة من الشواية|PLANET SMASHBURGER // DIRECTO DE LA PARRILLA|PLANET SMASHBURGER // RASTERAST JI GRÎLÊ
+`;
+
+
+italianRows += `
+Soße kommt im Becher.|La salsa viene servita in un bicchierino.
+Pommes im Menü|Patatine nel menu
+Zweite Currywurst|Seconda currywurst
+Pommes normal|Patatine normali
+Pommes groß|Patatine grandi
+PLANET SMASHBURGER // DIREKT VOM GRILL|PLANET SMASHBURGER // DIRETTAMENTE DALLA GRIGLIA
+`;
+
 const baseTranslations = Object.fromEntries(['en','tr','ar','es','ku'].map((lang, i) => [lang, Object.fromEntries(translationRows.trim().split('\n').filter(Boolean).map(row => { const parts = row.split('|'); return [parts[0], parts[i + 1]]; }))]));
 baseTranslations.it = Object.fromEntries(italianRows.trim().split('\n').filter(Boolean).map(row => { const parts = row.split('|'); return [parts[0], parts[1]]; }));
 window.PSB_TRANSLATIONS = baseTranslations;
