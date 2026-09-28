@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="robots" content="noindex,nofollow,noarchive">
+  <meta name="theme-color" content="#100b17">
+  <title>Planet Smashburger · Umfrage Admin</title>
+  <link rel="icon" type="image/webp" href="assets/logo.webp?v=20260928">
+  <link rel="stylesheet" href="umfrage-admin.css?v=20260928">
+  <script src="umfrage-admin.js?v=20260928" defer></script>
+</head>
+<body>
+  <main class="admin-shell">
+    <header class="admin-header">
+      <div class="brand">
+        <img src="assets/logo.webp?v=20260928" alt="Planet Smashburger">
+        <div>
+          <p class="eyebrow">PLANET CONTROL STATION</p>
+          <h1>Speisekarten-Umfrage</h1>
+          <p class="sub">Interne Auswertung · nicht öffentlich verlinkt</p>
+        </div>
+      </div>
+      <div class="header-actions">
+        <a class="ghost-link" href="/">← Website</a>
+        <button class="ghost-button" type="button" data-refresh disabled>Aktualisieren</button>
+        <button class="ghost-button" type="button" data-export disabled>CSV exportieren</button>
+      </div>
+    </header>
+
+    <section class="login-card" data-login>
+      <div>
+        <p class="eyebrow">ADMIN-ZUGANG</p>
+        <h2>Umfragedaten öffnen</h2>
+        <p>Verwende denselben Admin-Token wie für den Worker. Der Token wird nur in diesem Browser-Tab gespeichert.</p>
+      </div>
+      <form data-login-form>
+        <label for="admin-token">Admin-Token</label>
+        <div class="token-row">
+          <input id="admin-token" data-token type="password" autocomplete="off" spellcheck="false" placeholder="Admin-Token eingeben" required>
+          <button type="submit">Öffnen ↗</button>
+        </div>
+        <p class="status" data-login-status role="status" aria-live="polite"></p>
+      </form>
+    </section>
+
+    <section class="dashboard" data-dashboard hidden>
+      <div class="topline">
+        <div>
+          <p class="eyebrow">LIVE-AUSWERTUNG</p>
+          <h2>Was fehlt auf der Karte?</h2>
+        </div>
+        <button class="logout-button" type="button" data-logout>Token vergessen</button>
+      </div>
+
+      <div class="stats-grid">
+        <article class="stat-card">
+          <span>Antworten gesamt</span>
+          <strong data-total>0</strong>
+        </article>
+        <article class="stat-card yes">
+          <span>„Mir fehlt was“</span>
+          <strong data-yes>0</strong>
+          <small data-yes-percent>0 %</small>
+        </article>
+        <article class="stat-card no">
+          <span>„Passt so“</span>
+          <strong data-no>0</strong>
+          <small data-no-percent>0 %</small>
+        </article>
+      </div>
+
+      <section class="ratio-card">
+        <div class="ratio-head">
+          <strong>Verteilung</strong>
+          <span data-updated>Noch nicht geladen</span>
+        </div>
+        <div class="ratio-bar" aria-label="Ja-Nein-Verteilung">
+          <div class="ratio-yes" data-ratio-yes style="width:0%"></div>
+          <div class="ratio-no" data-ratio-no style="width:0%"></div>
+        </div>
+        <div class="ratio-legend">
+          <span><i class="dot yes-dot"></i> Fehlt etwas</span>
+          <span><i class="dot no-dot"></i> Passt so</span>
+        </div>
+      </section>
+
+      <section class="responses-card">
+        <div class="responses-head">
+          <div>
+            <p class="eyebrow">FREITEXT-ANTWORTEN</p>
+            <h3>Was Besucher vermissen</h3>
+          </div>
+          <div class="filter-row" role="group" aria-label="Antworten filtern">
+            <button class="filter is-active" type="button" data-filter="missing">Nur Ideen</button>
+            <button class="filter" type="button" data-filter="all">Alle</button>
+          </div>
+        </div>
+
+        <div class="response-list" data-responses>
+          <p class="empty">Noch keine Daten geladen.</p>
+        </div>
+      </section>
+
+      <p class="dashboard-status" data-dashboard-status role="status" aria-live="polite"></p>
+    </section>
+  </main>
+</body>
+</html>
