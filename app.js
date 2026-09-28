@@ -62,10 +62,60 @@ function getCountdown(now = new Date()) {
   return `${label} ${days?days+'T ':''}${clock}`;
 }
 
+function getNextOpeningCountdown(now = new Date()) {
+  const {day,hour,minute,second}=getBerlinParts(now);
+  const current=day*86400+hour*3600+minute*60+second;
+  const open=openingHours[day];
+  const isOpen=open!==null && current>=day*86400+open*3600 && current<day*86400+22*3600;
+
+  if(isOpen) return {open:true,hours:0,minutes:0,seconds:0};
+
+  let target=null;
+  for(let offset=0;offset<=7;offset++){
+    const candidateDay=day+offset;
+    const candidateOpen=openingHours[candidateDay%7];
+    if(candidateOpen===null) continue;
+    const candidate=candidateDay*86400+candidateOpen*3600;
+    if(candidate>current){
+      target=candidate;
+      break;
+    }
+  }
+
+  const remaining=Math.max(0,(target ?? current)-current);
+  return {
+    open:false,
+    hours:Math.floor(remaining/3600),
+    minutes:Math.floor((remaining%3600)/60),
+    seconds:Math.floor(remaining%60)
+  };
+}
+
+function updateHeroOpeningCountdown(now = new Date()) {
+  const countdown=getNextOpeningCountdown(now);
+  const box=document.querySelector('[data-hero-countdown]');
+  if(!box) return;
+
+  box.hidden=countdown.open;
+  if(countdown.open) return;
+
+  const values={
+    hours:String(countdown.hours).padStart(2,'0'),
+    minutes:String(countdown.minutes).padStart(2,'0'),
+    seconds:String(countdown.seconds).padStart(2,'0')
+  };
+
+  Object.entries(values).forEach(([key,value])=>{
+    const el=box.querySelector(`[data-opening-${key}]`);
+    if(el) el.textContent=value;
+  });
+}
+
 function updateOpeningStatus(){
   const status=getOpeningStatus();
   document.querySelectorAll('[data-status]').forEach(el=>el.textContent=status);
   document.querySelectorAll('[data-countdown]').forEach(el=>el.textContent=getCountdown());
+  updateHeroOpeningCountdown();
   document.querySelectorAll('[data-call]').forEach(slot=>{
     const open=status.startsWith('Jetzt geöffnet');
     const tag=open?'A':'SPAN';
