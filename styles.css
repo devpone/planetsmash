@@ -279,3 +279,5 @@ html[dir="rtl"] .order-dialog,html[dir="rtl"] .order-bar{text-align:right}
   .hero-countdown-clock>b{font-size:clamp(28px,8vw,41px)}
   .hero-countdown-clock small{font-size:6px;letter-spacing:.9px}
 }
+
+.hero-buttons [data-call] .call-closed{display:none}
