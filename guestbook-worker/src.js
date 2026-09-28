@@ -62,6 +62,43 @@ export default {
         const row = await env.DB.prepare("SELECT value FROM counters WHERE key='visitors'").first();
         return wrap(json({value:Number(row?.value || 0)}));
       }
+      if (url.pathname === '/survey/menu-feedback' && request.method === 'GET') {
+        await env.DB.prepare('SELECT id FROM menu_feedback LIMIT 1').first();
+        return wrap(json({ok:true}));
+      }
+      if (url.pathname === '/survey/menu-feedback' && request.method === 'POST') {
+        if (!validOrigin(request,env)) return wrap(error('forbidden',403));
+        if (Number(request.headers.get('Content-Length')) > 2048) return wrap(error('too_large',413));
+        const body = await request.json();
+        if (typeof body.missing !== 'boolean') return wrap(error('invalid_response'));
+        const answer = String(body.answer || '').trim().replace(/\s+/g,' ');
+        if (body.missing && (answer.length < 2 || answer.length > 240)) return wrap(error('invalid_text'));
+        if (!body.missing && answer.length) return wrap(error('invalid_text'));
+        if (/[<>]/.test(answer) || /https?:\/\/|www\.|\b[a-z0-9.-]+\.(?:com|de|net|org)\b/i.test(answer)) return wrap(error('invalid_text'));
+        if (!await rateLimit(env,request,'menu-survey',20,3600)) return wrap(error('rate_limit',429));
+        const item = {
+          id:crypto.randomUUID(),
+          missing:body.missing ? 1 : 0,
+          answer:body.missing ? answer : '',
+          created_at:new Date().toISOString()
+        };
+        await env.DB.prepare('INSERT INTO menu_feedback (id,missing,answer,created_at) VALUES (?,?,?,?)')
+          .bind(item.id,item.missing,item.answer,item.created_at).run();
+        return wrap(json({ok:true,id:item.id},201));
+      }
+      if (url.pathname === '/admin/survey/menu-feedback' && request.method === 'GET') {
+        if (!authorized(request,env)) return wrap(error('unauthorized',401));
+        const rows = await env.DB.prepare('SELECT id,missing,answer,created_at FROM menu_feedback ORDER BY created_at DESC LIMIT 250').all();
+        const summary = await env.DB.prepare('SELECT COUNT(*) AS total, SUM(CASE WHEN missing=1 THEN 1 ELSE 0 END) AS missing_yes, SUM(CASE WHEN missing=0 THEN 1 ELSE 0 END) AS missing_no FROM menu_feedback').first();
+        return wrap(json({
+          responses:rows.results,
+          summary:{
+            total:Number(summary?.total || 0),
+            missing_yes:Number(summary?.missing_yes || 0),
+            missing_no:Number(summary?.missing_no || 0)
+          }
+        }));
+      }
       if (url.pathname === '/messages' && request.method === 'GET') {
         const before = url.searchParams.get('before');
         if (before && (!/^\d{4}-\d\d-\d\dT[\d:.]+Z$/.test(before) || before.length > 35)) return wrap(error('bad_cursor'));
