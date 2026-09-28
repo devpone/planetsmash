@@ -20,6 +20,34 @@ async function hash(value, secret) {
   const signature = await crypto.subtle.sign('HMAC',key,new TextEncoder().encode(value));
   return Array.from(new Uint8Array(signature),byte=>byte.toString(16).padStart(2,'0')).join('');
 }
+
+async function sha256(value) {
+  const digest = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(value));
+  return Array.from(new Uint8Array(digest), byte => byte.toString(16).padStart(2,'0')).join('');
+}
+function validEmail(value) {
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value) && value.length <= 254;
+}
+function htmlPage(title, body) {
+  return new Response(`<!doctype html><html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex"><title>${title} · Planet Smashburger</title><style>body{margin:0;background:#10091b;color:#f7edff;font:16px/1.55 system-ui,sans-serif;display:grid;min-height:100vh;place-items:center;padding:24px;box-sizing:border-box}.card{max-width:640px;border:1px solid #6f4c8c;background:#160d22;border-radius:18px;padding:32px}h1{margin-top:0}a{color:#dca8ff}</style></head><body><main class="card"><h1>${title}</h1>${body}<p><a href="https://planetsmashburger.de/">Zurück zu Planet Smashburger</a></p></main></body></html>`,{status:200,headers:{'Content-Type':'text/html; charset=utf-8','Cache-Control':'no-store'}});
+}
+async function resend(env, path, options = {}) {
+  if (!env.RESEND_API_KEY) throw new Error('resend_not_configured');
+  const response = await fetch('https://api.resend.com' + path, {
+    ...options,
+    headers:{
+      'Authorization':`Bearer ${env.RESEND_API_KEY}`,
+      'Content-Type':'application/json',
+      ...(options.headers || {})
+    }
+  });
+  if (!response.ok) {
+    const detail = await response.text().catch(()=>'');
+    console.error('Resend request failed',response.status,detail);
+    throw new Error('resend_failed');
+  }
+  return response.json().catch(()=>({}));
+}
 async function rateLimit(env, request, action, limit, seconds) {
   const ip = request.headers.get('CF-Connecting-IP') || 'unknown';
   const bucket = Math.floor(Date.now() / (seconds * 1000));
@@ -49,6 +77,78 @@ export default {
     const url = new URL(request.url);
     const wrap = response => { for (const [key,value] of Object.entries(headers)) response.headers.set(key,value); return response; };
     try {
+      if (url.pathname === '/newsletter/status' && request.method === 'GET') {
+        const configured = !!env.RESEND_API_KEY && !!env.NEWSLETTER_SEGMENT_ID;
+        return wrap(json({ok:configured}));
+      }
+      if (url.pathname === '/newsletter/subscribe' && request.method === 'POST') {
+        if (!validOrigin(request,env)) return wrap(error('forbidden',403));
+        if (!env.RESEND_API_KEY || !env.NEWSLETTER_SEGMENT_ID) return wrap(error('not_configured',503));
+        if (Number(request.headers.get('Content-Length')) > 4096) return wrap(error('too_large',413));
+        const body = await request.json();
+        const email = String(body.email || '').trim().toLowerCase();
+        const turnstileToken = String(body.token || '').trim();
+        if (!validEmail(email)) return wrap(error('invalid_email'));
+        if (!turnstileToken || !await verifyTurnstile(turnstileToken,request,env)) return wrap(error('verification_failed',403));
+        if (!await rateLimit(env,request,'newsletter-subscribe',5,3600)) return wrap(error('rate_limit',429));
+
+        const existing = await env.DB.prepare('SELECT status FROM newsletter_subscribers WHERE email=?').bind(email).first();
+        if (existing?.status === 'confirmed') return wrap(json({ok:true}));
+
+        const rawToken = crypto.randomUUID() + crypto.randomUUID();
+        const tokenHash = await sha256(rawToken);
+        const now = new Date();
+        const expires = new Date(now.getTime() + 24*60*60*1000).toISOString();
+        await env.DB.prepare(`INSERT INTO newsletter_subscribers
+          (email,status,token_hash,token_expires_at,consent_at,source,form_version,resend_synced,updated_at)
+          VALUES (?,'pending',?,?,?,'website','2026-09-29-v1',0,?)
+          ON CONFLICT(email) DO UPDATE SET
+            status='pending', token_hash=excluded.token_hash, token_expires_at=excluded.token_expires_at,
+            consent_at=excluded.consent_at, source='website', form_version='2026-09-29-v1',
+            resend_synced=0, updated_at=excluded.updated_at`)
+          .bind(email,tokenHash,expires,now.toISOString(),now.toISOString()).run();
+
+        const confirmUrl = `https://planet-funksprueche.devpone.workers.dev/newsletter/confirm?token=${encodeURIComponent(rawToken)}`;
+        await resend(env,'/emails',{
+          method:'POST',
+          body:JSON.stringify({
+            from:'Planet Smashburger <daniel@planetsmashburger.de>',
+            to:[email],
+            subject:'The Smashington Post – Anmeldung bestätigen',
+            html:`<div style="font-family:Arial,sans-serif;max-width:620px;margin:auto;color:#1c1025">
+              <h1>The Smashington Post</h1>
+              <p>Fast geschafft. Bestätige bitte noch deine Anmeldung zum Newsletter von Planet Smashburger.</p>
+              <p><a href="${confirmUrl}" style="display:inline-block;padding:12px 18px;background:#6b2d8f;color:#fff;text-decoration:none;border-radius:8px">Anmeldung bestätigen</a></p>
+              <p>Der Link ist 24 Stunden gültig. Wenn du dich nicht angemeldet hast, kannst du diese E-Mail ignorieren.</p>
+            </div>`,
+            tags:[{name:'category',value:'newsletter_double_opt_in'}]
+          })
+        });
+        return wrap(json({ok:true},202));
+      }
+      if (url.pathname === '/newsletter/confirm' && request.method === 'GET') {
+        if (!env.RESEND_API_KEY || !env.NEWSLETTER_SEGMENT_ID) return htmlPage('Newsletter noch nicht bereit','<p>Die Anmeldung kann gerade nicht abgeschlossen werden. Bitte versuche es später erneut.</p>');
+        const rawToken = String(url.searchParams.get('token') || '');
+        if (rawToken.length < 20 || rawToken.length > 200) return htmlPage('Link ungültig','<p>Dieser Bestätigungslink ist ungültig oder abgelaufen.</p>');
+        const tokenHash = await sha256(rawToken);
+        const row = await env.DB.prepare(`SELECT email,status,token_expires_at FROM newsletter_subscribers
+          WHERE token_hash=? LIMIT 1`).bind(tokenHash).first();
+        if (!row || row.status !== 'pending' || !row.token_expires_at || Date.parse(row.token_expires_at) < Date.now()) {
+          return htmlPage('Link abgelaufen','<p>Dieser Bestätigungslink ist nicht mehr gültig. Bitte melde dich auf der Website erneut an.</p>');
+        }
+
+        await resend(env,'/contacts',{
+          method:'POST',
+          body:JSON.stringify({email:row.email,unsubscribed:false,segmentIds:[env.NEWSLETTER_SEGMENT_ID]})
+        });
+
+        const confirmedAt = new Date().toISOString();
+        await env.DB.prepare(`UPDATE newsletter_subscribers
+          SET status='confirmed',confirmed_at=?,token_hash=NULL,token_expires_at=NULL,resend_synced=1,updated_at=?
+          WHERE email=?`).bind(confirmedAt,confirmedAt,row.email).run();
+
+        return htmlPage('Anmeldung bestätigt','<p>Du bist jetzt für <strong>The Smashington Post</strong> angemeldet.</p><p>Ab jetzt können Neuigkeiten, Aktionen und besondere Planet-Smashburger-Missionen in deinem Postfach landen.</p>');
+      }
       if (url.pathname === '/visitors' && request.method === 'GET') {
         const row = await env.DB.prepare("SELECT value FROM counters WHERE key='visitors'").first();
         return wrap(json({value:Number(row?.value || 0)}));
