@@ -338,4 +338,20 @@ translationRows += `
 ZURÜCK ZUR SPEISEKARTE ↓|BACK TO MENU ↓|MENÜYE DÖN ↓|العودة إلى القائمة ↓|VOLVER A LA CARTA ↓|VEGERE LÎSTEYÊ ↓
 `;
 
+translationRows += `
+TOP 25 ERDLINGE|TOP 25 EARTHLINGS|İLK 25 DÜNYALI|أفضل 25 من أهل الأرض|TOP 25 TERRÍCOLAS|TOP 25 ERDÎ
+`;
+
+translationRows += `
+TOP 25 ANZEIGEN ↓|SHOW TOP 25 ↓|İLK 25'İ GÖSTER ↓|عرض أفضل 25 ↓|VER TOP 25 ↓|TOP 25 NÎŞAN BIDE ↓
+`;
+
+translationRows += `
+TOP 10 ANZEIGEN ↑|SHOW TOP 10 ↑|İLK 10'U GÖSTER ↑|عرض أفضل 10 ↑|VER TOP 10 ↑|TOP 10 NÎŞAN BIDE ↑
+`;
+
+translationRows += `
+Globale Bestenliste · gespeichert werden maximal die Top 25.|Global leaderboard · only the top 25 are stored.|Global sıralama · yalnızca ilk 25 kaydedilir.|الترتيب العالمي · يتم حفظ أفضل 25 فقط.|Clasificación global · solo se guardan los 25 mejores.|Rêzbendiya global · tenê 25 yên herî baş tên tomarkirin.
+`;
+
 window.PSB_TRANSLATIONS = Object.fromEntries(['en','tr','ar','es','ku'].map((lang, i) => [lang, Object.fromEntries(translationRows.trim().split('\n').filter(Boolean).map(row => { const parts = row.split('|'); return [parts[0], parts[i + 1]]; }))]));
