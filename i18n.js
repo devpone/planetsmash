@@ -96,7 +96,7 @@
   document.querySelectorAll('#speisekarte .menu-item h3').forEach(el => { el.dataset.sourceName = el.textContent.trim(); });
   translateNode(document.documentElement);
   const header = document.querySelector('header.header');
-  const footer = document.querySelector('footer');
+  const footer = document.querySelector('body > footer');
   if (header) header.append(switcher());
   else document.querySelector('main')?.prepend(switcher());
   if (footer) footer.append(switcher());
