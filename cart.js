@@ -103,7 +103,7 @@
       'Wasser mit / ohne': ['Wasser mit Kohlensäure', 'Wasser ohne Kohlensäure']
     };
     const variant = variantChoices[name] ? selectField(form, 'Auswahl', variantChoices[name]) : null;
-    let menuToggle, sauce, drink, veggie, patty;
+    let menuToggle, menuFries, sauce, drink, veggie, patty;
     const burgerExtras = [];
     const friesExtras = [];
     if (isBurger) {
@@ -113,6 +113,7 @@
       menuLabel.append(menuToggle, document.createTextNode(' Als Menü: Pommes + Sauce + Getränk (+ 6,25 € inkl. Pfand)'));
       const menuOptions = addText(form, 'div', '', 'order-menu-options');
       menuOptions.hidden = true;
+      menuFries = selectField(menuOptions, 'Pommes im Menü', ['Pommes', 'Süßkartoffelpommes (+ 2,00 €)']);
       sauce = selectField(menuOptions, 'Sauce im Menü', sauces);
       drink = selectField(menuOptions, 'Getränk im Menü', drinks);
       menuToggle.addEventListener('change', () => { menuOptions.hidden = !menuToggle.checked; });
@@ -179,7 +180,9 @@
       }
       if (menuToggle?.checked) {
         cents += 600;
-        details.push('Menü mit Pommes, ' + sauce.value + ', ' + drink.value);
+        const menuFriesName = menuFries?.selectedIndex === 1 ? 'Süßkartoffelpommes' : 'Pommes';
+        if (menuFries?.selectedIndex === 1) cents += 200;
+        details.push('Menü mit ' + menuFriesName + ', ' + sauce.value + ', ' + drink.value);
       }
       if (veggie?.checked) { cents += (1 + patty.selectedIndex) * 100; details.push('Veggie-Patty'); }
       if (patty && patty.selectedIndex) { cents += patty.selectedIndex * 300; details.push(patty.selectedIndex + (veggie?.checked ? (patty.selectedIndex === 1 ? ' extra Veggie-Patty' : ' extra Veggie-Patties') : ' extra Patty')); }
