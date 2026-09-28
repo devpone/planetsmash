@@ -417,13 +417,13 @@ function closeSecret(){
   document.body.classList.remove('secret-open');
 }
 
-document.querySelectorAll('.original-logo').forEach(logo=>{
-  logo.addEventListener('click',event=>{
-    event.preventDefault();
+document.querySelectorAll('.logo-secret-trigger').forEach(trigger=>{
+  trigger.addEventListener('click',()=>{
     logoClicks++;
     clearTimeout(logoTimer);
-    logo.classList.add('logo-pulse');
-    setTimeout(()=>logo.classList.remove('logo-pulse'),180);
+    const logo=trigger.querySelector('.original-logo');
+    logo?.classList.add('logo-pulse');
+    setTimeout(()=>logo?.classList.remove('logo-pulse'),180);
 
     if(logoClicks>=5){
       logoClicks=0;
