@@ -452,4 +452,15 @@ Mehr zur Soße ↗|More about the sauce ↗|Sos hakkında daha fazla ↗|الم�
 Unsere Haussoßen entdecken ↗|Discover our house sauces ↗|Ev yapımı soslarımızı keşfet ↗|اكتشف صلصاتنا الخاصة ↗|Descubre nuestras salsas de la casa ↗|Sosên malê yên me bibîne ↗
 `;
 
+
+translationRows += `
+Extras für deinen Burger|Extras for your burger|Burgerin için ekstralar|إضافات لبرغرك|Extras para tu hamburguesa|Zêdekirinên ji bo burgera te
+Extras für deine Pommes|Extras for your fries|Patatesin için ekstralar|إضافات للبطاطس|Extras para tus patatas|Zêdekirinên ji bo pommesa te
+Passende Extras|Suitable extras|Uygun ekstralar|إضافات مناسبة|Extras que combinan|Zêdekirinên guncaw
+Jalapeños|Jalapeños|Jalapeño|هالبينو|Jalapeños|Jalapeño
+Extra Bacon|Extra bacon|Ekstra bacon|بيكون إضافي|Beicon extra|Bacona zêde
+Röstzwiebeln|Crispy onions|Çıtır soğan|بصل مقرمش|Cebolla crujiente|Pîvazê qijik
+Geschmorte Zwiebeln gegen Röstzwiebeln tauschen|Swap caramelised onions for crispy onions|Kavrulmuş soğanı çıtır soğanla değiştir|استبدال البصل المطهو بالبصل المقرمش|Cambiar cebolla pochada por cebolla crujiente|Pîvazê sor bi pîvazê qijik biguherîne
+`;
+
 window.PSB_TRANSLATIONS = Object.fromEntries(['en','tr','ar','es','ku'].map((lang, i) => [lang, Object.fromEntries(translationRows.trim().split('\n').filter(Boolean).map(row => { const parts = row.split('|'); return [parts[0], parts[i + 1]]; }))]));
