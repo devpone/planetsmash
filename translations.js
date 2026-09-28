@@ -723,4 +723,99 @@ Geheime Area-51-Nachricht|Messaggio segreto Area 51
 Du hast etwas gefunden, das offiziell nicht existiert.|Hai trovato qualcosa che ufficialmente non esiste.
 `;
 
+
+italianRows += `
+Nächste geheime Akte ↗|Prossimo dossier segreto ↗
+Übertragung beenden|Termina trasmissione
+Über uns · Planet Smashburger|Chi siamo · Planet Smashburger
+Die Geschichte hinter Planet Smashburger in Solingen: Daniel, Smashburger, hausgemachte Soßen und ein eigener kleiner Burger-Planet.|La storia dietro Planet Smashburger a Solingen: Daniel, smashburger, salse fatte in casa e un piccolo pianeta dei burger tutto suo.
+HINTER PLANET SMASHBURGER|DIETRO PLANET SMASHBURGER
+EINER AM GRILL.|UNO ALLA GRIGLIA.
+EIN GANZER PLANET DAHINTER.|UN INTERO PIANETA DIETRO.
+Planet Smashburger ist kein Franchise, keine Kette und kein Konzept vom Reißbrett. Hinter dem Laden steckt Daniel – mit einer ziemlich einfachen Idee: Burger zu machen, auf die man selbst richtig Bock hat.|Planet Smashburger non è un franchising, né una catena, né un concept costruito a tavolino. Dietro il locale c'è Daniel, con un'idea molto semplice: fare burger che avrebbe davvero voglia di mangiare lui stesso.
+01 / WIE ALLES ANGEFANGEN HAT|01 / COME È INIZIATO TUTTO
+Aus einer Idee wurde|Da un'idea è nato
+ein eigener Planet.|un pianeta tutto suo.
+Seit 2025 steht Daniel mit Planet Smashburger am Grill. Vieles, was heute zum Laden gehört, ist dabei nach und nach selbst entstanden: die Burger, die hausgemachten Soßen, die Namen, der Weltraum-Look und all die kleinen Details, die aus einem Foodtruck irgendwann einen eigenen kleinen Planeten gemacht haben.|Dal 2025 Daniel è alla griglia con Planet Smashburger. Molte delle cose che oggi fanno parte del locale sono nate poco a poco: i burger, le salse fatte in casa, i nomi, il look spaziale e tutti quei piccoli dettagli che hanno trasformato un food truck in un piccolo pianeta tutto suo.
+Bei Planet Smashburger geht es nicht darum, möglichst kompliziert zu sein. Ein guter Bun, ordentlich gesmashtes Rindfleisch, geschmolzener Käse, gute Zutaten und Soßen, die nicht einfach aus irgendeiner Standardflasche kommen. Dazu Pommes, Chili und alles, was man eigentlich nicht essen sollte, wenn man gerade Kalorien zählt.|Da Planet Smashburger non si tratta di rendere tutto complicato. Un buon bun, manzo smashato come si deve, formaggio fuso, buoni ingredienti e salse che non arrivano semplicemente da una bottiglia standard. Poi patatine, chili e tutto ciò che forse non dovresti mangiare se stai contando le calorie.
+02 / DIREKT VOM GRILL|02 / DIRETTAMENTE DALLA GRIGLIA
+Ganz nah dran.|Da vicino.
+Wer bei Planet Smashburger bestellt, steht ziemlich oft direkt Daniel gegenüber. Bestellungen annehmen, Burger smashen, Pommes machen, Soßen vorbereiten, einkaufen, putzen, neue Ideen ausprobieren, Instagram, Website – vieles davon passiert tatsächlich aus einer Hand.|Chi ordina da Planet Smashburger si trova spesso direttamente davanti a Daniel. Prendere gli ordini, smashare i burger, fare le patatine, preparare le salse, fare la spesa, pulire, provare nuove idee, Instagram, sito web: molte cose passano davvero da una sola mano.
+Und genau das soll man auch merken. Planet Smashburger soll kein anonymer Fast-Food-Laden sein, bei dem du heute kommst und morgen niemand mehr weiß, wer du bist. Viele Gäste kommen wieder, man kennt sich, redet miteinander und manchmal dauert ein Besuch ein bisschen länger als nur die Zeit zwischen Bestellung und erstem Bissen.|E si deve percepire. Planet Smashburger non vuole essere un fast food anonimo dove oggi vieni e domani nessuno sa più chi sei. Molti clienti tornano, ci si conosce, si parla e a volte una visita dura un po' più del tempo tra l'ordine e il primo morso.
+03 / WARUM WELTRAUM?|03 / PERCHÉ LO SPAZIO?
+Weil ein Burgerladen|Perché un locale di burger
+nicht aussehen muss wie jeder andere.|non deve sembrare uguale a tutti gli altri.
+Aliens, UFOs, Area 51 und Planeten haben mit einem klassischen Smashburger erst einmal ziemlich wenig zu tun – und genau deshalb passen sie hier so gut zusammen. Aus einem einfachen Thema wurde irgendwann die ganze Welt rund um Planet Smashburger.|Alieni, UFO, Area 51 e pianeti hanno poco a che fare con un classico smashburger, ed è proprio per questo che qui funzionano così bene insieme. Da un tema semplice è nato col tempo tutto il mondo di Planet Smashburger.
+Ein bisschen verrückt darf es schließlich sein. Was dabei allerdings nicht zum Gag werden soll, ist das Essen. Der ganze Weltraum-Kram macht Spaß – aber am Ende muss der Burger der Grund sein, warum du wiederkommst.|Un po' di follia ci sta. Ma il cibo non deve diventare una gag. Tutta la storia dello spazio è divertente, ma alla fine deve essere il burger il motivo per cui torni.
+04 / IMMER WEITER|04 / SEMPRE AVANTI
+Keine Perfektion.|Niente perfezione.
+Sondern Entwicklung.|Ma evoluzione.
+Planet Smashburger verändert sich ständig. Neue Burger kommen dazu, Rezepte werden angepasst, Dinge werden ausprobiert und manchmal fliegt eine Idee auch wieder raus.|Planet Smashburger cambia continuamente. Arrivano nuovi burger, le ricette vengono adattate, si provano cose nuove e a volte un'idea viene anche scartata.
+Das Ziel ist nicht, irgendwann zu sagen:|L'obiettivo non è arrivare a dire:
+Jetzt sind wir fertig.|Adesso abbiamo finito.
+Das Ziel ist, immer ein Stück besser zu werden.|L'obiettivo è migliorare sempre un po'.
+„Alter, ist der geil.“|«Cavolo, quanto è buono.»
+Wenn du irgendwann vor dem Truck stehst, deinen Burger bekommst und genau das denkst, dann hat die Mission funktioniert.|Se un giorno sei davanti al truck, ricevi il tuo burger e pensi proprio questo, allora la missione ha funzionato.
+Impressum · Planet Smashburger|Note legali · Planet Smashburger
+Datenschutz · Planet Smashburger|Privacy · Planet Smashburger
+Angaben zum Anbieter|Informazioni sul gestore
+Inhaber: Daniel Carpino (Einzelunternehmen)|Titolare: Daniel Carpino (ditta individuale)
+Deutschland|Germania
+Telefon: 0160 92870140|Telefono: 0160 92870140
+E-Mail:|E-mail:
+Umsatzsteuer-ID|Partita IVA
+Umsatzsteuer-Identifikationsnummer gemäß § 27a Umsatzsteuergesetz: DE456816533|Numero di identificazione IVA ai sensi del § 27a della legge tedesca sull'IVA: DE456816533
+Verantwortlicher|Responsabile
+Aufruf der Website|Accesso al sito web
+Beim Abruf einer öffentlich gehosteten Website werden technisch notwendige Verbindungsdaten verarbeitet, insbesondere IP-Adresse, Zeitpunkt, angeforderte Datei und Browserinformationen. Dies dient der Auslieferung und Sicherheit der Website auf Grundlage von Art. 6 Abs. 1 lit. f DSGVO. Die Website wird über GitHub Pages bereitgestellt. GitHub protokolliert IP-Adressen von Besuchern zu Sicherheitszwecken. GitHub nennt GitHub B.V., Prins Bernhardplein 200, 1097JB Amsterdam, Niederlande, und GitHub, Inc., 88 Colin P. Kelly Jr. St., San Francisco, CA 94107, USA, als verantwortliche Gesellschaften für seine eigene Verarbeitung. Eine Verarbeitung durch GitHub, Inc. in den USA und weitere Dienstleister ist möglich. GitHub beschreibt hierfür unter anderem Standardvertragsklauseln und das EU-US Data Privacy Framework als Übermittlungsgrundlagen. Eine feste, für alle Pages-Zugriffsprotokolle geltende Löschfrist wird in den verlinkten Informationen nicht zugesagt; GitHub bestimmt die Aufbewahrung anhand des Verarbeitungszwecks und gesetzlicher Erfordernisse. Weitere Informationen:|Quando si accede a un sito web ospitato pubblicamente vengono trattati dati di connessione tecnicamente necessari, in particolare indirizzo IP, orario, file richiesto e informazioni sul browser. Ciò serve alla fornitura e alla sicurezza del sito sulla base dell'art. 6, par. 1, lett. f GDPR. Il sito è fornito tramite GitHub Pages. GitHub registra gli indirizzi IP dei visitatori per motivi di sicurezza. GitHub indica GitHub B.V., Prins Bernhardplein 200, 1097JB Amsterdam, Paesi Bassi, e GitHub, Inc., 88 Colin P. Kelly Jr. St., San Francisco, CA 94107, USA, come società responsabili del proprio trattamento. È possibile un trattamento da parte di GitHub, Inc. negli USA e di altri fornitori. GitHub indica tra l'altro le clausole contrattuali standard e l'EU-US Data Privacy Framework come basi per il trasferimento. Nelle informazioni collegate non viene garantito un termine di cancellazione fisso valido per tutti i log di accesso a Pages; GitHub determina la conservazione in base alla finalità del trattamento e agli obblighi di legge. Ulteriori informazioni:
+und|e
+GitHub-Datenschutzerklärung|Informativa sulla privacy di GitHub
+Cookies und eingebundene Inhalte|Cookie e contenuti integrati
+Diese Website nutzt Local Storage für den Warenkorb und eine lokale Besucherkennung. Der Besucherzähler ruft CounterAPI auf; dabei wird eine Verbindung zu diesem Dienst hergestellt. Wir verwenden keine Werbetracker und laden Schriftarten und Bilder vom eigenen Webserver. Es gibt keine eingebetteten Karten oder Videos. Der Öffnungsstatus wird im Browser berechnet.|Questo sito utilizza Local Storage per il carrello e per un identificatore locale del visitatore. Il contatore dei visitatori richiama CounterAPI, stabilendo una connessione con tale servizio. Non utilizziamo tracker pubblicitari e carichiamo font e immagini dal nostro server web. Non sono presenti mappe o video incorporati. Lo stato di apertura viene calcolato nel browser.
+Kontakt und telefonische Vorbestellungen|Contatti e preordini telefonici
+Bei einer Kontaktaufnahme verarbeiten wir die von Ihnen mitgeteilten Kontakt- und Bestelldaten zur Bearbeitung Ihrer Anfrage oder Bestellung. Rechtsgrundlage ist Art. 6 Abs. 1 lit. b DSGVO bei vorvertraglichen oder vertraglichen Anliegen, sonst Art. 6 Abs. 1 lit. f DSGVO. Die Daten werden gelöscht, sobald sie nicht mehr benötigt werden und keine gesetzlichen Aufbewahrungspflichten bestehen.|Quando ci contattate, trattiamo i dati di contatto e dell'ordine da voi comunicati per gestire la richiesta o l'ordine. La base giuridica è l'art. 6, par. 1, lett. b GDPR per questioni precontrattuali o contrattuali, altrimenti l'art. 6, par. 1, lett. f GDPR. I dati vengono cancellati quando non sono più necessari e non sussistono obblighi legali di conservazione.
+Externe Links|Link esterni
+Die Routenfunktion ist ein externer Link zu Google Maps. Erst wenn Sie diesen öffnen, verlassen Sie unsere Website; dort gelten die Datenschutzinformationen von Google. Ein Anruflink öffnet die Telefonfunktion Ihres Geräts. Der WhatsApp-Link öffnet eine vorausgefüllte Anfrage bei WhatsApp; die Nachricht wird erst nach Ihrem Senden übertragen. Weder der Warenkorb noch ein Klick auf den Anruflink übermitteln automatisch eine Bestellung.|La funzione indicazioni è un link esterno a Google Maps. Solo quando lo aprite lasciate il nostro sito; lì si applicano le informazioni sulla privacy di Google. Un link di chiamata apre la funzione telefono del dispositivo. Il link WhatsApp apre una richiesta precompilata in WhatsApp; il messaggio viene trasmesso solo dopo il vostro invio. Né il carrello né un clic sul link di chiamata trasmettono automaticamente un ordine.
+Ihre Rechte|I vostri diritti
+Unter den gesetzlichen Voraussetzungen haben Sie Rechte auf Auskunft, Berichtigung, Löschung, Einschränkung der Verarbeitung und Datenübertragbarkeit. Gegen Verarbeitungen auf Grundlage berechtigter Interessen können Sie aus Gründen Ihrer besonderen Situation Widerspruch einlegen. Eine erteilte Einwilligung können Sie mit Wirkung für die Zukunft widerrufen. Sie können sich bei einer Datenschutzaufsichtsbehörde beschweren, insbesondere der Landesbeauftragten für Datenschutz und Informationsfreiheit Nordrhein-Westfalen.|Alle condizioni previste dalla legge avete diritto all'accesso, alla rettifica, alla cancellazione, alla limitazione del trattamento e alla portabilità dei dati. Potete opporvi, per motivi legati alla vostra situazione particolare, ai trattamenti basati su interessi legittimi. Un consenso prestato può essere revocato con effetto per il futuro. Potete presentare reclamo a un'autorità di controllo per la protezione dei dati, in particolare alla Commissaria per la protezione dei dati e la libertà d'informazione della Renania Settentrionale-Vestfalia.
+Stand: September 2026.|Aggiornato: settembre 2026.
++ Hinzufügen|+ Aggiungi
+zum Warenkorb hinzufügen|aggiungi al carrello
+Auswahl|Selezione
+Als Menü: Pommes + Sauce + Getränk (+ 6,25 € inkl. Pfand)|Come menu: patatine + salsa + bevanda (+ 6,25 € incl. cauzione)
+Sauce im Menü|Salsa nel menu
+Getränk im Menü|Bevanda nel menu
+Veggie-Patty statt Rind (+ 1,00 € je Patty)|Patty vegetariano al posto del manzo (+ 1,00 € per patty)
+Keins|Nessuno
+1 extra (+ 3,00 €)|1 extra (+ 3,00 €)
+2 extra (+ 6,00 €)|2 extra (+ 6,00 €)
+3 extra (+ 9,00 €)|3 extra (+ 9,00 €)
+4 extra (+ 12,00 €)|4 extra (+ 12,00 €)
+5 extra (+ 15,00 €)|5 extra (+ 15,00 €)
+1 extra Veggie-Patty (+ 4,00 €)|1 patty vegetariano extra (+ 4,00 €)
+2 extra Veggie-Patties (+ 8,00 €)|2 patty vegetariani extra (+ 8,00 €)
+3 extra Veggie-Patties (+ 12,00 €)|3 patty vegetariani extra (+ 12,00 €)
+4 extra Veggie-Patties (+ 16,00 €)|4 patty vegetariani extra (+ 16,00 €)
+5 extra Veggie-Patties (+ 20,00 €)|5 patty vegetariani extra (+ 20,00 €)
+Klein – 3,50 €|Piccole – 3,50 €
+Groß – 5,50 €|Grandi – 5,50 €
+Klein – 5,50 €|Piccole – 5,50 €
+Groß – 10,00 €|Grandi – 10,00 €
+Wasser mit Kohlensäure|Acqua frizzante
+Wasser ohne Kohlensäure|Acqua naturale
+Mit Kohlensäure|Frizzante
+Ohne Kohlensäure|Naturale
+Wünsche für diesen Artikel (optional)|Richieste per questo articolo (facoltativo)
+z. B. ohne Zwiebeln|ad es. senza cipolle
+Zum Warenkorb hinzufügen|Aggiungi al carrello
+Warenkorb ansehen|Visualizza carrello
+Dein Warenkorb|Il tuo carrello
+Schließen ×|Chiudi ×
+Wähle etwas aus der Speisekarte aus.|Scegli qualcosa dal menu.
+Zwischensumme:|Subtotale:
+Alle Getränke sind Dosen. 0,25 € Pfand je Dose sind in der Zwischensumme enthalten. Preis und Verfügbarkeit bitte beim Anruf bestätigen lassen.|Tutte le bevande sono in lattina. La cauzione di 0,25 € per lattina è inclusa nel subtotale. Conferma prezzo e disponibilità telefonicamente.
+Softgetränke sind in Dosen. 0,25 € Pfand je Getränk sind in der Zwischensumme enthalten. Preis und Verfügbarkeit bitte beim Anruf bestätigen lassen.|Le bibite sono in lattina. La cauzione di 0,25 € per bevanda è inclusa nel subtotale. Conferma prezzo e disponibilità telefonicamente.
+Wichtig: Eine WhatsApp-Nachricht ist noch keine angenommene Bestellung. Deine Bestellung gilt erst, wenn wir sie ausdrücklich bestätigen. Falls du keine Antwort bekommst, ruf bitte an.|Importante: un messaggio WhatsApp non è ancora un ordine accettato. L'ordine è valido solo dopo una nostra conferma esplicita. Se non ricevi risposta, chiama.
+`;
+
 window.PSB_TRANSLATIONS = Object.fromEntries(['en','tr','ar','es','ku'].map((lang, i) => [lang, Object.fromEntries(translationRows.trim().split('\n').filter(Boolean).map(row => { const parts = row.split('|'); return [parts[0], parts[i + 1]]; }))]));
