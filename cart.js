@@ -148,6 +148,7 @@
         ['Jalapeños', 100],
         ['Extra Bacon', 150],
         ['Geschmorte Zwiebeln', 150],
+        ['Röstzwiebeln', 150],
         ['Käsesauce', 150],
         ['Käsesauce scharf', 150]
       ];
