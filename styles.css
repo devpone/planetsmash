@@ -407,3 +407,24 @@ html[dir="rtl"] .order-dialog,html[dir="rtl"] .order-bar{text-align:right}
 
 .logo-secret-trigger{appearance:none;-webkit-appearance:none;border:0;background:transparent;padding:0;margin:0;color:inherit;font:inherit;cursor:pointer;text-align:left}
 .logo-secret-trigger:focus-visible{outline:2px solid #c38cff;outline-offset:4px;border-radius:6px}
+
+
+/* The Smashington Post */
+.newsletter-section{padding:88px 0;border-top:1px solid rgba(220,168,255,.18);background:radial-gradient(circle at 15% 20%,rgba(113,58,150,.2),transparent 34%),#10091b}
+.newsletter-section[hidden]{display:none!important}
+.newsletter-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(320px,.85fr);gap:64px;align-items:start}
+.newsletter-section h2{margin:.15em 0 .3em}
+.newsletter-lead{max-width:560px;font-size:1.1rem;color:#d8c9e3}
+.newsletter-form{border:1px solid rgba(220,168,255,.28);background:#160d22;border-radius:18px;padding:28px;display:grid;gap:18px}
+.newsletter-form>label:first-child{display:grid;gap:8px}
+.newsletter-form>label:first-child>span{font-size:.78rem;font-weight:700;letter-spacing:.12em;color:#dca8ff}
+.newsletter-form input[type="email"]{width:100%;box-sizing:border-box;border:1px solid rgba(220,168,255,.3);background:#0f0818;color:#fff;border-radius:10px;padding:14px 15px;font:inherit}
+.newsletter-form input[type="email"]:focus{outline:2px solid #b16ce0;outline-offset:2px}
+.newsletter-consent{display:grid;grid-template-columns:auto 1fr;gap:10px;align-items:start;font-size:.9rem;color:#cdbed8}
+.newsletter-consent input{margin-top:.25em}
+.newsletter-consent a{color:#dca8ff}
+.newsletter-note{margin:0;font-size:.82rem;color:#9f8cad}
+.newsletter-status{min-height:1.35em;margin:0;font-size:.9rem}
+.newsletter-status.ok{color:#b8f3c5}
+.newsletter-status.error{color:#ffb7c5}
+@media(max-width:760px){.newsletter-section{padding:64px 0}.newsletter-grid{grid-template-columns:1fr;gap:28px}.newsletter-form{padding:20px}}
