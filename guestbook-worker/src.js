@@ -87,7 +87,7 @@ export default {
       }
       if (url.pathname === '/game/highscores' && request.method === 'GET') {
         const rows = await env.DB.prepare(
-          'SELECT name,score,created_at FROM game_highscores ORDER BY score DESC, created_at ASC LIMIT 10'
+          'SELECT name,score,created_at FROM game_highscores ORDER BY score DESC, created_at ASC LIMIT 25'
         ).all();
         return wrap(json({scores:rows.results}));
       }
@@ -129,6 +129,20 @@ export default {
 
         if (!await rateLimit(env,request,'game-score',30,3600)) return wrap(error('rate_limit',429));
 
+        const rankState = await env.DB.prepare(
+          'SELECT COUNT(*) AS total, MIN(score) AS cutoff FROM (SELECT score FROM game_highscores ORDER BY score DESC, created_at ASC LIMIT 25)'
+        ).first();
+        const totalRanked = Number(rankState?.total || 0);
+        const cutoff = Number(rankState?.cutoff || 0);
+
+        if (totalRanked >= 25 && score <= cutoff) {
+          return wrap(json({
+            ok:true,
+            qualified:false,
+            cutoff
+          },200));
+        }
+
         const item = {
           id:crypto.randomUUID(),
           name,
@@ -141,11 +155,12 @@ export default {
         ).bind(item.id,item.name,item.score,item.created_at).run();
 
         await env.DB.prepare(
-          'DELETE FROM game_highscores WHERE id NOT IN (SELECT id FROM game_highscores ORDER BY score DESC, created_at ASC LIMIT 100)'
+          'DELETE FROM game_highscores WHERE id NOT IN (SELECT id FROM game_highscores ORDER BY score DESC, created_at ASC LIMIT 25)'
         ).run();
 
         return wrap(json({
           ok:true,
+          qualified:true,
           duplicate:result.meta.changes === 0,
           score:{name:item.name,score:item.score,created_at:item.created_at}
         }, result.meta.changes === 0 ? 200 : 201));
