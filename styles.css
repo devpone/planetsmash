@@ -404,3 +404,6 @@ html[dir="rtl"] .order-dialog,html[dir="rtl"] .order-bar{text-align:right}
   .party-faq{padding:65px 0 75px}
   .party-cta{padding:65px 0 78px}
 }
+
+.logo-secret-trigger{appearance:none;-webkit-appearance:none;border:0;background:transparent;padding:0;margin:0;color:inherit;font:inherit;cursor:pointer;text-align:left}
+.logo-secret-trigger:focus-visible{outline:2px solid #c38cff;outline-offset:4px;border-radius:6px}
