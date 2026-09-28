@@ -225,188 +225,6 @@ updateVisitorCount();
   }
 })();
 
-const transmissions=[
-'Die Wahrheit ist da draußen. Der Bacon ist hier.',
-'Keine intelligenten Lebensformen gefunden. Aber gute Burger.',
-'Mission aktualisiert: Pommes bestellen.',
-'Roswell meldet: Käsesauce kritisch niedrig.',
-'Area 51 bestätigt: Extra Bacon ist kein Zufall.',
-'Unbekanntes Flugobjekt gesichtet. Es riecht verdächtig nach BBQ.',
-'Die Aliens kommen in Frieden. Und wegen der Pommes.',
-'Geheime Satellitendaten zeigen: Hunger nimmt exponentiell zu.',
-'Houston sagt, du sollst den Double nehmen.',
-'Der Rat der Galaxie empfiehlt: Sauce nicht vergessen.',
-'Signal aus Roswell: Das Patty muss gesmasht werden.',
-'Interstellare Analyse abgeschlossen: Noch ein Burger wäre wissenschaftlich vertretbar.',
-'Warnung: Käsekonzentration nähert sich kritischem Niveau.',
-'Das UFO landet nur für Bacon.',
-'Mars meldet Lieferverzug. Komm lieber selbst vorbei.',
-'Unbekannte Lebensform verlangt Area 51 Sauce.',
-'Planetenkern stabil. Fritteuse stabil. Mission läuft.',
-'Geheimdienstnotiz: Niemand hat jemals nur eine Pommes gegessen.',
-'Alien-Protokoll 7B: Erst Burger. Dann Weltübernahme.',
-'Die NASA bestreitet alles. Wir bestreiten nur trockene Burger.',
-'Kosmische Strahlung erkannt. Ursache vermutlich geschmolzener Käse.',
-'Funkspruch abgefangen: „Bring zwei Classic Cheese mit.“',
-'Der Mond ist nicht aus Käse. Unsere Sauce schon eher.',
-'Sektor 51 meldet: Jalapeños erfolgreich bewaffnet.',
-'Bordcomputer sagt: Kalorien existieren im All nicht.',
-'Wissenschaftlicher Konsens: Bacon verbessert die Umlaufbahn.',
-'Planet Smashburger an Erde: Hungerstatus bitte bestätigen.',
-'Sicherheitsstufe LILA: Trüffelmayonnaise wurde entdeckt.',
-'Gravitationsanomalie lokalisiert: direkt über den Smashpommes.',
-'Crewmeldung: Einer geht noch.',
-'Geheimer Befehl: Nicht mit leerem Magen weiterlesen.',
-'Die Sterne stehen günstig für Chili Cheese.',
-'Systemdiagnose: 99 % funktionsfähig. 1 % braucht Käsesauce.',
-'Alien-Übersetzung abgeschlossen: „Nice to meat you.“',
-'Kontrollzentrum: Wir haben ein Patty im Orbit.',
-'Unbestätigte Berichte über knusprigen Bacon im Sektor Aufderhöhe.',
-'Zeitreise erfolgreich. Dein Burger ist trotzdem frisch.',
-'Schwarzes Loch entdeckt. Es hat gerade die letzten Pommes verschluckt.',
-'Der Autopilot empfiehlt Roswell BBQ.',
-'Neue Galaxie entdeckt. Name: Bacon & Egg.',
-'Sternenkarte aktualisiert: Zielkoordinaten Nußbaumstraße 1.',
-'Der Bordcomputer verweigert den Dienst ohne Pommes.',
-'Möglicherweise außerirdisch. Definitiv hungrig.',
-'Telemetrie sagt: Dein Hunger sendet auf allen Frequenzen.',
-'Planetare Verteidigung aktiviert. Gegen labbrige Pommes.',
-'Erde an Smashburger: Wir kommen in Frieden und mit Appetit.',
-'Raumanzug optional. Hunger erforderlich.',
-'Geheime Akte geöffnet: Operation Molten Cheddar.',
-'Das Signal ist schwach. Der Bacon ist stark.',
-'Sektor Pommes meldet vollständige Knusprigkeit.',
-'UFO-Besatzung fragt, ob das auch als Menü geht.',
-'Kontakt hergestellt. Erste Forderung der Aliens: Extra Patty.',
-'Kosmischer Wetterbericht: 100 % Chance auf Smash.',
-'Bordlogbuch: Tag 51. Noch immer kein Grund, Ketchup aufzugeben.',
-'Intergalaktischer Zoll hat die Käsesauce durchgewunken.',
-'Galaktische Behörde warnt vor plötzlichem Burgerverlangen.',
-'Das Kontrollzentrum dementiert Gerüchte über eine geheime Baconreserve.',
-'Ein kleiner Biss für einen Menschen. Ein großer Smash für die Menschheit.',
-'Funkspruch aus Andromeda: „Was kostet Extra Patty?“',
-'Die Sonde hat intelligentes Leben entdeckt. Es bestellt Chili Cheese.',
-'Planetare Temperatur steigt. Ursache: Grillplatte.',
-'Sternzeit 20:26. Mission: satt werden.',
-'Bacon-Satellit erfolgreich in niedrigen Erdorbit gebracht.',
-'Area 51 an Küche: Zielperson zeigt eindeutige Hungersymptome.',
-'Der Geheimcode lautet: MEHR KÄSE.',
-'Alien-Diplomatie gescheitert. Sie wollten die letzte Pommes.',
-'Unerklärliches Phänomen: Der Burger war plötzlich weg.',
-'Die Milchstraße wurde umbenannt. Ab jetzt Käsestraße.',
-'Crew an Basis: Wir brauchen Verstärkung. Und Servietten.',
-'Satellitenbild bestätigt: Aufderhöhe ist nicht auf dem Mars.',
-'Unbekanntes Signal entschlüsselt: „Mach scharf.“',
-'Warnung: Öffnen dieser Nachricht kann Appetit verursachen.',
-'Das Universum expandiert. Dein Menü offenbar auch.',
-'Die Area-51-Akte sagt: Doppelt Käse zählt als Sicherheitsmaßnahme.',
-'Mission Control meldet: Bun-Integrität 100 %.',
-'Außerirdische Zivilisation entdeckt. Sie dippt Pommes in Käsesauce.',
-'Zeit-Raum-Kontinuum stabil. Mittagessen verspätet.',
-'Orbit erreicht. Bacon secured.',
-'Protokoll 51-A: Niemand verlässt den Planeten hungrig.',
-'Der nächste Funkspruch ist streng geheim. Dieser hier war nur Ablenkung.',
-'CLASSIFIED // Die Sauce kennt die Wahrheit.',
-'CLASSIFIED // Projekt CRISPY läuft nach Plan.',
-'TOP SECRET // Das Alien im Logo weiß mehr, als es zugibt.',
-'TOP SECRET // Die fünfte Dimension schmeckt nach BBQ.',
-'CLASSIFIED // Operation DOUBLE PATTY wurde autorisiert.',
-'TOP SECRET // Wir haben nie behauptet, dass die Kühe von der Erde kommen.',
-'CLASSIFIED // Der Planet Mac besitzt diplomatische Immunität.',
-'TOP SECRET // Der Bacon-Satellit sendet seit Dienstag.',
-'CLASSIFIED // Das Rezept liegt in einem Bunker unter Solingen.',
-'TOP SECRET // Sauce 51 wurde offiziell nie entwickelt.',
-'Kosmische Prognose: Heute hohe Wahrscheinlichkeit für Extra Patty.',
-'Das Mutterschiff hat geparkt. Parkscheibe liegt aus.',
-'Alien an Bodenstation: „Einmal alles. Ohne Zwiebeln.“',
-'Der Scanner findet bei dir ungewöhnlich hohe Burgerkompatibilität.',
-'Bordlogbuch: Wir hätten mehr Servietten mitnehmen sollen.',
-'Die Umlaufbahn ist stabil. Der Käse nicht.',
-'Notfallprotokoll aktiviert: Erst dippen, dann diskutieren.',
-'Die Crew hat abgestimmt. Einstimmig für Pommes.',
-'Signalstärke 100 %. Selbstkontrolle 12 %.',
-'Unbekannte Energiequelle lokalisiert: Fritteuse.',
-'Die Aliens wollten unsere Technologie. Jetzt wollen sie die Käsesauce.',
-'Planet Smashburger empfiehlt keine Raumfahrt auf leeren Magen.',
-'Radar meldet ein Objekt mit hoher Bacon-Dichte.',
-'Abhörprotokoll: „Sag niemandem, dass ich zwei Burger hatte.“',
-'Gravitationswelle erkannt. Ursprung: Double Patty.',
-'Die Sterne lügen nicht. Du hast Hunger.',
-'Interstellarer Rat: Menü-Upgrade genehmigt.',
-'Roswell an Solingen: Paket mit Jalapeños unterwegs.',
-'Der Bordcomputer fragt zum dritten Mal nach Trüffelmayonnaise.',
-'Warnung: Dieses Terminal ist möglicherweise hungrig.',
-'Operation NICE TO MEAT YOU verläuft exakt nach Plan.',
-'Die letzte Pommes wurde unter Schutz gestellt.',
-'Funkstille beendet. Jemand hat Bacon erwähnt.',
-'Ein kosmischer Riss wurde entdeckt. Dahinter: noch mehr Käsesauce.',
-'Die Crew meldet ein seltenes Phänomen: freiwillig geteilte Pommes.',
-'Bodenstation an UFO: Landeplatz frei. Hunger bitte eingeschaltet lassen.',
-'Area 51 hat angerufen. Sie wollen ihre Sauce zurück.',
-'Die Galaxie ist groß. Dein Appetit offenbar größer.',
-'Unbekanntes Objekt im Anflug. Form: rund. Vermutlich Bun.',
-'Die Raumzeit krümmt sich. Wahrscheinlich wegen des Double.',
-'Forschungsbericht: Pommes schmecken im Vakuum nicht besser. Hier schon.',
-'Die Sternenflotte fordert eine zweite Portion.',
-'Warnung aus dem Orbit: Wer Bacon teilt, verliert Rangpunkte.',
-'Der Mars-Rover hat Spuren gefunden. Sie führen zur Käsesauce.',
-'Kontrollzentrum an Crew: Bitte Patty nicht unbeaufsichtigt im Orbit lassen.',
-'Galaktische Zollkontrolle abgeschlossen. Bacon verzollt.',
-'Die Aliens verstehen unsere Sprache nicht. „Extra Käse“ verstehen sie.',
-'Mission „nur kurz gucken“ ist offiziell gescheitert.',
-'Der Scanner erkennt: 87 % Mensch, 13 % Hunger.',
-'Wir haben versucht, die Sauce zu analysieren. Labor evakuiert.',
-'Funkmeldung: Das Menü ist größer als auf den Satellitenbildern.',
-'Geheime Prognose: In wenigen Minuten denkst du wieder an Burger.',
-'Unbekannter Planet entdeckt. Atmosphäre: BBQ.',
-'Die Crew bittet um Bestätigung: Mayo zählt als Raumfahrtbedarf.',
-'CLASSIFIED // Das Patty kennt deinen Namen.',
-'TOP SECRET // Der Grill sendet nachts Morsezeichen.',
-'CLASSIFIED // Die Pommes wurden für höhere Knusprigkeit genetisch nicht verändert. Angeblich.',
-'TOP SECRET // Nußbaumstraße 1 ist auf keiner offiziellen Sternenkarte.',
-'CLASSIFIED // Die Area-51-Sauce hat ihren eigenen Anwalt.',
-'TOP SECRET // Das UFO akzeptiert nur Barzahlung in Bacon.',
-'Die Galaxie fragt: mit oder ohne Jalapeños?',
-'Interplanetare Nachricht: Teilen ist erlaubt. Muss aber nicht.',
-'Die Sensoren schlagen aus. Irgendwo wird gerade Käse geschmolzen.',
-'Crewstatus: satt? Negative Rückmeldung.',
-'Der Bordcomputer hat „Salat“ vorgeschlagen. Er wurde neu gestartet.',
-'Die Mission wurde verlängert. Grund: Dessert nicht vorhanden, also noch Pommes.',
-'Roswell bestätigt: Dieser Funkspruch wurde vor 51 Sekunden gesendet.',
-'Warnung: Zu viel Scrollen kann zu spontanem Vorbeikommen führen.',
-'Wir empfangen ein schwaches Signal aus der Küche: „Bestellung fertig!“'
-];
-
-function shuffled(source){
-  const bag=[...source];
-  for(let i=bag.length-1;i>0;i--){
-    const j=Math.floor(Math.random()*(i+1));
-    [bag[i],bag[j]]=[bag[j],bag[i]];
-  }
-  return bag;
-}
-
-const localizedTransmissions=window.PSB_I18N?.lang==='de' ? transmissions : transmissions.slice(0,8).map(window.PSB_I18N.t);
-let transmissionBag=shuffled(localizedTransmissions);
-function nextTransmission(){
-  if(!transmissionBag.length) transmissionBag=shuffled(localizedTransmissions);
-  return transmissionBag.pop();
-}
-
-const transmissionButton=document.querySelector('[data-transmission-button]');
-const transmissionText=document.querySelector('[data-transmission]');
-if(transmissionButton&&transmissionText){
-  transmissionButton.addEventListener('click',()=>{
-    const message=nextTransmission();
-    transmissionText.classList.remove('transmission-pop','classified');
-    void transmissionText.offsetWidth;
-    transmissionText.textContent=message;
-    if(message.startsWith('CLASSIFIED')||message.startsWith('TOP SECRET')) transmissionText.classList.add('classified');
-    transmissionText.classList.add('transmission-pop');
-    transmissionButton.textContent='Nächste Nachricht ↗';
-  });
-}
-
 // UFO scanner starts only after the visitor deliberately activates the control station.
 const station=document.querySelector('[data-control-station]');
 const scanner=document.querySelector('[data-ufo-scan]');
@@ -450,6 +268,39 @@ if(station&&scanner&&scanText&&activateButton){
 }
 
 const secretMessages=[
+"Die Wahrheit ist da draußen. Der Bacon ist hier.",
+"Keine intelligenten Lebensformen gefunden. Aber gute Burger.",
+"Mission aktualisiert: Pommes bestellen.",
+"Roswell meldet: Käsesauce kritisch niedrig.",
+"Area 51 bestätigt: Extra Bacon ist kein Zufall.",
+"Unbekanntes Flugobjekt gesichtet. Es riecht verdächtig nach BBQ.",
+"Die Aliens kommen in Frieden. Und wegen der Pommes.",
+"Geheime Satellitendaten zeigen: Hunger nimmt exponentiell zu.",
+"Interstellare Analyse abgeschlossen: Noch ein Burger wäre wissenschaftlich vertretbar.",
+"Die NASA bestreitet alles. Wir bestreiten nur trockene Burger.",
+"Kosmische Strahlung erkannt. Ursache vermutlich geschmolzener Käse.",
+"Der Mond ist nicht aus Käse. Unsere Sauce schon eher.",
+"Bordcomputer sagt: Kalorien existieren im All nicht.",
+"Wissenschaftlicher Konsens: Bacon verbessert die Umlaufbahn.",
+"Gravitationsanomalie lokalisiert: direkt über den Smashpommes.",
+"Zeitreise erfolgreich. Dein Burger ist trotzdem frisch.",
+"Das Mutterschiff hat geparkt. Parkscheibe liegt aus.",
+"Alien an Bodenstation: „Einmal alles. Ohne Zwiebeln.“",
+"Signalstärke 100 %. Selbstkontrolle 12 %.",
+"Unbekannte Energiequelle lokalisiert: Fritteuse.",
+"Abhörprotokoll: „Sag niemandem, dass ich zwei Burger hatte.“",
+"Warnung: Dieses Terminal ist möglicherweise hungrig.",
+"Die letzte Pommes wurde unter Schutz gestellt.",
+"Funkstille beendet. Jemand hat Bacon erwähnt.",
+"Forschungsbericht: Pommes schmecken im Vakuum nicht besser. Hier schon.",
+"Die Aliens verstehen unsere Sprache nicht. „Extra Käse“ verstehen sie.",
+"Mission „nur kurz gucken“ ist offiziell gescheitert.",
+"Der Scanner erkennt: 87 % Mensch, 13 % Hunger.",
+"Wir haben versucht, die Sauce zu analysieren. Labor evakuiert.",
+"Der Bordcomputer hat „Salat“ vorgeschlagen. Er wurde neu gestartet.",
+"Roswell bestätigt: Dieser Funkspruch wurde vor 51 Sekunden gesendet.",
+"Warnung: Zu viel Scrollen kann zu spontanem Vorbeikommen führen.",
+"Wir empfangen ein schwaches Signal aus der Küche: „Bestellung fertig!“",
 'Du hast Clearance Level 51 erreicht. Offiziell ist das nie passiert.',
 'Geheime Akte geöffnet: Der Bacon-Vorrat ist größer als öffentlich bekannt.',
 'Das Alien im Logo grüßt dich. Es behauptet, du wärst bereit.',
