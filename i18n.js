@@ -1,7 +1,7 @@
 // The original German text remains the source of truth for prices and product IDs.
 (() => {
-  const langs = ['de', 'en', 'tr', 'ar', 'es', 'ku'];
-  const names = {de:'Deutsch', en:'English', tr:'Türkçe', ar:'العربية', es:'Español', ku:'Kurmancî'};
+  const langs = ['de', 'en', 'tr', 'ar', 'es', 'it', 'ku'];
+  const names = {de:'Deutsch', en:'English', tr:'Türkçe', ar:'العربية', es:'Español', it:'Italiano', ku:'Kurmancî'};
   const query = new URLSearchParams(location.search);
   const lang = langs.includes(query.get('lang')) ? query.get('lang') : 'de';
   document.documentElement.lang = lang === 'ku' ? 'kmr' : lang;
