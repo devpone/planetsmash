@@ -103,7 +103,6 @@
       'Bacon & Egg': ['Bacon','Käsesauce','Tomate','Essiggurken','Spiegelei','Roswell BBQ'],
       'Chili con Carne Pommes': ['Chili con Carne','Käsesauce','Geschmorte Zwiebeln'],
       'Smashpommes': ['Hackfleisch','Geschmorte Zwiebeln','Käsesauce'],
-      'Pommes Currywurst Mayo': ['Currywurst','Mayonnaise']
     };
     const burgerExtrasByItem = {
       'Classic Cheese': [['Jalapeños',100],['Extra Bacon',150],['Spiegelei',150],['Geschmorte Zwiebeln gegen Röstzwiebeln tauschen',0]],
@@ -119,8 +118,7 @@
       'Süßkartoffelpommes': [['Jalapeños',150],['Extra Bacon',150],['Geschmorte Zwiebeln',150],['Röstzwiebeln',150],['Spiegelei',150],['Käsesauce',150],['Käsesauce scharf',150]],
       'Chili con Carne Pommes': [['Jalapeños',150],['Extra Bacon',150],['Röstzwiebeln',150],['Spiegelei',150],['Käsesauce',150],['Käsesauce scharf',150]],
       'Smashpommes': [['Jalapeños',150],['Extra Bacon',150],['Röstzwiebeln',150],['Spiegelei',150],['Käsesauce',150],['Käsesauce scharf',150]],
-      'Pommes Currywurst Mayo': [['Jalapeños',150],['Geschmorte Zwiebeln',150],['Röstzwiebeln',150],['Käsesauce',150],['Käsesauce scharf',150]],
-      'Currywurst': [['Jalapeños',150],['Geschmorte Zwiebeln',150],['Röstzwiebeln',150],['Käsesauce',150],['Käsesauce scharf',150]],
+      'Currywurst': [['Pommes',300],['Mayonnaise',100],['Ketchup',100]],
       'Chili Cheese Nuggetz': [['Käsesauce',150],['Käsesauce scharf',150]]
     };
     const removalChoices = removalsByItem[name] || [];
