@@ -185,8 +185,8 @@ function updateHeroOpeningCountdown(now = new Date()) {
 function updateSpecialClosureNotice(now = new Date()){
   const parts=getBerlinParts(now);
   const todayKey=dateKeyForOffset(parts);
-  const visitStatus=document.querySelector('.visit-copy [data-status]');
-  if(!visitStatus) return;
+  const specialHours=document.querySelector('[data-special-hours]');
+  if(!specialHours) return;
 
   let notice=document.querySelector('[data-special-closure-notice]');
   const entry=Object.entries(specialClosures).find(([dateKey,closure])=>
@@ -203,7 +203,7 @@ function updateSpecialClosureNotice(now = new Date()){
     notice=document.createElement('p');
     notice.className='visit-status';
     notice.setAttribute('data-special-closure-notice','');
-    visitStatus.insertAdjacentElement('afterend',notice);
+    specialHours.appendChild(notice);
   }
 
   notice.textContent=todayKey===dateKey
@@ -214,8 +214,8 @@ function updateSpecialClosureNotice(now = new Date()){
 function updateSpecialOpeningNotice(now = new Date()){
   const parts=getBerlinParts(now);
   const todayKey=dateKeyForOffset(parts);
-  const visitStatus=document.querySelector('.visit-copy [data-status]');
-  if(!visitStatus) return;
+  const specialHours=document.querySelector('[data-special-hours]');
+  if(!specialHours) return;
 
   let notice=document.querySelector('[data-special-opening-notice]');
   const entry=Object.entries(specialOpeningNotices).find(([dateKey,opening])=>
@@ -232,7 +232,7 @@ function updateSpecialOpeningNotice(now = new Date()){
     notice=document.createElement('p');
     notice.className='visit-status';
     notice.setAttribute('data-special-opening-notice','');
-    visitStatus.insertAdjacentElement('afterend',notice);
+    specialHours.appendChild(notice);
   }
 
   notice.replaceChildren();
