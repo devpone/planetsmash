@@ -47,13 +47,32 @@ const specialClosures={
   }
 };
 
-const specialOpeningNotices={
-  '2026-11-01':{
-    announceFrom:'2026-09-29',
-    label:'Allerheiligen, 1. November:',
-    emphasis:'GEÖFFNET'
+const specialHoursNotices=[
+  {
+    start:'2026-09-29',
+    end:'2026-10-03',
+    dateLabel:'Sa., 3. Oktober',
+    reason:'Tag der Deutschen Einheit',
+    status:'GESCHLOSSEN',
+    kind:'closed'
+  },
+  {
+    start:'2026-09-29',
+    end:'2026-11-01',
+    dateLabel:'So., 1. November',
+    reason:'Allerheiligen',
+    status:'GEÖFFNET',
+    kind:'open'
+  },
+  {
+    start:'2026-09-29',
+    end:'2026-12-26',
+    dateLabel:'24.–26. Dezember',
+    reason:'Heiligabend & Weihnachten',
+    status:'GESCHLOSSEN',
+    kind:'closed'
   }
-};
+];
 
 function dateKeyForOffset(parts,offset=0){
   const d=new Date(Date.UTC(parts.year,parts.month-1,parts.date+offset));
@@ -182,67 +201,48 @@ function updateHeroOpeningCountdown(now = new Date()) {
   });
 }
 
-function updateSpecialClosureNotice(now = new Date()){
+function updateSpecialHours(now = new Date()){
   const parts=getBerlinParts(now);
   const todayKey=dateKeyForOffset(parts);
   const specialHours=document.querySelector('[data-special-hours]');
   if(!specialHours) return;
 
-  specialHours.querySelectorAll('[data-special-closure-notice]').forEach(el=>el.remove());
+  const active=specialHoursNotices.filter(item=>todayKey>=item.start && todayKey<=item.end);
+  specialHours.replaceChildren();
+  if(!active.length) return;
 
-  const activeEntries=Object.entries(specialClosures).filter(([dateKey,closure])=>
-    todayKey>=closure.announceFrom && todayKey<=dateKey
-  );
+  const title=document.createElement('p');
+  title.className='special-hours-title';
+  title.textContent='SONDERÖFFNUNGSZEITEN';
 
-  const grouped=new Map();
-  activeEntries.forEach(([dateKey,closure])=>{
-    const key=closure.announcement;
-    const current=grouped.get(key) || {announcement:closure.announcement,todayReason:null};
-    if(todayKey===dateKey) current.todayReason=closure.reason;
-    grouped.set(key,current);
+  const list=document.createElement('div');
+  list.className='special-hours-list';
+
+  active.forEach(item=>{
+    const row=document.createElement('div');
+    row.className='special-hours-item';
+
+    const copy=document.createElement('div');
+    copy.className='special-hours-copy';
+
+    const date=document.createElement('strong');
+    date.className='special-hours-date';
+    date.textContent=item.dateLabel;
+
+    const reason=document.createElement('span');
+    reason.className='special-hours-reason';
+    reason.textContent=item.reason;
+
+    const badge=document.createElement('span');
+    badge.className=`special-hours-badge is-${item.kind}`;
+    badge.textContent=item.status;
+
+    copy.append(date,reason);
+    row.append(copy,badge);
+    list.appendChild(row);
   });
 
-  grouped.forEach(group=>{
-    const notice=document.createElement('p');
-    notice.className='visit-status';
-    notice.setAttribute('data-special-closure-notice','');
-    notice.textContent=group.todayReason
-      ? `Heute geschlossen – ${group.todayReason}.`
-      : group.announcement;
-    specialHours.appendChild(notice);
-  });
-}
-
-function updateSpecialOpeningNotice(now = new Date()){
-  const parts=getBerlinParts(now);
-  const todayKey=dateKeyForOffset(parts);
-  const specialHours=document.querySelector('[data-special-hours]');
-  if(!specialHours) return;
-
-  let notice=document.querySelector('[data-special-opening-notice]');
-  const entry=Object.entries(specialOpeningNotices).find(([dateKey,opening])=>
-    todayKey>=opening.announceFrom && todayKey<=dateKey
-  );
-
-  if(!entry){
-    notice?.remove();
-    return;
-  }
-
-  const [,opening]=entry;
-  if(!notice){
-    notice=document.createElement('p');
-    notice.className='visit-status';
-    notice.setAttribute('data-special-opening-notice','');
-    specialHours.appendChild(notice);
-  }
-
-  notice.replaceChildren();
-  notice.append(document.createTextNode(opening.label+' '));
-  const strong=document.createElement('strong');
-  strong.textContent=opening.emphasis;
-  strong.style.fontWeight='900';
-  notice.append(strong,document.createTextNode('.'));
+  specialHours.append(title,list);
 }
 
 function updateOpeningStatus(){
@@ -250,10 +250,13 @@ function updateOpeningStatus(){
   document.querySelectorAll('[data-status]').forEach(el=>el.textContent=status);
   document.querySelectorAll('[data-countdown]').forEach(el=>el.textContent=getCountdown());
   updateHeroOpeningCountdown();
-  updateSpecialClosureNotice();
-  updateSpecialOpeningNotice();
+  updateSpecialHours();
   document.querySelectorAll('[data-call]').forEach(slot=>{
     const open=status.startsWith('Jetzt geöffnet');
+    if(slot.hasAttribute('data-hide-closed')){
+      slot.hidden=!open;
+      if(!open) return;
+    }
     const tag=open?'A':'SPAN';
     if(slot.firstElementChild?.tagName!==tag){
       const action=document.createElement(tag);
