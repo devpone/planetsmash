@@ -428,3 +428,122 @@ html[dir="rtl"] .order-dialog,html[dir="rtl"] .order-bar{text-align:right}
 .newsletter-status.ok{color:#b8f3c5}
 .newsletter-status.error{color:#ffb7c5}
 @media(max-width:760px){.newsletter-section{padding:64px 0}.newsletter-grid{grid-template-columns:1fr;gap:28px}.newsletter-form{padding:20px}}
+
+
+/* 2026-09-29: cleaner opening-state presentation */
+.hero-buttons{
+  display:grid;
+  width:min(380px,100%);
+  gap:12px;
+  align-items:stretch;
+}
+.hero-buttons .hero-opening{
+  width:100%;
+  max-width:none;
+  margin:0;
+}
+.hero-buttons .hero-countdown{
+  display:block;
+  width:100%;
+  box-sizing:border-box;
+}
+.hero-buttons .hero-menu-button{
+  width:100%;
+  min-height:58px;
+  justify-content:space-between;
+  box-sizing:border-box;
+}
+.preorder [data-hide-closed][hidden]{
+  display:none !important;
+}
+
+/* Structured special opening hours */
+.special-hours{
+  margin:28px 0 24px;
+  padding-top:22px;
+  border-top:1px solid var(--line);
+}
+.special-hours:empty{
+  display:none;
+}
+.special-hours-title{
+  margin:0 0 10px;
+  color:#a992bb;
+  font-size:9px;
+  font-weight:900;
+  letter-spacing:1.8px;
+}
+.special-hours-list{
+  display:grid;
+  gap:8px;
+}
+.special-hours-item{
+  display:grid;
+  grid-template-columns:minmax(0,1fr) auto;
+  align-items:center;
+  gap:18px;
+  padding:14px 15px;
+  border:1px solid #b276ff2f;
+  border-radius:8px;
+  background:linear-gradient(135deg,#171020,#100b16);
+}
+.special-hours-copy{
+  min-width:0;
+}
+.special-hours-date{
+  display:block;
+  color:#f4edf8;
+  font-size:14px;
+  line-height:1.25;
+  font-weight:850;
+}
+.special-hours-reason{
+  display:block;
+  margin-top:4px;
+  color:#9f90aa;
+  font-size:11px;
+  line-height:1.35;
+}
+.special-hours-badge{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-width:92px;
+  padding:8px 10px;
+  border-radius:999px;
+  font-size:9px;
+  line-height:1;
+  font-weight:950;
+  letter-spacing:1px;
+  white-space:nowrap;
+}
+.special-hours-badge.is-open{
+  color:#120b18;
+  background:#b276ff;
+  border:1px solid #c596ff;
+}
+.special-hours-badge.is-closed{
+  color:#d8c9e2;
+  background:#1a1122;
+  border:1px solid #73518d;
+}
+@media(max-width:800px){
+  .hero-buttons{
+    width:100%;
+  }
+  .special-hours{
+    margin-top:22px;
+  }
+  .special-hours-item{
+    gap:12px;
+    padding:13px;
+  }
+  .special-hours-date{
+    font-size:13px;
+  }
+  .special-hours-badge{
+    min-width:84px;
+    padding:7px 9px;
+    font-size:8px;
+  }
+}
