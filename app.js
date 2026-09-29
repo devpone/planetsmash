@@ -32,17 +32,17 @@ const specialClosures={
   },
   '2026-12-24':{
     reason:'Heiligabend',
-    announceFrom:'2026-12-01',
+    announceFrom:'2026-09-29',
     announcement:'24.–26. Dezember geschlossen – Heiligabend & Weihnachten.'
   },
   '2026-12-25':{
     reason:'1. Weihnachtstag',
-    announceFrom:'2026-12-01',
+    announceFrom:'2026-09-29',
     announcement:'24.–26. Dezember geschlossen – Heiligabend & Weihnachten.'
   },
   '2026-12-26':{
     reason:'2. Weihnachtstag',
-    announceFrom:'2026-12-01',
+    announceFrom:'2026-09-29',
     announcement:'24.–26. Dezember geschlossen – Heiligabend & Weihnachten.'
   }
 };
@@ -188,27 +188,29 @@ function updateSpecialClosureNotice(now = new Date()){
   const specialHours=document.querySelector('[data-special-hours]');
   if(!specialHours) return;
 
-  let notice=document.querySelector('[data-special-closure-notice]');
-  const entry=Object.entries(specialClosures).find(([dateKey,closure])=>
+  specialHours.querySelectorAll('[data-special-closure-notice]').forEach(el=>el.remove());
+
+  const activeEntries=Object.entries(specialClosures).filter(([dateKey,closure])=>
     todayKey>=closure.announceFrom && todayKey<=dateKey
   );
 
-  if(!entry){
-    notice?.remove();
-    return;
-  }
+  const grouped=new Map();
+  activeEntries.forEach(([dateKey,closure])=>{
+    const key=closure.announcement;
+    const current=grouped.get(key) || {announcement:closure.announcement,todayReason:null};
+    if(todayKey===dateKey) current.todayReason=closure.reason;
+    grouped.set(key,current);
+  });
 
-  const [dateKey,closure]=entry;
-  if(!notice){
-    notice=document.createElement('p');
+  grouped.forEach(group=>{
+    const notice=document.createElement('p');
     notice.className='visit-status';
     notice.setAttribute('data-special-closure-notice','');
+    notice.textContent=group.todayReason
+      ? `Heute geschlossen – ${group.todayReason}.`
+      : group.announcement;
     specialHours.appendChild(notice);
-  }
-
-  notice.textContent=todayKey===dateKey
-    ? `Heute geschlossen – ${closure.reason}.`
-    : closure.announcement;
+  });
 }
 
 function updateSpecialOpeningNotice(now = new Date()){
