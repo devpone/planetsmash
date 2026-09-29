@@ -139,8 +139,14 @@ export default {
 
         await resend(env,'/contacts',{
           method:'POST',
-          body:JSON.stringify({email:row.email,unsubscribed:false,segmentIds:[env.NEWSLETTER_SEGMENT_ID]})
+          body:JSON.stringify({email:row.email,unsubscribed:false})
         });
+
+        await resend(
+          env,
+          `/contacts/${encodeURIComponent(row.email)}/segments/${encodeURIComponent(env.NEWSLETTER_SEGMENT_ID)}`,
+          {method:'POST'}
+        );
 
         const confirmedAt = new Date().toISOString();
         await env.DB.prepare(`UPDATE newsletter_subscribers
