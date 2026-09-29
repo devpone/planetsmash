@@ -50,7 +50,7 @@ const specialClosures={
 const specialOpeningNotices={
   '2026-11-01':{
     announceFrom:'2026-09-29',
-    label:'Allerheiligen ist',
+    label:'Allerheiligen, 1. November:',
     emphasis:'GEÖFFNET'
   }
 };
