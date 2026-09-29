@@ -375,23 +375,18 @@ Google-Bewertung|Google review|Google yorumu|مراجعة Google|Reseña de Goog
 `;
 
 translationRows += `
-WIEDER GEÖFFNET IN|OPEN AGAIN IN|YENİDEN AÇILIŞA|يفتح مجددًا خلال|VOLVEMOS A ABRIR EN|DÎSA VEDIBE DI
 `;
 
 translationRows += `
-STUNDEN|HOURS|SAAT|ساعة|HORAS|SAET
 `;
 
 translationRows += `
-MINUTEN|MINUTES|DAKİKA|دقيقة|MINUTOS|DEQÎQE
 `;
 
 translationRows += `
-SEKUNDEN|SECONDS|SANİYE|ثانية|SEGUNDOS|ÇIRKE
 `;
 
 translationRows += `
-Countdown bis zur nächsten Öffnung|Countdown until next opening|Bir sonraki açılışa geri sayım|العد التنازلي حتى الافتتاح التالي|Cuenta atrás hasta la próxima apertura|Jimartina paşverû heta vekirina din
 `;
 
 translationRows += `
@@ -932,11 +927,6 @@ STIMMEN VON DER ERDE|VOCI DALLA TERRA
 Was Erdlinge über den Planeten sagen.|Cosa dicono i terrestri del pianeta.
 Google-Bewertungen ansehen ↗|Vedi recensioni Google ↗
 Google-Bewertung|Recensione Google
-WIEDER GEÖFFNET IN|RIAPRE TRA
-STUNDEN|ORE
-MINUTEN|MINUTI
-SEKUNDEN|SECONDI
-Countdown bis zur nächsten Öffnung|Conto alla rovescia fino alla prossima apertura
 Öffnungsstatus wird geladen …|Caricamento stato di apertura…
 Unsere Soßen|Le nostre salse
 Zur Speisekarte ↗|Vai al menu ↗
