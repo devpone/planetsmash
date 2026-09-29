@@ -2,6 +2,9 @@ function getBerlinParts(now = new Date()) {
   const parts = Object.fromEntries(new Intl.DateTimeFormat('en-GB', {
     timeZone:'Europe/Berlin',
     weekday:'short',
+    year:'numeric',
+    month:'2-digit',
+    day:'2-digit',
     hour:'2-digit',
     minute:'2-digit',
     second:'2-digit',
@@ -10,6 +13,9 @@ function getBerlinParts(now = new Date()) {
   const days=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
   return {
     day: days.indexOf(parts.weekday),
+    year: Number(parts.year),
+    month: Number(parts.month),
+    date: Number(parts.day),
     hour: Number(parts.hour),
     minute: Number(parts.minute),
     second: Number(parts.second)
@@ -18,21 +24,60 @@ function getBerlinParts(now = new Date()) {
 
 const openingHours=[14,null,16,16,16,16,16];
 
+const specialClosures={
+  '2026-10-03':{
+    reason:'Tag der Deutschen Einheit',
+    announceFrom:'2026-09-29',
+    announcement:'Samstag, 3. Oktober geschlossen – Tag der Deutschen Einheit.'
+  }
+};
+
+function dateKeyForOffset(parts,offset=0){
+  const d=new Date(Date.UTC(parts.year,parts.month-1,parts.date+offset));
+  const y=d.getUTCFullYear();
+  const m=String(d.getUTCMonth()+1).padStart(2,'0');
+  const day=String(d.getUTCDate()).padStart(2,'0');
+  return `${y}-${m}-${day}`;
+}
+
+function getSpecialClosure(parts,offset=0){
+  return specialClosures[dateKeyForOffset(parts,offset)] || null;
+}
+
+function getScheduledOpening(parts,offset=0){
+  const weekday=(parts.day+offset)%7;
+  if(getSpecialClosure(parts,offset)) return null;
+  return openingHours[weekday];
+}
+
 function getOpeningStatus(now = new Date()) {
   const names=['Sonntag','Montag','Dienstag','Mittwoch','Donnerstag','Freitag','Samstag'];
-  const {day,hour,minute}=getBerlinParts(now);
+  const parts=getBerlinParts(now);
+  const {day,hour,minute}=parts;
   const time=hour+minute/60;
-  if(openingHours[day]!==null && time>=openingHours[day] && time<22) return 'Jetzt geöffnet · bis 22 Uhr';
-  if(openingHours[day]!==null && time<openingHours[day]) return `Heute ab ${openingHours[day]} Uhr geöffnet`;
-  let offset=1; while(openingHours[(day+offset)%7]===null) offset++;
+  const closure=getSpecialClosure(parts);
+  const todayOpen=getScheduledOpening(parts);
+
+  if(!closure && todayOpen!==null && time>=todayOpen && time<22) return 'Jetzt geöffnet · bis 22 Uhr';
+  if(!closure && todayOpen!==null && time<todayOpen) return `Heute ab ${todayOpen} Uhr geöffnet`;
+
+  let offset=1;
+  let nextOpen=null;
+  while(offset<=7 && nextOpen===null){
+    nextOpen=getScheduledOpening(parts,offset);
+    if(nextOpen===null) offset++;
+  }
   const next=(day+offset)%7;
-  return `${day===1?'Heute Ruhetag':'Jetzt geschlossen'} · ${offset===1?'morgen':names[next]} ab ${openingHours[next]} Uhr`;
+
+  if(closure) return `Heute geschlossen · ${closure.reason} · ${offset===1?'morgen':names[next]} ab ${nextOpen} Uhr`;
+  return `${day===1?'Heute Ruhetag':'Jetzt geschlossen'} · ${offset===1?'morgen':names[next]} ab ${nextOpen} Uhr`;
 }
 
 function getCountdown(now = new Date()) {
-  const {day,hour,minute,second}=getBerlinParts(now);
+  const parts=getBerlinParts(now);
+  const {day,hour,minute,second}=parts;
   const current=day*86400+hour*3600+minute*60+second;
-  const open=openingHours[day];
+  const open=getScheduledOpening(parts);
   let target;
   let label;
 
@@ -43,7 +88,7 @@ function getCountdown(now = new Date()) {
     label='Öffnet in';
     for(let offset=0;offset<=7;offset++){
       const candidateDay=day+offset;
-      const candidateOpen=openingHours[candidateDay%7];
+      const candidateOpen=getScheduledOpening(parts,offset);
       if(candidateOpen===null) continue;
       const candidate=candidateDay*86400+candidateOpen*3600;
       if(candidate>current){
@@ -63,9 +108,10 @@ function getCountdown(now = new Date()) {
 }
 
 function getNextOpeningCountdown(now = new Date()) {
-  const {day,hour,minute,second}=getBerlinParts(now);
+  const parts=getBerlinParts(now);
+  const {day,hour,minute,second}=parts;
   const current=day*86400+hour*3600+minute*60+second;
-  const open=openingHours[day];
+  const open=getScheduledOpening(parts);
   const isOpen=open!==null && current>=day*86400+open*3600 && current<day*86400+22*3600;
 
   if(isOpen) return {open:true,hours:0,minutes:0,seconds:0};
@@ -73,7 +119,7 @@ function getNextOpeningCountdown(now = new Date()) {
   let target=null;
   for(let offset=0;offset<=7;offset++){
     const candidateDay=day+offset;
-    const candidateOpen=openingHours[candidateDay%7];
+    const candidateOpen=getScheduledOpening(parts,offset);
     if(candidateOpen===null) continue;
     const candidate=candidateDay*86400+candidateOpen*3600;
     if(candidate>current){
@@ -113,11 +159,41 @@ function updateHeroOpeningCountdown(now = new Date()) {
   });
 }
 
+function updateSpecialClosureNotice(now = new Date()){
+  const parts=getBerlinParts(now);
+  const todayKey=dateKeyForOffset(parts);
+  const visitStatus=document.querySelector('.visit-copy [data-status]');
+  if(!visitStatus) return;
+
+  let notice=document.querySelector('[data-special-closure-notice]');
+  const entry=Object.entries(specialClosures).find(([dateKey,closure])=>
+    todayKey>=closure.announceFrom && todayKey<=dateKey
+  );
+
+  if(!entry){
+    notice?.remove();
+    return;
+  }
+
+  const [dateKey,closure]=entry;
+  if(!notice){
+    notice=document.createElement('p');
+    notice.className='visit-status';
+    notice.setAttribute('data-special-closure-notice','');
+    visitStatus.insertAdjacentElement('afterend',notice);
+  }
+
+  notice.textContent=todayKey===dateKey
+    ? `Heute geschlossen – ${closure.reason}.`
+    : closure.announcement;
+}
+
 function updateOpeningStatus(){
   const status=getOpeningStatus();
   document.querySelectorAll('[data-status]').forEach(el=>el.textContent=status);
   document.querySelectorAll('[data-countdown]').forEach(el=>el.textContent=getCountdown());
   updateHeroOpeningCountdown();
+  updateSpecialClosureNotice();
   document.querySelectorAll('[data-call]').forEach(slot=>{
     const open=status.startsWith('Jetzt geöffnet');
     const tag=open?'A':'SPAN';
