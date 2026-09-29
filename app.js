@@ -47,6 +47,14 @@ const specialClosures={
   }
 };
 
+const specialOpeningNotices={
+  '2026-11-01':{
+    announceFrom:'2026-09-29',
+    label:'Allerheiligen ist',
+    emphasis:'GEÖFFNET'
+  }
+};
+
 function dateKeyForOffset(parts,offset=0){
   const d=new Date(Date.UTC(parts.year,parts.month-1,parts.date+offset));
   const y=d.getUTCFullYear();
@@ -203,12 +211,45 @@ function updateSpecialClosureNotice(now = new Date()){
     : closure.announcement;
 }
 
+function updateSpecialOpeningNotice(now = new Date()){
+  const parts=getBerlinParts(now);
+  const todayKey=dateKeyForOffset(parts);
+  const visitStatus=document.querySelector('.visit-copy [data-status]');
+  if(!visitStatus) return;
+
+  let notice=document.querySelector('[data-special-opening-notice]');
+  const entry=Object.entries(specialOpeningNotices).find(([dateKey,opening])=>
+    todayKey>=opening.announceFrom && todayKey<=dateKey
+  );
+
+  if(!entry){
+    notice?.remove();
+    return;
+  }
+
+  const [,opening]=entry;
+  if(!notice){
+    notice=document.createElement('p');
+    notice.className='visit-status';
+    notice.setAttribute('data-special-opening-notice','');
+    visitStatus.insertAdjacentElement('afterend',notice);
+  }
+
+  notice.replaceChildren();
+  notice.append(document.createTextNode(opening.label+' '));
+  const strong=document.createElement('strong');
+  strong.textContent=opening.emphasis;
+  strong.style.fontWeight='900';
+  notice.append(strong,document.createTextNode('.'));
+}
+
 function updateOpeningStatus(){
   const status=getOpeningStatus();
   document.querySelectorAll('[data-status]').forEach(el=>el.textContent=status);
   document.querySelectorAll('[data-countdown]').forEach(el=>el.textContent=getCountdown());
   updateHeroOpeningCountdown();
   updateSpecialClosureNotice();
+  updateSpecialOpeningNotice();
   document.querySelectorAll('[data-call]').forEach(slot=>{
     const open=status.startsWith('Jetzt geöffnet');
     const tag=open?'A':'SPAN';
