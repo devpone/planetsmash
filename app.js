@@ -29,6 +29,21 @@ const specialClosures={
     reason:'Tag der Deutschen Einheit',
     announceFrom:'2026-09-29',
     announcement:'Samstag, 3. Oktober geschlossen – Tag der Deutschen Einheit.'
+  },
+  '2026-12-24':{
+    reason:'Heiligabend',
+    announceFrom:'2026-12-01',
+    announcement:'24.–26. Dezember geschlossen – Heiligabend & Weihnachten.'
+  },
+  '2026-12-25':{
+    reason:'1. Weihnachtstag',
+    announceFrom:'2026-12-01',
+    announcement:'24.–26. Dezember geschlossen – Heiligabend & Weihnachten.'
+  },
+  '2026-12-26':{
+    reason:'2. Weihnachtstag',
+    announceFrom:'2026-12-01',
+    announcement:'24.–26. Dezember geschlossen – Heiligabend & Weihnachten.'
   }
 };
 
