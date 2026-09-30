@@ -25,11 +25,6 @@ function getBerlinParts(now = new Date()) {
 const openingHours=[14,null,16,16,16,16,16];
 
 const specialClosures={
-  '2026-10-03':{
-    reason:'Tag der Deutschen Einheit',
-    announceFrom:'2026-09-29',
-    announcement:'Samstag, 3. Oktober geschlossen – Tag der Deutschen Einheit.'
-  },
   '2026-12-24':{
     reason:'Heiligabend',
     announceFrom:'2026-09-29',
@@ -48,14 +43,6 @@ const specialClosures={
 };
 
 const specialHoursNotices=[
-  {
-    start:'2026-09-29',
-    end:'2026-10-03',
-    dateLabel:'Sa., 3. Oktober',
-    reason:'Tag der Deutschen Einheit',
-    status:'GESCHLOSSEN',
-    kind:'closed'
-  },
   {
     start:'2026-09-29',
     end:'2026-11-01',
