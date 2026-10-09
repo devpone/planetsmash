@@ -24,6 +24,11 @@ function getBerlinParts(now = new Date()) {
 
 const openingHours=[14,null,16,16,16,16,16];
 
+// Einmalige Abweichungen; die regulaeren Zeiten bleiben unveraendert.
+const specialOpeningHours={
+  '2026-10-09':18
+};
+
 const specialClosures={
   '2026-12-24':{
     reason:'Heiligabend',
@@ -43,6 +48,14 @@ const specialClosures={
 };
 
 const specialHoursNotices=[
+  {
+    start:'2026-10-09',
+    end:'2026-10-09',
+    dateLabel:'Fr., 9. Oktober',
+    reason:'Heute erst ab 18 Uhr',
+    status:'18–22 UHR',
+    kind:'open'
+  },
   {
     start:'2026-09-29',
     end:'2026-11-01',
@@ -76,7 +89,7 @@ function getSpecialClosure(parts,offset=0){
 function getScheduledOpening(parts,offset=0){
   const weekday=(parts.day+offset)%7;
   if(getSpecialClosure(parts,offset)) return null;
-  return openingHours[weekday];
+  return specialOpeningHours[dateKeyForOffset(parts,offset)] ?? openingHours[weekday];
 }
 
 function getOpeningStatus(now = new Date()) {
