@@ -97,7 +97,7 @@
     const onions = select(greens, 'Zwiebeln · normale Portion inklusive', [
       ['Geschmorte Zwiebeln', 'Geschmorte Zwiebeln'], ['Röstzwiebeln', 'Röstzwiebeln'], ['', 'Keine Zwiebeln']
     ]);
-    const fresh = check(greens, 'Extra frisch · mehr Salat, Tomate, Gurke und geschmorte Zwiebeln (+1,00 €)');
+    const fresh = check(greens, 'Extra frisch · mehr Salat, Tomate und Gurke (+1,00 €)');
 
     const included = section(form, '3 / Deine Soßen · inklusive');
     const cheese = select(included, 'Käsesoße', [['Käsesoße', 'Käsesoße'], ['Scharfe Käsesoße', 'Scharfe Käsesoße'], ['', 'Keine Käsesoße']]);
@@ -137,11 +137,9 @@
     fresh.addEventListener('change', () => {
       if (fresh.checked) {
         vegetables.forEach(({input}) => { input.checked = true; });
-        onions.value = 'Geschmorte Zwiebeln';
       }
     });
     vegetables.forEach(({input}) => input.addEventListener('change', () => { if (!input.checked) fresh.checked = false; }));
-    onions.addEventListener('change', () => { if (onions.value !== 'Geschmorte Zwiebeln') fresh.checked = false; });
     form.addEventListener('change', update);
     form.addEventListener('submit', event => {
       event.preventDefault();
@@ -155,7 +153,7 @@
       description.push('Zwiebeln: ' + (onions.value || 'keine'));
       description.push('Käsesoße: ' + (cheese.value || 'keine'));
       description.push('Burgersoße: ' + (sauce.value || 'keine'));
-      if (current.fresh) description.push('Extra frisch: mehr Salat, Tomate, Gurke und geschmorte Zwiebeln');
+      if (current.fresh) description.push('Extra frisch: mehr Salat, Tomate und Gurke');
       for (const [name, qty] of Object.entries(current.toppings)) if (qty) description.push(qty + '× ' + name);
       for (const [name, qty] of Object.entries(current.extraSauces)) if (qty) description.push(qty + '× Extra Soße: ' + name);
       if (note.value.trim()) description.push('Wunsch: ' + note.value.trim());
