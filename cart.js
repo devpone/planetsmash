@@ -135,9 +135,10 @@
       'Currywurst': [['Zweite Currywurst',390],['Pommes normal',300],['Pommes groß',500],['Mayonnaise',100],['Ketchup',100]],
       'Chili Cheese Nuggetz': [['Käsesauce',150],['Käsesauce scharf',150]]
     };
-    const removalChoices = removalsByItem[name] || [];
+    const isLoadedFries = !!row.closest('[data-loaded-fries]');
+    const removalChoices = isLoadedFries ? [] : (removalsByItem[name] || []);
     const burgerExtraChoices = burgerExtrasByItem[name] || [];
-    const foodExtraChoices = foodExtrasByItem[name] || [];
+    const foodExtraChoices = isLoadedFries ? [] : (foodExtrasByItem[name] || []);
     const form = document.createElement('form');
     form.addEventListener('submit', event => event.preventDefault());
     addText(form, 'h2', name, 'order-title').id = 'choice-title';
