@@ -53,6 +53,19 @@
     render();
   };
 
+  // Shared entry point for the burger builder and the existing shopping list.
+  window.PSB_CART = {
+    add(item) {
+      if (typeof item.name !== 'string' || typeof item.detail !== 'string' || !Number.isInteger(item.price) || item.price < 0) return false;
+      const match = items.find(saved => saved.name === item.name && saved.detail === item.detail && saved.price === item.price);
+      if (match) match.quantity += 1;
+      else items.push({...item, quantity: 1, depositIncluded: false});
+      persist();
+      bar.querySelector('button').focus();
+      return true;
+    }
+  };
+
   const bar = document.createElement('div');
   bar.className = 'order-bar';
   bar.hidden = true;

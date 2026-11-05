@@ -35,4 +35,22 @@
 .order-small{font-size:14px;line-height:1.5;color:#d6c8dd}
 .order-warning{padding:14px;border:1px solid #dcb66a;border-radius:6px;background:#473217;color:#fff1d7;font-size:15px;line-height:1.5}
 .order-actions{display:grid;gap:10px;margin:16px 0}
+.burger-builder-card{display:flex;align-items:center;gap:30px;padding:24px 0}
+.burger-builder-card>div:first-child{flex:1}
+.burger-builder-card h3{font-size:26px;margin:10px 0}
+.burger-builder-card p{line-height:1.6}
+.burger-builder-start{display:grid;gap:18px;flex:0 0 220px;text-align:center}
+.burger-builder-start>strong{font-size:28px;color:#e7c8ff}
+.burger-builder-start [hidden]{display:none}
+.builder-section{margin:24px 0;padding:10px 16px;border:1px solid #74548d;border-radius:8px;min-width:0}
+.builder-section legend{padding:0 8px;color:#dfb5ff;font-weight:800;font-size:17px}
+.builder-extra-sauces{padding:12px 0;border-top:1px solid #74548d}
+.builder-extra-sauces summary{cursor:pointer;font-weight:700;line-height:1.5}
+.builder-total{position:sticky;bottom:-27px;background:#1b1126;padding:12px 0 20px;border-top:1px solid #a975dc}
+.builder-total .order-total{margin:4px 0 10px}
+.builder-total .order-submit{margin-top:10px}
+.builder-error{color:#ffe0ac;font-size:14px;line-height:1.4}
+.builder-error:empty{display:none}
+.order-submit:disabled{opacity:.5;cursor:not-allowed}
+@media(max-width:600px){.burger-builder-card{display:block}.burger-builder-start{margin-top:20px;text-align:left}.builder-section{padding:10px}.builder-total{bottom:-20px}}
 @media(max-width:800px){.order-bar{bottom:calc(76px + env(safe-area-inset-bottom));width:calc(100% - 28px)}.order-dialog{max-height:83vh;padding:20px}.menu-item>strong{margin-left:0}.order-add{margin-left:auto}}
