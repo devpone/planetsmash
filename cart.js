@@ -114,6 +114,7 @@
       'Bacon & Egg': [['Jalapeños',100],['Extra Bacon',150],['Geschmorte Zwiebeln',100]]
     };
     const foodExtrasByItem = {
+      'Schoko-Donut': [['Geröstete Haselnüsse',30]],
       'Pommes': [['Jalapeños',150],['Extra Bacon',150],['Geschmorte Zwiebeln',150],['Röstzwiebeln',150],['Spiegelei',150],['Käsesauce',150],['Käsesauce scharf',150]],
       'Süßkartoffelpommes': [['Jalapeños',150],['Extra Bacon',150],['Geschmorte Zwiebeln',150],['Röstzwiebeln',150],['Spiegelei',150],['Käsesauce',150],['Käsesauce scharf',150]],
       'Chili con Carne Pommes': [['Jalapeños',150],['Extra Bacon',150],['Röstzwiebeln',150],['Spiegelei',150],['Käsesauce',150],['Käsesauce scharf',150]],
