@@ -1,16 +1,16 @@
-.sauce-help-button{position:relative;display:inline-flex;align-items:center;justify-content:center;flex:none;width:44px;height:44px;padding:0;border:0;background:transparent;color:#e4c4ff;font-family:inherit;font-size:15px;font-weight:800;line-height:1;cursor:help;vertical-align:middle}
-.sauce-help-button::before{content:"";position:absolute;width:23px;height:23px;border:1px solid #bc8cef;border-radius:50%;pointer-events:none}
+.sauce-help-button{position:relative;display:inline-flex;align-items:center;justify-content:center;flex:none;width:26px;height:26px;padding:0;border:0;background:transparent;color:#e4c4ff;font-family:inherit;font-size:15px;font-weight:800;line-height:1;cursor:help;vertical-align:middle}
+.sauce-help-button::before{content:"";position:absolute;width:20px;height:20px;border:1px solid #bc8cef;border-radius:50%;pointer-events:none}
 .sauce-help-button[hidden]{display:none}
 .sauce-help-button:hover,.sauce-help-button[aria-expanded="true"]{color:#fff;background:#65339766;border-radius:8px}
 .sauce-help-button:focus-visible{outline:2px solid #e7bcff;outline-offset:2px;border-radius:8px}
 .sauce-help-field{display:flex;align-items:flex-start;gap:8px}
 .sauce-help-field>label{flex:1;min-width:0}
-.sauce-help-field>.sauce-help-button{margin-top:11px}
+.sauce-help-field>.sauce-help-button{margin-top:4px}
 .sauce-help-heading{display:flex;align-items:center;gap:5px}
-.sauce-help-inline{width:28px;height:28px;margin-inline:2px}
-.sauce-help-inline::before{width:19px;height:19px}
+.sauce-help-inline{width:19px;height:19px;margin:0 2px;vertical-align:baseline;font-size:11px}
+.sauce-help-inline::before{width:16px;height:16px}
 .sauce-profile-popover{position:fixed;z-index:1000;box-sizing:border-box;width:300px;max-width:calc(100vw - 24px);padding:16px;border:1px solid #bd8cf0;border-radius:10px;background:#28163d;color:#fff;box-shadow:0 12px 32px #0009;text-align:start;font-family:inherit;font-size:15px;line-height:1.5;pointer-events:auto}
 .sauce-profile-popover[hidden]{display:none}
 .sauce-profile-popover strong{display:block;font-size:15px;color:#f0dfff}
 .sauce-profile-popover p{margin:6px 0 0;color:#e1cdea;font-size:14px;line-height:1.5}
-@media(pointer:coarse){.sauce-help-inline{width:44px;height:44px}}
+@media(pointer:coarse){.sauce-help-inline{width:19px;height:19px}}
