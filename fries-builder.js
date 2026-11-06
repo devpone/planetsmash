@@ -62,7 +62,7 @@
     close.type = 'button';
     close.addEventListener('click', () => dialog.close());
     text(dialog, 'h2', 'Bau deine Loaded Fries', 'order-title').id = 'fries-builder-title';
-    text(dialog, 'p', 'Wähle deine Pommes und stelle dir Soßen und Toppings selbst zusammen. Toppings haben bei Normal und Big dieselbe Portion und denselben Preis.', 'order-small');
+    text(dialog, 'p', 'Du entscheidest: klassische Pommes oder Süßkartoffel-Pommes, dazu deine Lieblingssoßen und Toppings. Mach sie ganz nach deinem Geschmack!', 'order-small');
     const form = document.createElement('form');
     dialog.append(form);
     const baseBox = section(form, '1 / Deine Pommes');
