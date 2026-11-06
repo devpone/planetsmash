@@ -107,8 +107,8 @@
     const toppingFields = toppings.map(([name, cost]) => ({name, input: select(extras, name + ' · je +' + money(cost), quantities(3))}));
     const extraBox = document.createElement('details');
     extraBox.className = 'builder-extra-sauces';
-    text(extraBox, 'summary', 'Extra Soßen · je Portion +1,00 €');
-    extras.append(extraBox);
+    text(extraBox, 'summary', '5 / Extra Soßen · je Portion +1,00 €');
+    form.append(extraBox);
     const sauceFields = sauces.map(name => ({name, input: select(extraBox, name, quantities(3))}));
 
     const wishes = text(form, 'label', 'Weitere Wünsche (optional)', 'order-field');
