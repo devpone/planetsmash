@@ -85,7 +85,7 @@ Mayonnaise|Mayonnaise|Mayonez|مايونيز|Mayonesa|Mayonez
 Trüffelmayonnaise|Truffle mayonnaise|Trüflü mayonez|مايونيز الكمأة|Mayonesa de trufa|Mayoneza trufê
 Geschmorte Zwiebeln|Caramelised onions|Kavrulmuş soğan|بصل مطهو|Cebolla pochada|Pîvazê sor
 Spiegelei|Fried egg|Sahanda yumurta|بيضة مقلية|Huevo frito|Hêka sor
-Red & spicy|Red & spicy|Kırmızı ve acılı|حمراء وحارة|Roja y picante|Sor û tûj
+Haus-Ketchup|House ketchup|Ev yapımı ketçap|كاتشب منزلي|Kétchup de la casa|Ketçapa malê
 Red & smokey|Red & smoky|Kırmızı ve isli|حمراء ومدخنة|Roja y ahumada|Sor û dûmanî
 White & rich|White & rich|Beyaz ve yoğun|بيضاء وغنية|Blanca y cremosa|Spî û dewlemend
 Warm & cheesy|Warm & cheesy|Sıcak ve peynirli|دافئة وغنية بالجبن|Caliente y con queso|Germ û bi penîr
@@ -403,12 +403,12 @@ NICHT EINFACH|NOT JUST|SADECE|ليست مجرد|NO ES SOLO|NE TENÊ
 IRGENDEINE SOẞE.|ANY SAUCE.|HERHANGİ BİR SOS.|أي صلصة.|UNA SALSA CUALQUIERA.|SOSÊKÎ ASAYÎ.
 Ein Smashburger steht und fällt mit dem, was zwischen Bun, Patty und Topping passiert. Deshalb bekommen die Soßen bei Planet Smashburger ihren eigenen Platz: cremig, rauchig, würzig, käsig oder mit ordentlich Schub aus dem Orbit.|A smashburger lives or dies by what happens between bun, patty and topping. That is why the sauces at Planet Smashburger get their own spotlight: creamy, smoky, savoury, cheesy or with a serious kick from orbit.|Bir smashburger; ekmek, köfte ve malzeme arasında olanlarla yükselir ya da düşer. Bu yüzden Planet Smashburger soslarının ayrı bir yeri var: kremamsı, isli, baharatlı, peynirli ya da yörüngeden gelen ciddi bir tekmeyle.|نجاح سماش برغر يعتمد على ما يحدث بين الخبز واللحم والإضافات. لذلك تحصل صلصات Planet Smashburger على مكانها الخاص: كريمية أو مدخنة أو متبلة أو بالجبن أو بجرعة قوية من المدار.|Una smashburger depende de lo que pasa entre el pan, la carne y los toppings. Por eso las salsas de Planet Smashburger tienen su propio espacio: cremosas, ahumadas, especiadas, con queso o con un buen impulso desde la órbita.|Smashburger bi tiştên di navbera nan, patty û toppingê de dijî. Ji ber vê yekê sosên Planet Smashburger cihê xwe hene: kremî, dûmanî, bi bîhn û tam, penêrî an bi hêzek ji orbitê.
 Die Geschmacksprofile verraten wir gern. Die exakten Rezepturen bleiben in der Area 51.|We are happy to reveal the flavour profiles. The exact recipes stay in Area 51.|Lezzet profillerini seve seve anlatırız. Tam tarifler Area 51'de kalır.|يسعدنا أن نكشف عن نكهاتها. أما الوصفات الدقيقة فتبقى في Area 51.|Te contamos encantados los perfiles de sabor. Las recetas exactas se quedan en Area 51.|Profîlên tamê bi kêfxweşî dibêjin. Reçeteyên tam li Area 51 dimînin.
-Würzig. Pikant. Ein bisschen geheim.|Savoury. Piquant. A little secret.|Baharatlı. Hafif acı. Biraz gizli.|متبلة. لاذعة. وسرية قليلًا.|Especiada. Picante. Un poco secreta.|Bi tam. Hinek tûj. Hinek veşartî.
-Area 51 verbindet eine tomatig-senfige Basis mit warmer Würze, feiner Säure und einer herzhaften Tiefe, die sich nicht einfach in „scharf“ oder „süß“ einsortieren lässt. Genau deshalb funktioniert sie so gut auf einem Smashburger: Sie schiebt Geschmack nach vorne, ohne das Fleisch zu überdecken.|Area 51 combines a tomato-mustard base with warm spices, fine acidity and savoury depth that does not fit neatly into “hot” or “sweet”. That is exactly why it works so well on a smashburger: it pushes flavour forward without covering the beef.|Area 51 domates-hardal bazını sıcak baharatlar, ince asitlik ve güçlü umamiyle birleştirir. Sadece “acı” ya da “tatlı” diye tanımlanamaz. Tam da bu yüzden smashburger üzerinde eti bastırmadan lezzeti öne taşır.|تجمع Area 51 بين قاعدة الطماطم والخردل مع توابل دافئة وحموضة خفيفة وعمق غني لا يمكن وصفه ببساطة بأنه «حار» أو «حلو». لذلك تناسب السماش برغر من دون أن تغطي على طعم اللحم.|Area 51 combina una base de tomate y mostaza con especias cálidas, una acidez fina y un fondo sabroso que no encaja simplemente en “picante” o “dulce”. Por eso funciona tan bien en una smashburger: potencia el sabor sin tapar la carne.|Area 51 bingehek tomato-xerdelê bi bîhnên germ, tirşiya nazik û tamê kûr re dike yek. Ne tenê “tûj” e ne jî “şîrîn”. Ji ber vê yekê tamê burgerê xurt dike bê ku goştê veşêre.
+Tomatig. Würzig. Wild.|Tomato. Savoury. Wild.|Domates. Lezzetli. Wild.|طماطم. غنية بالنكهة. وايلد.|Tomate. Sabrosa. Wild.|Tomato. Bi tam. Wild.
+Area 51 ist unser milder Haus-Ketchup: tomatig-senfig, würzig und mit feiner Säure. Sie passt auf Smashburger und Pommes, ohne Schärfe mitzubringen.|Area 51 is our mild house ketchup: tomato and mustard notes, savoury flavour and a little acidity. It pairs with smashburgers and fries without adding heat.|Area 51, acısız ev yapımı ketçabımızdır: domates-hardal aromalı, lezzetli ve hafif ekşi. Smaş burgerlere ve patateslere acı katmadan eşlik eder.|Area 51 هو الكاتشب المنزلي غير الحار: نكهة الطماطم والخردل مع حموضة خفيفة. يناسب برغر سماش والبطاطس دون إضافة حرارة.|Area 51 es nuestro kétchup suave: notas de tomate y mostaza, sabor intenso y un toque de acidez. Acompaña hamburguesas y patatas sin añadir picante.|Area 51 ketçapa me ya malê ye: tomato û xerdel, bi tam û hinek tirş. Li burger û pommesê baş tê û ne tûj e.
 tomatig|tomato-forward|domatesli|بطعم الطماطم|tomate|tomatoyî
 senfig|mustardy|hardallı|بالخردل|mostaza|xerdelî
 würzig|savoury|baharatlı|متبل|especiado|bi tam
-leicht pikant|gently piquant|hafif acı|لاذع قليلًا|ligeramente picante|hinek tûj
+mild|mild|acısız|غير حارة|suave|ne tûj
 Auf der Karte:|On the menu:|Menüde:|في القائمة:|En la carta:|Di lîsteyê de:
 Classic Cheese, Chili Cheese und Con Carne.|Classic Cheese, Chili Cheese and Con Carne.|Classic Cheese, Chili Cheese ve Con Carne.|Classic Cheese وChili Cheese وCon Carne.|Classic Cheese, Chili Cheese y Con Carne.|Classic Cheese, Chili Cheese û Con Carne.
 Rauchig, dunkel und gemacht für Bacon.|Smoky, dark and made for bacon.|İsli, koyu ve bacon için yapılmış.|مدخنة وعميقة ومصنوعة للبَيكون.|Ahumada, oscura y hecha para el bacon.|Dûmanî, kûr û ji bo baconê hatiye çêkirin.
@@ -438,7 +438,7 @@ WÄHLE DEINE MISSION|CHOOSE YOUR MISSION|GÖREVİNİ SEÇ|اختر مهمتك|EL
 Welche Soße landet|Which sauce lands|Hangi sos|أي صلصة ستهبط|Qué salsa aterriza|Kîjan sos
 auf deinem Planeten?|on your planet?|gezegenine inecek?|على كوكبك؟|en tu planeta?|li ser gerstêrka te?
 Alle aktuellen Soßen findest du direkt in der Speisekarte – zum Dippen, auf Burgern oder als Extra zu deinen Pommes.|You can find all current sauces directly on the menu – for dipping, on burgers or as an extra for your fries.|Tüm güncel sosları doğrudan menüde bulabilirsin: dip için, burgerlerde veya patatesine ekstra olarak.|ستجد كل الصلصات الحالية مباشرة في القائمة – للتغميس أو على البرغر أو كإضافة للبطاطس.|Encontrarás todas las salsas actuales directamente en la carta: para mojar, en las hamburguesas o como extra para tus patatas.|Hemû sosên heyî rasterast di lîsteya xwarinê de dibînî: ji bo dîpkirinê, li ser burgeran an wek zêde ji bo pommes.
-Tomatig-senfig · würzig · leicht pikant|Tomato-mustard · savoury · gently piquant|Domates-hardal · baharatlı · hafif acı|طماطم وخردل · متبل · لاذع قليلًا|Tomate-mostaza · especiada · ligeramente picante|Tomato-xerdel · bi tam · hinek tûj
+Tomatig · würzig · wild|Tomato · savoury · wild|Domates · lezzetli · wild|طماطم · غنية بالنكهة · وايلد|Tomate · sabrosa · wild|Tomato · bi tam · wild
 Rauchig · kräftig · leicht süßlich|Smoky · bold · gently sweet|İsli · güçlü · hafif tatlı|مدخن · قوي · حلو قليلًا|Ahumada · intensa · ligeramente dulce|Dûmanî · xurt · hinek şîrîn
 Cremig · gurkig · würzig · leicht säuerlich|Creamy · pickle-forward · savoury · gently tangy|Kremamsı · turşulu · baharatlı · hafif ekşi|كريمي · مخلل · متبل · حامض قليلًا|Cremosa · pepinillo · especiada · ligeramente ácida|Kremî · bi xiyar · bi tam · hinek tirş
 Warm · cremig · vollmundiger Cheddar|Warm · creamy · rich cheddar|Sıcak · kremamsı · yoğun cheddar|دافئ · كريمي · شيدر غني|Caliente · cremosa · cheddar intenso|Germ · kremî · cheddar têr
@@ -690,7 +690,7 @@ Mayonnaise|Maionese
 Trüffelmayonnaise|Maionese al tartufo
 Geschmorte Zwiebeln|Cipolle stufate
 Spiegelei|Uovo al tegamino
-Red & spicy|Rossa e piccante
+Haus-Ketchup|Ketchup della casa
 Red & smokey|Rossa e affumicata
 White & rich|Bianca e ricca
 Warm & cheesy|Calda e formaggiosa
@@ -936,12 +936,12 @@ NICHT EINFACH|NON UNA
 IRGENDEINE SOẞE.|SALSA QUALSIASI.
 Ein Smashburger steht und fällt mit dem, was zwischen Bun, Patty und Topping passiert. Deshalb bekommen die Soßen bei Planet Smashburger ihren eigenen Platz: cremig, rauchig, würzig, käsig oder mit ordentlich Schub aus dem Orbit.|Uno smashburger vive di ciò che succede tra bun, patty e topping. Per questo le salse di Planet Smashburger hanno uno spazio tutto loro: cremose, affumicate, speziate, formaggiose o con una bella spinta dall'orbita.
 Die Geschmacksprofile verraten wir gern. Die exakten Rezepturen bleiben in der Area 51.|I profili di gusto li raccontiamo volentieri. Le ricette esatte restano nell'Area 51.
-Würzig. Pikant. Ein bisschen geheim.|Speziata. Piccante. Un po' segreta.
-Area 51 verbindet eine tomatig-senfige Basis mit warmer Würze, feiner Säure und einer herzhaften Tiefe, die sich nicht einfach in „scharf“ oder „süß“ einsortieren lässt. Genau deshalb funktioniert sie so gut auf einem Smashburger: Sie schiebt Geschmack nach vorne, ohne das Fleisch zu überdecken.|Area 51 unisce una base di pomodoro e senape a spezie calde, una fine acidità e una profondità saporita che non si lascia definire semplicemente come “piccante” o “dolce”. Proprio per questo funziona così bene su uno smashburger: spinge il gusto in avanti senza coprire la carne.
+Tomatig. Würzig. Wild.|Pomodoro. Saporita. Wild.
+Area 51 ist unser milder Haus-Ketchup: tomatig-senfig, würzig und mit feiner Säure. Sie passt auf Smashburger und Pommes, ohne Schärfe mitzubringen.|Area 51 è il nostro ketchup delicato: note di pomodoro e senape, sapore ricco e una leggera acidità. Accompagna smashburger e patatine senza aggiungere piccantezza.
 tomatig|al pomodoro
 senfig|alla senape
 würzig|speziata
-leicht pikant|leggermente piccante
+mild|delicata
 Auf der Karte:|Nel menu:
 Classic Cheese, Chili Cheese und Con Carne.|Classic Cheese, Chili Cheese e Con Carne.
 Rauchig, dunkel und gemacht für Bacon.|Affumicata, scura e fatta per il bacon.
@@ -971,7 +971,7 @@ WÄHLE DEINE MISSION|SCEGLI LA TUA MISSIONE
 Welche Soße landet|Quale salsa atterra
 auf deinem Planeten?|sul tuo pianeta?
 Alle aktuellen Soßen findest du direkt in der Speisekarte – zum Dippen, auf Burgern oder als Extra zu deinen Pommes.|Trovi tutte le salse attuali direttamente nel menu: da intingere, sui burger o come extra per le patatine.
-Tomatig-senfig · würzig · leicht pikant|Pomodoro e senape · speziata · leggermente piccante
+Tomatig · würzig · wild|Pomodoro · saporita · wild
 Rauchig · kräftig · leicht süßlich|Affumicata · intensa · leggermente dolce
 Cremig · gurkig · würzig · leicht säuerlich|Cremosa · cetriolino · speziata · leggermente acidula
 Warm · cremig · vollmundiger Cheddar|Calda · cremosa · cheddar corposo
@@ -1180,6 +1180,27 @@ Bitte gib deine E-Mail-Adresse ein.|Inserisci il tuo indirizzo email.
 Bitte bestätige die Newsletter-Einwilligung.|Conferma il consenso alla newsletter.
 Fast geschafft: Bitte öffne jetzt die Bestätigungs-Mail und klicke auf den Link.|Ci siamo quasi: apri l'email di conferma e clicca sul link.
 Die Anmeldung konnte gerade nicht gesendet werden. Bitte versuche es später noch einmal.|Non è stato possibile inviare l'iscrizione. Riprova più tardi.
+`;
+
+translationRows += `
+Geschmacksprofil|Flavour profile|Lezzet profili|وصف النكهة|Perfil de sabor|Profîla tamê
+Haus-Mayo|House mayo|Ev mayonezi|مايونيز منزلي|Mayonesa de la casa|Mayoneza malê
+BBQ-Soße|BBQ sauce|Barbekü sosu|صلصة باربكيو|Salsa barbacoa|Sosa BBQ
+Cremig · aromatisch · Trüffelnote|Creamy · aromatic · truffle notes|Kremamsı · aromatik · trüf notaları|كريمية · عطرية · نكهة الكمأة|Cremosa · aromática · notas de trufa|Kremî · aromatîk · tama trûfê
+Cremig · würzig|Creamy · savoury|Kremamsı · lezzetli|كريمية · غنية بالنكهة|Cremosa · sabrosa|Kremî · bi tam
+Cremig · mild|Creamy · mild|Kremamsı · acısız|كريمية · غير حارة|Cremosa · suave|Kremî · ne tûj
+Tomatig · mild · leicht süßlich|Tomato · mild · slightly sweet|Domates · acısız · hafif tatlı|طماطم · غير حارة · حلوة قليلًا|Tomate · suave · ligeramente dulce|Tomato · ne tûj · hinek şîrîn
+Grüne Chili-Note · würzig|Green chilli notes · savoury|Yeşil biber notası · lezzetli|نكهة الفلفل الأخضر · غنية بالنكهة|Notas de chile verde · sabrosa|Tama bîbera kesk · bi tam
+`;
+italianRows += `
+Geschmacksprofil|Profilo di gusto
+Haus-Mayo|Maionese della casa
+BBQ-Soße|Salsa BBQ
+Cremig · aromatisch · Trüffelnote|Cremosa · aromatica · note di tartufo
+Cremig · würzig|Cremosa · saporita
+Cremig · mild|Cremosa · delicata
+Tomatig · mild · leicht süßlich|Pomodoro · delicato · leggermente dolce
+Grüne Chili-Note · würzig|Note di peperoncino verde · saporita
 `;
 
 const baseTranslations = Object.fromEntries(['en','tr','ar','es','ku'].map((lang, i) => [lang, Object.fromEntries(translationRows.trim().split('\n').filter(Boolean).map(row => { const parts = row.split('|'); return [parts[0], parts[i + 1]]; }))]));

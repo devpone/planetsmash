@@ -2,7 +2,7 @@
 (() => {
   'use strict';
   const toppings = [
-    ['Bacon (3 Scheiben)', 150], ['Spiegelei', 150], ['Jalapeños', 100],
+    ['Bacon', 150], ['Spiegelei', 150], ['Jalapeños', 100],
     ['Crunchy Kartoffeln', 150], ['Chili con Carne', 300], ['Parmesan', 150],
     ['Extra geschmorte Zwiebeln', 100], ['Extra Röstzwiebeln', 100]
   ];
@@ -82,7 +82,7 @@
     const close = text(dialog, 'button', 'Schließen ×', 'order-close');
     close.type = 'button';
     close.addEventListener('click', () => dialog.close());
-    text(dialog, 'h2', 'Bau deinen Burger', 'order-title').id = 'burger-builder-title';
+    text(dialog, 'h2', 'Bau dir einen', 'order-title').id = 'burger-builder-title';
     text(dialog, 'p', 'Classic-Basis ab 8,50 €: festes Bun, ein Rindfleischpatty, normale Portionen frischer Zutaten, Zwiebeln, Käsesoße und eine Burgersoße. Wähle selbst, was draufkommt. Weniger Zutaten ändern den Grundpreis nicht.', 'order-small');
     const form = document.createElement('form');
     dialog.append(form);

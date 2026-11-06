@@ -6,7 +6,7 @@
     sweet: {name: 'Süßkartoffel-Pommes', normal: 550, big: 1000}
   };
   const toppings = [
-    ['Hackfleisch', 300], ['Veganes Hackfleisch', 400], ['Chili con Carne', 300],
+    ['Hackfleisch', 300], ['Veganes Hackfleisch', 400], ['Chili con Carne', 400],
     ['Parmesan', 250], ['Bacon', 150], ['Spiegelei', 150], ['Jalapeños', 150],
     ['Geschmorte Zwiebeln', 150], ['Röstzwiebeln', 150]
   ];
