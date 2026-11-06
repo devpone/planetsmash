@@ -6,7 +6,7 @@
     ['Crunchy Kartoffeln', 150], ['Chili con Carne', 300], ['Parmesan', 150],
     ['Extra geschmorte Zwiebeln', 100], ['Extra Röstzwiebeln', 100]
   ];
-  const sauces = ['Area 51', 'Planet Mac', 'Roswell BBQ', 'Käsesoße', 'Scharfe Käsesoße',
+  const sauces = ['Area 51', 'Planet Mac', 'Roswell BBQ', 'Käsesoße', 'Käsesoße scharf',
     'Trüffelmayonnaise', 'Joppiesoße', 'Mayonnaise', 'Ketchup', 'Grüne Chili-Soße'];
   const money = cents => new Intl.NumberFormat('de-DE', {style: 'currency', currency: 'EUR'}).format(cents / 100);
   const count = (value, max) => Number.isInteger(value) && value >= 0 && value <= max;
@@ -100,7 +100,7 @@
     const fresh = check(greens, 'Extra frisch · mehr Salat, Tomate und Gurke (+1,00 €)');
 
     const included = section(form, '3 / Deine Soßen · inklusive');
-    const cheese = select(included, 'Käsesoße', [['Käsesoße', 'Käsesoße'], ['Scharfe Käsesoße', 'Scharfe Käsesoße'], ['', 'Keine Käsesoße']]);
+    const cheese = select(included, 'Käsesoße', [['Käsesoße', 'Käsesoße'], ['Käsesoße scharf', 'Käsesoße scharf'], ['', 'Keine Käsesoße']]);
     const sauce = select(included, 'Eine Burgersoße nach Wahl', [...sauces.map(name => [name, name]), ['', 'Keine Burgersoße']]);
 
     const extras = section(form, '4 / Deine Toppings');

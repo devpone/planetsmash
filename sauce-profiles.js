@@ -6,7 +6,7 @@
     {key:'area', name:'Area 51', title:'Haus-Ketchup', notes:'Tomatig · würzig · wild', aliases:['Area 51 (Haus-Ketchup)','Area 51 Sauce','Area 51']},
     {key:'mac', name:'Planet Mac', title:'Haus-Mayo', notes:'Cremig · würzig · leicht säuerlich', aliases:['Planet Mac (Haus-Mayo)','Planet Mac Sauce','Planet Mac']},
     {key:'bbq', name:'Roswell BBQ', title:'BBQ-Soße', notes:'Rauchig · kräftig · leicht süßlich', aliases:['Roswell BBQ Sauce','Roswell BBQ']},
-    {key:'hot', name:'UFO Hot', title:'Scharfe Käsesoße', notes:'UFO Hot · cremig · käsig · scharf', aliases:['Scharfe Käsesoße','scharfe Käsesauce','Käsesauce scharf','Käsesoße scharf','UFO Hot']},
+    {key:'hot', name:'Käsesoße scharf', title:'Käsesoße scharf', notes:'Cremig · käsig · mit Chili verfeinert', aliases:['Scharfe Käsesoße','scharfe Käsesauce','Käsesauce scharf','Käsesoße scharf']},
     {key:'cheese', name:'Käsesoße', title:'Käsesoße', notes:'Warm · cremig · vollmundiger Cheddar', aliases:['Käsesauce','Käsesoße']},
     {key:'truffle', name:'Trüffelmayonnaise', title:'Trüffel-Mayonnaise', notes:'Cremig · aromatisch · Trüffelnote', aliases:['Trüffelmayonnaise','Trüffel-Mayonnaise']},
     {key:'joppie', name:'Joppiesoße', title:'Joppiesoße', notes:'Cremig · würzig', aliases:['Joppiesauce','Joppiesoße']},

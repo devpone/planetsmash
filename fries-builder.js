@@ -10,7 +10,7 @@
     ['Parmesan', 250], ['Bacon', 150], ['Spiegelei', 150], ['Jalapeños', 150],
     ['Geschmorte Zwiebeln', 150], ['Röstzwiebeln', 150]
   ];
-  const sauces = ['Area 51', 'Planet Mac', 'Roswell BBQ', 'Käsesoße', 'Scharfe Käsesoße',
+  const sauces = ['Area 51', 'Planet Mac', 'Roswell BBQ', 'Käsesoße', 'Käsesoße scharf',
     'Trüffelmayonnaise', 'Joppiesoße', 'Mayonnaise', 'Ketchup', 'Grüne Chili-Soße'];
   const money = cents => new Intl.NumberFormat('de-DE', {style: 'currency', currency: 'EUR'}).format(cents / 100);
   function quote(state) {

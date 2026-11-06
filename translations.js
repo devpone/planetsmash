@@ -428,8 +428,8 @@ cheddar|cheddar|cheddar|شيدر|cheddar|cheddar
 warm|warm|sıcak|دافئ|caliente|germ
 vollmundig|rich|dolgun|غني|intenso|têr
 auf mehreren Burgern und als Extra zu Pommes.|on several burgers and as an extra for fries.|birçok burgerde ve patatese ekstra olarak.|على عدة برغر وكإضافة للبطاطس.|en varias hamburguesas y como extra para las patatas.|li ser gelek burgeran û wek zêde ji bo pommes.
-Käsig zuerst. Schärfe kurz danach.|Cheesy first. Heat right after.|Önce peynir. Hemen ardından acı.|الجبن أولًا. ثم الحرارة مباشرة.|Primero queso. Después llega el picante.|Pêşî penêr. Paşê tûjî.
-UFO Hot ist die scharfe Schwester der Käsesauce. Die cremige Käsebasis bleibt im Vordergrund, bekommt aber einen deutlich heißeren Einschlag. Kein dünner Hot-Sauce-Film, sondern warme, sämige Käsesauce mit Schärfe – gebaut für Chili Cheese und für alle, denen normaler Orbit nicht reicht.|UFO Hot is the spicy sister of the cheese sauce. The creamy cheese base stays front and centre, but gets a clearly hotter kick. Not a thin layer of hot sauce, but warm, velvety cheese sauce with heat – built for Chili Cheese and anyone who finds normal orbit too tame.|UFO Hot, Käsesauce'un acı kardeşidir. Kremamsı peynir bazı önde kalır ama belirgin bir acı darbesi alır. İnce bir acı sos tabakası değil; Chili Cheese ve normal yörüngeyi yetersiz bulanlar için sıcak, yoğun ve acılı peynir sosudur.|UFO Hot هي الأخت الحارة لصلصة الجبن. تبقى قاعدة الجبن الكريمية في المقدمة لكنها تحصل على دفعة حرارة واضحة. ليست طبقة رقيقة من صلصة حارة، بل صلصة جبن دافئة وكثيفة مع حرارة – مصممة لـ Chili Cheese ولمن لا تكفيه المدار العادي.|UFO Hot es la hermana picante de la salsa de queso. La base cremosa de queso sigue en primer plano, pero recibe un golpe de calor claramente mayor. No es una capa fina de salsa picante, sino queso caliente y cremoso con picante, hecha para Chili Cheese y para quien necesita más que una órbita normal.|UFO Hot xwişka tûj a sosa penêr e. Bingeha penêrê kremî li pêş e, lê tûjiyek zelal lê tê zêdekirin. Ne tenê qatê sosê tûj e; sosa penêr a germ û kremî bi tûjî ye, ji bo Chili Cheese û kesên ku orbitê asayî têr nakin.
+Cremig, vollmundig und mit Chili verfeinert.|Creamy, rich and refined with chilli.|Kremamsı, dolgun ve biberle zenginleştirilmiş.|كريمية وغنية وبلمسة فلفل.|Cremosa, intensa y con un toque de chile.|Kremî, têr û bi bîberê xweşkirî.
+Vollmundiger Käsegeschmack, cremige Konsistenz und eine würzige Chili-Note. Die Käsesoße scharf bringt genau den richtigen Kick auf Burger und Pommes.|Rich cheese flavour, a creamy texture and a bold chilli note. Our spicy cheese sauce adds just the right kick to burgers and fries.|Yoğun peynir lezzeti, kremamsı kıvam ve baharatlı bir biber notası. Acılı peynir sosumuz burger ve patateslere tam kararında bir lezzet katar.|نكهة جبن غنية وقوام كريمي ولمسة فلفل مميزة. تضيف صلصة الجبن الحارة النكهة المناسبة للبرغر والبطاطس.|Sabor intenso a queso, textura cremosa y un toque de chile. Nuestra salsa de queso picante aporta el punto justo a hamburguesas y patatas.|Tama penêr a têr, avahiya kremî û nota bîberê. Sosa penêr a tûj tamê xweş li burger û pommesê zêde dike.
 käsig|cheesy|peynirli|بالجبن|con queso|penêrî
 scharf|hot|acı|حار|picante|tûj
 Chili Cheese und als scharfe Käsesauce zu Pommes.|Chili Cheese and as spicy cheese sauce for fries.|Chili Cheese ve patates için acılı peynir sosu olarak.|Chili Cheese وكصلصة جبن حارة للبطاطس.|Chili Cheese y como salsa de queso picante para las patatas.|Chili Cheese û wek sosa penêr a tûj ji bo pommes.
@@ -441,7 +441,7 @@ Tomatig · würzig · wild|Tomato · savoury · wild|Domates · lezzetli · wild
 Rauchig · kräftig · leicht süßlich|Smoky · bold · gently sweet|İsli · güçlü · hafif tatlı|مدخن · قوي · حلو قليلًا|Ahumada · intensa · ligeramente dulce|Dûmanî · xurt · hinek şîrîn
 Cremig · würzig · leicht säuerlich|Creamy · savoury · gently tangy|Kremamsı · lezzetli · hafif ekşi|كريمية · غنية بالنكهة · حامضة قليلًا|Cremosa · sabrosa · ligeramente ácida|Kremî · bi tam · hinek tirş
 Warm · cremig · vollmundiger Cheddar|Warm · creamy · rich cheddar|Sıcak · kremamsı · yoğun cheddar|دافئ · كريمي · شيدر غني|Caliente · cremosa · cheddar intenso|Germ · kremî · cheddar têr
-UFO Hot · cremig · käsig · scharf|UFO Hot · creamy · cheesy · hot|UFO Hot · kremamsı · peynirli · acı|UFO Hot · كريمي · بالجبن · حار|UFO Hot · cremosa · con queso · picante|UFO Hot · kremî · penêrî · tûj
+Cremig · käsig · mit Chili verfeinert|Creamy · cheesy · refined with chilli|Kremamsı · peynirli · biberle zenginleştirilmiş|كريمية · غنية بالجبن · بلمسة فلفل|Cremosa · con queso · con un toque de chile|Kremî · penêrî · bi bîberê xweşkirî
 Mehr zur Soße ↗|More about the sauce ↗|Sos hakkında daha fazla ↗|المزيد عن الصلصة ↗|Más sobre la salsa ↗|Zêdetir li ser sosê ↗
 Unsere Haussoßen entdecken ↗|Discover our house sauces ↗|Ev yapımı soslarımızı keşfet ↗|اكتشف صلصاتنا الخاصة ↗|Descubre nuestras salsas de la casa ↗|Sosên malê yên me bibîne ↗
 `;
@@ -538,7 +538,7 @@ Nach links|Move left|Sola git|إلى اليسار|Mover a la izquierda|Biçe çe
 Nach rechts|Move right|Sağa git|إلى اليمين|Mover a la derecha|Biçe rastê
 Highscore-Liste|Highscore list|Yüksek skor listesi|قائمة أعلى النتائج|Lista de récords|Lîsteya skorên bilind
 Zur Speisekarte|Go to menu|Menüye git|إلى قائمة الطعام|Ir a la carta|Biçe lîsteya xwarinê
-Die hausgemachten Soßen von Planet Smashburger: Area 51, Roswell BBQ, Planet Mac Sauce, Käsesauce und UFO Hot.|Planet Smashburger's house sauces: Area 51, Roswell BBQ, Planet Mac Sauce, cheese sauce and UFO Hot.|Planet Smashburger'ın ev yapımı sosları: Area 51, Roswell BBQ, Planet Mac Sauce, peynir sosu ve UFO Hot.|صلصات Planet Smashburger المنزلية: Area 51 وRoswell BBQ وPlanet Mac Sauce وصلصة الجبن وUFO Hot.|Las salsas caseras de Planet Smashburger: Area 51, Roswell BBQ, Planet Mac Sauce, salsa de queso y UFO Hot.|Sosên malê yên Planet Smashburger: Area 51, Roswell BBQ, Planet Mac Sauce, sosa penîr û UFO Hot.
+Die hausgemachten Soßen von Planet Smashburger: Area 51, Roswell BBQ, Planet Mac Sauce, Käsesoße und Käsesoße scharf.|Planet Smashburger's house sauces: Area 51, Roswell BBQ, Planet Mac Sauce, cheese sauce and spicy cheese sauce.|Planet Smashburger'ın ev yapımı sosları: Area 51, Roswell BBQ, Planet Mac Sauce, peynir sosu ve acılı peynir sosu.|صلصات Planet Smashburger المنزلية: Area 51 وRoswell BBQ وPlanet Mac Sauce وصلصة الجبن وصلصة الجبن الحارة.|Las salsas caseras de Planet Smashburger: Area 51, Roswell BBQ, Planet Mac Sauce, salsa de queso y salsa de queso picante.|Sosên malê yên Planet Smashburger: Area 51, Roswell BBQ, Planet Mac Sauce, sosa penêr û sosa penêr a tûj.
 Daniel im Planet-Smashburger-Foodtruck|Daniel in the Planet Smashburger food truck|Planet Smashburger foodtruck'ında Daniel|دانيال في شاحنة Planet Smashburger|Daniel en el foodtruck de Planet Smashburger|Daniel di foodtrucka Planet Smashburger de
 Burger-Party|Burger Party|Burger Partisi|حفلة برغر|Fiesta Burger|Partiya Burger
 Burger-Party · Planet Smashburger|Burger Party · Planet Smashburger|Burger Partisi · Planet Smashburger|حفلة برغر · Planet Smashburger|Fiesta Burger · Planet Smashburger|Partiya Burger · Planet Smashburger
@@ -960,8 +960,8 @@ cheddar|cheddar
 warm|calda
 vollmundig|corposa
 auf mehreren Burgern und als Extra zu Pommes.|su diversi burger e come extra per le patatine.
-Käsig zuerst. Schärfe kurz danach.|Prima il formaggio. Subito dopo il piccante.
-UFO Hot ist die scharfe Schwester der Käsesauce. Die cremige Käsebasis bleibt im Vordergrund, bekommt aber einen deutlich heißeren Einschlag. Kein dünner Hot-Sauce-Film, sondern warme, sämige Käsesauce mit Schärfe – gebaut für Chili Cheese und für alle, denen normaler Orbit nicht reicht.|UFO Hot è la sorella piccante della salsa al formaggio. La base cremosa di formaggio resta protagonista, ma riceve una spinta decisamente più calda. Non un sottile strato di hot sauce, ma una salsa al formaggio calda e vellutata con piccantezza, fatta per Chili Cheese e per chi trova l'orbita normale troppo tranquilla.
+Cremig, vollmundig und mit Chili verfeinert.|Cremosa, ricca e impreziosita dal peperoncino.
+Vollmundiger Käsegeschmack, cremige Konsistenz und eine würzige Chili-Note. Die Käsesoße scharf bringt genau den richtigen Kick auf Burger und Pommes.|Gusto di formaggio pieno, consistenza cremosa e una nota di peperoncino. La salsa al formaggio piccante dà la giusta spinta a burger e patatine.
 käsig|formaggiosa
 scharf|piccante
 Chili Cheese und als scharfe Käsesauce zu Pommes.|Chili Cheese e come salsa al formaggio piccante per le patatine.
@@ -973,7 +973,7 @@ Tomatig · würzig · wild|Pomodoro · saporita · wild
 Rauchig · kräftig · leicht süßlich|Affumicata · intensa · leggermente dolce
 Cremig · würzig · leicht säuerlich|Cremosa · saporita · leggermente acidula
 Warm · cremig · vollmundiger Cheddar|Calda · cremosa · cheddar corposo
-UFO Hot · cremig · käsig · scharf|UFO Hot · cremosa · formaggiosa · piccante
+Cremig · käsig · mit Chili verfeinert|Cremosa · ricca di formaggio · con un tocco di peperoncino
 Mehr zur Soße ↗|Scopri di più sulla salsa ↗
 Unsere Haussoßen entdecken ↗|Scopri le nostre salse della casa ↗
 Extras für deinen Burger|Extra per il tuo burger
@@ -1062,7 +1062,7 @@ Nach links|Verso sinistra
 Nach rechts|Verso destra
 Highscore-Liste|Classifica record
 Zur Speisekarte|Vai al menu
-Die hausgemachten Soßen von Planet Smashburger: Area 51, Roswell BBQ, Planet Mac Sauce, Käsesauce und UFO Hot.|Le salse fatte in casa di Planet Smashburger: Area 51, Roswell BBQ, Planet Mac Sauce, salsa al formaggio e UFO Hot.
+Die hausgemachten Soßen von Planet Smashburger: Area 51, Roswell BBQ, Planet Mac Sauce, Käsesoße und Käsesoße scharf.|Le salse fatte in casa di Planet Smashburger: Area 51, Roswell BBQ, Planet Mac Sauce, salsa al formaggio e salsa al formaggio piccante.
 Daniel im Planet-Smashburger-Foodtruck|Daniel nel foodtruck di Planet Smashburger
 Burger-Party|Festa Burger
 Burger-Party · Planet Smashburger|Festa Burger · Planet Smashburger

@@ -6,7 +6,7 @@
   const phone = '4916092870140';
   const key = 'planet-smashburger-call-cart';
   const money = cents => new Intl.NumberFormat('de-DE', {style:'currency', currency:'EUR'}).format(cents / 100);
-  const sauces = ['Area 51', 'Roswell BBQ', 'Planet Mac', 'Käsesauce', 'Käsesauce scharf', 'Joppiesauce', 'Mayonnaise', 'Ketchup', 'Trüffelmayonnaise'];
+  const sauces = ['Area 51', 'Roswell BBQ', 'Planet Mac', 'Käsesauce', 'Käsesoße scharf', 'Joppiesauce', 'Mayonnaise', 'Ketchup', 'Trüffelmayonnaise'];
   const drinks = ['Cola', 'Cola Zero', 'Fanta', 'Fanta Exotic', 'Sprite', 'Wasser mit Kohlensäure', 'Wasser ohne Kohlensäure'];
   let items = [];
   try {
@@ -108,7 +108,7 @@
     const isBurger = row.closest('details') === menu.querySelector('details');
     const removalsByItem = {
       'Classic Cheese': ['Käsesauce','Tomate','Salat','Essiggurken','Geschmorte Zwiebeln','Area 51'],
-      'Chili Cheese': ['Milde Chilischoten','Geschmorte Zwiebeln','Salat','Tomate','Käsesauce scharf','Area 51'],
+      'Chili Cheese': ['Milde Chilischoten','Geschmorte Zwiebeln','Salat','Tomate','Käsesoße scharf','Area 51'],
       'Bacon BBQ': ['Bacon','Käsesauce','Tomate','Salat','Essiggurken','Geschmorte Zwiebeln','Roswell BBQ'],
       'Galactic Potato': ['Crunchy Kartoffeln','Käsesauce','Bacon','Salat','Essiggurken','Planet Mac'],
       'Con Carne': ['Chili con Carne','Essiggurken','Tomate','Röstzwiebeln','Käsesauce','Area 51'],
@@ -128,12 +128,12 @@
     };
     const foodExtrasByItem = {
       'Schoko-Donut': [['Geröstete Haselnüsse',30]],
-      'Pommes': [['Jalapeños',150],['Extra Bacon',150],['Geschmorte Zwiebeln',150],['Röstzwiebeln',150],['Spiegelei',150],['Käsesauce',150],['Käsesauce scharf',150]],
-      'Süßkartoffelpommes': [['Jalapeños',150],['Extra Bacon',150],['Geschmorte Zwiebeln',150],['Röstzwiebeln',150],['Spiegelei',150],['Käsesauce',150],['Käsesauce scharf',150]],
-      'Chili con Carne Pommes': [['Jalapeños',150],['Extra Bacon',150],['Röstzwiebeln',150],['Spiegelei',150],['Käsesauce',150],['Käsesauce scharf',150]],
-      'Smashpommes': [['Jalapeños',150],['Extra Bacon',150],['Röstzwiebeln',150],['Spiegelei',150],['Käsesauce',150],['Käsesauce scharf',150]],
+      'Pommes': [['Jalapeños',150],['Extra Bacon',150],['Geschmorte Zwiebeln',150],['Röstzwiebeln',150],['Spiegelei',150],['Käsesauce',150],['Käsesoße scharf',150]],
+      'Süßkartoffelpommes': [['Jalapeños',150],['Extra Bacon',150],['Geschmorte Zwiebeln',150],['Röstzwiebeln',150],['Spiegelei',150],['Käsesauce',150],['Käsesoße scharf',150]],
+      'Chili con Carne Pommes': [['Jalapeños',150],['Extra Bacon',150],['Röstzwiebeln',150],['Spiegelei',150],['Käsesauce',150],['Käsesoße scharf',150]],
+      'Smashpommes': [['Jalapeños',150],['Extra Bacon',150],['Röstzwiebeln',150],['Spiegelei',150],['Käsesauce',150],['Käsesoße scharf',150]],
       'Currywurst': [['Zweite Currywurst',390],['Pommes normal',300],['Pommes groß',500],['Mayonnaise',100],['Ketchup',100]],
-      'Chili Cheese Nuggetz': [['Käsesauce',150],['Käsesauce scharf',150]]
+      'Chili Cheese Nuggetz': [['Käsesauce',150],['Käsesoße scharf',150]]
     };
     const isLoadedFries = !!row.closest('[data-loaded-fries]');
     const removalChoices = isLoadedFries ? [] : (removalsByItem[name] || []);
