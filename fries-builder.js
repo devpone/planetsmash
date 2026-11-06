@@ -8,7 +8,7 @@
   const toppings = [
     ['Hackfleisch', 300], ['Veganes Hackfleisch', 400], ['Chili con Carne', 400],
     ['Parmesan', 250], ['Bacon', 150], ['Spiegelei', 150], ['Jalapeños', 150],
-    ['Geschmorte Zwiebeln', 150], ['Röstzwiebeln', 150]
+    ['Geschmorte Zwiebeln', 150], ['Röstzwiebeln', 150], ['Frittierte Tomaten', 150]
   ];
   const sauces = ['Area 51', 'Planet Mac', 'Roswell BBQ', 'Käsesoße', 'Käsesoße scharf',
     'Trüffelmayonnaise', 'Joppiesoße', 'Mayonnaise', 'Ketchup', 'Grüne Chili-Soße'];
