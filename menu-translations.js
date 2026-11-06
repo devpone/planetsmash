@@ -10,6 +10,7 @@
     ['Bacon','Bacon','Bacon','بيكون','Bacon','Bacon','Bacon'],
     ['Jalapeños','Jalapeños','Jalapeño biberi','هالابينو','Jalapeños','Jalapeños','Jalapeño'],
     ['Salat','Lettuce','Marul','خس','Lechuga','Lattuga','Xas'],
+    ['Frittierte Tomaten','Fried tomatoes','Kızarmış domates','طماطم مقلية','Tomates fritos','Pomodori fritti','Firengiyên sor kirî'],
     ['Tomate','Tomato','Domates','طماطم','Tomate','Pomodoro','Firengî'],
     ['Essiggurken','Pickles','Salatalık turşusu','مخلل الخيار','Pepinillos','Cetriolini','Turşiyên xiyarê'],
     ['Gurke','Pickle','Turşu','مخلل الخيار','Pepinillo','Cetriolino','Turşiya xiyarê'],
