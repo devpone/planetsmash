@@ -116,8 +116,55 @@
   }, true);
 
   document.querySelectorAll('#speisekarte .menu-item h3').forEach(el => { el.dataset.sourceName = el.textContent.trim(); });
+  // One mobile navigation shared by the main and information pages.
+  let header = document.querySelector('header.header');
+  if (!header && document.querySelector('main.legal')) {
+    header = document.createElement('header');
+    header.className = 'header wrap mobile-only-header';
+    header.innerHTML = '<a class="brand" href="index.html" aria-label="Planet Smashburger Startseite"><img class="original-logo" src="assets/logo.webp" width="1024" height="1024" alt="Planet Smashburger"></a>';
+    document.body.prepend(header);
+  }
+  if (header) {
+    const menu = document.createElement('details');
+    menu.className = 'mobile-menu';
+    const toggle = document.createElement('summary');
+    toggle.textContent = ({de:'Menü',en:'Menu',tr:'Menü',ar:'القائمة',es:'Menú',it:'Menu',ku:'Menû'})[lang];
+    const nav = document.createElement('nav');
+    nav.className = 'mobile-menu-links';
+    nav.setAttribute('aria-label', 'Hauptnavigation');
+    const links = [
+      ['index.html', 'Startseite'],
+      ['index.html#speisekarte', 'Speisekarte'],
+      ['saucen.html', 'Unsere Soßen'],
+      ['burger-party.html', 'Burger-Party'],
+      ['index.html#besuch', 'Öffnungszeiten & Standort'],
+      ['ueber-uns.html', 'Über uns'],
+      ['impressum.html', 'Impressum'],
+      ['datenschutz.html', 'Datenschutz']
+    ];
+    for (const [href, label] of links) {
+      const link = document.createElement('a');
+      link.href = href;
+      link.textContent = label;
+      if (!href.includes('#') && new URL(href, location.href).pathname === location.pathname) link.setAttribute('aria-current', 'page');
+      nav.append(link);
+    }
+    menu.append(toggle, nav);
+    header.append(menu);
+    menu.addEventListener('click', event => {
+      if (event.target.closest('a')) menu.open = false;
+    });
+    document.addEventListener('click', event => {
+      if (!menu.contains(event.target)) menu.open = false;
+    });
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape' && menu.open) {
+        menu.open = false;
+        toggle.focus();
+      }
+    });
+  }
   translateNode(document.documentElement);
-  const header = document.querySelector('header.header');
   const footer = document.querySelector('body > footer');
   if (header) header.append(switcher());
   else document.querySelector('main')?.prepend(switcher());

@@ -474,3 +474,34 @@ html[dir="rtl"] .order-dialog,html[dir="rtl"] .order-bar{text-align:right}
     font-size:8px;
   }
 }
+
+/* Keep Party grid content inside its columns, including long headings. */
+.party-hero-grid{grid-template-columns:minmax(0,1.35fr) minmax(0,.65fr)}
+.party-hero-grid>*{min-width:0}
+.party-hero h1{overflow-wrap:anywhere;hyphens:auto}
+.party-lead{overflow-wrap:anywhere}
+@media(max-width:900px){.party-hero-grid{grid-template-columns:minmax(0,1fr)}}
+@media(max-width:600px){
+  .party-hero h1{font-size:clamp(30px,8.2vw,48px);letter-spacing:-1.5px;line-height:1.06}
+  .party-hero-actions{display:grid;grid-template-columns:minmax(0,1fr)}
+  .party-hero-actions .button{min-width:0;gap:16px;padding-inline:16px}
+}
+/* Compact, persistent mobile masthead and accessible disclosure menu. */
+.mobile-menu,.mobile-only-header{display:none}
+@media(max-width:800px){
+  html{scroll-padding-top:94px}
+  .header.wrap{position:sticky;top:0;z-index:30;width:100%;max-width:none;height:76px;padding:8px 20px;gap:10px;background:#100b17f5;border-bottom:1px solid #b276ff38;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
+  .header .brand{margin-inline-end:auto;flex:none}
+  .header .brand .original-logo{width:58px;height:58px}
+  .header>.button.small{display:none}
+  .mobile-only-header{display:flex}
+  .header>.language-switch{order:1}
+  .mobile-menu{display:block;order:2;border:0!important}
+  .mobile-menu>summary{min-height:44px;padding:10px 12px;gap:8px;border:1px solid #b276ff70;border-radius:6px;background:#261733;font-size:13px;letter-spacing:0;color:#fff}
+  .mobile-menu>summary:before{content:'☰';font-size:16px}
+  .mobile-menu[open]>summary:before{content:'×';font-size:20px;line-height:16px}
+  .header .mobile-menu-links{position:absolute;display:grid;inset-inline:20px;top:calc(100% + 8px);gap:0;padding:8px;max-height:calc(100vh - 108px);max-height:calc(100dvh - 108px);overflow-y:auto;overscroll-behavior:contain;border:1px solid #b276ff66;border-radius:10px;background:#1b1025;box-shadow:0 16px 35px #0009;font-size:15px}
+  .mobile-menu:not([open])>.mobile-menu-links{display:none}
+  .mobile-menu-links a{display:block;min-height:44px;padding:13px 14px;border-radius:5px;line-height:1.3}
+  .mobile-menu-links a:hover,.mobile-menu-links a[aria-current]{background:#3c2455;color:#e1c5ff}
+}
