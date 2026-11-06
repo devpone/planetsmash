@@ -56,7 +56,7 @@
     const button = document.createElement('button');
     button.type = 'button';
     button.className = 'sauce-help-button' + (inline ? ' sauce-help-inline' : '');
-    button.textContent = '?';
+    button.textContent = 'i';
     button.dataset.sauceKey = profile.key;
     button.setAttribute('aria-label', tr('Geschmacksprofil') + ': ' + tr(profile.name));
     button.setAttribute('aria-expanded','false');
