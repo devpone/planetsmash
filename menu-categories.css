@@ -1,0 +1,20 @@
+/* Category headers are distinct from the fine item separators inside them. */
+#speisekarte>.wrap>details{margin:18px 0;border:2px solid #765294;border-radius:12px;background:#1d1428;padding:0;box-shadow:0 5px 18px #08030c24}
+#speisekarte>.wrap>details[open]{padding-bottom:16px}
+#speisekarte>.wrap>details>summary{min-height:80px;padding:18px 22px;gap:16px;border-radius:10px;background:linear-gradient(105deg,#492665,#30203f);color:#fff;font-size:22px;line-height:1.3}
+#speisekarte>.wrap>details>summary:hover{background:linear-gradient(105deg,#583078,#3a254c)}
+#speisekarte>.wrap>details[open]>summary{border-bottom:2px solid #aa78d0;border-radius:10px 10px 0 0;background:linear-gradient(105deg,#593275,#382346);color:#fff}
+#speisekarte>.wrap>details>summary>span{margin-inline-start:auto;color:#e0c8f4;font-size:11px;letter-spacing:1px;text-align:end}
+#speisekarte>.wrap>details>summary>.category-placeholder{display:none}
+#speisekarte>.wrap>details>summary::after{content:'+';display:grid;place-items:center;flex:none;width:30px;height:30px;border:1px solid #c29ae3;border-radius:50%;font-size:24px;font-weight:400;color:#f3e9fb;line-height:1}
+#speisekarte>.wrap>details[open]>summary::after{content:'−'}
+#speisekarte>.wrap>details>:not(summary){margin-inline:22px}
+#speisekarte>.wrap>details .menu-item{border-bottom:1px solid #ffffff1a}
+#speisekarte>.wrap>details>summary:focus-visible{outline:3px solid #f0d9ff;outline-offset:4px}
+@media(max-width:600px){
+  #speisekarte>.wrap>details{margin:16px 0}
+  #speisekarte>.wrap>details>summary{padding:17px 14px;font-size:18px;gap:10px;min-height:76px}
+  #speisekarte>.wrap>details>summary>span{font-size:10px;letter-spacing:.5px;max-width:95px;flex-shrink:1}
+  #speisekarte>.wrap>details>summary::after{width:27px;height:27px;font-size:22px}
+  #speisekarte>.wrap>details>:not(summary){margin-inline:14px}
+}

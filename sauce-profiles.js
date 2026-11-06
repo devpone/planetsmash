@@ -4,7 +4,7 @@
   const tr = text => window.PSB_I18N?.t(text) || text;
   const profiles = [
     {key:'area', name:'Area 51', title:'Haus-Ketchup', notes:'Tomatig · würzig · wild', aliases:['Area 51 (Haus-Ketchup)','Area 51 Sauce','Area 51']},
-    {key:'mac', name:'Planet Mac', title:'Haus-Mayo', notes:'Cremig · gurkig · würzig · leicht säuerlich', aliases:['Planet Mac (Haus-Mayo)','Planet Mac Sauce','Planet Mac']},
+    {key:'mac', name:'Planet Mac', title:'Haus-Mayo', notes:'Cremig · würzig · leicht säuerlich', aliases:['Planet Mac (Haus-Mayo)','Planet Mac Sauce','Planet Mac']},
     {key:'bbq', name:'Roswell BBQ', title:'BBQ-Soße', notes:'Rauchig · kräftig · leicht süßlich', aliases:['Roswell BBQ Sauce','Roswell BBQ']},
     {key:'hot', name:'UFO Hot', title:'Scharfe Käsesoße', notes:'UFO Hot · cremig · käsig · scharf', aliases:['Scharfe Käsesoße','scharfe Käsesauce','Käsesauce scharf','Käsesoße scharf','UFO Hot']},
     {key:'cheese', name:'Käsesoße', title:'Käsesoße', notes:'Warm · cremig · vollmundiger Cheddar', aliases:['Käsesauce','Käsesoße']},

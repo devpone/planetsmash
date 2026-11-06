@@ -12,6 +12,26 @@
   const output = new WeakMap();
   const t = value => {
     if (dict[value]) return dict[value];
+    // Translate the new builders' numbered steps, live prices and saved choices.
+    let dynamic = value.match(/^([1-5]) \/ (.+)$/);
+    if (dynamic) return dynamic[1] + ' / ' + t(dynamic[2]);
+    dynamic = value.match(/^(.+) · je (Portion )?(\+?[\d.,]+\s?€)$/);
+    if (dynamic) return t(dynamic[1]) + ' · ' + t(dynamic[2] ? 'je Portion' : 'je') + ' ' + dynamic[3];
+    dynamic = value.match(/^(Normal|Big) · ([\d.,]+\s?€)$/);
+    if (dynamic) return t(dynamic[1]) + ' · ' + dynamic[2];
+    dynamic = value.match(/^(ab|AB) ([\d.,]+\s?€)$/);
+    if (dynamic) return t('ab') + ' ' + dynamic[2];
+    dynamic = value.match(/^(Dein Burger|Deine Loaded Fries): ([\d.,]+\s?€)$/);
+    if (dynamic) return t(dynamic[1]) + ': ' + dynamic[2];
+    dynamic = value.match(/^(\d+)× (.+)$/);
+    if (dynamic) return dynamic[1] + '× ' + t(dynamic[2]);
+    dynamic = value.match(/^(Frische Zutaten|Zwiebeln|Käsesoße|Burgersoße|Soßen|Toppings|Extra frisch|Extra Soße|Wunsch): (.*)$/);
+    if (dynamic) {
+      const full = t(dynamic[2]);
+      return t(dynamic[1]) + ': ' + (full !== dynamic[2] ? full : dynamic[2].split(', ').map(t).join(', '));
+    }
+    dynamic = value.match(/^(Pommes|Süßkartoffel-Pommes) (Normal|Big)$/);
+    if (dynamic) return t(dynamic[1]) + ' ' + t(dynamic[2]);
     let match = value.match(/^(.+) zum Warenkorb hinzufügen$/);
     if (match) return t(match[1]) + ' ' + t('zum Warenkorb hinzufügen');
     match = value.match(/^(.+): (weniger|mehr)$/);

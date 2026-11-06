@@ -417,10 +417,9 @@ smokey|smoky|isli|مدخن|ahumado|dûmanî
 leicht süßlich|gently sweet|hafif tatlı|حلو قليلًا|ligeramente dulce|hinek şîrîn
 kräftig|bold|güçlü|قوي|intenso|xurt
 Bacon BBQ und Bacon & Egg.|Bacon BBQ and Bacon & Egg.|Bacon BBQ ve Bacon & Egg.|Bacon BBQ وBacon & Egg.|Bacon BBQ y Bacon & Egg.|Bacon BBQ û Bacon & Egg.
-Cremig, gurkig, würzig – und ziemlich gefährlich löffelbar.|Creamy, pickle-forward, savoury – and dangerously spoonable.|Kremamsı, turşulu, baharatlı – ve kaşıkla yemesi tehlikeli derecede kolay.|كريمية وبنكهة المخلل ومتبلّة – ومن السهل جدًا أكلها بالملعقة.|Cremosa, con pepinillo, especiada y peligrosamente fácil de comer a cucharadas.|Kremî, bi tamê xiyarê, bi tam – û bi qaşiqê xwarina wê pir hêsan e.
-Planet Mac ist die cremigste der kalten Haussoßen: vollmundig, leicht säuerlich und mit einer deutlichen Gurkennote. Dazu kommen Senf, Zwiebel- und Knoblaucharomen. Das Ergebnis ist frisch genug für Salat und Gurke, aber kräftig genug, um neben Patty, Käse und Crunch nicht unterzugehen.|Planet Mac is the creamiest of the cold house sauces: rich, gently tangy and distinctly pickle-forward. Mustard, onion and garlic aromas round it out. Fresh enough for lettuce and pickles, but bold enough to stand beside patty, cheese and crunch.|Planet Mac soğuk ev soslarının en kremamsısıdır: dolgun, hafif ekşi ve belirgin turşu notalı. Hardal, soğan ve sarımsak aromaları tamamlar. Salata ve turşuya yetecek kadar ferah, köfte, peynir ve çıtırlığın yanında kaybolmayacak kadar güçlü.|Planet Mac هي أكثر الصلصات الباردة المنزلية كريمية: غنية وحامضة قليلًا وبنكهة مخلل واضحة. ويكملها الخردل والبصل والثوم. منعشة بما يكفي للخس والمخلل وقوية بما يكفي بجانب اللحم والجبن والقرمشة.|Planet Mac es la más cremosa de las salsas frías de la casa: intensa, ligeramente ácida y con una clara nota de pepinillo. La completan mostaza, cebolla y ajo. Fresca para la ensalada y el pepinillo, pero suficientemente potente junto a carne, queso y crunch.|Planet Mac ji sosên sar ên malê herî kremî ye: têr, hinek tirş û bi tamê xiyarê yê zelal. Xerdel, pîvaz û sîr wê temam dikin. Ji bo salata û xiyarê fresk e, lê li kêleka patty, penêr û crunchê jî xurt e.
+Cremig, würzig – und ziemlich gefährlich löffelbar.|Creamy, savoury – and dangerously spoonable.|Kremamsı, lezzetli – ve kaşık kaşık yemesi çok kolay.|كريمية وغنية بالنكهة – ولذيذة حتى بالملعقة.|Cremosa, sabrosa y peligrosamente fácil de comer a cucharadas.|Kremî, bi tam – û bi qaşiqê xwarina wê pir hêsan e.
+Planet Mac ist unsere cremige Haus-Mayo: vollmundig, würzig und leicht säuerlich. Sie passt zu Smashburgern und Pommes.|Planet Mac is our creamy house mayo: rich, savoury and gently tangy. It pairs with smashburgers and fries.|Planet Mac, kremamsı ev mayonezimizdir: dolgun, lezzetli ve hafif ekşi. Smaş burger ve patateslerle uyumludur.|Planet Mac هي المايونيز المنزلي الكريمي: غنية ومتبلة وحامضة قليلًا. تناسب برغر سماش والبطاطس.|Planet Mac es nuestra mayonesa de la casa: cremosa, sabrosa y ligeramente ácida. Ideal para hamburguesas y patatas.|Planet Mac mayoneza me ya malê ya kremî ye: têr, bi tam û hinek tirş. Li smashburger û pommesê baş tê.
 cremig|creamy|kremamsı|كريمي|cremoso|kremî
-gurkig|pickle-forward|turşulu|بطعم المخلل|con pepinillo|bi tamê xiyarê
 leicht säuerlich|gently tangy|hafif ekşi|حامض قليلًا|ligeramente ácido|hinek tirş
 Planet Mac und Galactic Potato.|Planet Mac and Galactic Potato.|Planet Mac ve Galactic Potato.|Planet Mac وGalactic Potato.|Planet Mac y Galactic Potato.|Planet Mac û Galactic Potato.
 Warm. Samtig. Cheddar ohne Zurückhaltung.|Warm. Velvety. Full-on cheddar.|Sıcak. Kadifemsi. Tam cheddar gücü.|دافئة. مخملية. شيدر بلا تردد.|Caliente. Sedosa. Cheddar sin frenos.|Germ. Nerm. Cheddar bê sînor.
@@ -440,7 +439,7 @@ auf deinem Planeten?|on your planet?|gezegenine inecek?|على كوكبك؟|en t
 Alle aktuellen Soßen findest du direkt in der Speisekarte – zum Dippen, auf Burgern oder als Extra zu deinen Pommes.|You can find all current sauces directly on the menu – for dipping, on burgers or as an extra for your fries.|Tüm güncel sosları doğrudan menüde bulabilirsin: dip için, burgerlerde veya patatesine ekstra olarak.|ستجد كل الصلصات الحالية مباشرة في القائمة – للتغميس أو على البرغر أو كإضافة للبطاطس.|Encontrarás todas las salsas actuales directamente en la carta: para mojar, en las hamburguesas o como extra para tus patatas.|Hemû sosên heyî rasterast di lîsteya xwarinê de dibînî: ji bo dîpkirinê, li ser burgeran an wek zêde ji bo pommes.
 Tomatig · würzig · wild|Tomato · savoury · wild|Domates · lezzetli · wild|طماطم · غنية بالنكهة · وايلد|Tomate · sabrosa · wild|Tomato · bi tam · wild
 Rauchig · kräftig · leicht süßlich|Smoky · bold · gently sweet|İsli · güçlü · hafif tatlı|مدخن · قوي · حلو قليلًا|Ahumada · intensa · ligeramente dulce|Dûmanî · xurt · hinek şîrîn
-Cremig · gurkig · würzig · leicht säuerlich|Creamy · pickle-forward · savoury · gently tangy|Kremamsı · turşulu · baharatlı · hafif ekşi|كريمي · مخلل · متبل · حامض قليلًا|Cremosa · pepinillo · especiada · ligeramente ácida|Kremî · bi xiyar · bi tam · hinek tirş
+Cremig · würzig · leicht säuerlich|Creamy · savoury · gently tangy|Kremamsı · lezzetli · hafif ekşi|كريمية · غنية بالنكهة · حامضة قليلًا|Cremosa · sabrosa · ligeramente ácida|Kremî · bi tam · hinek tirş
 Warm · cremig · vollmundiger Cheddar|Warm · creamy · rich cheddar|Sıcak · kremamsı · yoğun cheddar|دافئ · كريمي · شيدر غني|Caliente · cremosa · cheddar intenso|Germ · kremî · cheddar têr
 UFO Hot · cremig · käsig · scharf|UFO Hot · creamy · cheesy · hot|UFO Hot · kremamsı · peynirli · acı|UFO Hot · كريمي · بالجبن · حار|UFO Hot · cremosa · con queso · picante|UFO Hot · kremî · penêrî · tûj
 Mehr zur Soße ↗|More about the sauce ↗|Sos hakkında daha fazla ↗|المزيد عن الصلصة ↗|Más sobre la salsa ↗|Zêdetir li ser sosê ↗
@@ -950,10 +949,9 @@ smokey|affumicata
 leicht süßlich|leggermente dolce
 kräftig|intensa
 Bacon BBQ und Bacon & Egg.|Bacon BBQ e Bacon & Egg.
-Cremig, gurkig, würzig – und ziemlich gefährlich löffelbar.|Cremosa, con cetriolino, speziata – e pericolosamente buona anche al cucchiaio.
-Planet Mac ist die cremigste der kalten Haussoßen: vollmundig, leicht säuerlich und mit einer deutlichen Gurkennote. Dazu kommen Senf, Zwiebel- und Knoblaucharomen. Das Ergebnis ist frisch genug für Salat und Gurke, aber kräftig genug, um neben Patty, Käse und Crunch nicht unterzugehen.|Planet Mac è la più cremosa delle salse fredde della casa: piena, leggermente acidula e con una chiara nota di cetriolino. Senape, cipolla e aglio completano il profilo. Abbastanza fresca per lattuga e cetriolini, ma abbastanza intensa da reggere accanto a patty, formaggio e croccantezza.
+Cremig, würzig – und ziemlich gefährlich löffelbar.|Cremosa, saporita e pericolosamente buona anche al cucchiaio.
+Planet Mac ist unsere cremige Haus-Mayo: vollmundig, würzig und leicht säuerlich. Sie passt zu Smashburgern und Pommes.|Planet Mac è la nostra maionese della casa: cremosa, saporita e leggermente acidula. Perfetta con smashburger e patatine.
 cremig|cremosa
-gurkig|al cetriolino
 leicht säuerlich|leggermente acidula
 Planet Mac und Galactic Potato.|Planet Mac e Galactic Potato.
 Warm. Samtig. Cheddar ohne Zurückhaltung.|Calda. Vellutata. Cheddar senza freni.
@@ -973,7 +971,7 @@ auf deinem Planeten?|sul tuo pianeta?
 Alle aktuellen Soßen findest du direkt in der Speisekarte – zum Dippen, auf Burgern oder als Extra zu deinen Pommes.|Trovi tutte le salse attuali direttamente nel menu: da intingere, sui burger o come extra per le patatine.
 Tomatig · würzig · wild|Pomodoro · saporita · wild
 Rauchig · kräftig · leicht süßlich|Affumicata · intensa · leggermente dolce
-Cremig · gurkig · würzig · leicht säuerlich|Cremosa · cetriolino · speziata · leggermente acidula
+Cremig · würzig · leicht säuerlich|Cremosa · saporita · leggermente acidula
 Warm · cremig · vollmundiger Cheddar|Calda · cremosa · cheddar corposo
 UFO Hot · cremig · käsig · scharf|UFO Hot · cremosa · formaggiosa · piccante
 Mehr zur Soße ↗|Scopri di più sulla salsa ↗
