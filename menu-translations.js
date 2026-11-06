@@ -1,7 +1,7 @@
 // New menu and builder copy. Product IDs, option values and prices stay unchanged.
 (() => {
   const rows = [
-    ['Bau deinen Burger','Build your Burger','Kendi burgerini yap','اصنع برغرك','Crea tu hamburguesa','Crea il tuo burger','Burgerê xwe çêke'],
+    ['Bau dir deinen Burger','Build your Burger','Kendi burgerini yap','اصنع برغرك','Crea tu hamburguesa','Crea il tuo burger','Burgerê xwe çêke'],
     ['Chili con Carne Pommes','Chili con carne fries','Chili con carne patates','بطاطس بتشيلي كون كارني','Patatas con chili con carne','Patatine con chili con carne','Pommesên bi chili con carne'],
     ['Joppiesauce','Joppie sauce','Joppie sosu','صلصة جوبي','Salsa Joppie','Salsa Joppie','Sosa Joppie'],
     ['Pommes','Fries','Patates kızartması','بطاطس مقلية','Patatas fritas','Patatine fritte','Pommes'],
@@ -13,7 +13,7 @@
     ['Tomate','Tomato','Domates','طماطم','Tomate','Pomodoro','Firengî'],
     ['Essiggurken','Pickles','Salatalık turşusu','مخلل الخيار','Pepinillos','Cetriolini','Turşiyên xiyarê'],
     ['Gurke','Pickle','Turşu','مخلل الخيار','Pepinillo','Cetriolino','Turşiya xiyarê'],
-    ['Bau deine Loaded Fries','Build your Loaded Fries','Loaded Fries hazırla','اصنع بطاطسك المحمّلة','Crea tus Loaded Fries','Crea le tue Loaded Fries','Loaded Fries xwe çêke'],
+    ['Bau dir deine Pommes','Build your Fries','Kendi patates kızartmanı yap','حضّر بطاطسك كما تحب','Crea tus patatas fritas','Crea le tue patatine','Pommesên xwe çêke'],
     ['Du bestimmst, was draufkommt.','You choose what goes on it.','Üstüne ne konacağına sen karar ver.','أنت تختار الإضافات.','Tú eliges qué lleva.','Decidi tu cosa metterci.','Tu hilbijêre çi li ser be.'],
     ['Der Classic als Basis. Deinen Burger stellst du im nächsten Schritt selbst zusammen.','Start with the Classic. Build your burger in the next step.','Classic ile başla. Bir sonraki adımda burgerini kendin oluştur.','ابدأ بالكلاسيك، ثم اختر مكونات برغرك في الخطوة التالية.','Empieza con el Classic y personaliza tu hamburguesa en el siguiente paso.','Parti dal Classic e componi il tuo burger nel prossimo passaggio.','Bi Classic dest pê bike. Di gava paş de burgerê xwe çêke.'],
     ['DEIN BURGER. DEINE WAHL.','YOUR BURGER. YOUR CHOICE.','SENİN BURGERİN. SENİN SEÇİMİN.','برغرك. اختيارك.','TU HAMBURGUESA. TU ELECCIÓN.','IL TUO BURGER. LA TUA SCELTA.','BURGERÊ TE. HILBIJARTINA TE.'],
