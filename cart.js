@@ -112,7 +112,7 @@
       'Bacon BBQ': ['Bacon','Käsesauce','Tomate','Salat','Essiggurken','Geschmorte Zwiebeln','Roswell BBQ'],
       'Galactic Potato': ['Crunchy Kartoffeln','Käsesauce','Bacon','Salat','Essiggurken','Planet Mac'],
       'Con Carne': ['Chili con Carne','Essiggurken','Tomate','Röstzwiebeln','Käsesauce','Area 51'],
-      'Planet Mac': ['Käsesauce','Tomate','Salat','Essiggurken','Geschmorte Zwiebeln','Planet Mac'],
+      'Planet Mac Burger': ['Käsesauce','Tomate','Salat','Essiggurken','Geschmorte Zwiebeln','Planet Mac'],
       'Bacon & Egg': ['Bacon','Käsesauce','Tomate','Essiggurken','Spiegelei','Roswell BBQ'],
       'Chili con Carne Pommes': ['Chili con Carne','Käsesauce','Geschmorte Zwiebeln'],
       'Smashpommes': ['Hackfleisch','Geschmorte Zwiebeln','Käsesauce'],
@@ -123,7 +123,7 @@
       'Bacon BBQ': [['Jalapeños',100],['Extra Bacon',150],['Spiegelei',150],['Geschmorte Zwiebeln gegen Röstzwiebeln tauschen',0]],
       'Galactic Potato': [['Jalapeños',100],['Extra Bacon',150],['Geschmorte Zwiebeln',100],['Spiegelei',150]],
       'Con Carne': [['Jalapeños',100],['Extra Bacon',150],['Geschmorte Zwiebeln',100],['Spiegelei',150]],
-      'Planet Mac': [['Jalapeños',100],['Extra Bacon',150],['Spiegelei',150],['Geschmorte Zwiebeln gegen Röstzwiebeln tauschen',0]],
+      'Planet Mac Burger': [['Jalapeños',100],['Extra Bacon',150],['Spiegelei',150],['Geschmorte Zwiebeln gegen Röstzwiebeln tauschen',0]],
       'Bacon & Egg': [['Jalapeños',100],['Extra Bacon',150],['Geschmorte Zwiebeln',100]]
     };
     const foodExtrasByItem = {

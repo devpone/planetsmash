@@ -1,6 +1,7 @@
 // New menu and builder copy. Product IDs, option values and prices stay unchanged.
 (() => {
   const rows = [
+    ['Planet Mac Burger','Planet Mac Burger','Planet Mac Burger','برغر بلانيت ماك','Burger Planet Mac','Planet Mac Burger','Planet Mac Burger'],
     ['Bau dir deinen Burger','Build your Burger','Kendi burgerini yap','اصنع برغرك','Crea tu hamburguesa','Crea il tuo burger','Burgerê xwe çêke'],
     ['Chili con Carne Pommes','Chili con carne fries','Chili con carne patates','بطاطس بتشيلي كون كارني','Patatas con chili con carne','Patatine con chili con carne','Pommesên bi chili con carne'],
     ['Joppiesauce','Joppie sauce','Joppie sosu','صلصة جوبي','Salsa Joppie','Salsa Joppie','Sosa Joppie'],
