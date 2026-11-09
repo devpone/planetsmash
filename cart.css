@@ -54,3 +54,20 @@
 .order-submit:disabled{opacity:.5;cursor:not-allowed}
 @media(max-width:600px){.burger-builder-card{display:block}.burger-builder-start{margin-top:20px;text-align:left}.builder-section{padding:10px}.builder-total{bottom:-20px}}
 @media(max-width:800px){.order-bar{bottom:calc(76px + env(safe-area-inset-bottom));width:calc(100% - 28px)}.order-dialog{max-height:83vh;padding:20px}.menu-item>strong{margin-left:0}.order-add{margin-left:auto}}
+
+/* Burger meal upgrade: visible on each card and clear in the order dialog. */
+.burger-order-card .burger-menu-hint{max-width:none;margin-top:12px;padding:8px 10px;border-left:3px solid #bd89f0;border-radius:5px;background:#332044;color:#ead2ff;font-size:12px;font-weight:700;line-height:1.5}
+.burger-order-card .order-add{flex:1 0 100%;width:100%;min-height:46px;margin-left:0;white-space:normal;text-align:center}
+.order-menu-group{min-width:0;margin:0;padding:0;border:0}
+.order-menu-legend{margin-bottom:12px;color:#ecd6ff;font-size:16px;font-weight:800}
+.order-menu-choices{display:grid;gap:10px}
+.order-menu-choice{display:flex;align-items:center;gap:12px;min-width:0;margin:0;padding:14px 13px;border:1px solid #86629b;border-radius:10px;background:#261935;cursor:pointer}
+.order-menu-choice:has(input:checked){border:2px solid #c28cf7;padding:13px 12px;background:#3a2450;box-shadow:0 0 0 1px #c28cf733}
+.order-menu-choice:has(input:focus-visible){outline:3px solid #e6c1ff;outline-offset:3px}
+.order-menu-choice>input{width:21px;height:21px;margin:0;flex:none;accent-color:#bc82f4}
+.order-menu-choice-info{display:flex;flex:1;flex-direction:column;gap:5px;min-width:0}
+.order-menu-choice-name{font-size:16px;font-weight:800;line-height:1.25}
+.order-menu-choice-description{font-size:12px;line-height:1.5;color:#d9c5e8}
+.order-menu-choice-price{align-self:center;flex:none;white-space:nowrap;font-size:16px;color:#f4dcff}
+.order-menu-options{margin-top:14px}
+@media(max-width:400px){.order-menu-choice{gap:9px;padding:12px 10px}.order-menu-choice:has(input:checked){padding:11px 9px}.order-menu-choice-price{font-size:14px}.order-menu-choice-name{font-size:15px}}

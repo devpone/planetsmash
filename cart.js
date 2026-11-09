@@ -159,16 +159,44 @@
     const friesExtras = [];
     const removals = [];
     if (isBurger) {
-      const menuLabel = addText(form, 'label', '', 'order-check');
+      // Offer a clear choice between the single burger and the meal upgrade.
+      const choiceGroup = document.createElement('fieldset');
+      choiceGroup.className = 'order-menu-group';
+      form.append(choiceGroup);
+      addText(choiceGroup, 'legend', 'Burger oder Menü?', 'order-menu-legend');
+      const menuChoices = addText(choiceGroup, 'div', '', 'order-menu-choices');
+
+      const onlyBurgerLabel = addText(menuChoices, 'label', '', 'order-menu-choice');
+      const onlyBurger = document.createElement('input');
+      onlyBurger.type = 'radio';
+      onlyBurger.name = 'burger-menu-choice';
+      onlyBurger.value = 'burger';
+      onlyBurger.checked = true;
+      onlyBurgerLabel.append(onlyBurger);
+      const onlyBurgerInfo = addText(onlyBurgerLabel, 'span', '', 'order-menu-choice-info');
+      addText(onlyBurgerInfo, 'span', 'Nur Burger', 'order-menu-choice-name');
+      addText(onlyBurgerInfo, 'small', 'Ohne Beilagen und Getränk', 'order-menu-choice-description');
+      addText(onlyBurgerLabel, 'strong', money(cents), 'order-menu-choice-price');
+
+      const menuLabel = addText(menuChoices, 'label', '', 'order-menu-choice');
       menuToggle = document.createElement('input');
-      menuToggle.type = 'checkbox';
-      menuLabel.append(menuToggle, document.createTextNode(' Als Menü: Pommes + Sauce + Getränk (+ 6,25 € inkl. Pfand)'));
+      menuToggle.type = 'radio';
+      menuToggle.name = 'burger-menu-choice';
+      menuToggle.value = 'menu';
+      menuLabel.append(menuToggle);
+      const menuInfo = addText(menuLabel, 'span', '', 'order-menu-choice-info');
+      addText(menuInfo, 'span', 'Als Menü', 'order-menu-choice-name');
+      addText(menuInfo, 'small', 'Pommes + Soße + Getränk · inkl. 0,25 € Pfand', 'order-menu-choice-description');
+      addText(menuLabel, 'strong', money(cents + 625), 'order-menu-choice-price');
+
       const menuOptions = addText(form, 'div', '', 'order-menu-options');
       menuOptions.hidden = true;
       menuFries = selectField(menuOptions, 'Pommes im Menü', ['Pommes', 'Süßkartoffelpommes (+ 2,00 €)']);
       sauce = selectField(menuOptions, 'Sauce im Menü', sauces);
       drink = selectField(menuOptions, 'Getränk im Menü', drinks);
-      menuToggle.addEventListener('change', () => { menuOptions.hidden = !menuToggle.checked; });
+      const syncMenuOptions = () => { menuOptions.hidden = !menuToggle.checked; };
+      onlyBurger.addEventListener('change', syncMenuOptions);
+      menuToggle.addEventListener('change', syncMenuOptions);
       const veggieLabel = addText(form, 'label', '', 'order-check');
       veggie = document.createElement('input');
       veggie.type = 'checkbox';
@@ -299,9 +327,12 @@
     const heading = row.querySelector('h3');
     const priceNode = row.querySelector('strong');
     if (!heading || !priceNode || !Number.isInteger(price(priceNode.textContent))) return;
-    const button = addText(row, 'button', '+ Hinzufügen', 'order-add');
+    const isBurgerCard = row.closest('details') === menu.querySelector('details');
+    const button = addText(row, 'button', isBurgerCard ? 'Burger oder Menü auswählen →' : '+ Hinzufügen', 'order-add');
     button.type = 'button';
-    button.setAttribute('aria-label', heading.textContent.trim() + ' zum Warenkorb hinzufügen');
+    button.setAttribute('aria-label', isBurgerCard
+      ? heading.textContent.trim() + ': ' + tr('Burger oder Menü auswählen')
+      : heading.textContent.trim() + ' zum Warenkorb hinzufügen');
     button.addEventListener('click', () => openChooser(row));
   });
 
