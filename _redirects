@@ -1,0 +1,2 @@
+# Canonical homepage redirect for Cloudflare Pages
+/index.html / 301
